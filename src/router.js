@@ -14,6 +14,11 @@ export default new Router({
             component: require('@/pages/Home').default,
         },
         {
+            path: '/info',
+            name: 'info',
+            component: require('@/pages/Info').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },

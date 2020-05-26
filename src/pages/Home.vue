@@ -39,7 +39,7 @@ export default {
                 const name = prompt('Please input the project name', 'Project')
                 if (name) {
                     builder.make(name)
-                    this.$router.push('/project')
+                    this.$router.push('/info')
                 }
             } catch (error) {
                 console.error(error)

@@ -10,7 +10,7 @@
                     <b-nav-item to="/" exact active-class="active"> Home </b-nav-item>
 
                     <template v-if="builder.document">
-                        <b-nav-item to="/project" active-class="active"> Project </b-nav-item>
+                        <b-nav-item to="/info" active-class="active"> Info </b-nav-item>
                     </template>
                 </b-navbar-nav>
 
