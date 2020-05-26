@@ -19,6 +19,11 @@ export default new Router({
             component: require('@/pages/Info').default,
         },
         {
+            path: '/server',
+            name: 'server',
+            component: require('@/pages/server/ServerList').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },

@@ -21,6 +21,14 @@ export default {
 </script>
 
 <style>
+.inline {
+    display: inline-block;
+}
+
+.mr11px {
+    margin-right: 11px;
+}
+
 .button-label {
     padding: 0;
     margin: 0;
