@@ -24,6 +24,11 @@ export default new Router({
             component: require('@/pages/server/ServerList').default,
         },
         {
+            path: '/tag',
+            name: 'tag',
+            component: require('@/pages/Tag').default,
+        },
+        {
             path: '*',
             redirect: '/',
         },
