@@ -8,6 +8,8 @@
             <tr>
                 <th>name</th>
                 <th>description</th>
+                <th>externalDocs.description</th>
+                <th>externalDocs.url</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +22,12 @@
                 </td>
                 <td>
                     <b-form-input v-model="tag.description"></b-form-input>
+                </td>
+                <td>
+                    <b-form-input v-model="tag.externalDocs.description"></b-form-input>
+                </td>
+                <td>
+                    <b-form-input v-model="tag.externalDocs.url"></b-form-input>
                 </td>
             </tr>
         </tbody>
