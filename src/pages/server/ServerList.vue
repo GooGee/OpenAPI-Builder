@@ -2,7 +2,7 @@
     <div>
         <div>
             <h1 class="inline mr11px">Server</h1>
-            <AddButton :manager="manager" name="url" :assign="true"></AddButton>
+            <AddButton :manager="manager" name="url"></AddButton>
         </div>
 
         <Server v-for="server in manager.list" :server="server" :manager="manager" :key="server.url"></Server>

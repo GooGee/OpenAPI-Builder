@@ -14,11 +14,6 @@ export default {
             type: String,
             required: true,
         },
-        assign: {
-            type: Boolean,
-            required: false,
-            default: false,
-        },
     },
     methods: {
         add() {
@@ -27,9 +22,6 @@ export default {
                 try {
                     const property = this.manager.make(value)
                     this.manager.add(property)
-                    if (this.assign) {
-                        property[this.name] = value
-                    }
                 } catch (error) {
                     console.error(error)
                     this.$bvToast.toast(error.message, {

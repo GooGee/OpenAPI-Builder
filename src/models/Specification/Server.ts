@@ -1,11 +1,18 @@
-import Item from "../Base/Item"
-import ItemList from "../Base/ItemList"
+import UniqueItem from "../Base/UniqueItem"
+import UniqueList from "../Base/UniqueList"
 import { ServerVariableManager } from "./ServerVariable"
 
-export default class Server extends Item {
-    url: string = ''
+export default class Server extends UniqueItem {
     description: string = ''
     readonly variableManager = new ServerVariableManager
+
+    get url() {
+        return this.name
+    }
+
+    set url(name: string) {
+        this.name = name
+    }
 
     toAPI() {
         return {
@@ -16,7 +23,7 @@ export default class Server extends Item {
     }
 }
 
-export class ServerManager extends ItemList<Server> {
+export class ServerManager extends UniqueList<Server> {
 
     constructor() {
         super(Server)
