@@ -29,6 +29,11 @@ export default {
     margin-right: 11px;
 }
 
+.mtb11px {
+    margin-top: 11px;
+    margin-bottom: 11px;
+}
+
 .button-label {
     padding: 0;
     margin: 0;

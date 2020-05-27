@@ -22,7 +22,9 @@
                 <td>
                     <b-form-input v-model="variable.description"></b-form-input>
                 </td>
-                <td></td>
+                <td>
+                    <EditList :manager="variable.valueManager"></EditList>
+                </td>
             </tr>
         </tbody>
         <tfoot>
@@ -42,6 +44,7 @@
 import AddButton from '../../components/AddButton.vue'
 import ChangeButton from '../../components/ChangeButton.vue'
 import DeleteButton from '../../components/DeleteButton.vue'
+import EditList from '../../components/EditList.vue'
 
 export default {
     name: 'ServerVariable',
@@ -49,6 +52,7 @@ export default {
         AddButton,
         ChangeButton,
         DeleteButton,
+        EditList,
     },
     props: {
         manager: {
