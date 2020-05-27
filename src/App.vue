@@ -2,9 +2,7 @@
     <div id="app">
         <Bar></Bar>
         <div class="container-fluid">
-            <div class="row">
-                <router-view class="col-9"></router-view>
-            </div>
+            <router-view></router-view>
         </div>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-6">
+    <div class="col-6 offset-3">
         <div class="text-center" style="margin-top: 22%;">
             <div>
                 <img src="logo.svg" alt="logo" style="width: 222px;" />
