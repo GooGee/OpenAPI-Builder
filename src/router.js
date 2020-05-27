@@ -19,6 +19,11 @@ export default new Router({
             component: require('@/pages/Info').default,
         },
         {
+            path: '/security',
+            name: 'security',
+            component: require('@/pages/Security').default,
+        },
+        {
             path: '/server',
             name: 'server',
             component: require('@/pages/server/ServerList').default,

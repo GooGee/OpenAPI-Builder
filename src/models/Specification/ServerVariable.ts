@@ -9,7 +9,7 @@ export default class ServerVariable extends UniqueItem {
 
     toAPI() {
         if (this.valueManager.list.length) {
-            const list = this.valueManager.list.map(variable => variable.name)
+            const list = this.valueManager.list.map(value => value.name)
             return {
                 default: this.default,
                 description: this.description,

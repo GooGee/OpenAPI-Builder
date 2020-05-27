@@ -11,6 +11,7 @@
 
                     <template v-if="builder.document">
                         <b-nav-item to="/info" active-class="active"> Info </b-nav-item>
+                        <b-nav-item to="/security" active-class="active"> Security </b-nav-item>
                         <b-nav-item to="/server" active-class="active"> Server </b-nav-item>
                         <b-nav-item to="/tag" active-class="active"> Tag </b-nav-item>
                     </template>
