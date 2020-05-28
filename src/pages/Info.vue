@@ -7,7 +7,7 @@
             <tbody>
                 <tr>
                     <td class="text-right" width="222px">title</td>
-                    <td class="text-right">
+                    <td>
                         <b-form-input v-model="info.title"></b-form-input>
                     </td>
                 </tr>
