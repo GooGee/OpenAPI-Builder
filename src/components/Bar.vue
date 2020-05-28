@@ -16,6 +16,7 @@
                         <b-nav-item to="/tag" active-class="active"> Tag </b-nav-item>
 
                         <b-nav-item to="/example" active-class="active"> Example </b-nav-item>
+                        <b-nav-item to="/parameter" active-class="active"> Parameter </b-nav-item>
                         <b-nav-item to="/schema" active-class="active"> Schema </b-nav-item>
                     </template>
                 </b-navbar-nav>

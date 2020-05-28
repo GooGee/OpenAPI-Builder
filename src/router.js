@@ -24,6 +24,11 @@ export default new Router({
             component: require('@/pages/Info').default,
         },
         {
+            path: '/parameter',
+            name: 'parameter',
+            component: require('@/pages/Parameter').default,
+        },
+        {
             path: '/schema',
             name: 'schema',
             component: require('@/pages/schema/SchemaPage').default,
