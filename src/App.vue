@@ -4,16 +4,19 @@
         <div class="container-fluid">
             <router-view></router-view>
         </div>
+        <ComponentDialogue></ComponentDialogue>
     </div>
 </template>
 
 <script>
 import Bar from './components/Bar.vue'
+import ComponentDialogue from './components/ComponentDialogue.vue'
 
 export default {
     name: 'App',
     components: {
         Bar,
+        ComponentDialogue,
     },
 }
 </script>
@@ -25,6 +28,10 @@ export default {
 
 .mr11px {
     margin-right: 11px;
+}
+
+.mb11px {
+    margin-bottom: 11px;
 }
 
 .mtb11px {
