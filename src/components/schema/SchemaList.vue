@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import AddButton from '..//AddButton.vue'
+import AddButton from '../button/AddButton.vue'
 
 export default {
     name: 'SchemaList',

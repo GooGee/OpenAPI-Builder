@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import ChangeButton from './ChangeButton.vue'
-import DeleteButton from './DeleteButton.vue'
+import ChangeButton from './button/ChangeButton.vue'
+import DeleteButton from './button/DeleteButton.vue'
 import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'

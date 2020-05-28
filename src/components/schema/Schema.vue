@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import ChangeButton from '..//ChangeButton.vue'
-import DeleteButton from '..//DeleteButton.vue'
+import ChangeButton from '../button/ChangeButton.vue'
+import DeleteButton from '../button/DeleteButton.vue'
 import SchemaType from './SchemaType.vue'
 
 export default {

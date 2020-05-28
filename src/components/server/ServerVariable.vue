@@ -41,9 +41,9 @@
 </template>
 
 <script>
-import AddButton from '..//AddButton.vue'
-import ChangeButton from '..//ChangeButton.vue'
-import DeleteButton from '..//DeleteButton.vue'
+import AddButton from '../button/AddButton.vue'
+import ChangeButton from '../button/ChangeButton.vue'
+import DeleteButton from '../button/DeleteButton.vue'
 import EditList from '..//EditList.vue'
 
 export default {
