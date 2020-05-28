@@ -34,7 +34,7 @@ import DeleteButton from './DeleteButton.vue'
 import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
-import MediaTypeList from './MediaTypeList.vue'
+import MediaTypeList from './specification/MediaTypeList.vue'
 
 export default {
     name: 'Response',

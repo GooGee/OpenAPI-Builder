@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import DeleteButton from './DeleteButton.vue'
-import SchemaType from './schema/SchemaType.vue'
+import DeleteButton from '../DeleteButton.vue'
+import SchemaType from '../schema/SchemaType.vue'
 
 export default {
     name: 'MediaType',

@@ -68,7 +68,7 @@
 
 <script>
 import builder from '../states/builder.js'
-import External from './External.vue'
+import External from './specification/External.vue'
 
 export default {
     name: 'Info',
