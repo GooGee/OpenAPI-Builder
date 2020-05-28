@@ -2,8 +2,8 @@
     <div class="row">
         <SideBar :manager="manager" title="Parameter" class="col-3"></SideBar>
 
-        <div class="col-9">
-            <table v-if="sidebar.item" class="table b-table">
+        <div v-if="ready && sidebar.item" class="col-9">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td width="111px"></td>
@@ -88,9 +88,13 @@ export default {
         return {
             sidebar,
             editing: false,
+            ready: false,
             manager: builder.document.component.parameterManager,
             locationList: ['cookie', 'header', 'path', 'query'],
         }
+    },
+    mounted() {
+        this.ready = true
     },
 }
 </script>

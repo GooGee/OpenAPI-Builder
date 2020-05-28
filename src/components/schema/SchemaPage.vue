@@ -2,8 +2,8 @@
     <div class="row">
         <SideBar :manager="manager" title="Schema" class="col-3"></SideBar>
 
-        <div class="col-9">
-            <table v-if="sidebar.item" class="table b-table">
+        <div v-if="ready && sidebar.item" class="col-9">
+            <table class="table">
                 <tbody>
                     <Schema :schema="sidebar.item" :manager="manager"></Schema>
                 </tbody>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import SideBar from '..//SideBar.vue'
+import SideBar from '../SideBar.vue'
 import Schema from './Schema.vue'
 import builder from '../../states/builder.js'
 import sidebar from '../../states/sidebar.js'
@@ -27,8 +27,12 @@ export default {
     data() {
         return {
             sidebar,
+            ready: false,
             manager: builder.document.component.schemaManager,
         }
+    },
+    mounted() {
+        this.ready = true
     },
 }
 </script>

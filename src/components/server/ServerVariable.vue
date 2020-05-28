@@ -44,7 +44,7 @@
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import EditList from '..//EditList.vue'
+import EditList from '../EditList.vue'
 
 export default {
     name: 'ServerVariable',

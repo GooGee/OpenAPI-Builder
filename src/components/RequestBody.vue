@@ -2,8 +2,8 @@
     <div class="row">
         <SideBar :manager="manager" title="RequestBody" class="col-3"></SideBar>
 
-        <div class="col-9">
-            <table v-if="sidebar.item" class="table b-table">
+        <div v-if="ready && sidebar.item" class="col-9">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td width="111px"></td>
@@ -56,8 +56,12 @@ export default {
     data() {
         return {
             sidebar,
+            ready: false,
             manager: builder.document.component.requestBodyManager,
         }
+    },
+    mounted() {
+        this.ready = true
     },
 }
 </script>
