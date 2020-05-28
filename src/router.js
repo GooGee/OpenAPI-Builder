@@ -34,6 +34,11 @@ export default new Router({
             component: require('@/pages/RequestBody').default,
         },
         {
+            path: '/response',
+            name: 'response',
+            component: require('@/pages/Response').default,
+        },
+        {
             path: '/schema',
             name: 'schema',
             component: require('@/pages/schema/SchemaPage').default,
