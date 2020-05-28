@@ -26,6 +26,10 @@ export default {
     display: inline-block;
 }
 
+.wa {
+    width: auto;
+}
+
 .mr11px {
     margin-right: 11px;
 }

@@ -7,7 +7,7 @@ const map = {
     headers: 'headerManager',
     links: 'linkManager',
     parameters: 'parameterManager',
-    requestBodies: 'requestManager',
+    requestBodies: 'requestBodyManager',
     responses: 'responseManager',
     schemas: 'schemaManager',
     securitySchemes: 'securitySchemeManager',
