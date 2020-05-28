@@ -11,52 +11,52 @@ export default new Router({
         {
             path: '/',
             name: 'home',
-            component: require('@/pages/Home').default,
+            component: require('@/components/Home').default,
         },
         {
             path: '/example',
             name: 'example',
-            component: require('@/pages/Example').default,
+            component: require('@/components/Example').default,
         },
         {
             path: '/info',
             name: 'info',
-            component: require('@/pages/Info').default,
+            component: require('@/components/Info').default,
         },
         {
             path: '/parameter',
             name: 'parameter',
-            component: require('@/pages/Parameter').default,
+            component: require('@/components/Parameter').default,
         },
         {
             path: '/request',
             name: 'request',
-            component: require('@/pages/RequestBody').default,
+            component: require('@/components/RequestBody').default,
         },
         {
             path: '/response',
             name: 'response',
-            component: require('@/pages/Response').default,
+            component: require('@/components/Response').default,
         },
         {
             path: '/schema',
             name: 'schema',
-            component: require('@/pages/schema/SchemaPage').default,
+            component: require('@/components/schema/SchemaPage').default,
         },
         {
             path: '/security',
             name: 'security',
-            component: require('@/pages/Security').default,
+            component: require('@/components/Security').default,
         },
         {
             path: '/server',
             name: 'server',
-            component: require('@/pages/server/ServerList').default,
+            component: require('@/components/server/ServerList').default,
         },
         {
             path: '/tag',
             name: 'tag',
-            component: require('@/pages/Tag').default,
+            component: require('@/components/Tag').default,
         },
         {
             path: '*',

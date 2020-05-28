@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <SideBar :manager="manager" title="RequestBody" class="col-3"></SideBar>
+        <SideBar :manager="manager" title="Example" class="col-3"></SideBar>
 
         <div class="col-9">
             <table v-if="sidebar.item" class="table b-table">
@@ -21,42 +21,47 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-right">required</td>
+                        <td class="text-right">externalValue</td>
                         <td>
-                            <b-form-radio-group v-model="sidebar.item.required">
-                                <b-form-radio :value="true">true</b-form-radio>
-                                <b-form-radio :value="false">false</b-form-radio>
-                            </b-form-radio-group>
+                            <b-form-input v-model="sidebar.item.externalValue"></b-form-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">summary</td>
+                        <td>
+                            <b-form-input v-model="sidebar.item.summary"></b-form-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-right">value</td>
+                        <td>
+                            <b-form-input v-model="sidebar.item.value"></b-form-input>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            <MediaTypeList v-if="sidebar.item" :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
         </div>
     </div>
 </template>
 
 <script>
-import ChangeButton from '../components/ChangeButton.vue'
-import DeleteButton from '../components/DeleteButton.vue'
-import SideBar from '../components/SideBar.vue'
+import ChangeButton from './ChangeButton.vue'
+import DeleteButton from './DeleteButton.vue'
+import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
-import MediaTypeList from './MediaTypeList.vue'
 
 export default {
-    name: 'RequestBody',
+    name: 'Example',
     components: {
         ChangeButton,
         DeleteButton,
-        MediaTypeList,
         SideBar,
     },
     data() {
         return {
             sidebar,
-            manager: builder.document.component.requestBodyManager,
+            manager: builder.document.component.exampleManager,
         }
     },
 }

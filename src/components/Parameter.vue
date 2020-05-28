@@ -69,9 +69,9 @@
 </template>
 
 <script>
-import ChangeButton from '../components/ChangeButton.vue'
-import DeleteButton from '../components/DeleteButton.vue'
-import SideBar from '../components/SideBar.vue'
+import ChangeButton from './ChangeButton.vue'
+import DeleteButton from './DeleteButton.vue'
+import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
 import SchemaType from './schema/SchemaType.vue'

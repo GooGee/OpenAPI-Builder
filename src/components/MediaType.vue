@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import DeleteButton from '../components/DeleteButton.vue'
+import DeleteButton from './DeleteButton.vue'
 import SchemaType from './schema/SchemaType.vue'
 
 export default {

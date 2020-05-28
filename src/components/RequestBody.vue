@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <SideBar :manager="manager" title="Response" class="col-3"></SideBar>
+        <SideBar :manager="manager" title="RequestBody" class="col-3"></SideBar>
 
         <div class="col-9">
             <table v-if="sidebar.item" class="table b-table">
@@ -20,6 +20,15 @@
                             <b-form-input v-model="sidebar.item.description"></b-form-input>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="text-right">required</td>
+                        <td>
+                            <b-form-radio-group v-model="sidebar.item.required">
+                                <b-form-radio :value="true">true</b-form-radio>
+                                <b-form-radio :value="false">false</b-form-radio>
+                            </b-form-radio-group>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -29,15 +38,15 @@
 </template>
 
 <script>
-import ChangeButton from '../components/ChangeButton.vue'
-import DeleteButton from '../components/DeleteButton.vue'
-import SideBar from '../components/SideBar.vue'
+import ChangeButton from './ChangeButton.vue'
+import DeleteButton from './DeleteButton.vue'
+import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
 import MediaTypeList from './MediaTypeList.vue'
 
 export default {
-    name: 'Response',
+    name: 'RequestBody',
     components: {
         ChangeButton,
         DeleteButton,
@@ -47,7 +56,7 @@ export default {
     data() {
         return {
             sidebar,
-            manager: builder.document.component.responseManager,
+            manager: builder.document.component.requestBodyManager,
         }
     },
 }

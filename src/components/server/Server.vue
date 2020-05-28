@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import ChangeButton from '../../components/ChangeButton.vue'
-import DeleteButton from '../../components/DeleteButton.vue'
+import ChangeButton from '..//ChangeButton.vue'
+import DeleteButton from '..//DeleteButton.vue'
 import ServerVariable from './ServerVariable.vue'
 
 export default {

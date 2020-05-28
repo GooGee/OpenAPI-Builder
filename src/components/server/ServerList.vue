@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AddButton from '../../components/AddButton.vue'
+import AddButton from '..//AddButton.vue'
 import builder from '../../states/builder.js'
 import Server from './Server.vue'
 

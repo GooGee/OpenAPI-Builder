@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AddButton from '../components/AddButton.vue'
+import AddButton from './AddButton.vue'
 import MediaType from './MediaType.vue'
 
 export default {

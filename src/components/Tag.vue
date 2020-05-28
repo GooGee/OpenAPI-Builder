@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import AddButton from '../components/AddButton.vue'
-import ChangeButton from '../components/ChangeButton.vue'
-import DeleteButton from '../components/DeleteButton.vue'
+import AddButton from './AddButton.vue'
+import ChangeButton from './ChangeButton.vue'
+import DeleteButton from './DeleteButton.vue'
 import builder from '../states/builder.js'
 
 export default {

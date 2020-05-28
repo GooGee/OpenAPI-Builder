@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import AddButton from '../../components/AddButton.vue'
-import ChangeButton from '../../components/ChangeButton.vue'
-import DeleteButton from '../../components/DeleteButton.vue'
-import EditList from '../../components/EditList.vue'
+import AddButton from '..//AddButton.vue'
+import ChangeButton from '..//ChangeButton.vue'
+import DeleteButton from '..//DeleteButton.vue'
+import EditList from '..//EditList.vue'
 
 export default {
     name: 'ServerVariable',
