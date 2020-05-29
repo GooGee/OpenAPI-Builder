@@ -34,6 +34,11 @@ export default new Router({
             component: require('@/components/Parameter').default,
         },
         {
+            path: '/path',
+            name: 'path',
+            component: require('@/components/PathPage').default,
+        },
+        {
             path: '/request',
             name: 'request',
             component: require('@/components/RequestBody').default,

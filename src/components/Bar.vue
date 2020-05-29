@@ -14,6 +14,7 @@
                         <b-nav-item to="/security" active-class="active"> Security </b-nav-item>
                         <b-nav-item to="/server" active-class="active"> Server </b-nav-item>
                         <b-nav-item to="/tag" active-class="active"> Tag </b-nav-item>
+                        <b-nav-item to="/path" active-class="active"> Path </b-nav-item>
 
                         <b-nav-item to="/example" active-class="active"> Example </b-nav-item>
                         <b-nav-item to="/header" active-class="active"> Header </b-nav-item>
