@@ -19,7 +19,7 @@
             </tr>
             <tr>
                 <td class="text-right">
-                    type
+                    schema
                     <b-button v-if="editing" @click="editing = false" variant="outline-primary"> OK </b-button>
                 </td>
                 <td @click="editing = true">

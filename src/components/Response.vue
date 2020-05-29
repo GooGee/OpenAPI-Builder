@@ -23,7 +23,9 @@
                 </tbody>
             </table>
 
-            <MediaTypeList v-if="sidebar.item" :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
+            <MediaTypeList :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
+
+            <ReferenceList :manager="sidebar.item.headerManager" type="headers" title="Header"></ReferenceList>
         </div>
     </div>
 </template>
@@ -35,6 +37,7 @@ import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
 import MediaTypeList from './specification/MediaTypeList.vue'
+import ReferenceList from './specification/ReferenceList.vue'
 
 export default {
     name: 'Response',
@@ -42,6 +45,7 @@ export default {
         ChangeButton,
         DeleteButton,
         MediaTypeList,
+        ReferenceList,
         SideBar,
     },
     data() {

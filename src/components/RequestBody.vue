@@ -32,7 +32,7 @@
                 </tbody>
             </table>
 
-            <MediaTypeList v-if="sidebar.item" :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
+            <MediaTypeList :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
         </div>
     </div>
 </template>

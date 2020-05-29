@@ -43,8 +43,5 @@ export default {
             editing: false,
         }
     },
-    created() {},
-    computed: {},
-    methods: {},
 }
 </script>
