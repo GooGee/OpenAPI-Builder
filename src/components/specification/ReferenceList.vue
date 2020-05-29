@@ -8,7 +8,7 @@
         <div v-for="item in manager.list" :key="item.name" class="mtb11px">
             <b-button-group>
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                <Reference :reference="item"></Reference>
+                <Reference :reference="item" :type="type" :title="title"></Reference>
             </b-button-group>
         </div>
     </div>
@@ -44,10 +44,7 @@ export default {
     },
     methods: {
         show() {
-            if (this.type) {
-                dialogue.type = this.type
-            }
-            dialogue.showOnly(this.title, ok => {
+            const cb = ok => {
                 try {
                     const property = this.manager.make(dialogue.selected.name, dialogue.type)
                     this.manager.add(property)
@@ -59,7 +56,14 @@ export default {
                         solid: true,
                     })
                 }
-            })
+            }
+
+            if (this.type) {
+                dialogue.type = this.type
+                dialogue.showOnly(this.title, cb)
+                return
+            }
+            dialogue.show(this.title, cb)
         },
     },
 }

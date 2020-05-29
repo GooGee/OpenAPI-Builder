@@ -15,7 +15,7 @@
                     </b-button>
                 </div>
 
-                <Reference v-if="schema.type === 'reference'" :reference="schema.reference"></Reference>
+                <Reference v-if="schema.type === 'reference'" :reference="schema.reference" title="Component"></Reference>
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
                     <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
