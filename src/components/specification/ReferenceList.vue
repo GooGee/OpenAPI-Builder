@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import dialogue from '../../states/dialogue/component.js'
+import dialogue from '../../states/component.js'
 import AddButton from '../button/AddButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import Reference from './Reference.vue'

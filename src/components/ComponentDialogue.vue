@@ -1,6 +1,7 @@
 <template>
     <b-modal v-if="builder.document" v-model="dialogue.visible" title="Component" size="xl" hide-footer>
         <b-form-radio-group
+            v-if="!dialogue.single"
             v-model="dialogue.type"
             :options="typeList"
             buttons
@@ -12,7 +13,7 @@
         </div>
 
         <b-list-group>
-            <b-list-group-item @click="select(item)" v-for="item in dialogue.filtered" button>
+            <b-list-group-item @click="select(item)" v-for="item in dialogue.filtered" :key="item.name" button>
                 {{ item.name }}
             </b-list-group-item>
         </b-list-group>
@@ -21,7 +22,7 @@
 
 <script>
 import builder from '../states/builder.js'
-import dialogue from '../states/dialogue/component.js'
+import dialogue from '../states/component.js'
 
 export default {
     name: 'ComponentDialogue',

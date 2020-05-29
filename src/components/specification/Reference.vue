@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import dialogue from '../../states/dialogue/component.js'
+import dialogue from '../../states/component.js'
 
 export default {
     name: 'Reference',
