@@ -19,7 +19,7 @@ const map: KeyValue = {
 
 export default class ComponentDialogue extends Dialogue {
     builder: Builder
-    keyword: string = 'schemas'
+    keyword: string = ''
     selected: Item | null = null
     single: boolean = false
     type: string = 'schemas'
@@ -43,9 +43,7 @@ export default class ComponentDialogue extends Dialogue {
     get filtered() {
         if (this.keyword) {
             const re = new RegExp(this.keyword, 'i')
-            return this.list.filter(item => {
-                return item.name.search(re) > -1
-            })
+            return this.list.filter(item => item.name.search(re) > -1)
         }
 
         return this.list

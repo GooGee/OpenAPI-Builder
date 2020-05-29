@@ -5,18 +5,21 @@
             <router-view></router-view>
         </div>
         <ComponentDialogue></ComponentDialogue>
+        <ListDialogue></ListDialogue>
     </div>
 </template>
 
 <script>
 import Bar from './components/Bar.vue'
 import ComponentDialogue from './components/ComponentDialogue.vue'
+import ListDialogue from './components/ListDialogue.vue'
 
 export default {
     name: 'App',
     components: {
         Bar,
         ComponentDialogue,
+        ListDialogue,
     },
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <b-modal v-if="builder.document" v-model="dialogue.visible" :title="dialogue.title" size="xl" hide-footer>
+    <b-modal v-model="dialogue.visible" :title="dialogue.title" size="xl" hide-footer>
         <b-form-radio-group
             v-if="!dialogue.single"
             v-model="dialogue.type"
@@ -21,14 +21,12 @@
 </template>
 
 <script>
-import builder from '../states/builder.js'
 import dialogue from '../states/component.js'
 
 export default {
     name: 'ComponentDialogue',
     data() {
         return {
-            builder,
             dialogue,
             typeList: [
                 'callbacks',
