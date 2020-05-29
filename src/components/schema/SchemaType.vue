@@ -14,9 +14,9 @@
                         {{ schema.reference.text }}
                     </b-button>
                 </div>
-                <div v-if="schema.type === 'reference'">
-                    <b-button @click="show" variant="outline-primary">{{ schema.reference.text }}</b-button>
-                </div>
+
+                <Reference v-if="schema.type === 'reference'" :reference="schema.reference"></Reference>
+
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
                     <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
                 </template>
@@ -29,7 +29,9 @@
                 <div v-if="schema.type === 'array'">
                     [ {{ schema.isItemReference ? schema.reference.text : schema.itemType }} ]
                 </div>
+
                 <div v-if="schema.type === 'reference'">{{ schema.reference.text }}</div>
+
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
                     <div class="mb11px">{{ schema.type }}</div>
                     <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
@@ -40,12 +42,15 @@
 </template>
 
 <script>
-import dialogue from '../../states/dialogue/component.js'
+import Reference from '../specification/Reference.vue'
 import SchemaList from './SchemaList.vue'
 
 export default {
     name: 'SchemaType',
-    components: { SchemaList },
+    components: {
+        Reference,
+        SchemaList,
+    },
     props: {
         schema: {
             type: Object,
@@ -61,14 +66,6 @@ export default {
             typeList: ['array', 'boolean', 'composition', 'integer', 'number', 'object', 'reference', 'string'],
             itemTypeList: ['boolean', 'integer', 'number', 'reference', 'string'],
         }
-    },
-    methods: {
-        show() {
-            dialogue.show('', ok => {
-                this.schema.reference.type = dialogue.type
-                this.schema.reference.name = dialogue.selected.name
-            })
-        },
     },
 }
 </script>
