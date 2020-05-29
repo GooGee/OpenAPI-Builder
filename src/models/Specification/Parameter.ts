@@ -16,11 +16,13 @@ export default class Parameter extends UniqueItem {
     description: string = ''
     // example
     location: Location
+    name2: string = ''
     required: boolean = true
     readonly schema = new Schema(this.name)
 
     constructor(name: string, location: Location) {
         super(name)
+        this.name2 = name
         this.location = location
     }
 

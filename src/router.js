@@ -19,6 +19,11 @@ export default new Router({
             component: require('@/components/Example').default,
         },
         {
+            path: '/header',
+            name: 'header',
+            component: require('@/components/HeaderPage').default,
+        },
+        {
             path: '/info',
             name: 'info',
             component: require('@/components/Info').default,
