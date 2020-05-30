@@ -50,7 +50,7 @@ export default {
     methods: {
         add() {
             try {
-                const item = this.manager.make(this.type, '')
+                const item = this.manager.make(this.type)
                 this.manager.add(item)
             } catch (error) {
                 console.error(error)
