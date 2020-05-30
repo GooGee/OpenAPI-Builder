@@ -20,7 +20,7 @@ export default {
             const value = prompt(`Please input the ${this.name}`)
             if (value) {
                 try {
-                    const property = this.manager.make(value)
+                    const item = this.manager.make(value)
                     this.manager.add(property)
                 } catch (error) {
                     console.error(error)

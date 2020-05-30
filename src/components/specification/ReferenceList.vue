@@ -46,7 +46,7 @@ export default {
         show() {
             const cb = ok => {
                 try {
-                    const property = this.manager.make(dialogue.selected.name, dialogue.type)
+                    const item = this.manager.make(dialogue.selected.name, dialogue.type)
                     this.manager.add(property)
                 } catch (error) {
                     console.error(error)
