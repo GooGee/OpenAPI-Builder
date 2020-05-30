@@ -3,6 +3,7 @@ import { StatusManager } from "./Status"
 import KeyValue from "../Base/KeyValue"
 import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
+import Path from "./Path"
 
 export enum OperationType {
     get = 'get',
@@ -14,7 +15,7 @@ export enum OperationType {
 }
 
 export default class Operation extends UniqueItem {
-    readonly path: string
+    readonly path: Path
     operationId: string = ''
     summary: string = ''
     deprecated: boolean = false
@@ -23,8 +24,9 @@ export default class Operation extends UniqueItem {
     readonly requestBody = new Reference('', ReferenceType.requestBodies)
     readonly statusManager = new StatusManager
     readonly tagManager = new UniqueList(UniqueItem)
+    protected static IgnoreList = UniqueItem.IgnoreList.concat(['path'])
 
-    constructor(name: string, path: string) {
+    constructor(name: string, path: Path) {
         super(name)
         this.path = path
     }
@@ -34,7 +36,7 @@ export default class Operation extends UniqueItem {
     }
 
     toAPI() {
-        const id = [this.type].concat(this.path.split('/')).join('_')
+        const id = [this.type].concat(this.path.name.split('/')).join('_')
         const tags = this.tagManager.list.map(tag => tag.name)
         const parameters = this.parameterManager.list.map(parameter => parameter.toAPI())
         const data: KeyValue = {
@@ -56,11 +58,16 @@ export default class Operation extends UniqueItem {
 }
 
 export class OperationManager extends UniqueList<Operation> {
-    readonly path: string
+    readonly path: Path
 
-    constructor(path: string) {
+    constructor(path: Path) {
         super(Operation)
         this.path = path
+    }
+
+    make(name: string) {
+        const item = new Operation(name, this.path)
+        return item
     }
 
     toAPI() {

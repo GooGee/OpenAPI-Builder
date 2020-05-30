@@ -4,7 +4,7 @@ import UniqueList from "../Base/UniqueList"
 import { OperationManager } from "./Operation"
 
 export default class Path extends UniqueItem {
-    readonly operationManager = new OperationManager(this.name)
+    readonly operationManager = new OperationManager(this)
 
     toAPI() {
         return this.operationManager.toAPI()
