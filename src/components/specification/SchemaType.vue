@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import Reference from '../specification/Reference.vue'
+import Reference from './Reference.vue'
 import SchemaList from './SchemaList.vue'
 
 export default {

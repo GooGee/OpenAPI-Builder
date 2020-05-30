@@ -22,7 +22,7 @@
 
 <script>
 import DeleteButton from '../button/DeleteButton.vue'
-import SchemaType from '../schema/SchemaType.vue'
+import SchemaType from './SchemaType.vue'
 
 export default {
     name: 'MediaType',

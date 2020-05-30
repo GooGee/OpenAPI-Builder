@@ -51,7 +51,7 @@ export default new Router({
         {
             path: '/schema',
             name: 'schema',
-            component: require('@/components/schema/SchemaPage').default,
+            component: require('@/components/SchemaPage').default,
         },
         {
             path: '/security',

@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import SideBar from '../SideBar.vue'
-import Schema from './Schema.vue'
-import builder from '../../states/builder.js'
-import sidebar from '../../states/sidebar.js'
+import SideBar from './SideBar.vue'
+import Schema from './specification/Schema.vue'
+import builder from '../states/builder.js'
+import sidebar from '../states/sidebar.js'
 
 export default {
     name: 'SchemaPage',
