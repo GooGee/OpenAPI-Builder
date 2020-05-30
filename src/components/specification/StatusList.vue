@@ -2,7 +2,8 @@
     <div>
         <div>
             <h2 class="inline mr11px">Responses</h2>
-            <AddButton :manager="manager" name="name"></AddButton>
+            <AddButton :manager="manager" name="status code" class="mr11px"></AddButton>
+            <b-form-select @change="add" :options="codeList" class="wa"></b-form-select>
         </div>
 
         <div v-for="item in manager.list" :key="item.name" class="mtb11px">
@@ -33,6 +34,26 @@ export default {
         manager: {
             type: Object,
             required: true,
+        },
+    },
+    data() {
+        return {
+            codeList: [200, 401, 403, 404, 422],
+        }
+    },
+    methods: {
+        add(code) {
+            try {
+                const item = this.manager.make(code)
+                this.manager.add(item)
+            } catch (error) {
+                console.error(error)
+                this.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
+            }
         },
     },
 }
