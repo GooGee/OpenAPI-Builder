@@ -33,7 +33,7 @@ export default {
             dialogue.showList(builder.document.tagManager.list, 'Tag', ok => {
                 try {
                     const item = this.manager.make(dialogue.selected.name)
-                    this.manager.add(property)
+                    this.manager.add(item)
                 } catch (error) {
                     console.error(error)
                     this.$bvToast.toast(error.message, {

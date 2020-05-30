@@ -47,7 +47,7 @@ export default {
             const cb = ok => {
                 try {
                     const item = this.manager.make(dialogue.selected.name, dialogue.type)
-                    this.manager.add(property)
+                    this.manager.add(item)
                 } catch (error) {
                     console.error(error)
                     this.$bvToast.toast(error.message, {

@@ -21,7 +21,7 @@ export default {
             if (value) {
                 try {
                     const item = this.manager.make(value)
-                    this.manager.add(property)
+                    this.manager.add(item)
                 } catch (error) {
                     console.error(error)
                     this.$bvToast.toast(error.message, {
