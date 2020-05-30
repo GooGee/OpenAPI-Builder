@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import AddButton from '../button/AddButton.vue'
-import SideBar from '../SideBar.vue'
-import Server from './Server.vue'
-import builder from '../../states/builder.js'
-import sidebar from '../../states/sidebar.js'
+import AddButton from './button/AddButton.vue'
+import SideBar from './SideBar.vue'
+import Server from './specification/Server.vue'
+import builder from '../states/builder.js'
+import sidebar from '../states/sidebar.js'
 
 export default {
     name: 'ServerList',

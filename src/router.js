@@ -61,7 +61,7 @@ export default new Router({
         {
             path: '/server',
             name: 'server',
-            component: require('@/components/server/ServerList').default,
+            component: require('@/components/ServerList').default,
         },
         {
             path: '/tag',
