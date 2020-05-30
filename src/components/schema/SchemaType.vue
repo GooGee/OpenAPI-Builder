@@ -5,17 +5,29 @@
                 <option v-for="type in typeList" :value="type" :key="type"> {{ type }} </option>
             </select>
 
-            <template v-if="schema.isPrimitive === false">
+            <template v-if="schema.isPrimitive">
+                <select v-if="schema.type !== 'boolean'" v-model="schema.format" class="form-control">
+                    <option value=""> ---- </option>
+                    <option v-for="format in formatList" :value="format" :key="format"> {{ format }} </option>
+                </select>
+            </template>
+            <template v-else>
                 <div v-if="schema.type === 'array'">
                     <select v-model="schema.itemType" class="form-control">
                         <option v-for="type in itemTypeList" :value="type" :key="type"> {{ type }} </option>
                     </select>
-                    <b-button v-if="schema.isItemReference" @click="show" variant="outline-primary">
-                        {{ schema.reference.text }}
-                    </b-button>
+                    <Reference
+                        v-if="schema.isItemReference"
+                        :reference="schema.reference"
+                        title="Component"
+                    ></Reference>
                 </div>
 
-                <Reference v-if="schema.type === 'reference'" :reference="schema.reference" title="Component"></Reference>
+                <Reference
+                    v-if="schema.type === 'reference'"
+                    :reference="schema.reference"
+                    title="Component"
+                ></Reference>
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
                     <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
@@ -65,6 +77,7 @@ export default {
         return {
             typeList: ['array', 'boolean', 'composition', 'integer', 'number', 'object', 'reference', 'string'],
             itemTypeList: ['boolean', 'integer', 'number', 'reference', 'string'],
+            formatList: ['int32', 'int64', 'float', 'double', 'byte', 'binary', 'date', 'date-time', 'password'],
         }
     },
 }
