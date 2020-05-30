@@ -1,5 +1,9 @@
 <template>
     <table class="table b-table b-table-caption-top">
+        <caption>
+            <h2 class="inline mr11">variables</h2>
+            <AddButton :manager="manager" name="name"></AddButton>
+        </caption>
         <thead>
             <tr>
                 <th>name</th>
@@ -27,16 +31,6 @@
                 </td>
             </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <td>
-                    <AddButton :manager="manager" name="name"></AddButton>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tfoot>
     </table>
 </template>
 

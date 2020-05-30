@@ -1,29 +1,27 @@
 <template>
-    <table class="table b-table b-table-caption-top">
-        <tbody>
-            <tr>
-                <td class="text-right" width="111px">url</td>
-                <td>
-                    <b-button-group>
-                        <DeleteButton :manager="manager" :item="server"></DeleteButton>
-                        <ChangeButton :item="server" name="url"></ChangeButton>
-                    </b-button-group>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">description</td>
-                <td>
-                    <b-form-input v-model="server.description"></b-form-input>
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">variables</td>
-                <td>
-                    <ServerVariable :manager="server.variableManager"></ServerVariable>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td class="text-right" width="111px">url</td>
+                    <td>
+                        <b-button-group>
+                            <DeleteButton :manager="manager" :item="server"></DeleteButton>
+                            <ChangeButton :item="server" name="url"></ChangeButton>
+                        </b-button-group>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right">description</td>
+                    <td>
+                        <b-form-input v-model="server.description"></b-form-input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ServerVariable :manager="server.variableManager"></ServerVariable>
+    </div>
 </template>
 
 <script>
