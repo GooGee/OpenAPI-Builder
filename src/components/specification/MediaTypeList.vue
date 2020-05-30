@@ -1,8 +1,8 @@
 <template>
     <div>
         <div>
-            <h2 class="inline mr11px">content</h2>
-            <AddButton :manager="manager" name="name" class="mr11px"></AddButton>
+            <h2 class="inline mr11">content</h2>
+            <AddButton :manager="manager" name="name" class="mr11"></AddButton>
             <b-form-select @change="add" :options="typeList" class="wa"></b-form-select>
         </div>
         <br />

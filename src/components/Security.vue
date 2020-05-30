@@ -1,7 +1,7 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h1 class="inline mr11px">Security</h1>
+            <h1 class="inline mr11">Security</h1>
             <AddButton :manager="manager" name="name"></AddButton>
         </caption>
         <thead>

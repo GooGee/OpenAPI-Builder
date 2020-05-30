@@ -1,12 +1,12 @@
 <template>
     <div>
         <div>
-            <h2 class="inline mr11px">Responses</h2>
-            <AddButton :manager="manager" name="status code" class="mr11px"></AddButton>
+            <h2 class="inline mr11">Responses</h2>
+            <AddButton :manager="manager" name="status code" class="mr11"></AddButton>
             <b-form-select @change="add" :options="codeList" class="wa"></b-form-select>
         </div>
 
-        <div v-for="item in manager.list" :key="item.name" class="mtb11px">
+        <div v-for="item in manager.list" :key="item.name" class="mtb11">
             <b-button-group>
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
                 <ChangeButton :item="item" name="name"></ChangeButton>

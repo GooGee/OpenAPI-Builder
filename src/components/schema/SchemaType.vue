@@ -45,7 +45,7 @@
                 <div v-if="schema.type === 'reference'">{{ schema.reference.text }}</div>
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
-                    <div class="mb11px">{{ schema.type }}</div>
+                    <div class="mb11">{{ schema.type }}</div>
                     <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
                 </template>
             </template>

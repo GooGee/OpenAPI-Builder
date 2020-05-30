@@ -1,6 +1,6 @@
 <template>
     <b-modal v-model="dialogue.visible" :title="dialogue.title" hide-footer>
-        <div class="mtb11px">
+        <div class="mtb11">
             <b-form-input v-model="dialogue.keyword" placeholder="Search" autofocus></b-form-input>
         </div>
 

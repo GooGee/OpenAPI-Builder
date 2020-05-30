@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div class="text-center mtb11px">
-            <h2 class="inline mr11px">{{ title }}</h2>
+        <div class="text-center mtb11">
+            <h2 class="inline mr11">{{ title }}</h2>
             <AddButton :manager="manager" :name="name"></AddButton>
         </div>
 

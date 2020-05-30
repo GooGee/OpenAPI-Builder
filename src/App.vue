@@ -33,15 +33,15 @@ export default {
     width: auto;
 }
 
-.mr11px {
+.mr11 {
     margin-right: 11px;
 }
 
-.mb11px {
+.mb11 {
     margin-bottom: 11px;
 }
 
-.mtb11px {
+.mtb11 {
     margin-top: 11px;
     margin-bottom: 11px;
 }

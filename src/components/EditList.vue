@@ -3,7 +3,7 @@
         <div v-if="editing">
             <b-button @click="editing = false" variant="outline-primary"> OK </b-button>
 
-            <div v-for="item in manager.list" :key="item.name" class="mtb11px">
+            <div v-for="item in manager.list" :key="item.name" class="mtb11">
                 <b-button-group>
                     <DeleteButton :manager="manager" :item="item"></DeleteButton>
                     <ChangeButton :item="item" name="name"></ChangeButton>

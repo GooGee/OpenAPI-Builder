@@ -1,7 +1,7 @@
 <template>
     <tr>
         <td v-if="editing" class="schema-name">
-            <b-button @click="editing = false" variant="outline-primary" class="mr11px"> OK </b-button>
+            <b-button @click="editing = false" variant="outline-primary" class="mr11"> OK </b-button>
             <b-button-group>
                 <DeleteButton :manager="manager" :item="schema"></DeleteButton>
                 <ChangeButton :item="schema" name="name"></ChangeButton>

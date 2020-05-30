@@ -8,7 +8,7 @@
             button-variant="outline-primary"
         ></b-form-radio-group>
 
-        <div class="mtb11px">
+        <div class="mtb11">
             <b-form-input v-model="dialogue.keyword" placeholder="Search" autofocus></b-form-input>
         </div>
 

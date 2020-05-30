@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h1 class="inline mr11px">Server</h1>
+            <h1 class="inline mr11">Server</h1>
             <AddButton :manager="manager" name="url"></AddButton>
         </div>
 
