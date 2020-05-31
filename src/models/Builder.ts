@@ -14,6 +14,7 @@ export default class Builder extends Item {
     }
 
     load(data: Builder) {
-        //
+        this.document = new Document
+        super.load(data)
     }
 }
