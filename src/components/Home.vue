@@ -5,14 +5,14 @@
                 <img src="logo.svg" alt="logo" style="width: 222px;" />
             </div>
             <h1>{{ title }}</h1>
-            <p>{{ version }}</p>
-            <div style="margin-top: 33px;">
+            <p>3.0.0</p>
+            <div>
                 <b-button-group>
                     <b-button @click="create" variant="outline-primary"> New </b-button>
                     <b-button variant="outline-primary">
                         <label class="button-label">
                             Upload
-                            <input @change="upload($event)" type="file" accept=".json" style="display: none;" />
+                            <input @change="upload($event)" type="file" :accept="builder.extention" style="display: none;" />
                         </label>
                     </b-button>
                 </b-button-group>
