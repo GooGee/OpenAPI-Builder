@@ -4,6 +4,7 @@ import UniqueList from "../Base/UniqueList"
 import Reference, { ReferenceType } from "./Reference"
 import { DataType, isPrimitive } from "./DataType"
 import Discriminator from "./Discriminator"
+import XML from "./XML"
 
 export default class Schema extends UniqueItem {
     type: DataType = DataType.string
@@ -12,6 +13,7 @@ export default class Schema extends UniqueItem {
     readonly discriminator = new Discriminator(this.name)
     readonly reference = new Reference('Schema', ReferenceType.schemas)
     readonly schemaManager = new SchemaManager
+    readonly xml = new XML
 
     get isPrimitive() {
         return isPrimitive(this.type)
