@@ -3,11 +3,13 @@ import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
 import Reference, { ReferenceType } from "./Reference"
 import { DataType, isPrimitive } from "./DataType"
+import Discriminator from "./Discriminator"
 
 export default class Schema extends UniqueItem {
     type: DataType = DataType.string
     format: string = ''
     itemType: DataType = DataType.string
+    readonly discriminator = new Discriminator(this.name)
     readonly reference = new Reference('Schema', ReferenceType.schemas)
     readonly schemaManager = new SchemaManager
 
