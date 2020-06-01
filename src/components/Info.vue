@@ -2,7 +2,11 @@
     <div>
         <table class="table b-table b-table-caption-top">
             <caption>
-                <h1>Info</h1>
+                <h1 class="inline mr11">Info</h1>
+                <b-button-group>
+                    <b-button @click="download" variant="outline-success"> Download </b-button>
+                    <b-button @click="toAPI" variant="outline-success"> Export </b-button>
+                </b-button-group>
             </caption>
             <tbody>
                 <tr>
@@ -67,6 +71,7 @@
 </template>
 
 <script>
+import FileSaver from 'file-saver'
 import builder from '../states/builder.js'
 import External from './specification/External.vue'
 
@@ -78,6 +83,38 @@ export default {
             info: builder.document.info,
             externalDocs: builder.document.externalDocs,
         }
+    },
+    methods: {
+        download() {
+            try {
+                const name = builder.document.info.title + builder.extention
+                this.save(name, JSON.stringify(builder))
+            } catch (error) {
+                console.error(error)
+                this.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
+            }
+        },
+        toAPI() {
+            try {
+                const name = builder.document.info.title + '.json'
+                this.save(name, JSON.stringify(builder.toAPI()))
+            } catch (error) {
+                console.error(error)
+                this.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
+            }
+        },
+        save(name, text) {
+            const blob = new Blob([text], { type: 'text/plain;charset=utf-8' })
+            FileSaver.saveAs(blob, name)
+        },
     },
 }
 </script>
