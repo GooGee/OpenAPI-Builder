@@ -36,7 +36,11 @@ export default class Item {
 
         const descriptor = Object.getOwnPropertyDescriptor(me, name)
         if (descriptor) {
-            if (!descriptor.writable) {
+            if (descriptor.writable) {
+                // ok
+            } else if (descriptor.get && descriptor.set) {
+                // ok
+            } else {
                 return
             }
 
