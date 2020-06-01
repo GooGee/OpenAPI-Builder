@@ -2,15 +2,16 @@ import KeyValue from "../Base/KeyValue"
 import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
 import Schema from "./Schema"
+import { EncodingManager } from "./Encoding"
 
 export default class MediaType extends UniqueItem {
     readonly schema = new Schema('Schema')
-    //example
-    //encoding
+    readonly encodingManager = new EncodingManager
 
     toAPI() {
         return {
-            schema: this.schema.toAPI()
+            schema: this.schema.toAPI(),
+            encoding: this.encodingManager.toAPI()
         }
     }
 }
