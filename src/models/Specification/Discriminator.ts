@@ -1,7 +1,8 @@
-import NameItem from "../Base/NameItem"
+import Item from "../Base/Item"
 import { NameValueManager } from "./NameValue"
 
-export default class Discriminator extends NameItem {
+export default class Discriminator extends Item {
+    name: string = ''
     readonly manager = new NameValueManager()
 
     toAPI() {
