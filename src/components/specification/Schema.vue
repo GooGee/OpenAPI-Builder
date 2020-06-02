@@ -4,10 +4,12 @@
             <b-button @click="editing = false" variant="outline-primary" class="mr11"> OK </b-button>
             <b-button-group>
                 <DeleteButton :manager="manager" :item="schema"></DeleteButton>
-                <ChangeButton :item="schema" name="name"></ChangeButton>
+                <ChangeButton v-if="type === 'object'" :item="schema" name="name"></ChangeButton>
             </b-button-group>
         </td>
-        <td v-else @click="editing = true" class="schema-name">{{ schema.name }}</td>
+        <td v-else @click="editing = true" class="schema-name">
+            <span v-if="type === 'object'">{{ schema.name }}</span>
+        </td>
 
         <td @click="editing = true">
             <SchemaType :schema="schema" :editing="editing"></SchemaType>
@@ -35,6 +37,11 @@ export default {
         schema: {
             type: Object,
             required: true,
+        },
+        type: {
+            type: String,
+            required: false,
+            default: 'object',
         },
     },
     data() {

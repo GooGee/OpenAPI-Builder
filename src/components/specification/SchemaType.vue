@@ -30,7 +30,7 @@
                 ></Reference>
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
-                    <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
+                    <SchemaList :manager="schema.schemaManager" :editing="editing" :type="schema.type"></SchemaList>
                 </template>
             </template>
         </template>
@@ -46,7 +46,7 @@
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
                     <div class="mb11">{{ schema.type }}</div>
-                    <SchemaList :manager="schema.schemaManager" :editing="editing"></SchemaList>
+                    <SchemaList :manager="schema.schemaManager" :editing="editing" :type="schema.type"></SchemaList>
                 </template>
             </template>
         </template>

@@ -1,15 +1,22 @@
 <template>
     <table class="table">
         <tbody>
-            <Schema v-for="schema in manager.list" :schema="schema" :manager="manager" :key="schema.name"></Schema>
+            <Schema
+                v-for="schema in manager.list"
+                :schema="schema"
+                :manager="manager"
+                :type="type"
+                :key="schema.name"
+            ></Schema>
         </tbody>
         <tfoot v-if="editing">
             <tr>
                 <td>
-                    <b-button-group>
+                    <b-button-group v-if="type === 'object'">
                         <AddButton :manager="manager" name="name"></AddButton>
                         <b-button @click="show" variant="outline-primary"> Input </b-button>
                     </b-button-group>
+                    <AddButton v-else :manager="manager" name=""></AddButton>
                 </td>
                 <td></td>
             </tr>
@@ -35,6 +42,11 @@ export default {
         editing: {
             type: Boolean,
             required: true,
+        },
+        type: {
+            type: String,
+            required: false,
+            default: 'object',
         },
     },
     methods: {
