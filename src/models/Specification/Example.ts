@@ -9,7 +9,12 @@ export default class Example extends UniqueItem {
     value: string = ''
 
     toAPI() {
-        return this
+        return {
+            description: this.description,
+            externalValue: this.externalValue,
+            summary: this.summary,
+            value: this.value,
+        }
     }
 }
 
