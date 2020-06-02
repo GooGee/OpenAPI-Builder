@@ -5,6 +5,7 @@
             <router-view></router-view>
         </div>
         <ComponentDialogue></ComponentDialogue>
+        <JSONDialogue></JSONDialogue>
         <ListDialogue></ListDialogue>
     </div>
 </template>
@@ -12,6 +13,7 @@
 <script>
 import Bar from './components/Bar.vue'
 import ComponentDialogue from './components/ComponentDialogue.vue'
+import JSONDialogue from './components/JSONDialogue.vue'
 import ListDialogue from './components/ListDialogue.vue'
 
 export default {
@@ -19,6 +21,7 @@ export default {
     components: {
         Bar,
         ComponentDialogue,
+        JSONDialogue,
         ListDialogue,
     },
 }
