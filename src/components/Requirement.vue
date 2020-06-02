@@ -1,7 +1,7 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h1 class="inline mr11">Security Scheme</h1>
+            <h1 class="inline mr11">Security Requirement</h1>
             <AddButton :manager="manager" name="name"></AddButton>
         </caption>
         <thead>
@@ -34,7 +34,7 @@ import EditList from './EditList.vue'
 import builder from '../states/builder.js'
 
 export default {
-    name: 'Security',
+    name: 'Requirement',
     components: {
         AddButton,
         ChangeButton,

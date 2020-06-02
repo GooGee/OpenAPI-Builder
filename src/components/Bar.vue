@@ -18,6 +18,7 @@
                         <b-nav-item to="/response" active-class="active"> Response </b-nav-item>
                         <b-nav-item to="/schema" active-class="active"> Schema </b-nav-item>
                         <b-nav-item to="/security" active-class="active"> Security </b-nav-item>
+                        <b-nav-item to="/requirement" active-class="active"> Requirement </b-nav-item>
                         <b-nav-item to="/server" active-class="active"> Server </b-nav-item>
                         <b-nav-item to="/tag" active-class="active"> Tag </b-nav-item>
                         <b-nav-item to="/path" active-class="active"> Path </b-nav-item>

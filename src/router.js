@@ -59,6 +59,11 @@ export default new Router({
             component: require('@/components/Security').default,
         },
         {
+            path: '/requirement',
+            name: 'requirement',
+            component: require('@/components/Requirement').default,
+        },
+        {
             path: '/server',
             name: 'server',
             component: require('@/components/ServerList').default,
