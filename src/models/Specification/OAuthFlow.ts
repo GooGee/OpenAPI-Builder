@@ -1,3 +1,4 @@
+import KeyValue from "../Base/KeyValue"
 import Item from "../Base/Item"
 import { NameValueManager } from "./NameValue"
 
@@ -24,11 +25,19 @@ export class OAuthFlows extends Item {
     readonly authorizationCode = new OAuthFlow
 
     toAPI() {
-        return {
-            implicit: this.implicit.toAPI(),
-            password: this.password.toAPI(),
-            clientCredentials: this.clientCredentials.toAPI(),
-            authorizationCode: this.authorizationCode.toAPI(),
+        const map: KeyValue = {}
+        if (this.implicit.authorizationUrl) {
+            map['implicit'] = this.implicit.toAPI()
         }
+        if (this.password.authorizationUrl) {
+            map['password'] = this.password.toAPI()
+        }
+        if (this.clientCredentials.authorizationUrl) {
+            map['clientCredentials'] = this.clientCredentials.toAPI()
+        }
+        if (this.authorizationCode.authorizationUrl) {
+            map['authorizationCode'] = this.authorizationCode.toAPI()
+        }
+        return map
     }
 }
