@@ -56,6 +56,7 @@ export default {
                 try {
                     const data = JSON.parse(event.target.result)
                     builder.load(data)
+                    this.$router.push('/info')
                 } catch (error) {
                     console.error(error)
                     this.$bvToast.toast(error.message, {
