@@ -17,10 +17,6 @@ export class SecurityManager extends UniqueList<Security> {
     }
 
     toAPI() {
-        const map: KeyValue = {}
-        this.list.forEach(item => {
-            map[item.name] = item.toAPI()
-        })
-        return map
+        return this.list.map(tag => tag.toAPI())
     }
 }
