@@ -1,50 +1,34 @@
 <template>
-    <table class="table b-table b-table-caption-top">
-        <caption>
-            <h1 class="inline mr11">Security Scheme</h1>
-            <AddButton :manager="manager" name="name"></AddButton>
-        </caption>
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>value</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="security in manager.list" :key="security.name">
-                <td>
-                    <b-button-group>
-                        <DeleteButton :manager="manager" :item="security"></DeleteButton>
-                        <ChangeButton :item="security" name="name"></ChangeButton>
-                    </b-button-group>
-                </td>
-                <td>
-                    <EditList :manager="security.valueManager"></EditList>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <SideBar :manager="manager" title="Security Scheme" class="col-3"></SideBar>
+
+        <div v-if="ready && sidebar.item" class="col-9">
+            <SecurityScheme :item="sidebar.item" :manager="manager"></SecurityScheme>
+        </div>
+    </div>
 </template>
 
 <script>
-import AddButton from './button/AddButton.vue'
-import ChangeButton from './button/ChangeButton.vue'
-import DeleteButton from './button/DeleteButton.vue'
-import EditList from './EditList.vue'
+import SideBar from './SideBar.vue'
+import SecurityScheme from './specification/SecurityScheme.vue'
 import builder from '../states/builder.js'
+import sidebar from '../states/sidebar.js'
 
 export default {
     name: 'Security',
     components: {
-        AddButton,
-        ChangeButton,
-        DeleteButton,
-        EditList,
+        SideBar,
+        SecurityScheme,
     },
     data() {
         return {
-            manager: builder.document.securityManager,
+            sidebar,
+            ready: false,
+            manager: builder.document.component.securitySchemeManager,
         }
+    },
+    mounted() {
+        this.ready = true
     },
 }
 </script>

@@ -20,7 +20,7 @@ export default class Parameter extends UniqueItem {
     required: boolean = true
     readonly schema = new Schema(this.name)
 
-    constructor(name: string, location: Location) {
+    constructor(name: string, location: Location = Location.cookie) {
         super(name)
         this.name2 = name
         this.location = location
