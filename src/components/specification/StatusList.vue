@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h2 class="inline mr11">Responses</h2>
+            <h2 class="inline mr11">Response</h2>
             <AddButton :manager="manager" name="status code" class="mr11"></AddButton>
             <SelectButton :list="codeList" :manager="manager"></SelectButton>
         </div>

@@ -4,7 +4,6 @@
             <h2 class="inline mr11">{{ title }}</h2>
             <b-button @click="show" variant="outline-primary"> + </b-button>
         </div>
-        <br />
         <div v-for="item in manager.list" :key="item.name" class="mtb11">
             <b-button-group>
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
