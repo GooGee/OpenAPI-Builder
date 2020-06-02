@@ -101,7 +101,7 @@ export default {
         toAPI() {
             try {
                 const name = builder.document.info.title + '.json'
-                this.save(name, JSON.stringify(builder.toAPI()))
+                this.save(name, JSON.stringify(builder.document.toAPI()))
             } catch (error) {
                 console.error(error)
                 this.$bvToast.toast(error.message, {
