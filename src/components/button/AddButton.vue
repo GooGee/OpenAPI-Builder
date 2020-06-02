@@ -3,6 +3,8 @@
 </template>
 
 <script>
+let index = 0
+
 export default {
     name: 'AddButton',
     props: {
@@ -12,12 +14,24 @@ export default {
         },
         name: {
             type: String,
-            required: true,
+            required: false,
+            default: 'name',
+        },
+        value: {
+            type: String,
+            required: false,
+            default: 'name',
         },
     },
     methods: {
         add() {
-            const value = prompt(`Please input the ${this.name}`)
+            let value = ''
+            if (this.name) {
+                value = prompt(`Please input the ${this.name}`, this.value)
+            } else {
+                index += 1
+                value = index
+            }
             if (value) {
                 try {
                     const item = this.manager.make(value)
