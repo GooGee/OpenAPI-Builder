@@ -14,7 +14,7 @@ export default class Response extends UniqueItem {
         return {
             description: this.description,
             headers: this.headerManager.toAPI(),
-            links: this.linkManager.toAPI(),
+            // links: this.linkManager.toAPI(),
             content: this.mediaTypeManager.toAPI(),
         }
     }
