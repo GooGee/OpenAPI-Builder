@@ -1,3 +1,4 @@
+import KeyValue from "../Base/KeyValue"
 import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
 
@@ -14,6 +15,10 @@ export class LinkManager extends UniqueList<Link> {
     }
 
     toAPI() {
-        return this.list
+        const map: KeyValue = {}
+        this.list.forEach(item => {
+            map[item.name] = item.toAPI()
+        })
+        return map
     }
 }
