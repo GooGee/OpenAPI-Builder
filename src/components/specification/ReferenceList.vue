@@ -8,7 +8,7 @@
         <div v-for="item in manager.list" :key="item.name" class="mtb11">
             <b-button-group>
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                <Reference :reference="item" :type="type" :title="title"></Reference>
+                <Reference :reference="item" :type="type"></Reference>
             </b-button-group>
         </div>
     </div>

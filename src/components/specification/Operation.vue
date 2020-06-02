@@ -32,7 +32,7 @@
                 <tr>
                     <td class="text-right">requestBody</td>
                     <td>
-                        <Reference :reference="item.requestBody" type="requestBodies" title="RequestBody"></Reference>
+                        <Reference :reference="item.requestBody" type="requestBodies"></Reference>
                     </td>
                 </tr>
             </tbody>

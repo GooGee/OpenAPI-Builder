@@ -10,7 +10,7 @@
             <b-button-group>
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
                 <ChangeButton :item="item" name="name"></ChangeButton>
-                <Reference :reference="item.response" type="responses" title="responses"></Reference>
+                <Reference :reference="item.response" type="responses"></Reference>
             </b-button-group>
         </div>
     </div>

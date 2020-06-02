@@ -19,14 +19,12 @@
                     <Reference
                         v-if="schema.isItemReference"
                         :reference="schema.reference"
-                        title="Component"
                     ></Reference>
                 </div>
 
                 <Reference
                     v-if="schema.type === 'reference'"
                     :reference="schema.reference"
-                    title="Component"
                 ></Reference>
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">

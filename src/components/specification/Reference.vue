@@ -15,11 +15,7 @@ export default {
         type: {
             type: String,
             required: false,
-            default: '',
-        },
-        title: {
-            type: String,
-            required: true,
+            default: 'schemas',
         },
     },
     methods: {
@@ -40,10 +36,10 @@ export default {
 
             if (this.type) {
                 dialogue.type = this.type
-                dialogue.showOnly(this.title, cb)
+                dialogue.showOnly(this.type, cb)
                 return
             }
-            dialogue.show(this.title, cb)
+            dialogue.show(this.type, cb)
         },
     },
 }
