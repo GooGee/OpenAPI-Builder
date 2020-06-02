@@ -6,7 +6,9 @@ export default class Security extends UniqueItem {
     readonly valueManager = new UniqueList(UniqueItem)
 
     toAPI() {
-        return this.valueManager.list.map(value => value.name)
+        const map: KeyValue = {}
+        map[this.name] = this.valueManager.list.map(value => value.name)
+        return map
     }
 }
 
