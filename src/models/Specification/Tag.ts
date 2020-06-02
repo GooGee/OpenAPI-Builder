@@ -4,17 +4,9 @@ import External from "./External"
 
 export default class Tag extends UniqueItem {
     description: string = ''
-    readonly externalDocs = new External
+    // readonly externalDocs = new External
 
     toAPI() {
-        if (this.externalDocs.url) {
-            return {
-                name: this.name,
-                description: this.description,
-                externalDocs: this.externalDocs.toAPI(),
-            }
-        }
-
         return {
             name: this.name,
             description: this.description,
