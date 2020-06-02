@@ -10,7 +10,7 @@ export default class Schema extends UniqueItem {
     type: DataType = DataType.string
     format: string = ''
     itemType: DataType = DataType.string
-    readonly discriminator = new Discriminator(this.name)
+    readonly discriminator = new Discriminator
     readonly reference = new Reference('Schema', ReferenceType.schemas)
     readonly schemaManager = new SchemaManager
     readonly xml = new XML
