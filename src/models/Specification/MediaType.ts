@@ -6,12 +6,11 @@ import { EncodingManager } from "./Encoding"
 
 export default class MediaType extends UniqueItem {
     readonly schema = new Schema('Schema')
-    readonly encodingManager = new EncodingManager
+    // readonly encodingManager = new EncodingManager
 
     toAPI() {
         return {
             schema: this.schema.toAPI(),
-            encoding: this.encodingManager.toAPI()
         }
     }
 }
