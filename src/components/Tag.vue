@@ -8,13 +8,11 @@
             <tr>
                 <th>name</th>
                 <th>description</th>
-                <th>externalDocs.description</th>
-                <th>externalDocs.url</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="tag in manager.list" :key="tag.name">
-                <td>
+                <td class="text-right">
                     <b-button-group>
                         <DeleteButton :manager="manager" :item="tag"></DeleteButton>
                         <ChangeButton :item="tag" name="name"></ChangeButton>
@@ -22,12 +20,6 @@
                 </td>
                 <td>
                     <b-form-input v-model="tag.description"></b-form-input>
-                </td>
-                <td>
-                    <b-form-input v-model="tag.externalDocs.description"></b-form-input>
-                </td>
-                <td>
-                    <b-form-input v-model="tag.externalDocs.url"></b-form-input>
                 </td>
             </tr>
         </tbody>
