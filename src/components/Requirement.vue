@@ -2,11 +2,11 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h1 class="inline mr11">Security Requirement</h1>
-            <AddButton :manager="manager" name="name"></AddButton>
+            <b-button @click="show" variant="outline-primary"> + </b-button>
         </caption>
         <thead>
             <tr>
-                <th>name</th>
+                <th width="111px">name</th>
                 <th>value</th>
             </tr>
         </thead>
@@ -32,6 +32,7 @@ import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import EditList from './EditList.vue'
 import builder from '../states/builder.js'
+import dialogue from '../states/component.js'
 
 export default {
     name: 'Requirement',
@@ -45,6 +46,27 @@ export default {
         return {
             manager: builder.document.securityManager,
         }
+    },
+    methods: {
+        show() {
+            const type = 'securitySchemes'
+            const cb = ok => {
+                try {
+                    const item = this.manager.make(dialogue.selected.name)
+                    this.manager.add(item)
+                } catch (error) {
+                    console.error(error)
+                    this.$bvToast.toast(error.message, {
+                        title: 'i',
+                        variant: 'danger',
+                        solid: true,
+                    })
+                }
+            }
+
+            dialogue.type = type
+            dialogue.showOnly(type, cb)
+        },
     },
 }
 </script>
