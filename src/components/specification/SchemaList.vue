@@ -14,7 +14,7 @@
                 <td>
                     <b-button-group v-if="type === 'object'">
                         <AddButton :manager="manager" name="name"></AddButton>
-                        <b-button @click="show" variant="outline-primary"> Input </b-button>
+                        <ImportButton :manager="manager"></ImportButton>
                     </b-button-group>
                     <AddButton v-else :manager="manager" name=""></AddButton>
                 </td>
@@ -26,11 +26,15 @@
 
 <script>
 import AddButton from '../button/AddButton.vue'
+import ImportButton from '../button/ImportButton.vue'
 import dialogue from '../../states/dialogue.js'
 
 export default {
     name: 'SchemaList',
-    components: { AddButton },
+    components: {
+        AddButton,
+        ImportButton,
+    },
     beforeCreate() {
         this.$options.components.Schema = require('./Schema').default
     },
@@ -47,36 +51,6 @@ export default {
             type: String,
             required: false,
             default: 'object',
-        },
-    },
-    methods: {
-        show() {
-            dialogue.json.show('', text => {
-                try {
-                    const list = JSON.parse(text)
-                    if (Array.isArray(list)) {
-                        list.forEach(item => {
-                            let found = this.manager.find(item.name)
-                            if (found) {
-                                // ok
-                            } else {
-                                found = this.manager.make(item.name)
-                                this.manager.add(found)
-                            }
-                            found.load(item)
-                        })
-                        return
-                    }
-                    throw new Error('JSON must be an Array')
-                } catch (error) {
-                    console.error(error)
-                    this.$bvToast.toast(error.message, {
-                        title: 'i',
-                        variant: 'danger',
-                        solid: true,
-                    })
-                }
-            })
         },
     },
 }
