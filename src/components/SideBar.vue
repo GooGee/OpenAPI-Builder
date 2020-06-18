@@ -2,7 +2,7 @@
     <div>
         <div class="text-center mtb11">
             <h2 class="inline mr11">{{ title }}</h2>
-            <AddButton :manager="manager" :name="name"></AddButton>
+            <AddButton :manager="manager" :name="name" :value="value"></AddButton>
         </div>
 
         <div>
@@ -39,6 +39,11 @@ export default {
             type: String,
             required: false,
             default: 'name'
+        },
+        value: {
+            type: String,
+            required: false,
+            default: 'name',
         },
     },
     data() {

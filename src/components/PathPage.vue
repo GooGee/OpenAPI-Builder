@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <SideBar :manager="manager" title="Path" name="path" class="col-3"></SideBar>
+        <SideBar :manager="manager" title="Path" name="path" value="/user" class="col-3"></SideBar>
 
         <div v-if="ready && sidebar.item" class="col-9">
             <div class="mtb11">
