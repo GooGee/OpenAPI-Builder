@@ -1,5 +1,5 @@
 <template>
-    <b-button @click="show" variant="outline-primary">{{ reference.text }}</b-button>
+    <b-button @click="show" :variant="reference.name ? 'outline-primary' : 'outline-danger'">{{ reference.text }}</b-button>
 </template>
 
 <script>
