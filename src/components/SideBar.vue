@@ -8,9 +8,13 @@
             </b-button-group>
         </div>
 
+        <div class="mb11">
+            <b-form-input v-model="sidebar.search" placeholder="Search"></b-form-input>
+        </div>
+
         <div>
             <div
-                v-for="item in manager.list"
+                v-for="item in sidebar.list"
                 :key="item.name"
                 @click="sidebar.item = item"
                 :class="Object.is(sidebar.item, item) ? 'active' : ''"
