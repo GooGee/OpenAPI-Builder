@@ -4,7 +4,7 @@ import UniqueList from "../Base/UniqueList"
 import Reference, { ReferenceType } from "./Reference"
 
 export default class Status extends UniqueItem {
-    readonly response = new Reference('OK', ReferenceType.responses)
+    readonly response = new Reference('', ReferenceType.responses)
 
     toAPI() {
         return this.response.toAPI()
