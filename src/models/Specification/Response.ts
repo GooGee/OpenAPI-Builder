@@ -10,12 +10,12 @@ export default class Response extends UniqueItem {
     readonly linkManager = new ReferenceManager(ReferenceType.links)
     readonly mediaTypeManager = new MediaTypeManager
 
-    toAPI() {
+    toOAPI() {
         return {
             description: this.description,
-            headers: this.headerManager.toAPI(),
-            // links: this.linkManager.toAPI(),
-            content: this.mediaTypeManager.toAPI(),
+            headers: this.headerManager.toOAPI(),
+            // links: this.linkManager.toOAPI(),
+            content: this.mediaTypeManager.toOAPI(),
         }
     }
 }
@@ -26,10 +26,10 @@ export class ResponseManager extends UniqueList<Response> {
         super(Response)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

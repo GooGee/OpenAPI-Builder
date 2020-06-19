@@ -8,9 +8,9 @@ export default class MediaType extends UniqueItem {
     readonly schema = new Schema('Schema')
     // readonly encodingManager = new EncodingManager
 
-    toAPI() {
+    toOAPI() {
         return {
-            schema: this.schema.toAPI(),
+            schema: this.schema.toOAPI(),
         }
     }
 }
@@ -21,10 +21,10 @@ export class MediaTypeManager extends UniqueList<MediaType> {
         super(MediaType)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

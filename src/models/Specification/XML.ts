@@ -6,7 +6,7 @@ export default class XML extends Item {
     attribute: boolean = false
     wrapped: boolean = false
 
-    toAPI() {
+    toOAPI() {
         return this
     }
 }

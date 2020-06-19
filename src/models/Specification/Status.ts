@@ -6,8 +6,8 @@ import Reference, { ReferenceType } from "./Reference"
 export default class Status extends UniqueItem {
     readonly response = new Reference('', ReferenceType.responses)
 
-    toAPI() {
-        return this.response.toAPI()
+    toOAPI() {
+        return this.response.toOAPI()
     }
 }
 
@@ -17,10 +17,10 @@ export class StatusManager extends UniqueList<Status> {
         super(Status)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

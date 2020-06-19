@@ -14,11 +14,11 @@ export default class Server extends UniqueItem {
         this.name = name
     }
 
-    toAPI() {
+    toOAPI() {
         return {
             url: this.url,
             description: this.description,
-            variables: this.variableManager.toAPI()
+            variables: this.variableManager.toOAPI()
         }
     }
 }
@@ -29,7 +29,7 @@ export class ServerManager extends UniqueList<Server> {
         super(Server)
     }
 
-    toAPI() {
-        return this.list.map(item => item.toAPI())
+    toOAPI() {
+        return this.list.map(item => item.toOAPI())
     }
 }

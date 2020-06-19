@@ -6,7 +6,7 @@ export default class Tag extends UniqueItem {
     description: string = ''
     // readonly externalDocs = new External
 
-    toAPI() {
+    toOAPI() {
         return {
             name: this.name,
             description: this.description,
@@ -20,7 +20,7 @@ export class TagManager extends UniqueList<Tag> {
         super(Tag)
     }
 
-    toAPI() {
-        return this.list.map(tag => tag.toAPI())
+    toOAPI() {
+        return this.list.map(tag => tag.toOAPI())
     }
 }

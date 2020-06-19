@@ -24,7 +24,7 @@ export default class Reference extends UniqueItem {
         return `#/components/${this.type}/${this.name}`
     }
 
-    toAPI() {
+    toOAPI() {
         return {
             $ref: this.text
         }
@@ -44,10 +44,10 @@ export class ReferenceManager extends UniqueList<Reference> {
         return item
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

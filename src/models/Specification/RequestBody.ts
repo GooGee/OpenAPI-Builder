@@ -8,11 +8,11 @@ export default class RequestBody extends UniqueItem {
     description: string = ''
     readonly mediaTypeManager = new MediaTypeManager
 
-    toAPI() {
+    toOAPI() {
         return {
             required: this.required,
             description: this.description,
-            content: this.mediaTypeManager.toAPI(),
+            content: this.mediaTypeManager.toOAPI(),
         }
     }
 }
@@ -23,10 +23,10 @@ export class RequestBodyManager extends UniqueList<RequestBody> {
         super(RequestBody)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

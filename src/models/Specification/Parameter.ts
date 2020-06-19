@@ -26,12 +26,12 @@ export default class Parameter extends UniqueItem {
         this.location = location
     }
 
-    toAPI(location: Location) {
+    toOAPI(location: Location) {
         if (location === Location.header) {
             return {
                 required: this.required,
                 description: this.description,
-                schema: this.schema.toAPI()
+                schema: this.schema.toOAPI()
             }
         }
 
@@ -40,7 +40,7 @@ export default class Parameter extends UniqueItem {
             required: this.required,
             in: this.location,
             description: this.description,
-            schema: this.schema.toAPI()
+            schema: this.schema.toOAPI()
         }
     }
 }
@@ -58,10 +58,10 @@ export class ParameterManager extends UniqueList<Parameter> {
         return item
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI(this.location)
+            map[item.name] = item.toOAPI(this.location)
         })
         return map
     }

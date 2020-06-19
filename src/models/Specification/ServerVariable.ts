@@ -7,7 +7,7 @@ export default class ServerVariable extends UniqueItem {
     description: string = ''
     readonly valueManager = new UniqueList(UniqueItem)
 
-    toAPI() {
+    toOAPI() {
         if (this.valueManager.list.length) {
             const list = this.valueManager.list.map(value => value.name)
             return {
@@ -30,10 +30,10 @@ export class ServerVariableManager extends UniqueList<ServerVariable> {
         super(ServerVariable)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

@@ -10,14 +10,14 @@ export default class Info extends Item {
     title: string = 'API'
     version: string = '0.0.0'
 
-    toAPI() {
+    toOAPI() {
         return {
             title: this.title,
             version: this.version,
             description: this.description,
             termsOfService: this.termsOfService,
-            contact: this.contact.toAPI(),
-            license: this.license.toAPI(),
+            contact: this.contact.toOAPI(),
+            license: this.license.toOAPI(),
         }
     }
 }

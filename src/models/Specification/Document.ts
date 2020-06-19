@@ -28,16 +28,16 @@ export default class Document extends Item {
     readonly serverManager = new ServerManager
     readonly tagManager = new TagManager
 
-    toAPI() {
+    toOAPI() {
         return {
             openapi: Version,
-            info: this.info.toAPI(),
-            components: this.component.toAPI(),
-            paths: this.pathManager.toAPI(),
-            security: this.securityManager.toAPI(),
-            servers: this.serverManager.toAPI(),
-            tags: this.tagManager.toAPI(),
-            externalDocs: this.externalDocs.toAPI(),
+            info: this.info.toOAPI(),
+            components: this.component.toOAPI(),
+            paths: this.pathManager.toOAPI(),
+            security: this.securityManager.toOAPI(),
+            servers: this.serverManager.toOAPI(),
+            tags: this.tagManager.toOAPI(),
+            externalDocs: this.externalDocs.toOAPI(),
         }
     }
 }

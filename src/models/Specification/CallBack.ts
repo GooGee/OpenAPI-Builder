@@ -3,7 +3,7 @@ import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
 
 export default class CallBack extends UniqueItem {
-    toAPI() {
+    toOAPI() {
         return this
     }
 }
@@ -14,10 +14,10 @@ export class CallBackManager extends UniqueList<CallBack> {
         super(CallBack)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

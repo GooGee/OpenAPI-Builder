@@ -5,10 +5,10 @@ export default class Discriminator extends Item {
     name: string = ''
     readonly manager = new NameValueManager()
 
-    toAPI() {
+    toOAPI() {
         return {
             propertyName: this.name,
-            mapping: this.manager.toAPI()
+            mapping: this.manager.toOAPI()
         }
     }
 }

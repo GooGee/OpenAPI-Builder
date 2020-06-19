@@ -19,17 +19,17 @@ export default class Component extends Item {
     readonly schemaManager = new SchemaManager
     readonly securitySchemeManager = new SecuritySchemeManager
 
-    toAPI() {
+    toOAPI() {
         return {
-            callbacks: this.callbackManager.toAPI(),
-            examples: this.exampleManager.toAPI(),
-            headers: this.headerManager.toAPI(),
-            links: this.linkManager.toAPI(),
-            parameters: this.parameterManager.toAPI(),
-            requestBodies: this.requestBodyManager.toAPI(),
-            responses: this.responseManager.toAPI(),
-            schemas: this.schemaManager.toAPI(),
-            securitySchemes: this.securitySchemeManager.toAPI(),
+            callbacks: this.callbackManager.toOAPI(),
+            examples: this.exampleManager.toOAPI(),
+            headers: this.headerManager.toOAPI(),
+            links: this.linkManager.toOAPI(),
+            parameters: this.parameterManager.toOAPI(),
+            requestBodies: this.requestBodyManager.toOAPI(),
+            responses: this.responseManager.toOAPI(),
+            schemas: this.schemaManager.toOAPI(),
+            securitySchemes: this.securitySchemeManager.toOAPI(),
         }
     }
 }

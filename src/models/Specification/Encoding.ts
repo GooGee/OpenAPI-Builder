@@ -2,7 +2,7 @@ import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
 
 export default class Encoding extends UniqueItem {
-    toAPI() {
+    toOAPI() {
         return this
     }
 }
@@ -13,7 +13,7 @@ export class EncodingManager extends UniqueList<Encoding> {
         super(Encoding)
     }
 
-    toAPI() {
+    toOAPI() {
         return this.list
     }
 }

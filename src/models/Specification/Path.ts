@@ -6,8 +6,8 @@ import { OperationManager } from "./Operation"
 export default class Path extends UniqueItem {
     readonly operationManager = new OperationManager(this)
 
-    toAPI() {
-        return this.operationManager.toAPI()
+    toOAPI() {
+        return this.operationManager.toOAPI()
     }
 }
 
@@ -17,10 +17,10 @@ export class PathManager extends UniqueList<Path> {
         super(Path)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

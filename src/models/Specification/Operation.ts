@@ -35,16 +35,16 @@ export default class Operation extends UniqueItem {
         return this.name
     }
 
-    toAPI() {
+    toOAPI() {
         const id = [this.type].concat(this.path.name.split('/')).join('_')
         const tags = this.tagManager.list.map(tag => tag.name)
-        const parameters = this.parameterManager.list.map(parameter => parameter.toAPI())
+        const parameters = this.parameterManager.list.map(parameter => parameter.toOAPI())
         const data: KeyValue = {
             operationId: id,
             summary: this.summary,
             description: this.description,
             parameters: parameters,
-            responses: this.statusManager.toAPI(),
+            responses: this.statusManager.toOAPI(),
             tags: tags,
         }
 
@@ -52,7 +52,7 @@ export default class Operation extends UniqueItem {
             return data
         }
 
-        data['requestBody'] = this.requestBody.toAPI()
+        data['requestBody'] = this.requestBody.toOAPI()
         return data
     }
 }
@@ -70,10 +70,10 @@ export class OperationManager extends UniqueList<Operation> {
         return item
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

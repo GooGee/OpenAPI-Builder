@@ -23,16 +23,16 @@ export default class Schema extends UniqueItem {
         return this.itemType === DataType.reference
     }
 
-    toAPI(): KeyValue {
+    toOAPI(): KeyValue {
         if (this.type === DataType.reference) {
-            return this.reference.toAPI()
+            return this.reference.toOAPI()
         }
 
         if (this.type === DataType.array) {
             if (this.isItemReference) {
                 return {
                     type: this.type,
-                    items: this.reference.toAPI()
+                    items: this.reference.toOAPI()
                 }
             }
             return {
@@ -44,7 +44,7 @@ export default class Schema extends UniqueItem {
         }
 
         if (this.type === DataType.composition) {
-            const list = this.schemaManager.list.map(item => item.toAPI())
+            const list = this.schemaManager.list.map(item => item.toOAPI())
             return {
                 allOf: list
             }
@@ -53,7 +53,7 @@ export default class Schema extends UniqueItem {
         if (this.type === DataType.object) {
             return {
                 type: this.type,
-                properties: this.schemaManager.toAPI()
+                properties: this.schemaManager.toOAPI()
             }
         }
 
@@ -69,10 +69,10 @@ export class SchemaManager extends UniqueList<Schema> {
         super(Schema)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

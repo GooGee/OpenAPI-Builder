@@ -4,7 +4,7 @@ export default class License extends Item {
     name: string = ''
     url: string = ''
 
-    toAPI() {
+    toOAPI() {
         return this
     }
 }

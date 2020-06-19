@@ -8,12 +8,12 @@ export default class OAuthFlow extends Item {
     refreshUrl: string = ''
     readonly manager = new NameValueManager()
 
-    toAPI() {
+    toOAPI() {
         return {
             authorizationUrl: this.authorizationUrl,
             tokenUrl: this.tokenUrl,
             refreshUrl: this.refreshUrl,
-            scopes: this.manager.toAPI()
+            scopes: this.manager.toOAPI()
         }
     }
 }
@@ -24,19 +24,19 @@ export class OAuthFlows extends Item {
     readonly clientCredentials = new OAuthFlow
     readonly authorizationCode = new OAuthFlow
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         if (this.implicit.authorizationUrl) {
-            map['implicit'] = this.implicit.toAPI()
+            map['implicit'] = this.implicit.toOAPI()
         }
         if (this.password.authorizationUrl) {
-            map['password'] = this.password.toAPI()
+            map['password'] = this.password.toOAPI()
         }
         if (this.clientCredentials.authorizationUrl) {
-            map['clientCredentials'] = this.clientCredentials.toAPI()
+            map['clientCredentials'] = this.clientCredentials.toOAPI()
         }
         if (this.authorizationCode.authorizationUrl) {
-            map['authorizationCode'] = this.authorizationCode.toAPI()
+            map['authorizationCode'] = this.authorizationCode.toOAPI()
         }
         return map
     }

@@ -8,7 +8,7 @@ export default class Example extends UniqueItem {
     summary: string = ''
     value: string = ''
 
-    toAPI() {
+    toOAPI() {
         return {
             description: this.description,
             externalValue: this.externalValue,
@@ -24,10 +24,10 @@ export class ExampleManager extends UniqueList<Example> {
         super(Example)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }

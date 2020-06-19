@@ -5,7 +5,7 @@ export default class Contact extends Item {
     url: string = ''
     email: string = ''
 
-    toAPI() {
+    toOAPI() {
         if (this.email.length) {
             return this
         }

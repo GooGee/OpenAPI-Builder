@@ -27,7 +27,7 @@ export default class SecurityScheme extends UniqueItem {
         this.location = location
     }
 
-    toAPI() {
+    toOAPI() {
         return {
             type: this.type,
             description: this.description,
@@ -36,7 +36,7 @@ export default class SecurityScheme extends UniqueItem {
             scheme: this.scheme,
             bearerFormat: this.bearerFormat,
             openIdConnectUrl: this.openIdConnectUrl,
-            flows: this.flows.toAPI(),
+            flows: this.flows.toOAPI(),
         }
     }
 }
@@ -47,10 +47,10 @@ export class SecuritySchemeManager extends UniqueList<SecurityScheme> {
         super(SecurityScheme)
     }
 
-    toAPI() {
+    toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toAPI()
+            map[item.name] = item.toOAPI()
         })
         return map
     }
