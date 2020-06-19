@@ -1,8 +1,11 @@
 <template>
     <div>
         <div class="text-center mtb11">
-            <h2 class="inline mr11">{{ title }}</h2>
-            <AddButton :manager="manager" :name="name" :value="value"></AddButton>
+            <h2 @click="sidebar.item = null" class="inline mr11 button">{{ title }}</h2>
+            <b-button-group>
+                <AddButton :manager="manager" :name="name" :value="value"></AddButton>
+                <ImportButton :manager="manager"></ImportButton>
+            </b-button-group>
         </div>
 
         <div>
@@ -21,11 +24,15 @@
 
 <script>
 import AddButton from './button/AddButton.vue'
+import ImportButton from './button/ImportButton.vue'
 import sidebar from '../states/sidebar.js'
 
 export default {
     name: 'SideBar',
-    components: { AddButton },
+    components: {
+        AddButton,
+        ImportButton,
+    },
     props: {
         manager: {
             type: Object,
@@ -38,7 +45,7 @@ export default {
         name: {
             type: String,
             required: false,
-            default: 'name'
+            default: 'name',
         },
         value: {
             type: String,
@@ -56,3 +63,9 @@ export default {
     },
 }
 </script>
+
+<style>
+h2.button {
+    cursor: pointer;
+}
+</style>
