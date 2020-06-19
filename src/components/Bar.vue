@@ -44,6 +44,21 @@ export default {
             builder,
         }
     },
+    created() {
+        fetch('preset.json')
+            .then(response => response.json())
+            .then(json => {
+                builder.preset = json
+            })
+            .catch(error => {
+                console.error(error)
+                this.$bvToast.toast(error.message, {
+                    title: 'i',
+                    variant: 'danger',
+                    solid: true,
+                })
+            })
+    },
 }
 </script>
 
