@@ -1,12 +1,11 @@
 <template>
     <div>
-        <div>
-            <b-form-radio-group
-                v-model="type"
-                :options="typeList"
-                buttons
-                button-variant="outline-primary"
-            ></b-form-radio-group>
+        <div class="mtb11">
+            <b-form-radio-group v-model="type" buttons button-variant="outline-primary">
+                <b-form-radio v-for="item in typeList" :value="item">
+                    {{ manager.find(item) ? '+ ' + item : item }}
+                </b-form-radio>
+            </b-form-radio-group>
         </div>
 
         <Operation v-if="operation" :item="operation">
