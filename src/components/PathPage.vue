@@ -2,15 +2,19 @@
     <div class="row">
         <SideBar :manager="manager" title="Path" name="path" value="/user" class="col-3"></SideBar>
 
-        <div v-if="ready && sidebar.item" class="col-9">
-            <div class="mtb11">
-                <b-button-group>
-                    <DeleteButton :manager="manager" :item="sidebar.item"></DeleteButton>
-                    <ChangeButton :item="sidebar.item" name="name"></ChangeButton>
-                </b-button-group>
-            </div>
+        <div v-if="ready" class="col-9 mtb11">
+            <template v-if="sidebar.item">
+                <div>
+                    <b-button-group>
+                        <DeleteButton :manager="manager" :item="sidebar.item"></DeleteButton>
+                        <ChangeButton :item="sidebar.item" name="name"></ChangeButton>
+                    </b-button-group>
+                </div>
 
-            <OperationList :manager="sidebar.item.operationManager"></OperationList>
+                <OperationList :manager="sidebar.item.operationManager"></OperationList>
+            </template>
+
+            <Script v-else :manager="manager" name="scriptPath"></Script>
         </div>
     </div>
 </template>
@@ -19,6 +23,7 @@
 import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import OperationList from './specification/OperationList.vue'
+import Script from './Script.vue'
 import SideBar from './SideBar.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
@@ -29,6 +34,7 @@ export default {
         ChangeButton,
         DeleteButton,
         OperationList,
+        Script,
         SideBar,
     },
     data() {

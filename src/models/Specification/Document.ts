@@ -10,6 +10,16 @@ import { TagManager } from "./Tag"
 const Version = '3.0.3'
 
 export default class Document extends Item {
+    script: string = ''
+    scriptPath: string = ''
+    scriptTag: string = ''
+    scriptExample: string = ''
+    scriptHeader: string = ''
+    scriptParameter: string = ''
+    scriptRequestBody: string = ''
+    scriptResponse: string = ''
+    scriptSchema: string = ''
+
     readonly info = new Info
     readonly component = new Component
     readonly externalDocs = new External

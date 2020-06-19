@@ -2,8 +2,8 @@
     <div class="row">
         <SideBar :manager="manager" title="Parameter" class="col-3"></SideBar>
 
-        <div v-if="ready && sidebar.item" class="col-9">
-            <Header :item="sidebar.item" :manager="manager">
+        <div v-if="ready" class="col-9">
+            <Header v-if="sidebar.item" :item="sidebar.item" :manager="manager">
                 <tr>
                     <td class="text-right">name</td>
                     <td>
@@ -17,6 +17,8 @@
                     </td>
                 </tr>
             </Header>
+
+            <Script v-else :manager="manager" name="scriptParameter" class="mtb11"></Script>
         </div>
     </div>
 </template>
@@ -25,6 +27,7 @@
 import ChangeButton from './button/ChangeButton.vue'
 import Header from './specification/Header.vue'
 import SideBar from './SideBar.vue'
+import Script from './Script.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
 
@@ -34,6 +37,7 @@ export default {
         ChangeButton,
         Header,
         SideBar,
+        Script,
     },
     data() {
         return {

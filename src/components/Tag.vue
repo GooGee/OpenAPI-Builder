@@ -2,7 +2,10 @@
     <table class="table b-table b-table-caption-top">
         <caption>
             <h1 class="inline mr11">Tag</h1>
-            <AddButton :manager="manager" name="name"></AddButton>
+            <b-button-group>
+                <AddButton :manager="manager" name="name"></AddButton>
+                <ImportButton :manager="manager"></ImportButton>
+            </b-button-group>
         </caption>
         <thead>
             <tr>
@@ -23,6 +26,13 @@
                 </td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">
+                    <Script :manager="manager" name="scriptTag"></Script>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </template>
 
@@ -30,6 +40,8 @@
 import AddButton from './button/AddButton.vue'
 import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
+import ImportButton from './button/ImportButton.vue'
+import Script from './Script.vue'
 import builder from '../states/builder.js'
 
 export default {
@@ -38,6 +50,8 @@ export default {
         AddButton,
         ChangeButton,
         DeleteButton,
+        ImportButton,
+        Script,
     },
     data() {
         return {

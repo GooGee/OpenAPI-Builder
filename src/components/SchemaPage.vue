@@ -2,18 +2,21 @@
     <div class="row">
         <SideBar :manager="manager" title="Schema" class="col-3"></SideBar>
 
-        <div v-if="ready && sidebar.item" class="col-9">
-            <table class="table">
+        <div v-if="ready" class="col-9">
+            <table v-if="sidebar.item" class="table">
                 <tbody>
                     <Schema :schema="sidebar.item" :manager="manager"></Schema>
                 </tbody>
             </table>
+
+            <Script v-else :manager="manager" name="scriptSchema" class="mtb11"></Script>
         </div>
     </div>
 </template>
 
 <script>
 import SideBar from './SideBar.vue'
+import Script from './Script.vue'
 import Schema from './specification/Schema.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
@@ -23,6 +26,7 @@ export default {
     components: {
         SideBar,
         Schema,
+        Script,
     },
     data() {
         return {

@@ -2,8 +2,8 @@
     <div class="row">
         <SideBar :manager="manager" title="Example" class="col-3"></SideBar>
 
-        <div v-if="ready && sidebar.item" class="col-9">
-            <table class="table">
+        <div v-if="ready" class="col-9">
+            <table v-if="sidebar.item" class="table">
                 <tbody>
                     <tr>
                         <td width="111px"></td>
@@ -40,6 +40,8 @@
                     </tr>
                 </tbody>
             </table>
+
+            <Script v-else :manager="manager" name="scriptExample" class="mtb11"></Script>
         </div>
     </div>
 </template>
@@ -48,6 +50,7 @@
 import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import SideBar from './SideBar.vue'
+import Script from './Script.vue'
 import builder from '../states/builder.js'
 import sidebar from '../states/sidebar.js'
 
@@ -57,6 +60,7 @@ export default {
         ChangeButton,
         DeleteButton,
         SideBar,
+        Script,
     },
     data() {
         return {
