@@ -4,7 +4,7 @@
             <caption>
                 <h1 class="inline mr11">Info</h1>
                 <b-button-group>
-                    <b-button @click="download" variant="outline-success"> Download </b-button>
+                    <b-button @click="download" variant="outline-success"> Save </b-button>
                     <b-button @click="toOAPI" variant="outline-success"> Export </b-button>
                 </b-button-group>
             </caption>

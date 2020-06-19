@@ -11,7 +11,7 @@
                     <b-button @click="create" variant="outline-primary"> New </b-button>
                     <b-button variant="outline-primary">
                         <label class="button-label">
-                            Upload
+                            Load
                             <input @change="upload($event)" type="file" :accept="builder.extention" style="display: none;" />
                         </label>
                     </b-button>
