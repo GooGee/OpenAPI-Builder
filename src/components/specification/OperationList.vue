@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="mtb11">
-            <b-form-radio-group v-model="type" buttons button-variant="outline-primary">
+            <b-form-radio-group v-model="type" buttons button-variant="outline-secondary">
                 <b-form-radio v-for="item in typeList" :value="item">
-                    {{ manager.find(item) ? '+ ' + item : item }}
+                    <span :class="manager.find(item) ? 'text-primary' : ''"> {{ item }} </span>
                 </b-form-radio>
             </b-form-radio-group>
         </div>
