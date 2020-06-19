@@ -16,16 +16,10 @@
                     <select v-model="schema.itemType" class="form-control">
                         <option v-for="type in itemTypeList" :value="type" :key="type"> {{ type }} </option>
                     </select>
-                    <Reference
-                        v-if="schema.isItemReference"
-                        :reference="schema.reference"
-                    ></Reference>
+                    <Reference v-if="schema.isItemReference" :reference="schema.reference"></Reference>
                 </div>
 
-                <Reference
-                    v-if="schema.type === 'reference'"
-                    :reference="schema.reference"
-                ></Reference>
+                <Reference v-if="schema.type === 'reference'" :reference="schema.reference"></Reference>
 
                 <template v-if="schema.type === 'composition' || schema.type === 'object'">
                     <SchemaList :manager="schema.schemaManager" :editing="editing" :type="schema.type"></SchemaList>
@@ -34,7 +28,7 @@
         </template>
 
         <template v-else>
-            <span v-if="schema.isPrimitive">{{ schema.type }}</span>
+            <span v-if="schema.isPrimitive">{{ schema.type + ' ' + schema.format }}</span>
             <template v-else>
                 <div v-if="schema.type === 'array'">
                     [ {{ schema.isItemReference ? schema.reference.text : schema.itemType }} ]
@@ -70,10 +64,22 @@ export default {
             type: Boolean,
             required: true,
         },
+        inComposition: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
+    },
+    computed: {
+        typeList() {
+            if (this.inComposition) {
+                return ['object', 'reference']
+            }
+            return ['array', 'boolean', 'composition', 'integer', 'number', 'object', 'reference', 'string']
+        },
     },
     data() {
         return {
-            typeList: ['array', 'boolean', 'composition', 'integer', 'number', 'object', 'reference', 'string'],
             itemTypeList: ['boolean', 'integer', 'number', 'reference', 'string'],
             formatList: ['int32', 'int64', 'float', 'double', 'byte', 'binary', 'date', 'date-time', 'password'],
         }

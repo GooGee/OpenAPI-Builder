@@ -12,7 +12,7 @@
         </td>
 
         <td @click="editing = true">
-            <SchemaType :schema="schema" :editing="editing"></SchemaType>
+            <SchemaType :schema="schema" :editing="editing" :inComposition="type === 'composition'"></SchemaType>
         </td>
     </tr>
 </template>
