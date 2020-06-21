@@ -3,7 +3,7 @@
         <div>
             <h2 class="inline mr11">Response</h2>
             <AddButton :manager="manager" name="status code" class="mr11"></AddButton>
-            <SelectButton :list="codeList" :manager="manager"></SelectButton>
+            <SelectButton :list="codeList" :manager="manager" name="name" text="name"></SelectButton>
         </div>
 
         <div v-for="item in manager.list" :key="item.name" class="mtb11">
@@ -22,6 +22,7 @@ import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import Reference from './Reference.vue'
 import SelectButton from '../button/SelectButton.vue'
+import builder from '../../states/builder.js'
 
 export default {
     name: 'StatusList',
@@ -38,9 +39,12 @@ export default {
             required: true,
         },
     },
+    created() {
+        this.codeList = builder.presetManager.find('HttpStatus').propertyManager.list
+    },
     data() {
         return {
-            codeList: [200, 401, 403, 404, 422],
+            codeList: [],
         }
     },
 }
