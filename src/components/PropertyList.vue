@@ -1,0 +1,99 @@
+<template>
+    <table class="table b-table b-table-caption-top">
+        <caption>
+            <h3>Property</h3>
+        </caption>
+        <thead>
+            <tr>
+                <th @click="sort('name')" :aria-sort="sortText('name')">name</th>
+                <th @click="sort('value')" :aria-sort="sortText('value')">value</th>
+                <th @click="sort('tag')" :aria-sort="sortText('tag')">tag</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr v-for="item in manager.list" :key="item.name">
+                <td>
+                    <b-button-group>
+                        <DeleteButton :manager="manager" :item="item"></DeleteButton>
+                        <ChangeButton :item="item" name="name"></ChangeButton>
+                    </b-button-group>
+                </td>
+                <td>
+                    <b-form-input v-model="item.value"></b-form-input>
+                </td>
+                <td>
+                    <b-form-input v-model="item.tag"></b-form-input>
+                </td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr v-if="mutable">
+                <td>
+                    <b-button-group>
+                        <AddButton :manager="manager" name="name" value="value"></AddButton>
+                        <ImportButton :manager="manager" name="Property"></ImportButton>
+                    </b-button-group>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</template>
+
+<script>
+import AddButton from './button/AddButton.vue'
+import ChangeButton from './button/ChangeButton.vue'
+import DeleteButton from './button/DeleteButton.vue'
+import ImportButton from './button/ImportButton.vue'
+
+export default {
+    name: 'PropertyList',
+    components: {
+        AddButton,
+        ChangeButton,
+        DeleteButton,
+        ImportButton,
+    },
+    props: {
+        manager: {
+            type: Object,
+            required: true,
+        },
+        mutable: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+    },
+    data() {
+        return {
+            sortField: 'name',
+            sortAsc: true,
+        }
+    },
+    methods: {
+        sort(field) {
+            this.sortField = field
+            this.sortAsc = !this.sortAsc
+            if (this.sortAsc) {
+                this.manager.list = this.manager.list.sort((one, two) => {
+                    return one[field].localeCompare(two[field])
+                })
+            } else {
+                this.manager.list = this.manager.list.sort((one, two) => {
+                    return two[field].localeCompare(one[field])
+                })
+            }
+        },
+        sortText(field) {
+            if (this.sortField === field) {
+                return this.sortAsc ? 'ascending' : 'descending'
+            }
+            return 'none'
+        },
+    },
+}
+</script>
