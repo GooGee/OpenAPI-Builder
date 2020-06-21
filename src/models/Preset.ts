@@ -4,7 +4,7 @@ import { PropertyManager } from "./Property"
 
 export default class Preset extends UniqueItem {
     description: string = ''
-    readonly PropertyManager = new PropertyManager
+    readonly propertyManager = new PropertyManager
 }
 
 export class PresetManager extends UniqueList<Preset> {

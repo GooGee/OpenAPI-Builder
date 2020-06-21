@@ -39,6 +39,11 @@ export default new Router({
             component: require('@/components/PathPage').default,
         },
         {
+            path: '/preset',
+            name: 'preset',
+            component: require('@/components/Preset').default,
+        },
+        {
             path: '/request',
             name: 'request',
             component: require('@/components/RequestBody').default,

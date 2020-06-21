@@ -11,6 +11,7 @@
 
                     <template v-if="builder.document">
                         <b-nav-item to="/info" active-class="active"> Info </b-nav-item>
+                        <b-nav-item to="/preset" active-class="active"> Preset </b-nav-item>
                         <b-nav-item to="/example" active-class="active"> Example </b-nav-item>
                         <b-nav-item to="/header" active-class="active"> Header </b-nav-item>
                         <b-nav-item to="/parameter" active-class="active"> Parameter </b-nav-item>
