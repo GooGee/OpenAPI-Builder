@@ -2,7 +2,6 @@
     <div>
         <div class="mtp11">
             <h2 class="inline mr11">content</h2>
-            <AddButton :manager="manager" name="name" class="mr11"></AddButton>
             <SelectButton :list="typeList" :manager="manager" name="name" text="name"></SelectButton>
         </div>
         <MediaType v-for="item in manager.list" :item="item" :manager="manager" :key="item.name"></MediaType>
@@ -10,7 +9,6 @@
 </template>
 
 <script>
-import AddButton from '../button/AddButton.vue'
 import MediaType from './MediaType.vue'
 import SelectButton from '../button/SelectButton.vue'
 import builder from '../../states/builder.js'
@@ -18,7 +16,6 @@ import builder from '../../states/builder.js'
 export default {
     name: 'MediaTypeList',
     components: {
-        AddButton,
         MediaType,
         SelectButton,
     },
