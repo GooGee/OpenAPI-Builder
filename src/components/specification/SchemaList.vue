@@ -27,7 +27,6 @@
 <script>
 import AddButton from '../button/AddButton.vue'
 import ImportButton from '../button/ImportButton.vue'
-import dialogue from '../../states/dialogue.js'
 
 export default {
     name: 'SchemaList',

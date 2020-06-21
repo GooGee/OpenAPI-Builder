@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import dialogue from '../../states/component.js'
+import dialogue from '../../states/dialogue.js'
 import AddButton from '../button/AddButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import Reference from './Reference.vue'
@@ -45,7 +45,7 @@ export default {
         show() {
             const cb = ok => {
                 try {
-                    const item = this.manager.make(dialogue.selected.name, dialogue.type)
+                    const item = this.manager.make(dialogue.component.selected.name, dialogue.component.type)
                     this.manager.add(item)
                 } catch (error) {
                     console.error(error)
@@ -58,11 +58,11 @@ export default {
             }
 
             if (this.type) {
-                dialogue.type = this.type
-                dialogue.showOnly(this.title, cb)
+                dialogue.component.type = this.type
+                dialogue.component.showOnly(this.title, cb)
                 return
             }
-            dialogue.show(this.title, cb)
+            dialogue.component.show(this.title, cb)
         },
     },
 }

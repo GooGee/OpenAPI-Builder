@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import dialogue from '../../states/component.js'
+import dialogue from '../../states/dialogue.js'
 
 export default {
     name: 'Reference',
@@ -24,8 +24,8 @@ export default {
         show() {
             const cb = ok => {
                 try {
-                    this.reference.type = dialogue.type
-                    this.reference.name = dialogue.selected.name
+                    this.reference.type = dialogue.component.type
+                    this.reference.name = dialogue.component.selected.name
                 } catch (error) {
                     console.error(error)
                     this.$bvToast.toast(error.message, {
@@ -37,11 +37,11 @@ export default {
             }
 
             if (this.type) {
-                dialogue.type = this.type
-                dialogue.showOnly(this.type, cb)
+                dialogue.component.type = this.type
+                dialogue.component.showOnly(this.type, cb)
                 return
             }
-            dialogue.show(this.type, cb)
+            dialogue.component.show(this.type, cb)
         },
     },
 }

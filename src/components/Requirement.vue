@@ -32,7 +32,7 @@ import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import EditList from './EditList.vue'
 import builder from '../states/builder.js'
-import dialogue from '../states/component.js'
+import dialogue from '../states/dialogue.js'
 
 export default {
     name: 'Requirement',
@@ -49,10 +49,9 @@ export default {
     },
     methods: {
         show() {
-            const type = 'securitySchemes'
-            const cb = ok => {
+            dialogue.list.showList(builder.document.component.securitySchemeManager.list, 'securitySchemes', ok => {
                 try {
-                    const item = this.manager.make(dialogue.selected.name)
+                    const item = this.manager.make(dialogue.list.selected.name)
                     this.manager.add(item)
                 } catch (error) {
                     console.error(error)
@@ -62,10 +61,7 @@ export default {
                         solid: true,
                     })
                 }
-            }
-
-            dialogue.type = type
-            dialogue.showOnly(type, cb)
+            })
         },
     },
 }
