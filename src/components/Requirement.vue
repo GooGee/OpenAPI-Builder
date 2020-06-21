@@ -1,7 +1,7 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h1 class="inline mr11">Security Requirement</h1>
+            <h1 class="inline mr11">SecurityRequirement</h1>
             <b-button @click="show" variant="outline-primary"> + </b-button>
         </caption>
         <thead>

@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <SideBar :manager="manager" title="Security Scheme" class="col-3"></SideBar>
+        <SideBar :manager="manager" title="SecurityScheme" class="col-3"></SideBar>
 
         <div v-if="ready && sidebar.item" class="col-9">
             <SecurityScheme :item="sidebar.item" :manager="manager"></SecurityScheme>

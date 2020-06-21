@@ -4,7 +4,7 @@
             <h1 class="inline mr11">Tag</h1>
             <b-button-group>
                 <AddButton :manager="manager" name="name"></AddButton>
-                <ImportButton :manager="manager"></ImportButton>
+                <ImportButton :manager="manager" name="Tag"></ImportButton>
             </b-button-group>
         </caption>
         <thead>

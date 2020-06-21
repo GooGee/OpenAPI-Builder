@@ -2,12 +2,12 @@
     <b-modal @ok="ok" v-model="dialogue.json.visible" size="xl">
         <template v-slot:modal-header>
             <div>
-                Paste JSON here
-                <a target="_blank" href="https://shancarter.github.io/mr-data-converter/">Tool</a>
+                Paste JSON: Array of
+                <a target="_blank" :href="dialogue.json.url"> {{ dialogue.json.itemName }} </a>
             </div>
+            <a target="_blank" href="https://shancarter.github.io/mr-data-converter/">Tool</a>
         </template>
         <textarea v-model="dialogue.json.text" class="form-control" spellcheck="false" rows="11"></textarea>
-        <div>Example: <pre>[{"name":"xxx"}]</pre></div>
     </b-modal>
 </template>
 

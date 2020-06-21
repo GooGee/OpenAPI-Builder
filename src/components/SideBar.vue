@@ -4,7 +4,7 @@
             <h2 @click="sidebar.item = null" class="inline mr11 button">{{ title }}</h2>
             <b-button-group>
                 <AddButton :manager="manager" :name="name" :value="value"></AddButton>
-                <ImportButton :manager="manager"></ImportButton>
+                <ImportButton :manager="manager" :name="title"></ImportButton>
             </b-button-group>
         </div>
 
