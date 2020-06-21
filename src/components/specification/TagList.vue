@@ -12,7 +12,7 @@
 
 <script>
 import builder from '../../states/builder.js'
-import dialogue from '../../states/list.js'
+import dialogue from '../../states/dialogue.js'
 import AddButton from '../button/AddButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 
@@ -30,9 +30,9 @@ export default {
     },
     methods: {
         show() {
-            dialogue.showList(builder.document.tagManager.list, 'Tag', ok => {
+            dialogue.list.showList(builder.document.tagManager.list, 'Tag', ok => {
                 try {
-                    const item = this.manager.make(dialogue.selected.name)
+                    const item = this.manager.make(dialogue.list.selected.name)
                     this.manager.add(item)
                 } catch (error) {
                     console.error(error)

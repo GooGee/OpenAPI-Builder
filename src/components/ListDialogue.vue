@@ -1,12 +1,12 @@
 <template>
-    <b-modal v-model="dialogue.visible" :title="dialogue.title" hide-footer>
+    <b-modal v-model="dialogue.list.visible" :title="dialogue.list.title" hide-footer>
         <div class="mtb11">
-            <b-form-input v-model="dialogue.keyword" placeholder="Search" autofocus></b-form-input>
+            <b-form-input v-model="dialogue.list.keyword" placeholder="Search" autofocus></b-form-input>
         </div>
 
         <b-list-group>
-            <b-list-group-item v-if="dialogue.showBlank" @click="select(null)" button> ---- </b-list-group-item>
-            <b-list-group-item @click="select(item)" v-for="item in dialogue.filtered" :key="item.name" button>
+            <b-list-group-item v-if="dialogue.list.showBlank" @click="select(null)" button> ---- </b-list-group-item>
+            <b-list-group-item @click="select(item)" v-for="item in dialogue.list.filtered" :key="item.name" button>
                 {{ item.name }}
             </b-list-group-item>
         </b-list-group>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import dialogue from '../states/list.js'
+import dialogue from '../states/dialogue.js'
 
 export default {
     name: 'ListDialogue',
@@ -25,8 +25,8 @@ export default {
     },
     methods: {
         select(item) {
-            dialogue.hide()
-            dialogue.select(item)
+            dialogue.list.hide()
+            dialogue.list.select(item)
         },
     },
 }
