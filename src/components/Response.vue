@@ -29,7 +29,7 @@
                 <ReferenceList :manager="sidebar.item.headerManager" type="headers" title="Header"></ReferenceList>
             </template>
 
-            <Script v-else :manager="manager" name="scriptResponse" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptResponse" item="Response" class="mtb11"></Script>
         </div>
     </div>
 </template>

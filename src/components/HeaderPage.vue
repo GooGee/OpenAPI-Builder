@@ -5,7 +5,7 @@
         <div v-if="ready" class="col-9">
             <Header v-if="sidebar.item" :item="sidebar.item" :manager="manager"></Header>
 
-            <Script v-else :manager="manager" name="scriptHeader" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptHeader" item="Header" class="mtb11"></Script>
         </div>
     </div>
 </template>

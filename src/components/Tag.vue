@@ -29,7 +29,7 @@
         <tfoot>
             <tr>
                 <td colspan="2">
-                    <Script :manager="manager" name="scriptTag"></Script>
+                    <Script :manager="manager" name="scriptTag" item="Tag"></Script>
                 </td>
             </tr>
         </tfoot>

@@ -14,7 +14,7 @@
                 <OperationList :manager="sidebar.item.operationManager"></OperationList>
             </template>
 
-            <Script v-else :manager="manager" name="scriptPath"></Script>
+            <Script v-else :manager="manager" name="scriptPath" item="Path"></Script>
         </div>
     </div>
 </template>

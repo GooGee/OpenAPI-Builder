@@ -1,9 +1,13 @@
 <template>
-    <div class="mtb11">
-        <h2 class="inline mr11">Script</h2>
-        <b-button @click="run" variant="outline-primary"> Run </b-button>
-        <br />
-        <br />
+    <div>
+        <div class="mtb11">
+            <h2 class="inline mr11">Script</h2>
+            <b-button @click="run" variant="outline-primary"> Run </b-button>
+        </div>
+        <div class="mb11">
+            <a target="_blank" :href="url"> {{ item }} </a>
+            <a target="_blank" href="https://googee.github.io/OpenAPI/docs/classes/Document.html"> Document </a>
+        </div>
         <textarea v-model="document[name]" class="form-control" spellcheck="false" rows="22"></textarea>
     </div>
 </template>
@@ -21,6 +25,15 @@ export default {
         name: {
             type: String,
             required: true,
+        },
+        item: {
+            type: String,
+            required: true,
+        },
+    },
+    computed: {
+        url() {
+            return `https://googee.github.io/OpenAPI/docs/classes/${this.item}Manager.html`
         },
     },
     data() {
