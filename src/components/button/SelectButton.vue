@@ -1,5 +1,5 @@
 <template>
-    <b-form-select @change="add" :options="list" class="wa"></b-form-select>
+    <b-form-select @change="add" :options="list" :value-field="name" :text-field="text" class="wa"></b-form-select>
 </template>
 
 <script>
@@ -13,6 +13,16 @@ export default {
         manager: {
             type: Object,
             required: true,
+        },
+        name: {
+            type: String,
+            required: false,
+            default: '',
+        },
+        text: {
+            type: String,
+            required: false,
+            default: '',
         },
     },
     methods: {
