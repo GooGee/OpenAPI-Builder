@@ -2,13 +2,15 @@
     <div>
         <template v-if="editing">
             <select v-model="schema.type" class="form-control">
-                <option v-for="type in typeList" :value="type" :key="type"> {{ type }} </option>
+                <option v-for="type in typeList" :value="type.name" :key="type.name"> {{ type.name }} </option>
             </select>
 
             <template v-if="schema.isPrimitive">
                 <select v-if="schema.type !== 'boolean'" v-model="schema.format" class="form-control">
                     <option value=""> ---- </option>
-                    <option v-for="format in formatList" :value="format" :key="format"> {{ format }} </option>
+                    <option v-for="format in formatList" :value="format.name" :key="format.name">
+                        {{ format.name }}
+                    </option>
                 </select>
             </template>
             <template v-else>
@@ -48,6 +50,7 @@
 <script>
 import Reference from './Reference.vue'
 import SchemaList from './SchemaList.vue'
+import builder from '../../states/builder.js'
 
 export default {
     name: 'SchemaType',
@@ -70,18 +73,23 @@ export default {
             default: false,
         },
     },
+    created() {
+        this.allTypeList = builder.presetManager.find('DataType').propertyManager.list
+        this.formatList = builder.presetManager.find('DataFormat').propertyManager.list
+    },
     computed: {
         typeList() {
             if (this.inComposition) {
-                return ['object', 'reference']
+                return [{ name: 'object' }, { name: 'reference' }]
             }
-            return ['array', 'boolean', 'composition', 'integer', 'number', 'object', 'reference', 'string']
+            return this.allTypeList
         },
     },
     data() {
         return {
+            allTypeList: [],
             itemTypeList: ['boolean', 'integer', 'number', 'reference', 'string'],
-            formatList: ['int32', 'int64', 'float', 'double', 'byte', 'binary', 'date', 'date-time', 'password'],
+            formatList: [],
         }
     },
 }
