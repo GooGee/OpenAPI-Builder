@@ -16,18 +16,25 @@
                     <SchemaType :schema="item.schema" :editing="editing"></SchemaType>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <ReferenceList :manager="item.exampleManager" type="examples" title="examples"></ReferenceList>
+                </td>
+            </tr>
         </tbody>
     </table>
 </template>
 
 <script>
 import DeleteButton from '../button/DeleteButton.vue'
+import ReferenceList from './ReferenceList.vue'
 import SchemaType from './SchemaType.vue'
 
 export default {
     name: 'MediaType',
     components: {
         DeleteButton,
+        ReferenceList,
         SchemaType,
     },
     props: {
