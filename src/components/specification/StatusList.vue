@@ -2,7 +2,6 @@
     <div>
         <div>
             <h2 class="inline mr11">Response</h2>
-            <AddButton :manager="manager" name="status code" class="mr11"></AddButton>
             <SelectButton :list="codeList" :manager="manager" name="name" text="name"></SelectButton>
         </div>
 
@@ -17,7 +16,6 @@
 </template>
 
 <script>
-import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import Reference from './Reference.vue'
@@ -27,7 +25,6 @@ import builder from '../../states/builder.js'
 export default {
     name: 'StatusList',
     components: {
-        AddButton,
         ChangeButton,
         DeleteButton,
         Reference,
