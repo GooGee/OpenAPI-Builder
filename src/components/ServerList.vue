@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <SideBar :manager="manager" title="Server" name="url" class="col-4"></SideBar>
+        <SideBar :manager="manager" title="Server" name="url" value="http://localhost" class="col-4"></SideBar>
 
         <div v-if="ready && sidebar.item" class="col-8">
             <Server :server="sidebar.item" :manager="manager" :key="sidebar.item.url"></Server>
