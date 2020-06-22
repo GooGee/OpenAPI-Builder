@@ -9,7 +9,7 @@
         </div>
 
         <Operation v-if="operation" :item="operation">
-            <DeleteButton :manager="manager" :item="operation"></DeleteButton>
+            <DeleteButton :manager="manager" :item="operation"> {{ operation.name }} </DeleteButton>
         </Operation>
 
         <template v-else>
