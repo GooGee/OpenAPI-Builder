@@ -53,6 +53,12 @@
                     </b-form-radio-group>
                 </td>
             </tr>
+            <tr>
+                <td class="text-right">example</td>
+                <td>
+                    <textarea v-model="item.example" class="form-control" spellcheck="false" rows="4"></textarea>
+                </td>
+            </tr>
         </tbody>
     </table>
 </template>

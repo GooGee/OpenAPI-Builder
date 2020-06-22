@@ -35,7 +35,12 @@
                     <tr>
                         <td class="text-right">value</td>
                         <td>
-                            <b-form-input v-model="sidebar.item.value"></b-form-input>
+                            <textarea
+                                v-model="sidebar.item.value"
+                                class="form-control"
+                                spellcheck="false"
+                                rows="11"
+                            ></textarea>
                         </td>
                     </tr>
                 </tbody>

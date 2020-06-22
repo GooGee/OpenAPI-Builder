@@ -9,6 +9,7 @@ import XML from "./XML"
 export default class Schema extends UniqueItem {
     type: DataType = DataType.string
     format: string = ''
+    example: string = ''
     itemType: DataType = DataType.string
     readonly discriminator = new Discriminator
     readonly reference = new Reference('', ReferenceType.schemas)
