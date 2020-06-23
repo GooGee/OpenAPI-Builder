@@ -3,7 +3,10 @@
         <SideBar :manager="manager" title="Preset" class="col-3"></SideBar>
 
         <div v-if="ready" class="col-9">
-            <PropertyList v-if="sidebar.item" :manager="sidebar.item.propertyManager"></PropertyList>
+            <PropertyList v-if="sidebar.item" :manager="sidebar.item.propertyManager">
+                <h2>{{ sidebar.item.name }}</h2>
+                <b-form-input v-model="sidebar.item.description" placeholder="description"></b-form-input>
+            </PropertyList>
         </div>
     </div>
 </template>

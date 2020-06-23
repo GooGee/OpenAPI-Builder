@@ -1,7 +1,7 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h3>Property</h3>
+            <slot></slot>
         </caption>
         <thead>
             <tr>
