@@ -1,6 +1,6 @@
 <template>
     <b-button @click="show" :variant="reference.name ? 'outline-primary' : 'outline-danger'">
-        {{ reference.name + ' @ ' + reference.type }}
+        {{ reference.text }}
     </b-button>
 </template>
 
