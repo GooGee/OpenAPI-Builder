@@ -23,7 +23,7 @@ export default class Item {
     }
 
     loadItem(me: Item, source: Item) {
-        const names = Object.getOwnPropertyNames(me)
+        const names = Object.getOwnPropertyNames(source)
         names.forEach(name => {
             this.loadProperty(name, me, source)
         })
@@ -34,7 +34,7 @@ export default class Item {
             return
         }
 
-        const descriptor = Object.getOwnPropertyDescriptor(me, name)
+        const descriptor = this.getDescriptor(me, name)
         if (descriptor) {
             if (descriptor.writable) {
                 // ok
@@ -44,18 +44,28 @@ export default class Item {
                 return
             }
 
-            if (source.hasOwnProperty(name)) {
-                if (me[name] instanceof Item) {
-                    this.loadItem(me[name], source[name])
-                } else if (me[name] instanceof ItemList) {
-                    this.loadList(me[name], source[name])
-                } else {
-                    // TypeError: 0 is read-only
-                    // Object.assign(me[name], source[name])
-                    me[name] = source[name]
-                }
+            if (me[name] instanceof Item) {
+                this.loadItem(me[name], source[name])
+            } else if (me[name] instanceof ItemList) {
+                this.loadList(me[name], source[name])
+            } else {
+                // TypeError: 0 is read-only
+                // Object.assign(me[name], source[name])
+                me[name] = source[name]
             }
         }
+    }
+
+    getDescriptor(item: KeyValue, name: string) {
+        let descriptor = null
+        while (item) {
+            descriptor = Object.getOwnPropertyDescriptor(item, name)
+            if (descriptor) {
+                return descriptor
+            }
+            item = Object.getPrototypeOf(item)
+        }
+        return descriptor
     }
 
     loadList(me: ItemList<Item>, source: ItemList<Item>) {
