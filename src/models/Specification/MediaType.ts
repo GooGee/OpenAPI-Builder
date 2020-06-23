@@ -11,8 +11,13 @@ export default class MediaType extends UniqueItem {
     // readonly encodingManager = new EncodingManager
 
     toOAPI() {
+        if (this.exampleManager.list.length > 0) {
+            return {
+                examples: this.exampleManager.toOAPI(),
+                schema: this.schema.toOAPI(),
+            }
+        }
         return {
-            examples: this.exampleManager.toOAPI(),
             schema: this.schema.toOAPI(),
         }
     }

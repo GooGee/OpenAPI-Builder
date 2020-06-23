@@ -31,7 +31,6 @@ export default class Parameter extends UniqueItem {
             return {
                 required: this.required,
                 description: this.description,
-                example: this.example,
                 schema: this.schema.toOAPI()
             }
         }
@@ -41,7 +40,6 @@ export default class Parameter extends UniqueItem {
             required: this.required,
             in: this.location,
             description: this.description,
-            example: this.example,
             schema: this.schema.toOAPI()
         }
     }
