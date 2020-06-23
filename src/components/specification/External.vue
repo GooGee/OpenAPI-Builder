@@ -1,7 +1,7 @@
 <template>
     <table class="table b-table b-table-caption-top">
         <caption>
-            <h1>externalDocs</h1>
+            <h2>externalDocs</h2>
         </caption>
         <tbody>
             <tr>

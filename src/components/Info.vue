@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="info">
         <table class="table b-table b-table-caption-top">
             <caption>
                 <h1 class="inline mr11">Info</h1>
@@ -33,32 +33,48 @@
                         <b-form-input v-model="info.termsOfService"></b-form-input>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+
+        <table class="table b-table b-table-caption-top">
+            <caption>
+                <h2>contact</h2>
+            </caption>
+            <tbody>
                 <tr>
-                    <td class="text-right">contact.name</td>
+                    <td class="text-right">name</td>
                     <td>
                         <b-form-input v-model="info.contact.name"></b-form-input>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-right">contact.url</td>
-                    <td>
-                        <b-form-input v-model="info.contact.url"></b-form-input>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-right">contact.email</td>
+                    <td class="text-right">email</td>
                     <td>
                         <b-form-input v-model="info.contact.email"></b-form-input>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-right">license.name</td>
+                    <td class="text-right">url</td>
+                    <td>
+                        <b-form-input v-model="info.contact.url"></b-form-input>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table b-table b-table-caption-top">
+            <caption>
+                <h2>license</h2>
+            </caption>
+            <tbody>
+                <tr>
+                    <td class="text-right">name</td>
                     <td>
                         <b-form-input v-model="info.license.name"></b-form-input>
                     </td>
                 </tr>
                 <tr>
-                    <td class="text-right">license.url</td>
+                    <td class="text-right">url</td>
                     <td>
                         <b-form-input v-model="info.license.url"></b-form-input>
                     </td>
@@ -118,3 +134,13 @@ export default {
     },
 }
 </script>
+
+<style>
+#info caption {
+    padding-left: 44px;
+}
+
+#info td.text-right {
+    width: 222px;
+}
+</style>
