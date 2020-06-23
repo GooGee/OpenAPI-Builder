@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h2 class="inline mr11">{{ title }}</h2>
+            <slot></slot>
             <b-button @click="show" variant="outline-primary"> + </b-button>
         </div>
         <div v-for="item in manager.list" :key="item.name" class="mtb11">
@@ -36,10 +36,6 @@ export default {
             required: false,
             default: '',
         },
-        title: {
-            type: String,
-            required: true,
-        },
     },
     methods: {
         show() {
@@ -59,10 +55,10 @@ export default {
 
             if (this.type) {
                 dialogue.component.type = this.type
-                dialogue.component.showOnly(this.title, cb)
+                dialogue.component.showOnly(this.type, cb)
                 return
             }
-            dialogue.component.show(this.title, cb)
+            dialogue.component.show(this.type, cb)
         },
     },
 }

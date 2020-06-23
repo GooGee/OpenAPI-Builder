@@ -23,10 +23,12 @@
                         </tr>
                     </tbody>
                 </table>
-    
+
                 <MediaTypeList :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
-    
-                <ReferenceList :manager="sidebar.item.headerManager" type="headers" title="Header"></ReferenceList>
+
+                <ReferenceList :manager="sidebar.item.headerManager" type="headers">
+                    <h2 class="inline mr11">headers</h2>
+                </ReferenceList>
             </template>
 
             <Script v-else :manager="manager" name="scriptResponse" item="Response" class="mtb11"></Script>

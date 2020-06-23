@@ -17,8 +17,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <ReferenceList :manager="item.exampleManager" type="examples" title="examples"></ReferenceList>
+                <td>examples</td>
+                <td>
+                    <ReferenceList :manager="item.exampleManager" type="examples"></ReferenceList>
                 </td>
             </tr>
         </tbody>

@@ -38,7 +38,9 @@
             </tbody>
         </table>
 
-        <ReferenceList :manager="item.parameterManager" type="parameters" title="Parameter"></ReferenceList>
+        <ReferenceList :manager="item.parameterManager" type="parameters">
+            <h2 class="inline mr11">parameters</h2>
+        </ReferenceList>
 
         <StatusList :manager="item.statusManager"></StatusList>
 
