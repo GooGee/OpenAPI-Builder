@@ -7,14 +7,20 @@ import Discriminator from "./Discriminator"
 import XML from "./XML"
 
 export default class Schema extends UniqueItem {
+    // deprecated: boolean = false
+    // nullable: boolean = false
+    // readOnly: boolean = false
+    // writeOnly: boolean = false
+
     type: DataType = DataType.string
     format: string = ''
     example: string = ''
     itemType: DataType = DataType.string
-    readonly discriminator = new Discriminator
+
+    // readonly discriminator = new Discriminator
     readonly reference = new Reference('', ReferenceType.schemas)
     readonly schemaManager = new SchemaManager
-    readonly xml = new XML
+    // readonly xml = new XML
 
     get isPrimitive() {
         return isPrimitive(this.type)
@@ -53,6 +59,7 @@ export default class Schema extends UniqueItem {
 
         if (this.type === DataType.object) {
             return {
+                example: this.example,
                 type: this.type,
                 properties: this.schemaManager.toOAPI()
             }

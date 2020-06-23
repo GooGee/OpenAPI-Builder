@@ -6,6 +6,17 @@
             <table v-if="sidebar.item" class="table">
                 <tbody>
                     <Schema :schema="sidebar.item" :manager="manager"></Schema>
+                    <tr>
+                        <td class="text-right">example</td>
+                        <td>
+                            <textarea
+                                v-model="sidebar.item.example"
+                                class="form-control"
+                                spellcheck="false"
+                                rows="11"
+                            ></textarea>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
