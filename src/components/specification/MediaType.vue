@@ -4,7 +4,10 @@
             <tr>
                 <td width="111px"></td>
                 <td>
-                    <DeleteButton :manager="manager" :item="item">{{ item.name }}</DeleteButton>
+                    <b-button-group>
+                        <DeleteButton :manager="manager" :item="item"></DeleteButton>
+                        <b-button variant="outline-secondary"> {{ item.name }} </b-button>
+                    </b-button-group>
                 </td>
             </tr>
             <tr>

@@ -5,7 +5,10 @@
             <b-button @click="show" variant="outline-primary"> + </b-button>
         </div>
         <div v-for="item in manager.list" :key="item.name" class="mtb11">
-            <DeleteButton :manager="manager" :item="item">{{ item.name }}</DeleteButton>
+            <b-button-group>
+                <DeleteButton :manager="manager" :item="item"></DeleteButton>
+                <b-button variant="outline-secondary"> {{ item.name }} </b-button>
+            </b-button-group>
         </div>
     </div>
 </template>

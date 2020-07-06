@@ -9,7 +9,10 @@
         </div>
 
         <Operation v-if="operation" :item="operation">
-            <DeleteButton :manager="manager" :item="operation"> {{ operation.name }} </DeleteButton>
+            <b-button-group>
+                <DeleteButton :manager="manager" :item="operation"></DeleteButton>
+                <b-button variant="outline-secondary"> {{ operation.name }} </b-button>
+            </b-button-group>
         </Operation>
 
         <template v-else>
@@ -38,7 +41,7 @@ export default {
     data() {
         return {
             type: 'get',
-            typeList: ['get', 'delete', 'options', 'patch', 'post', 'put'],
+            typeList: ['get', 'delete', 'head', 'options', 'patch', 'post', 'put', 'trace'],
         }
     },
     computed: {
