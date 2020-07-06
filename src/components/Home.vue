@@ -5,7 +5,7 @@
                 <img src="logo.svg" alt="logo" style="width: 222px;" />
             </div>
             <h1>{{ title }}</h1>
-            <p>3.0.0</p>
+            <p>{{ builder.OAPI }}</p>
             <div>
                 <b-button-group>
                     <b-button @click="create" variant="outline-primary"> New </b-button>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import builder from '../states/builder.js'
+import builder, { load } from '../states/builder.js'
 
 export default {
     name: 'Home',
@@ -55,7 +55,7 @@ export default {
             reader.onload = event => {
                 try {
                     const data = JSON.parse(event.target.result)
-                    builder.load(data)
+                    load(data)
                     this.$router.push('/info')
                 } catch (error) {
                     console.error(error)

@@ -4,7 +4,8 @@ import { PresetManager } from "./Preset"
 
 export default class Builder extends Item {
     readonly extention = '.oapib'
-    readonly version: string = process.env.VUE_APP_VERSION || '0.0.0'
+    readonly OAPI: String = '3.0.0'
+    readonly version: Number = 1
     readonly presetManager = new PresetManager
     preset: Builder | null = null
     document: Document | null = null
