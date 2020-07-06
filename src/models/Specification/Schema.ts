@@ -5,6 +5,7 @@ import Reference, { ReferenceType } from "./Reference"
 import { DataType, isPrimitive } from "./DataType"
 import Discriminator from "./Discriminator"
 import XML from "./XML"
+import { NameValueManager } from "./NameValue"
 
 export default class Schema extends UniqueItem {
     // deprecated: boolean = false
@@ -18,6 +19,7 @@ export default class Schema extends UniqueItem {
     itemType: DataType = DataType.string
 
     // readonly discriminator = new Discriminator
+    readonly operationManager = new NameValueManager()
     readonly reference = new Reference('', ReferenceType.schemas)
     readonly schemaManager = new SchemaManager
     // readonly xml = new XML

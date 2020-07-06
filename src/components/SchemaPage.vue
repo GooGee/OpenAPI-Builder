@@ -7,6 +7,12 @@
                 <tbody>
                     <Schema :schema="sidebar.item" :manager="manager"></Schema>
                     <tr>
+                        <td class="text-right">With</td>
+                        <td>
+                            <ItemManager :manager="sidebar.item.operationManager" :list="list"></ItemManager>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="text-right">example</td>
                         <td>
                             <textarea
@@ -26,6 +32,7 @@
 </template>
 
 <script>
+import ItemManager from './ItemManager.vue'
 import SideBar from './SideBar.vue'
 import Script from './Script.vue'
 import Schema from './specification/Schema.vue'
@@ -35,6 +42,7 @@ import sidebar from '../states/sidebar.js'
 export default {
     name: 'SchemaPage',
     components: {
+        ItemManager,
         SideBar,
         Schema,
         Script,
@@ -43,6 +51,8 @@ export default {
         return {
             sidebar,
             ready: false,
+            type: '',
+            list: builder.presetManager.find('SchemaWithOperation').propertyManager.list,
             manager: builder.document.component.schemaManager,
         }
     },
