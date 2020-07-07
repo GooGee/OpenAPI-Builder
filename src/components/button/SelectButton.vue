@@ -21,12 +21,15 @@ export default {
         name: {
             type: String,
             required: false,
-            default: '',
         },
         text: {
             type: String,
             required: false,
-            default: '',
+        },
+        callback: {
+            type: Function,
+            required: false,
+            default: null,
         },
     },
     data() {
@@ -38,8 +41,13 @@ export default {
         add(name) {
             if (name) {
                 try {
-                    const item = this.manager.make(name)
-                    this.manager.add(item)
+                    if (this.callback) {
+                        const item = this.list.find(one => one.name === name)
+                        this.callback(item, this.manager)
+                    } else {
+                        const item = this.manager.make(name)
+                        this.manager.add(item)
+                    }
                     this.selected = ''
                 } catch (error) {
                     console.error(error)
