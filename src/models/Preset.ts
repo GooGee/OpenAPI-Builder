@@ -3,6 +3,7 @@ import UniqueList from "./Base/UniqueList"
 import { PropertyManager } from "./Property"
 
 export default class Preset extends UniqueItem {
+    custom: Boolean = true
     description: string = ''
     readonly propertyManager = new PropertyManager
 }
