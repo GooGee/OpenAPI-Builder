@@ -9,7 +9,18 @@
                     <tr>
                         <td class="text-right">With</td>
                         <td>
-                            <ItemManager :manager="sidebar.item.operationManager" :list="list"></ItemManager>
+                            <SelectButton
+                                :manager="sidebar.item.operationManager"
+                                :list="list"
+                                name="name"
+                                text="name"
+                            ></SelectButton>
+                            <div v-for="item in sidebar.item.operationManager.list" :key="item.name" class="mtb11">
+                                <b-button-group>
+                                    <DeleteButton :manager="sidebar.item.operationManager" :item="item"></DeleteButton>
+                                    <b-button variant="outline-secondary"> {{ item.name }} </b-button>
+                                </b-button-group>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -32,7 +43,8 @@
 </template>
 
 <script>
-import ItemManager from './ItemManager.vue'
+import DeleteButton from './button/DeleteButton.vue'
+import SelectButton from './button/SelectButton.vue'
 import SideBar from './SideBar.vue'
 import Script from './Script.vue'
 import Schema from './specification/Schema.vue'
@@ -42,7 +54,8 @@ import sidebar from '../states/sidebar.js'
 export default {
     name: 'SchemaPage',
     components: {
-        ItemManager,
+        DeleteButton,
+        SelectButton,
         SideBar,
         Schema,
         Script,
