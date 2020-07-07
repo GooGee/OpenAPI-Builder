@@ -1,22 +1,25 @@
 <template>
-    <div>
+    <div class="mtb11">
+        <slot name="header"></slot>
+
         <div v-if="editing">
             <b-button @click="editing = false" variant="outline-primary"> OK </b-button>
 
             <div v-for="item in manager.list" :key="item.name" class="mtb11">
                 <b-button-group>
                     <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                    <ChangeButton :item="item" name="name"></ChangeButton>
+                    <ChangeButton v-if="withedit" :item="item" name="name"></ChangeButton>
+                    <b-button v-else variant="outline-secondary"> {{ item.name }} </b-button>
                 </b-button-group>
             </div>
 
-            <AddButton :manager="manager" name="name"></AddButton>
+            <AddButton v-if="withadd" :manager="manager" name="name"></AddButton>
         </div>
 
-        <div v-else @click="editing = true">
-            <span>....</span>
-            <div v-for="item in manager.list" :key="item.name">{{ item.name }}</div>
-        </div>
+        <ul v-else @click="editing = true">
+            <li v-if="withadd" style="list-style-type: none;"> + </li>
+            <li v-for="item in manager.list" :key="item.name">{{ item.name }}</li>
+        </ul>
     </div>
 </template>
 
@@ -36,6 +39,16 @@ export default {
         manager: {
             type: Object,
             required: true,
+        },
+        withadd: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+        withedit: {
+            type: Boolean,
+            required: false,
+            default: true,
         },
     },
     data() {

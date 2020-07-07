@@ -4,12 +4,7 @@
             <slot></slot>
             <b-button @click="show" variant="outline-primary"> + </b-button>
         </div>
-        <div v-for="item in manager.list" :key="item.name" class="mtb11">
-            <b-button-group>
-                <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                <Reference :reference="item" :type="type"></Reference>
-            </b-button-group>
-        </div>
+        <EditList :manager="manager" :withadd="false" :withedit="false"></EditList>
     </div>
 </template>
 
@@ -17,6 +12,7 @@
 import dialogue from '../../states/dialogue.js'
 import AddButton from '../button/AddButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import EditList from '../EditList.vue'
 import Reference from './Reference.vue'
 
 export default {
@@ -24,6 +20,7 @@ export default {
     components: {
         AddButton,
         DeleteButton,
+        EditList,
         Reference,
     },
     props: {

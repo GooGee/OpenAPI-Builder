@@ -7,7 +7,7 @@
                 <tbody>
                     <Schema :schema="sidebar.item" :manager="manager"></Schema>
                     <tr>
-                        <td class="text-right">With</td>
+                        <td class="text-right">with</td>
                         <td>
                             <div>
                                 <SelectButton
@@ -19,12 +19,11 @@
                                 ></SelectButton>
                                 <b-button @click="all" variant="outline-primary"> All </b-button>
                             </div>
-                            <div v-for="item in sidebar.item.operationManager.list" :key="item.name" class="mtb11">
-                                <b-button-group>
-                                    <DeleteButton :manager="sidebar.item.operationManager" :item="item"></DeleteButton>
-                                    <b-button variant="outline-secondary"> {{ item.name }} </b-button>
-                                </b-button-group>
-                            </div>
+                            <EditList
+                                :manager="sidebar.item.operationManager"
+                                :withadd="false"
+                                :withedit="false"
+                            ></EditList>
                         </td>
                     </tr>
                     <tr>
@@ -51,6 +50,7 @@
 <script>
 import DeleteButton from './button/DeleteButton.vue'
 import SelectButton from './button/SelectButton.vue'
+import EditList from './EditList.vue'
 import SideBar from './SideBar.vue'
 import Script from './Script.vue'
 import Schema from './specification/Schema.vue'
@@ -62,6 +62,7 @@ export default {
     components: {
         DeleteButton,
         SelectButton,
+        EditList,
         SideBar,
         Schema,
         Script,

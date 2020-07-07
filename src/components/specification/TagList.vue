@@ -1,14 +1,23 @@
 <template>
-    <ItemManager :manager="manager" :list="list" title="Tag"></ItemManager>
+    <div>
+        <h2 class="inline mr11">Tag</h2>
+        <SelectButton :manager="manager" :list="list" name="name" text="name"></SelectButton>
+
+        <EditList :manager="manager" :withadd="false" :withedit="false"></EditList>
+    </div>
 </template>
 
 <script>
 import builder from '../../states/builder.js'
-import ItemManager from '../ItemManager.vue'
+import EditList from '../EditList.vue'
+import SelectButton from '../button/SelectButton.vue'
 
 export default {
     name: 'TagList',
-    components: { ItemManager },
+    components: {
+        EditList,
+        SelectButton,
+    },
     props: {
         manager: {
             type: Object,
