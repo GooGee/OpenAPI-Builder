@@ -60,8 +60,14 @@ export default class Schema extends UniqueItem {
         }
 
         if (this.type === DataType.object) {
+            if (this.example) {
+                return {
+                    example: this.example,
+                    type: this.type,
+                    properties: this.schemaManager.toOAPI()
+                }
+            }
             return {
-                example: this.example,
                 type: this.type,
                 properties: this.schemaManager.toOAPI()
             }
