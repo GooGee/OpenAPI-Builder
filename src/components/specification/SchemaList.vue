@@ -19,7 +19,15 @@
                     <AddButton v-else :manager="manager" name=""></AddButton>
                 </td>
                 <td>
-                    <SelectButton :manager="manager" :list="list" :callback="add" name="name" text="name"></SelectButton>
+                    <SelectButton
+                        :manager="manager"
+                        :list="list"
+                        :callback="add"
+                        name="name"
+                        text="name"
+                        class="mr11"
+                    ></SelectButton>
+                    <b-form-select @change="addId" :options="schemaxx" class="wa"></b-form-select>
                 </td>
             </tr>
         </tfoot>
@@ -62,11 +70,23 @@ export default {
             list: builder.presetManager.find('CommonName').propertyManager.list,
         }
     },
+    computed: {
+        schemaxx() {
+            return builder.document.component.schemaManager.list.map(schema => {
+                return schema.name + '_id'
+            })
+        },
+    },
     methods: {
         add(schema, manager) {
             const item = manager.make(schema.name)
             item.type = schema.tag
             manager.add(item)
+        },
+        addId(name) {
+            const item = this.manager.make(name)
+            item.type = 'number'
+            this.manager.add(item)
         },
     },
 }
