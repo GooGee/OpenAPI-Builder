@@ -9,12 +9,16 @@
                     <tr>
                         <td class="text-right">With</td>
                         <td>
-                            <SelectButton
-                                :manager="sidebar.item.operationManager"
-                                :list="list"
-                                name="name"
-                                text="name"
-                            ></SelectButton>
+                            <div>
+                                <SelectButton
+                                    :manager="sidebar.item.operationManager"
+                                    :list="list"
+                                    name="name"
+                                    text="name"
+                                    class="mr11"
+                                ></SelectButton>
+                                <b-button @click="all" variant="outline-primary"> All </b-button>
+                            </div>
                             <div v-for="item in sidebar.item.operationManager.list" :key="item.name" class="mtb11">
                                 <b-button-group>
                                     <DeleteButton :manager="sidebar.item.operationManager" :item="item"></DeleteButton>
@@ -71,6 +75,17 @@ export default {
     },
     mounted() {
         this.ready = true
+    },
+    methods: {
+        all() {
+            this.list.forEach(one => {
+                const item = sidebar.item.operationManager.make(one.name)
+                if (sidebar.item.operationManager.find(one.name)) {
+                    return
+                }
+                sidebar.item.operationManager.add(item)
+            })
+        },
     },
 }
 </script>
