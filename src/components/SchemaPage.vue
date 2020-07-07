@@ -30,9 +30,11 @@
                     <tr>
                         <td class="text-right">example</td>
                         <td>
+                            <b-form-checkbox v-model="visible" name="check-button" size="lg" switch></b-form-checkbox>
                             <textarea
+                                v-if="visible"
                                 v-model="sidebar.item.example"
-                                class="form-control"
+                                class="form-control mtb11"
                                 spellcheck="false"
                                 rows="11"
                             ></textarea>
@@ -68,7 +70,7 @@ export default {
         return {
             sidebar,
             ready: false,
-            type: '',
+            visible: false,
             list: builder.presetManager.find('SchemaWithOperation').propertyManager.list,
             manager: builder.document.component.schemaManager,
         }
