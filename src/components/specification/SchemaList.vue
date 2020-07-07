@@ -18,21 +18,26 @@
                     </b-button-group>
                     <AddButton v-else :manager="manager" name=""></AddButton>
                 </td>
-                <td></td>
+                <td>
+                    <SelectButton :manager="manager" :list="list" :callback="add" name="name" text="name"></SelectButton>
+                </td>
             </tr>
         </tfoot>
     </table>
 </template>
 
 <script>
+import builder from '../../states/builder.js'
 import AddButton from '../button/AddButton.vue'
 import ImportButton from '../button/ImportButton.vue'
+import SelectButton from '../button/SelectButton.vue'
 
 export default {
     name: 'SchemaList',
     components: {
         AddButton,
         ImportButton,
+        SelectButton,
     },
     beforeCreate() {
         this.$options.components.Schema = require('./Schema').default
@@ -50,6 +55,18 @@ export default {
             type: String,
             required: false,
             default: 'object',
+        },
+    },
+    data() {
+        return {
+            list: builder.presetManager.find('CommonName').propertyManager.list,
+        }
+    },
+    methods: {
+        add(schema, manager) {
+            const item = manager.make(schema.name)
+            item.type = schema.tag
+            manager.add(item)
         },
     },
 }

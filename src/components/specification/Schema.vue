@@ -7,7 +7,7 @@
                 <ChangeButton v-if="type === 'object'" :item="schema" name="name"></ChangeButton>
             </b-button-group>
         </td>
-        <td v-else @click="editing = true" class="schema-name">
+        <td v-else @click="editing = true" class="schema-name text-right">
             <span v-if="type === 'object'">{{ schema.name }}</span>
         </td>
 
