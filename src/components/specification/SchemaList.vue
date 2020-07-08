@@ -90,6 +90,7 @@ export default {
         add(schema, manager) {
             const item = manager.make(schema.name)
             item.type = schema.tag
+            item.load(schema.data)
             manager.add(item)
         },
         addId(name) {
