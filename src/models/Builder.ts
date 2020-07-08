@@ -12,11 +12,13 @@ export default class Builder extends Item {
     protected static IgnoreList = Item.IgnoreList.concat(['preset'])
 
     make(name: string) {
+        this.presetManager.clear()
         this.load(this.preset!)
         this.document!.info.title = name
     }
 
     load(data: Builder) {
+        this.presetManager.clear()
         this.document = new Document
         super.load(data)
     }
