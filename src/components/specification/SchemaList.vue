@@ -6,6 +6,7 @@
                 :schema="schema"
                 :manager="manager"
                 :type="type"
+                :done="editing"
                 :key="schema.name"
             ></Schema>
         </tbody>

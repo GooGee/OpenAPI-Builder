@@ -43,11 +43,21 @@ export default {
             required: false,
             default: 'object',
         },
+        done: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     data() {
         return {
             editing: false,
         }
+    },
+    watch: {
+        done() {
+            this.editing = false
+        },
     },
 }
 </script>
