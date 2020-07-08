@@ -1,6 +1,7 @@
 import Item from "./Base/Item"
 import Document from "./Specification/Document"
 import { PresetManager } from "./Preset"
+import { dataTypeList } from "./Specification/DataType"
 
 export default class Builder extends Item {
     readonly extention = '.oapib'
@@ -10,6 +11,10 @@ export default class Builder extends Item {
     preset: Builder | null = null
     document: Document | null = null
     protected static IgnoreList = Item.IgnoreList.concat(['preset'])
+
+    get dataTypeList() {
+        return dataTypeList()
+    }
 
     make(name: string) {
         this.presetManager.clear()
