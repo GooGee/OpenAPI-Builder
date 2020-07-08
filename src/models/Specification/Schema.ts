@@ -2,7 +2,7 @@ import KeyValue from "../Base/KeyValue"
 import UniqueItem from "../Base/UniqueItem"
 import UniqueList from "../Base/UniqueList"
 import Reference, { ReferenceType } from "./Reference"
-import { DataType, isPrimitive } from "./DataType"
+import { DataType, isComposition, isPrimitive } from "./DataType"
 import Discriminator from "./Discriminator"
 import XML from "./XML"
 import { NameValueManager } from "./NameValue"
@@ -25,12 +25,16 @@ export default class Schema extends UniqueItem {
     readonly schemaManager = new SchemaManager
     // readonly xml = new XML
 
-    get isPrimitive() {
-        return isPrimitive(this.type)
+    get isComposition() {
+        return isComposition(this.type)
     }
 
     get isItemReference() {
         return this.itemType === DataType.reference
+    }
+
+    get isPrimitive() {
+        return isPrimitive(this.type)
     }
 
     toOAPI(): KeyValue {
@@ -53,11 +57,11 @@ export default class Schema extends UniqueItem {
             }
         }
 
-        if (this.type === DataType.composition) {
+        if (this.isComposition) {
             const list = this.schemaManager.list.map(item => item.toOAPI())
-            return {
-                allOf: list
-            }
+            const data: KeyValue = {}
+            data[this.type] = list
+            return data
         }
 
         if (this.type === DataType.object) {
