@@ -1,0 +1,669 @@
+{
+    "extention": ".oapib",
+    "OAPI": "3.0.0",
+    "version": 1,
+    "presetManager": {
+        "list": [
+            {
+                "_name": "HttpStatus",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "_name": "200",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "401",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "403",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "404",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "422",
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "_name": "MediaType",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "_name": "application/json",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "application/xml",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "multipart/form-data",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "text/plain",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "*/*",
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "_name": "DataFormat",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "_name": "int32",
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "_name": "int64",
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "_name": "float",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "_name": "double",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "_name": "byte",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "binary",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "date",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "date-time",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "password",
+                            "tag": "string",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "_name": "SchemaWithOperation",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "_name": "Get",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "GetList",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "Post",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "Patch",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "Delete",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "Tag",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "Id-Path",
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "_name": "Id-Query",
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "_name": "CommonName",
+                "custom": false,
+                "description": "",
+                "propertyManager": {
+                    "list": [
+                        {
+                            "_name": "category_id",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "_name": "id",
+                            "tag": "number",
+                            "value": "",
+                            "data": {
+                                "required": false
+                            }
+                        },
+                        {
+                            "_name": "image",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "link",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "name",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "parent_id",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "_name": "status",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "_name": "title",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "type",
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "_name": "url",
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "_name": "user_id",
+                            "tag": "number",
+                            "value": "",
+                            "data": {
+                                "required": false
+                            }
+                        },
+                        {
+                            "_name": "created_at",
+                            "tag": "string",
+                            "value": "",
+                            "data": {
+                                "format": "date-time",
+                                "required": false
+                            }
+                        },
+                        {
+                            "_name": "updated_at",
+                            "tag": "string",
+                            "value": "",
+                            "data": {
+                                "format": "date-time",
+                                "required": false
+                            }
+                        },
+                        {
+                            "_name": "deleted_at",
+                            "tag": "string",
+                            "value": "",
+                            "data": {
+                                "format": "date-time",
+                                "required": false
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "document": {
+        "script": "",
+        "scriptPath": "function run(manager, document) {\n    const addTag = (operation, schema) => {\n        if (schema.operationManager.find('Tag') === undefined) {\n            return\n        }\n\n        const tag = operation.tagManager.make(schema.name)\n        operation.tagManager.add(tag)\n    }\n\n    const addParameter = operation => {\n        const id = operation.parameterManager.make('id')\n        operation.parameterManager.add(id)\n    }\n\n    const addResponse = (operation, status, name) => {\n        const ok = operation.statusManager.make(status)\n        operation.statusManager.add(ok)\n        ok.response.name = name\n    }\n\n    const makeOperation = (manager, method) => {\n        const operation = manager.make(method)\n        manager.add(operation)\n        return operation\n    }\n\n    const makePath = schema => {\n        const path = manager.make('/' + schema.name)\n        if (schema.operationManager.find('GetList')) {\n            const operation = makeOperation(path.operationManager, 'get')\n            operation.summary = 'get ' + schema.name + ' list'\n            addTag(operation, schema)\n            addResponse(operation, '200', schema.name + 'List')\n        }\n        if (schema.operationManager.find('Post')) {\n            const operation = makeOperation(path.operationManager, 'post')\n            operation.requestBody.name = schema.name\n            operation.summary = 'create ' + schema.name\n            addTag(operation, schema)\n            addResponse(operation, '200', schema.name)\n            addResponse(operation, '422', 'Response422')\n        }\n        if (manager.find(path.name) === undefined) {\n            if (path.operationManager.list.length > 0) {\n                manager.add(path)\n            }\n        }\n\n        const pathOne = manager.make(`/${schema.name}/{id}`)\n        if (schema.operationManager.find('Get')) {\n            const operation = makeOperation(pathOne.operationManager, 'get')\n            operation.summary = 'get ' + schema.name\n            addTag(operation, schema)\n            addParameter(operation)\n            addResponse(operation, '200', schema.name)\n            addResponse(operation, '404', 'Response404')\n        }\n        if (schema.operationManager.find('Delete')) {\n            const operation = makeOperation(pathOne.operationManager, 'delete')\n            operation.summary = 'delete ' + schema.name\n            addTag(operation, schema)\n            addParameter(operation)\n            addResponse(operation, '200', 'Response')\n            addResponse(operation, '404', 'Response404')\n        }\n        if (schema.operationManager.find('Patch') || schema.operationManager.find('Put')) {\n            const operation = makeOperation(pathOne.operationManager, 'patch')\n            operation.requestBody.name = schema.name\n            operation.summary = 'patch ' + schema.name\n            addTag(operation, schema)\n            addParameter(operation)\n            addResponse(operation, '200', schema.name)\n            addResponse(operation, '404', 'Response404')\n            addResponse(operation, '422', 'Response422')\n        }\n        if (manager.find(pathOne.name) === undefined) {\n            if (pathOne.operationManager.list.length > 0) {\n                manager.add(pathOne)\n            }\n        }\n    }\n\n    document.component.schemaManager.list.forEach(schema => {\n        makePath(schema)\n    })\n}",
+        "scriptTag": "function run(manager, document) {\n    document.component.schemaManager.list.forEach(schema => {\n        if (schema.operationManager.find('Tag') === undefined) {\n            return\n        }\n        const found = manager.find(schema.name)\n        if (found) {\n            return\n        }\n\n        const tag = manager.make(schema.name)\n        manager.add(tag)\n    })\n}",
+        "scriptExample": "function run(manager, document) {\n    manager.list.forEach(item => {\n        console.log(item.name)\n    })\n}",
+        "scriptHeader": "function run(manager, document) {\n    manager.list.forEach(item => {\n        console.log(item.name)\n    })\n}",
+        "scriptParameter": "function run(manager, document) {\n    const makeParameter = (name, location) => {\n        const found = manager.find(name)\n        if (found) {\n            return\n        }\n\n        const parameter = manager.make(name)\n        manager.add(parameter)\n        parameter.location = location\n    }\n\n    document.component.schemaManager.list.forEach(schema => {\n        if (schema.operationManager.find('Id-Path')) {\n            makeParameter(schema.name + '_id', 'path')\n        }\n        if (schema.operationManager.find('Id-Query')) {\n            makeParameter('-' + schema.name + '_id', 'query')\n        }\n    })\n}",
+        "scriptRequestBody": "function run(manager, document) {\n    const makeMediaType = (name, manager) => {\n        const MediaType = 'application/json'\n        const mt = manager.make(MediaType)\n        manager.add(mt)\n        mt.schema.type = 'reference'\n        mt.schema.reference.name = name\n    }\n\n    const makeRequestBody = schema => {\n        // if schema has these operations, then make a RequestBody\n        const none = ['Patch', 'Post', 'Put'].every(method => {\n            return schema.operationManager.find(method) === undefined\n        })\n        if (none) {\n            return\n        }\n        const found = manager.find(schema.name)\n        if (found) {\n            return\n        }\n\n        const rb = manager.make(schema.name)\n        manager.add(rb)\n        rb.description = schema.name\n        makeMediaType(schema.name, rb.mediaTypeManager)\n    }\n\n    document.component.schemaManager.list.forEach(schema => {\n        makeRequestBody(schema)\n    })\n}",
+        "scriptResponse": "function run(manager, document) {\n    const makeMediaType = (name, manager) => {\n        const MediaType = 'application/json'\n        const mt = manager.make(MediaType)\n        manager.add(mt)\n        mt.schema.type = 'allOf'\n        return mt\n    }\n\n    const makeComposition = (name, manager, isList) => {\n        const message = manager.make('message')\n        manager.add(message)\n        message.type = 'reference'\n        message.reference.name = 'Response'\n\n        const data = manager.make('data')\n        manager.add(data)\n        data.type = 'object'\n        const schema = data.schemaManager.make('data')\n        data.schemaManager.add(schema)\n        if (isList) {\n            schema.type = 'array'\n            schema.itemType = 'reference'\n        } else {\n            schema.type = 'reference'\n        }\n        schema.reference.name = name\n    }\n\n    const makeResponse = schema => {\n        // if schema has these operations, then make a Response\n        const none = ['Get', 'Patch', 'Post', 'Put'].every(method => {\n            return schema.operationManager.find(method) === undefined\n        })\n        if (none) {\n            return\n        }\n        const found = manager.find(schema.name)\n        if (found) {\n            return\n        }\n\n        const response = manager.make(schema.name)\n        manager.add(response)\n        response.description = schema.name\n        const mt = makeMediaType(schema.name, response.mediaTypeManager)\n        makeComposition(schema.name, mt.schema.schemaManager)\n    }\n\n    const makeListResponse = schema => {\n        if (schema.operationManager.find('GetList') === undefined) {\n            return\n        }\n        const name = schema.name + 'List'\n        const found = manager.find(name)\n        if (found) {\n            return\n        }\n\n        const response = manager.make(name)\n        manager.add(response)\n        response.description = name\n        const mt = makeMediaType(schema.name, response.mediaTypeManager)\n        makeComposition(schema.name, mt.schema.schemaManager, true)\n    }\n\n    document.component.schemaManager.list.forEach(schema => {\n        makeResponse(schema)\n        makeListResponse(schema)\n    })\n}",
+        "scriptSchema": "function run(manager, document) {\n    manager.list.forEach(item => {\n        console.log(item.name)\n    })\n}",
+        "info": {
+            "contact": {
+                "name": "",
+                "url": "",
+                "email": ""
+            },
+            "description": "",
+            "license": {
+                "name": "",
+                "url": ""
+            },
+            "termsOfService": "",
+            "title": "Project",
+            "version": "0.0.0"
+        },
+        "component": {
+            "callbackManager": {
+                "list": []
+            },
+            "exampleManager": {
+                "list": [
+                    {
+                        "_name": "Response",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": "code: 0\nmessage: ok"
+                    },
+                    {
+                        "_name": "Response404",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": "code: 2\nmessage: Not Found"
+                    },
+                    {
+                        "_name": "Response422",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": "code: 1\nmessage: An error occurred"
+                    }
+                ]
+            },
+            "headerManager": {
+                "list": []
+            },
+            "linkManager": {
+                "list": []
+            },
+            "parameterManager": {
+                "list": [
+                    {
+                        "_name": "id",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "id",
+                        "required": true,
+                        "schema": {
+                            "_name": "id",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "_name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "path"
+                    },
+                    {
+                        "_name": "-id",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "-id",
+                        "required": true,
+                        "schema": {
+                            "_name": "-id",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "_name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "query"
+                    },
+                    {
+                        "_name": "page",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "page",
+                        "required": true,
+                        "schema": {
+                            "_name": "title",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "_name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "path"
+                    },
+                    {
+                        "_name": "-page",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "description": "",
+                        "example": "",
+                        "name2": "-page",
+                        "required": true,
+                        "schema": {
+                            "_name": "-title",
+                            "type": "integer",
+                            "format": "",
+                            "example": "",
+                            "itemType": "string",
+                            "required": true,
+                            "operationManager": {
+                                "list": []
+                            },
+                            "reference": {
+                                "_name": "Schema",
+                                "type": "schemas"
+                            },
+                            "schemaManager": {
+                                "list": []
+                            }
+                        },
+                        "location": "query"
+                    }
+                ]
+            },
+            "requestBodyManager": {
+                "list": []
+            },
+            "responseManager": {
+                "list": [
+                    {
+                        "_name": "Response",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "list": [
+                                {
+                                    "_name": "application/json",
+                                    "schema": {
+                                        "_name": "Schema",
+                                        "type": "reference",
+                                        "format": "",
+                                        "example": "",
+                                        "itemType": "string",
+                                        "required": true,
+                                        "operationManager": {
+                                            "list": []
+                                        },
+                                        "reference": {
+                                            "_name": "Response",
+                                            "type": "schemas"
+                                        },
+                                        "schemaManager": {
+                                            "list": []
+                                        }
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "_name": "Response",
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "_name": "Response404",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "list": [
+                                {
+                                    "_name": "application/json",
+                                    "schema": {
+                                        "_name": "Schema",
+                                        "type": "reference",
+                                        "format": "",
+                                        "example": "",
+                                        "itemType": "string",
+                                        "required": true,
+                                        "operationManager": {
+                                            "list": []
+                                        },
+                                        "reference": {
+                                            "_name": "Response",
+                                            "type": "schemas"
+                                        },
+                                        "schemaManager": {
+                                            "list": []
+                                        }
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "_name": "Response404",
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "_name": "Response422",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "list": [
+                                {
+                                    "_name": "application/json",
+                                    "schema": {
+                                        "_name": "Schema",
+                                        "type": "reference",
+                                        "format": "",
+                                        "example": "",
+                                        "itemType": "string",
+                                        "required": true,
+                                        "operationManager": {
+                                            "list": []
+                                        },
+                                        "reference": {
+                                            "_name": "Response",
+                                            "type": "schemas"
+                                        },
+                                        "schemaManager": {
+                                            "list": []
+                                        }
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "_name": "Response422",
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "schemaManager": {
+                "list": [
+                    {
+                        "_name": "Response",
+                        "type": "object",
+                        "format": "",
+                        "example": "",
+                        "itemType": "string",
+                        "required": true,
+                        "operationManager": {
+                            "list": []
+                        },
+                        "reference": {
+                            "_name": "Schema",
+                            "type": "schemas"
+                        },
+                        "schemaManager": {
+                            "list": [
+                                {
+                                    "_name": "code",
+                                    "type": "integer",
+                                    "format": "",
+                                    "example": "",
+                                    "itemType": "string",
+                                    "required": true,
+                                    "operationManager": {
+                                        "list": []
+                                    },
+                                    "reference": {
+                                        "_name": "Schema",
+                                        "type": "schemas"
+                                    },
+                                    "schemaManager": {
+                                        "list": []
+                                    }
+                                },
+                                {
+                                    "_name": "message",
+                                    "type": "string",
+                                    "format": "",
+                                    "example": "",
+                                    "itemType": "string",
+                                    "required": true,
+                                    "operationManager": {
+                                        "list": []
+                                    },
+                                    "reference": {
+                                        "_name": "Schema",
+                                        "type": "schemas"
+                                    },
+                                    "schemaManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "securitySchemeManager": {
+                "list": []
+            }
+        },
+        "externalDocs": {
+            "description": "",
+            "url": ""
+        },
+        "pathManager": {
+            "list": []
+        },
+        "securityManager": {
+            "list": []
+        },
+        "serverManager": {
+            "list": []
+        },
+        "tagManager": {
+            "list": []
+        }
+    }
+}
