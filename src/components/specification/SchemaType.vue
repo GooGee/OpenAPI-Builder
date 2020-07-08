@@ -23,8 +23,13 @@
 
                 <Reference v-if="schema.type === 'reference'" :reference="schema.reference"></Reference>
 
-                <template v-if="schema.type === 'composition' || schema.type === 'object'">
-                    <SchemaList :manager="schema.schemaManager" :editing="editing" :type="schema.type"></SchemaList>
+                <template v-if="schema.isComposition || schema.type === 'object'">
+                    <SchemaList
+                        :manager="schema.schemaManager"
+                        :editing="editing"
+                        :type="schema.type"
+                        :inComposition="schema.isComposition"
+                    ></SchemaList>
                 </template>
             </template>
         </template>
@@ -38,7 +43,7 @@
 
                 <div v-if="schema.type === 'reference'">{{ schema.reference.text }}</div>
 
-                <template v-if="schema.type === 'composition' || schema.type === 'object'">
+                <template v-if="schema.isComposition || schema.type === 'object'">
                     <div class="mb11">{{ schema.type }}</div>
                     <SchemaList :manager="schema.schemaManager" :editing="editing" :type="schema.type"></SchemaList>
                 </template>
@@ -74,7 +79,6 @@ export default {
         },
     },
     created() {
-        this.allTypeList = builder.presetManager.find('DataType').propertyManager.list
         this.formatList = builder.presetManager.find('DataFormat').propertyManager.list
     },
     computed: {
@@ -87,7 +91,7 @@ export default {
     },
     data() {
         return {
-            allTypeList: [],
+            allTypeList: builder.dataTypeList,
             itemTypeList: ['boolean', 'integer', 'number', 'reference', 'string'],
             formatList: [],
         }

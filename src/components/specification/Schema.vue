@@ -13,7 +13,7 @@
         </td>
 
         <td @click="editing = true">
-            <SchemaType :schema="schema" :editing="editing" :inComposition="type === 'composition'"></SchemaType>
+            <SchemaType :schema="schema" :editing="editing" :inComposition="inComposition"></SchemaType>
         </td>
     </tr>
 </template>
@@ -43,6 +43,11 @@ export default {
             type: String,
             required: false,
             default: 'object',
+        },
+        inComposition: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
         done: {
             type: Boolean,

@@ -6,6 +6,7 @@
                 :schema="schema"
                 :manager="manager"
                 :type="type"
+                :inComposition="inComposition"
                 :done="editing"
                 :key="schema.name"
             ></Schema>
@@ -20,15 +21,17 @@
                     <AddButton v-else :manager="manager" name=""></AddButton>
                 </td>
                 <td>
-                    <SelectButton
-                        :manager="manager"
-                        :list="list"
-                        :callback="add"
-                        name="name"
-                        text="name"
-                        class="mr11"
-                    ></SelectButton>
-                    <b-form-select @change="addId" :options="schemaxx" class="wa"></b-form-select>
+                    <template v-if="type === 'object'">
+                        <SelectButton
+                            :manager="manager"
+                            :list="list"
+                            :callback="add"
+                            name="name"
+                            text="name"
+                            class="mr11"
+                        ></SelectButton>
+                        <b-form-select @change="addId" :options="schemaxx" class="wa"></b-form-select>
+                    </template>
                 </td>
             </tr>
         </tfoot>
@@ -64,6 +67,11 @@ export default {
             type: String,
             required: false,
             default: 'object',
+        },
+        inComposition: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
     },
     data() {
