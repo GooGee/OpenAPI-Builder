@@ -18,7 +18,7 @@
                 </tr>
             </Header>
 
-            <Script v-else :manager="manager" name="scriptParameter" item="Parameter" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptParameter" item="parameter" class="mtb11"></Script>
         </div>
     </div>
 </template>

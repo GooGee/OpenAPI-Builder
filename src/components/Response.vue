@@ -31,7 +31,7 @@
                 </ReferenceList>
             </template>
 
-            <Script v-else :manager="manager" name="scriptResponse" item="Response" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptResponse" item="response" class="mtb11"></Script>
         </div>
     </div>
 </template>

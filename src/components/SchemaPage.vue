@@ -42,7 +42,7 @@
                 </tbody>
             </table>
 
-            <Script v-else :manager="manager" name="scriptSchema" item="Schema" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptSchema" item="schema" class="mtb11"></Script>
         </div>
     </div>
 </template>

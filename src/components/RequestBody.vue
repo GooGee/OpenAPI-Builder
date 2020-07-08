@@ -36,7 +36,7 @@
                 <MediaTypeList :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
             </template>
             
-            <Script v-else :manager="manager" name="scriptRequestBody" item="RequestBody" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptRequestBody" item="requestbody" class="mtb11"></Script>
         </div>
     </div>
 </template>

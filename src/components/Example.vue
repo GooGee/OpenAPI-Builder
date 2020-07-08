@@ -46,7 +46,7 @@
                 </tbody>
             </table>
 
-            <Script v-else :manager="manager" name="scriptExample" item="Example" class="mtb11"></Script>
+            <Script v-else :manager="manager" name="scriptExample" item="example" class="mtb11"></Script>
         </div>
     </div>
 </template>

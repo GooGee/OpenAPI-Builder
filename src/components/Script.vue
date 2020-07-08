@@ -5,8 +5,8 @@
             <b-button @click="run" variant="outline-primary"> Run </b-button>
         </div>
         <div class="mb11">
-            <a target="_blank" :href="url"> {{ item }} </a>
-            <a target="_blank" href="https://googee.github.io/OpenAPI/docs/classes/Document.html"> Document </a>
+            <a target="_blank" :href="url" class="mr11"> {{ item }} </a>
+            <a target="_blank" href="https://googee.github.io/OpenAPI/docs/classes/document.html"> Document </a>
         </div>
         <textarea v-model="document[name]" class="form-control" spellcheck="false" rows="22"></textarea>
     </div>
@@ -33,7 +33,7 @@ export default {
     },
     computed: {
         url() {
-            return `https://googee.github.io/OpenAPI/docs/classes/${this.item}Manager.html`
+            return `https://googee.github.io/OpenAPI/docs/classes/${this.item}manager.html`
         },
     },
     data() {
