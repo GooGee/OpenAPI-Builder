@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="inline mr11">Tag</h2>
+        <h2 class="inline mr11">tags</h2>
         <SelectButton :manager="manager" :list="list" name="name" text="name"></SelectButton>
 
         <EditList :manager="manager" :withadd="false" :withedit="false"></EditList>

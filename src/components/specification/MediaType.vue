@@ -20,7 +20,7 @@
                 </td>
             </tr>
             <tr>
-                <td>examples</td>
+                <td class="text-right">examples</td>
                 <td>
                     <ReferenceList :manager="item.exampleManager" type="examples"></ReferenceList>
                 </td>

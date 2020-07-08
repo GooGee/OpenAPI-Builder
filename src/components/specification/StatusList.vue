@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <h2 class="inline mr11">Response</h2>
+            <h2 class="inline mr11">responses</h2>
             <SelectButton :list="codeList" :manager="manager" name="name" text="name"></SelectButton>
         </div>
 

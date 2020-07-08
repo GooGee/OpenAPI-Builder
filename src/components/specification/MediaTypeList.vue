@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mtp11">
+        <div class="mtb11">
             <h2 class="inline mr11">content</h2>
             <SelectButton :list="typeList" :manager="manager" name="name" text="name"></SelectButton>
         </div>
