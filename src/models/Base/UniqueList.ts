@@ -15,7 +15,7 @@ export default class UniqueList<T extends UniqueItem> extends ItemList<T> {
 
     throwIfExist(name: string) {
         if (this.find(name)) {
-            throw new Error(name + ' already exists!')
+            throw new Error(`${this.type.name} ${name} already exists!`)
         }
     }
 
@@ -39,7 +39,7 @@ export default class UniqueList<T extends UniqueItem> extends ItemList<T> {
     }
 
     make(...args: any[]) {
-        const item = new this.Type(...args)
+        const item = new this.type(...args)
         return item
     }
 

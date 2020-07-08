@@ -4,11 +4,11 @@ import Newable from './Newable'
 import ee, { EventEnum } from '../Event'
 
 export default class ItemList<T extends Item> extends List<T> {
-    readonly Type: Newable<T>
+    readonly type: Newable<T>
 
     constructor(type: Newable<T>) {
         super()
-        this.Type = type
+        this.type = type
     }
 
     add(item: T) {
@@ -17,7 +17,7 @@ export default class ItemList<T extends Item> extends List<T> {
     }
 
     make() {
-        return new this.Type
+        return new this.type
     }
 
     load(manager: ItemList<T>) {
