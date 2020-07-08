@@ -1,7 +1,6 @@
 <template>
     <b-button @click="remove" variant="outline-danger">
         -
-        <slot></slot>
     </b-button>
 </template>
 

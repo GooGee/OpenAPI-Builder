@@ -11,7 +11,6 @@
 <script>
 import dialogue from '../../states/dialogue.js'
 import AddButton from '../button/AddButton.vue'
-import DeleteButton from '../button/DeleteButton.vue'
 import EditList from '../EditList.vue'
 import Reference from './Reference.vue'
 
@@ -19,7 +18,6 @@ export default {
     name: 'ReferenceList',
     components: {
         AddButton,
-        DeleteButton,
         EditList,
         Reference,
     },

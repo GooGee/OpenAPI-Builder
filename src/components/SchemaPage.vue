@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import DeleteButton from './button/DeleteButton.vue'
 import SelectButton from './button/SelectButton.vue'
 import EditList from './EditList.vue'
 import SideBar from './SideBar.vue'
@@ -60,7 +59,6 @@ import sidebar from '../states/sidebar.js'
 export default {
     name: 'SchemaPage',
     components: {
-        DeleteButton,
         SelectButton,
         EditList,
         SideBar,
