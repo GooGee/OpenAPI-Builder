@@ -5,7 +5,8 @@ export default class JSONDialogue extends Dialogue {
     itemName: string = 'Schema'
 
     get url() {
-        return `https://googee.github.io/OpenAPI/docs/classes/${this.itemName}.html`
+        const name = this.itemName.toLowerCase()
+        return `https://googee.github.io/OpenAPI/docs/classes/${name}.html`
     }
 
     ok() {
