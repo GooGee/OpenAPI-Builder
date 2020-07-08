@@ -17,6 +17,7 @@ export default class Schema extends UniqueItem {
     format: string = ''
     example: string = ''
     itemType: DataType = DataType.string
+    required: Boolean = true
 
     // readonly discriminator = new Discriminator
     readonly operationManager = new NameValueManager()
@@ -60,17 +61,18 @@ export default class Schema extends UniqueItem {
         }
 
         if (this.type === DataType.object) {
-            if (this.example) {
-                return {
-                    example: this.example,
-                    type: this.type,
-                    properties: this.schemaManager.toOAPI()
-                }
-            }
-            return {
+            const data: KeyValue = {
                 type: this.type,
                 properties: this.schemaManager.toOAPI()
             }
+            const list = this.schemaManager.list.filter(one => one.required).map(one => one.name)
+            if (list.length) {
+                data.required = list
+            }
+            if (this.example) {
+                data.example = this.example
+            }
+            return data
         }
 
         return {
