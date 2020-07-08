@@ -6,10 +6,15 @@
                 <DeleteButton :manager="manager" :item="schema"></DeleteButton>
                 <ChangeButton v-if="type === 'object'" :item="schema" name="name"></ChangeButton>
             </b-button-group>
-            <b-form-checkbox v-model="schema.required" :value="true" :unchecked-value="false" class="mtb11">required</b-form-checkbox>
+            <b-form-checkbox v-model="schema.required" :value="true" :unchecked-value="false" class="mtb11">
+                required
+            </b-form-checkbox>
         </td>
         <td v-else @click="editing = true" class="schema-name text-right">
-            <span v-if="type === 'object'">{{ schema.name }}</span>
+            <span v-if="type === 'object'">
+                <span v-if="schema.required" class="text-danger">*</span>
+                {{ schema.name }}
+            </span>
         </td>
 
         <td @click="editing = true">
