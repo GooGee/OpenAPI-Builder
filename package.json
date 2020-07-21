@@ -11,7 +11,7 @@
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.4",
     "file-saver": "^2.0.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "strict-event-emitter-types": "^2.0.0",
     "ts-loader": "^5.4.5",
     "typescript": "^3.9.3",
