@@ -1,0 +1,58 @@
+<template>
+    <table class="table b-table b-table-caption-top">
+        <caption>
+            <h2 class="inline mr11">variables</h2>
+            <AddButton :manager="manager" name="name"></AddButton>
+        </caption>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>default</th>
+                <th>description</th>
+                <th>enum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="variable in manager.list" :key="variable.name">
+                <td>
+                    <b-button-group>
+                        <DeleteButton :manager="manager" :item="variable"></DeleteButton>
+                        <ChangeButton :item="variable" name="name"></ChangeButton>
+                    </b-button-group>
+                </td>
+                <td>
+                    <b-form-input v-model="variable.default"></b-form-input>
+                </td>
+                <td>
+                    <b-form-input v-model="variable.description"></b-form-input>
+                </td>
+                <td>
+                    <EditList :manager="variable.valueManager"></EditList>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</template>
+
+<script>
+import AddButton from '../button/AddButton.vue'
+import ChangeButton from '../button/ChangeButton.vue'
+import DeleteButton from '../button/DeleteButton.vue'
+import EditList from '../EditList.vue'
+
+export default {
+    name: 'ServerVariable',
+    components: {
+        AddButton,
+        ChangeButton,
+        DeleteButton,
+        EditList,
+    },
+    props: {
+        manager: {
+            type: Object,
+            required: true,
+        },
+    },
+}
+</script>
