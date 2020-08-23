@@ -4,6 +4,7 @@
         <div class="container-fluid">
             <router-view></router-view>
         </div>
+        <Top></Top>
         <ComponentDialogue></ComponentDialogue>
         <JSONDialogue></JSONDialogue>
         <ListDialogue></ListDialogue>
@@ -15,6 +16,7 @@ import Bar from './components/Bar.vue'
 import ComponentDialogue from './components/ComponentDialogue.vue'
 import JSONDialogue from './components/JSONDialogue.vue'
 import ListDialogue from './components/ListDialogue.vue'
+import Top from './components/Top.vue'
 
 export default {
     name: 'App',
@@ -23,6 +25,7 @@ export default {
         ComponentDialogue,
         JSONDialogue,
         ListDialogue,
+        Top,
     },
 }
 </script>
