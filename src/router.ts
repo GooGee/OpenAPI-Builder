@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-const routes = [
+export const routes = [
     {
         path: '/',
         name: 'home',
