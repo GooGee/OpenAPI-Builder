@@ -15,6 +15,7 @@
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
+    "@types/events": "^3.0.0",
     "@types/lodash": "^4.14.168",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
