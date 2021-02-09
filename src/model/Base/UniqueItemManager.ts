@@ -7,7 +7,7 @@ import KeyValue from './KeyValue'
 export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
     constructor(type: Newable<T>) {
         super(type)
-        listener.onBeforeNameChange((sender: UniqueItem, name: string, old: string) => {
+        listener.onBeforeUIChange((sender: UniqueItem, name: string, old: string) => {
             if (this.list.includes(sender as any)) {
                 this.throwIfExist(name)
             }
@@ -21,13 +21,13 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
     }
 
     add(item: T) {
-        this.throwIfExist(item.name)
+        this.throwIfExist(item.ui)
         super.add(item)
     }
 
     find(name: string) {
         return this.list.find(item => {
-            return item.name === name
+            return item.ui === name
         })
     }
 
@@ -39,8 +39,12 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
     toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
-            map[item.name] = item.toOAPI()
+            map[item.ui] = item.toOAPI()
         })
         return map
+    }
+
+    toOAPIArray() {
+        return this.list.map(item => item.toOAPI())
     }
 }

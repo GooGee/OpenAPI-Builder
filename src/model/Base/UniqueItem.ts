@@ -3,38 +3,46 @@ import lodash from 'lodash'
 import Item from './Item'
 
 export default class UniqueItem extends Item {
-    protected _name: string
+    protected _ui: string
 
     constructor(name: string) {
         super()
-        this._name = name
+        this._ui = name
     }
 
     get camelCase() {
-        return lodash.upperFirst(lodash.camelCase(this.name))
+        return lodash.upperFirst(lodash.camelCase(this.ui))
     }
 
     get snakeCase() {
-        return lodash.snakeCase(this.name)
+        return lodash.snakeCase(this.ui)
     }
 
     get wavelCase() {
-        return lodash.camelCase(this.name)
+        return lodash.camelCase(this.ui)
     }
 
-    get name() {
-        return this._name
+    get ui() {
+        return this._ui
     }
 
-    set name(name: string) {
-        if (this.name === name) {
+    set ui(name: string) {
+        if (this.ui === name) {
             return
         }
 
-        const old = this.name
-        listener.emitBeforeNameChange(this, name, old)
-        this._name = name
-        listener.emitAfterNameChange(this, name, old)
+        const old = this.ui
+        listener.emitBeforeUIChange(this, name, old)
+        this._ui = name
+        listener.emitAfterUIChange(this, name, old)
         return
+    }
+
+    get name() {
+        return this.ui
+    }
+
+    set name(name: string) {
+        this.ui = name
     }
 }
