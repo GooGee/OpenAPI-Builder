@@ -1,7 +1,9 @@
 <template>
     <div>
         <Bar></Bar>
-        <router-view></router-view>
+        <div class="container-fluid" style="margin-top: 55px">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <nav id="bar" class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav id="bar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
         <div v-if="sss.ready" class="container">
             <ul class="navbar-nav mr-auto">
                 <li v-for="item in routes" :key="item.path" class="nav-item">
