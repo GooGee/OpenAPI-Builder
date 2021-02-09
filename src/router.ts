@@ -6,6 +6,17 @@ export const routes = [
         name: 'home',
         component: () => import('@/view/Home.vue'),
     },
+    {
+        path: '/infopage',
+        name: 'info',
+        component: () => import('@/view/InfoPage.vue'),
+        children: [
+            { path: '', redirect: '/infopage/info' },
+            { path: 'info', component: () => import('@/view/info/Info.vue') },
+            { path: 'contact', component: () => import('@/view/info/Contact.vue') },
+            { path: 'license', component: () => import('@/view/info/License.vue') },
+        ],
+    },
 ]
 
 const router = createRouter({
