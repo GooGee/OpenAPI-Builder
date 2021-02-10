@@ -17,6 +17,11 @@ export const routes = [
             { path: 'license', component: () => import('@/view/info/License.vue') },
         ],
     },
+    {
+        path: '/example',
+        name: 'example',
+        component: () => import('@/view/Example.vue'),
+    },
 ]
 
 const router = createRouter({
