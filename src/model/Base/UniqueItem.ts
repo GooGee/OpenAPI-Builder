@@ -37,12 +37,4 @@ export default class UniqueItem extends Item {
         listener.emitAfterUIChange(this, name, old)
         return
     }
-
-    get name() {
-        return this.ui
-    }
-
-    set name(name: string) {
-        this.ui = name
-    }
 }

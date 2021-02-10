@@ -68,7 +68,6 @@ export class SideBarManager {
             new SideBar(SideBarEnum.Schema, project.oapi.component.schemaManager),
         )
     }
-
     get(name: SideBarEnum) {
         const sb = this.map.get(name)
         if (sb) {

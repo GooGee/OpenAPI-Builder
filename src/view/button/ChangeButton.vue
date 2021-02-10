@@ -14,7 +14,8 @@ export default defineComponent({
         },
         name: {
             type: String,
-            required: true,
+            required: false,
+            default: 'ui',
         },
     },
     methods: {
@@ -23,7 +24,7 @@ export default defineComponent({
             const name = this.name as keyof UniqueItem
             const text = prompt(`Please input the ${this.name}`, item[name] as string)
             if (text) {
-                item[name as 'name'] = text
+                item[name as 'ui'] = text
             }
         },
     },

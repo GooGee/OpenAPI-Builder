@@ -20,11 +20,11 @@ export default defineComponent({
     },
     methods: {
         clone() {
-            const text = prompt('Please input the name', this.item.name + '1')
+            const text = prompt('Please input the name', this.item.ui + '1')
             if (text) {
                 const one = this.manager.make(text)
                 one.load(this.item)
-                one.name = text
+                one.ui = text
                 this.manager.add(one)
             }
         },

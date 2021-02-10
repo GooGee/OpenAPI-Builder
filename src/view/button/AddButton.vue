@@ -16,7 +16,7 @@ export default defineComponent({
         name: {
             type: String,
             required: false,
-            default: 'name',
+            default: 'ui',
         },
         value: {
             type: String,
@@ -39,7 +39,7 @@ export default defineComponent({
             try {
                 const item = this.manager.make(value)
                 if (this.name === '') {
-                    item.name = value
+                    item.ui = value
                 }
                 this.manager.add(item)
             } catch (error) {

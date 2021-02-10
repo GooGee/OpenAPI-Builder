@@ -15,12 +15,12 @@
         <div class="list-group mt11">
             <div
                 v-for="item in sss.sidebar.list"
-                :key="item.name"
+                :key="item.ui"
                 @click="sss.sidebar.item = item"
                 :class="Object.is(sss.sidebar.item, item) ? 'active' : ''"
                 class="list-group-item list-group-item-action"
             >
-                {{ item.name }}
+                {{ item.ui }}
             </div>
         </div>
     </div>
