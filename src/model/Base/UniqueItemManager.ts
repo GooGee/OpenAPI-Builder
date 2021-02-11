@@ -31,6 +31,15 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         })
     }
 
+    load(manager: UniqueItemManager<T>) {
+        // console.log('-- load UniqueItemManager')
+        manager.list.forEach(item => {
+            const iii = this.make(item.ui)
+            iii.load(item)
+            this.add(iii)
+        })
+    }
+
     make(...args: any[]) {
         const item = new this.type(...args)
         return item
@@ -42,9 +51,5 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
             map[item.ui] = item.toOAPI()
         })
         return map
-    }
-
-    toOAPIArray() {
-        return this.list.map(item => item.toOAPI())
     }
 }
