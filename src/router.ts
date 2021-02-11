@@ -22,6 +22,16 @@ export const routes = [
         name: 'example',
         component: () => import('@/view/Example.vue'),
     },
+    {
+        path: '/header',
+        name: 'header',
+        component: () => import('@/view/HeaderPage.vue'),
+    },
+    {
+        path: '/parameter',
+        name: 'parameter',
+        component: () => import('@/view/Parameter.vue'),
+    },
 ]
 
 const router = createRouter({
