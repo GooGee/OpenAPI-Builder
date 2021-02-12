@@ -32,6 +32,11 @@ export const routes = [
         name: 'parameter',
         component: () => import('@/view/Parameter.vue'),
     },
+    {
+        path: '/request',
+        name: 'request',
+        component: () => import('@/view/RequestBody.vue'),
+    },
 ]
 
 const router = createRouter({
