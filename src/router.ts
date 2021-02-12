@@ -37,6 +37,11 @@ export const routes = [
         name: 'request',
         component: () => import('@/view/RequestBody.vue'),
     },
+    {
+        path: '/response',
+        name: 'response',
+        component: () => import('@/view/Response.vue'),
+    },
 ]
 
 const router = createRouter({
