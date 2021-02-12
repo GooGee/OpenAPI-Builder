@@ -7,27 +7,27 @@ enum EventEnum {
     AfterUIChange = 'AfterUIChange',
 }
 
-interface CallBack<T> {
-    (sender: T, name: string, old: string): void
+interface CallBack<T extends UniqueItem> {
+    (sender: T, ui: string, old: string): void
 }
 
-interface Event<T> {
+interface Event<T extends UniqueItem> {
     [EventEnum.BeforeUIChange]: CallBack<T>
     [EventEnum.AfterUIChange]: CallBack<T>
 }
 
-class UIChangeListener<T> {
+export default class UIChangeListener<T extends UniqueItem> {
     readonly ee: StrictEventEmitter<
         EventEmitter,
         Event<T>
     > = new EventEmitter() as StrictEventEmitter<EventEmitter, Event<T>>
 
-    emitAfterUIChange(sender: T, name: string, old: string) {
-        this.ee.emit(EventEnum.AfterUIChange, sender, name, old)
+    emitAfterUIChange(sender: T, ui: string, old: string) {
+        this.ee.emit(EventEnum.AfterUIChange, sender, ui, old)
     }
 
-    emitBeforeUIChange(sender: T, name: string, old: string) {
-        this.ee.emit(EventEnum.BeforeUIChange, sender, name, old)
+    emitBeforeUIChange(sender: T, ui: string, old: string) {
+        this.ee.emit(EventEnum.BeforeUIChange, sender, ui, old)
     }
 
     onAfterUIChange(callback: CallBack<T>) {
@@ -38,8 +38,3 @@ class UIChangeListener<T> {
         this.ee.on(EventEnum.BeforeUIChange, callback)
     }
 }
-
-const listener = new UIChangeListener<UniqueItem>()
-listener.ee.setMaxListeners(111222333)
-
-export default listener

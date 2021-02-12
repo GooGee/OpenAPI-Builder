@@ -1,22 +1,22 @@
 import ItemManager from './ItemManager'
 import UniqueItem from './UniqueItem'
 import Newable from './Newable'
-import listener from '../Event/NameChangeListener'
+import Listener from '../Event/Listener'
 import KeyValue from './KeyValue'
 
 export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
     constructor(type: Newable<T>) {
         super(type)
-        listener.onBeforeUIChange((sender: UniqueItem, name: string, old: string) => {
-            if (this.list.includes(sender as any)) {
-                this.throwIfExist(name)
+        Listener.listener.uiChangeListener.onBeforeUIChange((sender: UniqueItem, ui: string) => {
+            if (this.list.includes(sender as T)) {
+                this.throwIfExist(ui)
             }
         })
     }
 
-    throwIfExist(name: string) {
-        if (this.find(name)) {
-            throw new Error(`${this.type.name} ${name} already exists!`)
+    throwIfExist(ui: string) {
+        if (this.find(ui)) {
+            throw new Error(`${this.type.name} ${ui} already exists!`)
         }
     }
 
@@ -25,9 +25,9 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         super.add(item)
     }
 
-    find(name: string) {
+    find(ui: string) {
         return this.list.find(item => {
-            return item.ui === name
+            return item.ui === ui
         })
     }
 
