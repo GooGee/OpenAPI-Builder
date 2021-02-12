@@ -17,8 +17,8 @@
                 class="form-control inline wa"
             >
                 <option value="">----</option>
-                <option v-for="format in formatxx" :value="format.name" :key="format.name">
-                    {{ format.name }}
+                <option v-for="format in formatxx" :value="format.ui" :key="format.ui">
+                    {{ format.ui }}
                 </option>
             </select>
         </template>
