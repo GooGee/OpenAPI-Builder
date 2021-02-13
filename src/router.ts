@@ -42,6 +42,11 @@ export const routes = [
         name: 'response',
         component: () => import('@/view/Response.vue'),
     },
+    {
+        path: '/schema',
+        name: 'schema',
+        component: () => import('@/view/SchemaPage.vue'),
+    },
 ]
 
 const router = createRouter({
