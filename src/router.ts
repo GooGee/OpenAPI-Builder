@@ -33,6 +33,11 @@ export const routes = [
         component: () => import('@/view/Parameter.vue'),
     },
     {
+        path: '/preset',
+        name: 'preset',
+        component: () => import('@/view/PresetPage.vue'),
+    },
+    {
         path: '/request',
         name: 'request',
         component: () => import('@/view/RequestBody.vue'),
