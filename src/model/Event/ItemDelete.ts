@@ -15,7 +15,7 @@ interface Event<T1, T2> {
     [EventEnum.AfterFieldDelete]: CallBack<T1, T2>
 }
 
-export default class ItemDeleteListener<T1, T2> {
+export default class ItemDelete<T1, T2> {
     readonly ee: StrictEventEmitter<
         EventEmitter,
         Event<T1, T2>

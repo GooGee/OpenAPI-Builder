@@ -1,4 +1,4 @@
-import Listener from '../Event/Listener'
+import EventManager from '../Event/EventManager'
 import lodash from 'lodash'
 import Item from './Item'
 
@@ -32,9 +32,9 @@ export default class UniqueItem extends Item {
         }
 
         const old = this.ui
-        Listener.listener.uiChangeListener.emitBeforeUIChange(this, name, old)
+        EventManager.manager.uiChange.emitBeforeUIChange(this, name, old)
         this._ui = name
-        Listener.listener.uiChangeListener.emitAfterUIChange(this, name, old)
+        EventManager.manager.uiChange.emitAfterUIChange(this, name, old)
         return
     }
 }

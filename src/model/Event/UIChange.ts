@@ -16,7 +16,7 @@ interface Event<T extends UniqueItem> {
     [EventEnum.AfterUIChange]: CallBack<T>
 }
 
-export default class UIChangeListener<T extends UniqueItem> {
+export default class UIChange<T extends UniqueItem> {
     readonly ee: StrictEventEmitter<
         EventEmitter,
         Event<T>
