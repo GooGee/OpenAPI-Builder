@@ -1,5 +1,3 @@
-import Item from './Item'
-
 export default interface KeyValue {
-    [key: string]: boolean | Item | KeyValue | number | object | string
+    [key: string]: boolean | KeyValue | number | object | string | string[]
 }

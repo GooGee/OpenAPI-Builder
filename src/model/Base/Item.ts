@@ -39,6 +39,9 @@ export default class Item implements KeyValue {
 
     protected loadProperty(name: string, source: KeyValue) {
         // console.log('-- load Property ' + name)
+        if (source[name] === undefined) {
+            return
+        }
         const descriptor = this.getDescriptor(name)
         if (descriptor) {
             if (descriptor.writable) {
@@ -59,9 +62,6 @@ export default class Item implements KeyValue {
             } else {
                 // TypeError: 0 is read-only
                 // Object.assign(me[name], source[name])
-                if (source[name] === undefined) {
-                    return
-                }
                 me[name] = source[name]
             }
         }
