@@ -13,7 +13,7 @@
         <tfoot>
             <tr>
                 <td>
-                    <span @click="show" class="btn btn-outline-primary"> + </span>
+                    <ReferenceShow @select="select"> + </ReferenceShow>
                 </td>
                 <td></td>
             </tr>
@@ -25,12 +25,13 @@
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import DeleteButton from '../button/DeleteButton.vue'
-import { ReferenceType } from '@/model/OAPI/Reference'
+import ReferenceShow from '../oapi/ReferenceShow.vue'
 import UniqueItem from '@/model/Base/UniqueItem'
 
 export default defineComponent({
     components: {
         DeleteButton,
+        ReferenceShow,
     },
     props: {
         manager: {
@@ -39,14 +40,15 @@ export default defineComponent({
         },
     },
     methods: {
-        show() {
-            const manager = sss.getProject().oapi.getManager(ReferenceType.schemas)!
-            sss.listDialogue.showList(manager.list, 'Select a Schema', (selected: UniqueItem) => {
+        select(selected: UniqueItem) {
+            try {
                 const item = this.manager.make(selected.ui)
                 item.type = 'reference'
                 item.reference.ui = selected.ui
                 this.manager.add(item)
-            })
+            } catch (error) {
+                alert(error)
+            }
         },
     },
 })
