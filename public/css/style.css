@@ -49,6 +49,10 @@
     cursor: pointer;
 }
 
+.table caption.caption-top {
+    caption-side: top;
+}
+
 .wa {
     width: auto;
 }

@@ -1,5 +1,13 @@
 <template>
     <table class="table">
+        <caption class="caption-top">
+            <select v-model="selected" @change="add($event.target.value)" class="form-control wa">
+                <option value="" disabled>----</option>
+                <option v-for="item in typexx" :value="item.ui" :key="item.ui">
+                    {{ item.ui }}
+                </option>
+            </select>
+        </caption>
         <thead>
             <tr>
                 <th></th>
@@ -15,20 +23,6 @@
                 :manager="manager"
             ></MediaType>
         </tbody>
-        <tfoot>
-            <tr>
-                <td>
-                    <select @change="add($event.target.value)" class="form-control wa">
-                        <option value="" disabled>----</option>
-                        <option v-for="item in typexx" :value="item.ui" :key="item.ui">
-                            {{ item.ui }}
-                        </option>
-                    </select>
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tfoot>
     </table>
 </template>
 
@@ -50,6 +44,7 @@ export default defineComponent({
     },
     data() {
         return {
+            selected: '',
             typexx: [] as Property[],
         }
     },
@@ -66,6 +61,7 @@ export default defineComponent({
             try {
                 const item = this.manager.make(ui)
                 this.manager.add(item)
+                this.selected = ''
             } catch (error) {
                 alert(error)
             }
