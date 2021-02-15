@@ -46,6 +46,12 @@ export const routes = [
         path: '/response',
         name: 'response',
         component: () => import('@/view/Response.vue'),
+        children: [
+            { path: '', redirect: '/response/content' },
+            { path: 'content', component: () => import('@/view/response/Content.vue') },
+            { path: 'header', component: () => import('@/view/response/Header.vue') },
+            { path: 'property', component: () => import('@/view/response/Property.vue') },
+        ],
     },
     {
         path: '/schema',

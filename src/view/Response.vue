@@ -5,46 +5,29 @@
         </div>
 
         <div class="col-9">
-            <PropertyTable v-if="sss.sidebar.item">
-                <tr>
-                    <td class="text-right">content</td>
-                    <td>
-                        <MediaTypeList :manager="sss.sidebar.item.mediaTypeManager"></MediaTypeList>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-right">headers</td>
-                    <td>
-                        <ReferenceList
-                            :manager="sss.sidebar.item.headerManager"
-                            type="headers"
-                        ></ReferenceList>
-                    </td>
-                </tr>
-            </PropertyTable>
+            <h1></h1>
+            <TabBar :route="route"></TabBar>
+            <router-view v-if="sss.sidebar.item"></router-view>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MediaTypeList from './oapi/MediaTypeList.vue'
-import PropertyTable from './oapi/PropertyTable.vue'
-import ReferenceList from './oapi/ReferenceList.vue'
+import TabBar from './part/TabBar.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
 
 export default defineComponent({
     components: {
-        MediaTypeList,
-        PropertyTable,
+        TabBar,
         SideBar,
-        ReferenceList,
     },
     data() {
         return {
             sss,
+            route: this.$router.options.routes.find(route => route.name === 'response'),
         }
     },
     created() {
