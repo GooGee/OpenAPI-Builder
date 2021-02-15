@@ -34,6 +34,16 @@ export const routes = [
         component: () => import('@/view/Parameter.vue'),
     },
     {
+        path: '/path',
+        name: 'path',
+        component: () => import('@/view/PathPage.vue'),
+        children: [
+            { path: '', redirect: '/path/property' },
+            { path: 'parameter', component: () => import('@/view/path/Parameter.vue') },
+            { path: 'property', component: () => import('@/view/path/Property.vue') },
+        ],
+    },
+    {
         path: '/preset',
         name: 'preset',
         component: () => import('@/view/PresetPage.vue'),

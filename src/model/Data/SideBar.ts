@@ -31,6 +31,7 @@ export enum SideBarEnum {
     Example = 'Example',
     Header = 'Header',
     Parameter = 'Parameter',
+    Path = 'Path',
     Preset = 'Preset',
     Request = 'Request',
     Response = 'Response',
@@ -55,6 +56,7 @@ export class SideBarManager {
             SideBarEnum.Parameter,
             new SideBar(SideBarEnum.Parameter, project.oapi.component.parameterManager),
         )
+        this.map.set(SideBarEnum.Path, new SideBar(SideBarEnum.Path, project.oapi.pathManager))
         this.map.set(
             SideBarEnum.Request,
             new SideBar(SideBarEnum.Request, project.oapi.component.requestBodyManager),
