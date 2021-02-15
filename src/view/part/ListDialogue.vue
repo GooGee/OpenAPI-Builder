@@ -6,7 +6,7 @@
                     <li
                         v-if="sss.listDialogue.showBlank"
                         @click="select(null)"
-                        class="list-group-item"
+                        class="list-group-item pointer"
                     >
                         ----
                     </li>
@@ -14,7 +14,7 @@
                         v-for="item in sss.listDialogue.list"
                         :key="item.ui"
                         @click="select(item)"
-                        class="list-group-item"
+                        class="list-group-item pointer"
                     >
                         {{ item.ui }}
                     </li>

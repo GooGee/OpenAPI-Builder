@@ -6,7 +6,7 @@
                     <h5 class="modal-title">
                         <slot name="title">{{ dData.title }}</slot>
                     </h5>
-                    <span v-show="dData.canClose" @click="close" class="close">
+                    <span v-show="dData.canClose" @click="close" class="close pointer">
                         <span aria-hidden="true">&times;</span>
                     </span>
                 </div>

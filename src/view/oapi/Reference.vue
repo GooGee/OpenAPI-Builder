@@ -1,5 +1,7 @@
 <template>
-    <ReferenceShow @select="select" :type="reference.type">{{ reference.ui }}</ReferenceShow>
+    <ReferenceShow @select="select" :type="reference.type">
+        {{ reference.ui ? reference.ui : '+' }}
+    </ReferenceShow>
 </template>
 
 <script lang="ts">
