@@ -13,34 +13,31 @@ export default defineComponent({
             type: Object as PropType<UniqueItemManager<UniqueItem>>,
             required: true,
         },
-        name: {
-            type: String,
-            required: false,
-            default: 'ui',
-        },
         value: {
             type: String,
             required: false,
             default: 'name',
         },
+        noinput: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     methods: {
         add() {
-            if (this.name) {
-                const text = prompt(`Please input the ${this.name}`, this.value)
-                if (text) {
-                    this.make(text)
-                }
-            } else {
-                this.make(new Date().toISOString() + Math.random())
+            if (this.noinput) {
+                this.make(this.value)
+                return
+            }
+            const text = prompt('Please input the ui', this.value)
+            if (text) {
+                this.make(text)
             }
         },
         make(value: string) {
             try {
                 const item = this.manager.make(value)
-                if (this.name === '') {
-                    item.ui = value
-                }
                 this.manager.add(item)
             } catch (error) {
                 alert(error.message)
