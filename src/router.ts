@@ -39,6 +39,7 @@ export const routes = [
         component: () => import('@/view/PathPage.vue'),
         children: [
             { path: '', redirect: '/path/property' },
+            { path: 'operation', component: () => import('@/view/path/OperationList.vue') },
             { path: 'parameter', component: () => import('@/view/path/Parameter.vue') },
             { path: 'property', component: () => import('@/view/path/Property.vue') },
         ],
