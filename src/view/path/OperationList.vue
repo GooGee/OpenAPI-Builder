@@ -6,7 +6,7 @@
 
         <Operation v-if="operation" :item="operation">
             <div class="btn-group">
-                <DeleteButton :manager="manager" :item="operation"></DeleteButton>
+                <DeleteButton @deleted="update" :manager="manager" :item="operation"></DeleteButton>
                 <span class="btn btn-outline-secondary"> {{ operation.ui }} </span>
             </div>
         </Operation>
@@ -48,14 +48,20 @@ export default defineComponent({
             return item.operationManager
         },
     },
+    created() {
+        this.update()
+    },
     methods: {
         select(type: string) {
             this.type = type
+            this.update()
         },
         update() {
             const found = this.manager.find(this.type)
             if (found) {
                 this.operation = found as any
+            } else {
+                this.operation = null
             }
         },
     },

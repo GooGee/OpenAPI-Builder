@@ -22,6 +22,7 @@ export default defineComponent({
         remove() {
             if (confirm('Are you sure?')) {
                 this.manager.remove(this.item)
+                this.$emit('deleted', this.item)
             }
         },
     },
