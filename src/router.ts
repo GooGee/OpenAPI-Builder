@@ -79,6 +79,11 @@ export const routes = [
         name: 'schema',
         component: () => import('@/view/SchemaPage.vue'),
     },
+    {
+        path: '/server',
+        name: 'server',
+        component: () => import('@/view/ServerPage.vue'),
+    },
 ]
 
 const router = createRouter({
