@@ -25,6 +25,7 @@ export default defineComponent({
             const text = prompt(`Please input the ${this.name}`, item[name] as string)
             if (text) {
                 item[name as 'ui'] = text
+                this.$emit('changed', text)
             }
         },
     },
