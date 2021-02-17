@@ -36,6 +36,8 @@ export enum SideBarEnum {
     Request = 'Request',
     Response = 'Response',
     Schema = 'Schema',
+    Server = 'Server',
+    Tag = 'Tag',
 }
 
 export class SideBarManager {
@@ -69,7 +71,13 @@ export class SideBarManager {
             SideBarEnum.Schema,
             new SideBar(SideBarEnum.Schema, project.oapi.component.schemaManager),
         )
+        this.map.set(
+            SideBarEnum.Server,
+            new SideBar(SideBarEnum.Server, project.oapi.serverManager),
+        )
+        this.map.set(SideBarEnum.Tag, new SideBar(SideBarEnum.Tag, project.oapi.tagManager))
     }
+
     get(name: SideBarEnum) {
         const sb = this.map.get(name)
         if (sb) {
