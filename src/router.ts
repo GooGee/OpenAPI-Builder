@@ -29,6 +29,15 @@ export const routes = [
         component: () => import('@/view/HeaderPage.vue'),
     },
     {
+        path: '/other',
+        name: 'other',
+        component: () => import('@/view/OtherPage.vue'),
+        children: [
+            { path: '', redirect: '/other/tag' },
+            { path: 'tag', component: () => import('@/view/other/TagList.vue') },
+        ],
+    },
+    {
         path: '/parameter',
         name: 'parameter',
         component: () => import('@/view/Parameter.vue'),
