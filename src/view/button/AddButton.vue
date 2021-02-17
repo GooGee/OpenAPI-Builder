@@ -39,6 +39,7 @@ export default defineComponent({
             try {
                 const item = this.manager.make(value)
                 this.manager.add(item)
+                this.$emit('added', item)
             } catch (error) {
                 alert(error.message)
             }

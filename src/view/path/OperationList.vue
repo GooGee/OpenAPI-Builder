@@ -13,7 +13,7 @@
 
         <template v-else>
             <h2 class="inline mr11">{{ type }}</h2>
-            <AddButton :manager="manager" :value="type" :noinput="true"></AddButton>
+            <AddButton @added="update" :manager="manager" :value="type" :noinput="true"></AddButton>
         </template>
     </div>
 </template>
@@ -39,6 +39,7 @@ export default defineComponent({
         return {
             type: 'get',
             typexx: ['get', 'delete', 'head', 'options', 'patch', 'post', 'put', 'trace'],
+            operation: null,
         }
     },
     computed: {
@@ -46,13 +47,16 @@ export default defineComponent({
             const item = sss.sidebar.item as Path
             return item.operationManager
         },
-        operation(): UniqueItem | undefined {
-            return this.manager.find(this.type)
-        },
     },
     methods: {
         select(type: string) {
             this.type = type
+        },
+        update() {
+            const found = this.manager.find(this.type)
+            if (found) {
+                this.operation = found as any
+            }
         },
     },
 })
