@@ -1,8 +1,6 @@
 <template>
     <div>
         <div>
-            <ArrayLabel v-model:isArray="schema.isArray" class="mr11"></ArrayLabel>
-
             <select v-model="schema.type" class="form-control inline wa">
                 <option v-for="type in typexx" :value="type" :key="type">
                     {{ type }}
@@ -22,13 +20,11 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
-import ArrayLabel from '../oapi/ArrayLabel.vue'
 import SchemaComposition from './SchemaComposition.vue'
 import SchemaObject from './SchemaObject.vue'
 
 export default defineComponent({
     components: {
-        ArrayLabel,
         SchemaComposition,
         SchemaObject,
     },
