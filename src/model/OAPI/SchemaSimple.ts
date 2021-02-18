@@ -5,9 +5,22 @@ import { SimpleType } from './DataType'
 import UniqueItemManager from '../Base/UniqueItemManager'
 
 export default class SchemaSimple extends Schema {
+    example = ''
+    format = ''
+    isArray = false
+    required = true
     type: SimpleType = SimpleType.string
 
     readonly reference = new Reference('', ReferenceType.schemas)
+
+    makeArray() {
+        const data: KeyValue = {
+            required: this.required,
+            type: 'array',
+            items: this.makeData(),
+        }
+        return data
+    }
 
     makeData() {
         if (this.type === SimpleType.reference) {
@@ -23,6 +36,16 @@ export default class SchemaSimple extends Schema {
         if (this.format) {
             data.format = this.format
         }
+        return data
+    }
+
+    toOAPI() {
+        if (this.isArray) {
+            return this.makeArray()
+        }
+
+        const data = this.makeData()
+        data.required = this.required
         return data
     }
 }
