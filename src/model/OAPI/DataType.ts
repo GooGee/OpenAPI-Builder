@@ -1,10 +1,11 @@
-export enum ComplexType {
+export enum CompositionType {
     allOf = 'allOf',
     anyOf = 'anyOf',
     multipleOf = 'multipleOf',
-    object = 'object',
     oneOf = 'oneOf',
 }
+
+const object = 'object'
 
 export enum SimpleType {
     boolean = 'boolean',
@@ -14,14 +15,10 @@ export enum SimpleType {
     string = 'string',
 }
 
-export default class DataType {
-    constructor(readonly name: string) {}
-}
+export const DataType = { ...CompositionType, object, ...SimpleType }
 
-const typexx = { ...ComplexType, ...SimpleType }
+export const compositionTypeList = Object.values(CompositionType)
 
-export const complexTypeList = Object.values(ComplexType)
-
-export const dataTypeList = Object.values(typexx)
+export const dataTypeList = Object.values(DataType)
 
 export const simpleTypeList = Object.values(SimpleType)
