@@ -5,7 +5,7 @@
                 <td>
                     <div class="btn-group">
                         <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                        <span class="btn btn-outline-secondary"> {{ item.reference.ui }} </span>
+                        <span class="btn btn-outline-secondary"> {{ item.ui }} </span>
                     </div>
                 </td>
             </tr>
@@ -43,8 +43,6 @@ export default defineComponent({
         select(selected: UniqueItem) {
             try {
                 const item = this.manager.make(selected.ui)
-                item.type = 'reference'
-                item.reference.ui = selected.ui
                 this.manager.add(item)
             } catch (error) {
                 alert(error)

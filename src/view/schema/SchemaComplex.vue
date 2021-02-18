@@ -1,61 +1,61 @@
 <template>
-    <div>
-        <div class="mtb11">
-            <select v-model="sss.sidebar.item.type" class="form-control inline wa">
-                <option v-for="type in typexx" :value="type" :key="type">
-                    {{ type }}
-                </option>
-            </select>
-        </div>
-        <div>
-            <SchemaObject
-                v-if="sss.sidebar.item.type === 'object'"
-                :manager="sss.sidebar.item.schemaManager"
-            ></SchemaObject>
-            <SchemaComposition v-else :manager="sss.sidebar.item.schemaManager"></SchemaComposition>
-        </div>
+    <div class="mtb11">
+        <label class="mr11">
+            <input
+                type="radio"
+                v-model="sss.sidebar.item.isObject"
+                :value="true"
+                :disabled="sss.sidebar.item.composition.schemaManager.list.length"
+            />
+            object
+        </label>
+        <label class="mr11">
+            <input
+                type="radio"
+                v-model="sss.sidebar.item.isObject"
+                :value="false"
+                :disabled="sss.sidebar.item.object.schemaManager.list.length"
+            />
+            composition
+        </label>
+        <select
+            v-if="sss.sidebar.item.isObject === false"
+            v-model="sss.sidebar.item.composition.type"
+            class="form-control inline wa"
+        >
+            <option v-for="type in typexx" :value="type" :key="type">
+                {{ type }}
+            </option>
+        </select>
     </div>
+
+    <SchemaObject
+        v-if="sss.sidebar.item.isObject"
+        :manager="sss.sidebar.item.object.schemaManager"
+    ></SchemaObject>
+    <SchemaComposition
+        v-else
+        :manager="sss.sidebar.item.composition.schemaManager"
+    ></SchemaComposition>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { compositionTypeList } from '@/model/OAPI/DataType'
 import sss from '@/sss.ts'
 import SchemaComposition from './SchemaComposition.vue'
 import SchemaObject from './SchemaObject.vue'
-import SchemaComplex from '@/model/OAPI/SchemaComplex'
 
 export default defineComponent({
     components: {
         SchemaComposition,
         SchemaObject,
     },
-    computed: {
-        typexx(): string[] {
-            const schema = sss.sidebar.item as SchemaComplex
-            if (schema.schemaManager.list.length === 0) {
-                return this.all
-            }
-
-            if (schema.type === 'object') {
-                return this.one
-            }
-            return this.other
-        },
-    },
     data() {
         return {
             sss,
-            all: sss.getProject().oapi.complexTypeList,
-            one: [] as string[],
-            other: [] as string[],
+            typexx: compositionTypeList,
         }
-    },
-    created() {
-        const found = this.all.find(item => item === 'object')!
-        this.one.push(found)
-        this.other = this.all.slice()
-        const index = this.other.indexOf(found)
-        this.other.splice(index, 1)
     },
 })
 </script>
