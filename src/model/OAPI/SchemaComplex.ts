@@ -1,33 +1,18 @@
-import { ComplexType } from './DataType'
-import KeyValue from '../Base/KeyValue'
 import Schema from './Schema'
-import { SchemaSimpleManager } from './SchemaSimple'
 import UniqueItemManager from '../Base/UniqueItemManager'
+import SchemaComposition from './SchemaComposition'
+import SchemaObject from './SchemaObject'
 
 export default class SchemaComplex extends Schema {
-    type: ComplexType = ComplexType.object
-    readonly schemaManager = new SchemaSimpleManager()
+    readonly composition = new SchemaComposition()
+    readonly object = new SchemaObject()
+    isObject = true
 
-    makeData() {
-        if (this.type === ComplexType.object) {
-            const data: KeyValue = {
-                type: this.type,
-                properties: this.schemaManager.toOAPI(),
-            }
-            const list = this.schemaManager.list.filter(one => one.required).map(one => one.ui)
-            if (list.length) {
-                data.required = list
-            }
-            if (this.example) {
-                data.example = this.example
-            }
-            return data
+    toOAPI() {
+        if (this.isObject) {
+            return this.object.toOAPI()
         }
-
-        const list = this.schemaManager.list.map(item => item.toOAPI())
-        const data: KeyValue = {}
-        data[this.type] = list
-        return data
+        return this.composition.toOAPI()
     }
 }
 
