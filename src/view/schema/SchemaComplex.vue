@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div>
-            <select v-model="schema.type" class="form-control inline wa">
+        <div class="mtb11">
+            <select v-model="sss.sidebar.item.type" class="form-control inline wa">
                 <option v-for="type in typexx" :value="type" :key="type">
                     {{ type }}
                 </option>
@@ -9,10 +9,10 @@
         </div>
         <div>
             <SchemaObject
-                v-if="schema.type === 'object'"
-                :manager="schema.schemaManager"
+                v-if="sss.sidebar.item.type === 'object'"
+                :manager="sss.sidebar.item.schemaManager"
             ></SchemaObject>
-            <SchemaComposition v-else :manager="schema.schemaManager"></SchemaComposition>
+            <SchemaComposition v-else :manager="sss.sidebar.item.schemaManager"></SchemaComposition>
         </div>
     </div>
 </template>
@@ -22,25 +22,21 @@ import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import SchemaComposition from './SchemaComposition.vue'
 import SchemaObject from './SchemaObject.vue'
+import SchemaComplex from '@/model/OAPI/SchemaComplex'
 
 export default defineComponent({
     components: {
         SchemaComposition,
         SchemaObject,
     },
-    props: {
-        schema: {
-            type: Object,
-            required: true,
-        },
-    },
     computed: {
         typexx(): string[] {
-            if (this.schema.schemaManager.list.length === 0) {
+            const schema = sss.sidebar.item as SchemaComplex
+            if (schema.schemaManager.list.length === 0) {
                 return this.all
             }
 
-            if (this.schema.type === 'object') {
+            if (schema.type === 'object') {
                 return this.one
             }
             return this.other
@@ -48,6 +44,7 @@ export default defineComponent({
     },
     data() {
         return {
+            sss,
             all: sss.getProject().oapi.complexTypeList,
             one: [] as string[],
             other: [] as string[],

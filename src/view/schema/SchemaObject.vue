@@ -2,7 +2,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>name</th>
+                <th>ui</th>
                 <th>type</th>
             </tr>
         </thead>
