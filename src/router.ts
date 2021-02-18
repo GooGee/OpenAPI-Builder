@@ -78,6 +78,11 @@ export const routes = [
         path: '/schema',
         name: 'schema',
         component: () => import('@/view/SchemaPage.vue'),
+        children: [
+            { path: '', redirect: '/schema/property' },
+            { path: 'property', component: () => import('@/view/schema/Property.vue') },
+            { path: 'structure', component: () => import('@/view/schema/SchemaComplex.vue') },
+        ],
     },
     {
         path: '/server',
