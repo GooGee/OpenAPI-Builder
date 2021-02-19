@@ -2,14 +2,14 @@
     <table class="table b-table b-table-caption-top">
         <thead>
             <tr>
-                <th>name</th>
+                <th>ui</th>
                 <th>default</th>
                 <th>description</th>
                 <th>enum</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in manager.list" :key="item.name">
+            <tr v-for="item in manager.list" :key="item.ui">
                 <td>
                     <div class="btn-group">
                         <DeleteButton :manager="manager" :item="item"></DeleteButton>
