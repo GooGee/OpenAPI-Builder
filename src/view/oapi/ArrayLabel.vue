@@ -6,7 +6,7 @@
             class="mr3"
             type="checkbox"
         />
-        <span :class="{ gray: !isArray }" class="array-label">Array</span>
+        <span :class="{ 'text-secondary': !isArray }">Array</span>
     </label>
 </template>
 
@@ -27,9 +27,3 @@ export default defineComponent({
     },
 })
 </script>
-
-<style>
-.array-label.gray {
-    color: lightgray;
-}
-</style>

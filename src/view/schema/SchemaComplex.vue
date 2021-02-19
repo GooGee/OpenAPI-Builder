@@ -1,6 +1,9 @@
 <template>
     <div class="mtb11">
-        <label class="mr11">
+        <label
+            :class="{ 'text-secondary': sss.sidebar.item.composition.schemaManager.list.length }"
+            class="mr11"
+        >
             <input
                 type="radio"
                 v-model="sss.sidebar.item.isObject"
@@ -9,7 +12,10 @@
             />
             object
         </label>
-        <label class="mr11">
+        <label
+            :class="{ 'text-secondary': sss.sidebar.item.object.schemaManager.list.length }"
+            class="mr11"
+        >
             <input
                 type="radio"
                 v-model="sss.sidebar.item.isObject"
@@ -36,6 +42,7 @@
     <SchemaComposition
         v-else
         :manager="sss.sidebar.item.composition.schemaManager"
+        :ui="sss.sidebar.item.ui"
     ></SchemaComposition>
 </template>
 
