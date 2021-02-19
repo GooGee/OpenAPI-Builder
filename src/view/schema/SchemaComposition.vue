@@ -8,6 +8,9 @@
                         <span class="btn btn-outline-secondary"> {{ item.ui }} </span>
                     </div>
                 </td>
+                <td>
+                    {{ item.description }}
+                </td>
             </tr>
         </tbody>
         <tfoot>
@@ -38,10 +41,17 @@ export default defineComponent({
             type: Object,
             required: true,
         },
+        ui: {
+            type: String,
+            required: true,
+        },
     },
     methods: {
         select(selected: UniqueItem) {
             try {
+                if (this.ui === selected.ui) {
+                    throw new Error('Cannot include self!')
+                }
                 const item = this.manager.make(selected.ui)
                 this.manager.add(item)
             } catch (error) {
