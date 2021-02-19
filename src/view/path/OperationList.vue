@@ -1,7 +1,12 @@
 <template>
     <div>
         <div class="mtb11">
-            <ButtonGroup @select="select" :name="type" :list="typexx"></ButtonGroup>
+            <ButtonGroup
+                @select="select"
+                :name="type"
+                :list="typexx"
+                :manager="manager"
+            ></ButtonGroup>
         </div>
 
         <Operation v-if="operation" :item="operation">

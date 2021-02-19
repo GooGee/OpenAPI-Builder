@@ -5,9 +5,11 @@
             v-for="item in list"
             :key="item"
             class="btn"
-            :class="item === name ? 'btn-outline-primary' : 'btn-outline-secondary'"
+            :class="manager.find(item) ? 'btn-outline-primary' : 'btn-outline-secondary'"
         >
-            {{ item }}
+            <span :class="item === name ? 'text-primary' : ''">
+                {{ item }}
+            </span>
         </span>
     </div>
 </template>
@@ -23,6 +25,10 @@ export default defineComponent({
         },
         list: {
             type: Array,
+            required: true,
+        },
+        manager: {
+            type: Object,
             required: true,
         },
     },
