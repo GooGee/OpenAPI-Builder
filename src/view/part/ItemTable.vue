@@ -1,8 +1,11 @@
 <template>
     <table class="table">
+        <caption class="caption-top">
+            <slot name="caption"></slot>
+        </caption>
         <thead>
             <tr>
-                <th>ui</th>
+                <th class="w111">ui</th>
                 <th>description</th>
             </tr>
         </thead>
