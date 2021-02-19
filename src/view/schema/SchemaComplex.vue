@@ -25,7 +25,7 @@
             composition
         </label>
         <select
-            v-if="sss.sidebar.item.isObject === false"
+            :disabled="sss.sidebar.item.isObject"
             v-model="sss.sidebar.item.composition.type"
             class="form-control inline wa"
         >

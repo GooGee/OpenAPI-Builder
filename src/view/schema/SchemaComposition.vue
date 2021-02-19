@@ -1,5 +1,11 @@
 <template>
     <table class="table">
+        <thead>
+            <tr>
+                <th class="w111">schema</th>
+                <th>description</th>
+            </tr>
+        </thead>
         <tbody>
             <tr v-for="item in manager.list" :key="item.ui">
                 <td>
@@ -9,7 +15,10 @@
                     </div>
                 </td>
                 <td>
-                    {{ item.description }}
+                    <span v-if="find(item.ui)">
+                        {{ find(item.ui).description }}
+                    </span>
+                    <span v-else class="text-danger">Schema not found</span>
                 </td>
             </tr>
         </tbody>
@@ -47,6 +56,9 @@ export default defineComponent({
         },
     },
     methods: {
+        find(ui: string) {
+            return sss.getProject().oapi.component.schemaManager.find(ui)
+        },
         select(selected: UniqueItem) {
             try {
                 if (this.ui === selected.ui) {
