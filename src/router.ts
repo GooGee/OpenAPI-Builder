@@ -71,6 +71,7 @@ export const routes = [
         component: () => import('@/view/SchemaPage.vue'),
         children: [
             { path: '', redirect: '/schema/property' },
+            { path: 'discriminator', component: () => import('@/view/schema/Discriminator.vue') },
             { path: 'property', component: () => import('@/view/schema/Property.vue') },
             { path: 'structure', component: () => import('@/view/schema/SchemaComplex.vue') },
         ],
