@@ -82,7 +82,7 @@ export default class Item implements KeyValue {
         return result
     }
 
-    toOAPI(): KeyValue {
+    toOAPI(): KeyValue | string {
         const result: KeyValue = {}
         Object.getOwnPropertyNames(this).forEach(name => {
             const item = this[name as keyof this]
