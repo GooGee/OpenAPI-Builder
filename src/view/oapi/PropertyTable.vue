@@ -2,7 +2,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right">ui</td>
+                <td class="text-right w111">ui</td>
                 <td>
                     <div class="btn-group mr11">
                         <DeleteButton
