@@ -59,7 +59,7 @@ export const routes = [
         name: 'response',
         component: () => import('@/view/Response.vue'),
         children: [
-            { path: '', redirect: '/response/content' },
+            { path: '', redirect: '/response/property' },
             { path: 'content', component: () => import('@/view/response/Content.vue') },
             { path: 'header', component: () => import('@/view/response/Header.vue') },
             { path: 'property', component: () => import('@/view/response/Property.vue') },
@@ -75,6 +75,11 @@ export const routes = [
             { path: 'property', component: () => import('@/view/schema/Property.vue') },
             { path: 'structure', component: () => import('@/view/schema/SchemaComplex.vue') },
         ],
+    },
+    {
+        path: '/script',
+        name: 'script',
+        component: () => import('@/view/ScriptPage.vue'),
     },
     {
         path: '/server',
