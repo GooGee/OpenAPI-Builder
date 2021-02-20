@@ -1,5 +1,5 @@
-import UniqueItem from '../Base/UniqueItem'
-import UniqueItemManager from '../Base/UniqueItemManager'
+import UniqueItem from './UniqueItem'
+import UniqueItemManager from './UniqueItemManager'
 
 export default class NameValue extends UniqueItem {
     value = ''

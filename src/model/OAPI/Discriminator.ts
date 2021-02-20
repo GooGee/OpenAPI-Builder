@@ -1,6 +1,6 @@
 import Item from '../Base/Item'
 import KeyValue from '../Base/KeyValue'
-import { NameValueManager } from './NameValue'
+import { NameValueManager } from '../Base/NameValue'
 
 export default class Discriminator extends Item {
     propertyName = ''
