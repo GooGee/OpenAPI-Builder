@@ -4,7 +4,7 @@ import UniqueItemManager from '../Base/UniqueItemManager'
 import Project from './Project'
 
 export default class SideBar {
-    readonly manager: UniqueItemManager<UniqueItem> | null = null
+    readonly manager: UniqueItemManager<UniqueItem>
 
     item: UniqueItem | null = null
     keyword = ''
