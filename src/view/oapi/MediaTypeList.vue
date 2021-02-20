@@ -1,29 +1,24 @@
 <template>
-    <table class="table">
-        <caption class="caption-top">
-            <select v-model="selected" @change="add($event.target.value)" class="form-control wa">
-                <option value="" disabled>----</option>
-                <option v-for="item in typexx" :value="item.ui" :key="item.ui">
-                    {{ item.ui }}
-                </option>
-            </select>
-        </caption>
-        <thead>
-            <tr>
-                <th></th>
-                <th>schema</th>
-                <th>examples</th>
-            </tr>
-        </thead>
-        <tbody>
-            <MediaType
-                v-for="item in manager.list"
-                :key="item.ui"
-                :item="item"
-                :manager="manager"
-            ></MediaType>
-        </tbody>
-    </table>
+    <select v-model="selected" @change="add($event.target.value)" class="form-control wa mtb11">
+        <option value="" disabled>----</option>
+        <option v-for="item in typexx" :value="item.ui" :key="item.ui">
+            {{ item.ui }}
+        </option>
+    </select>
+
+    <div class="btn-group mtb11">
+        <span
+            v-for="item in manager.list"
+            :key="item.ui"
+            @click="current = item"
+            class="btn"
+            :class="Object.is(item, current) ? 'btn-outline-primary' : 'btn-outline-secondary'"
+        >
+            {{ item.ui }}
+        </span>
+    </div>
+
+    <MediaType v-if="current" :item="current" :manager="manager"></MediaType>
 </template>
 
 <script lang="ts">
@@ -44,6 +39,7 @@ export default defineComponent({
     },
     data() {
         return {
+            current: null,
             selected: '',
             typexx: [] as Property[],
         }
