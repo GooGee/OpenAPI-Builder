@@ -20,6 +20,12 @@
                         </span>
                     </td>
                 </tr>
+                <tr>
+                    <td class="text-right">code</td>
+                    <td>
+                        <EditButton :file="file" :content="sss.sidebar.item.code"></EditButton>
+                    </td>
+                </tr>
             </PropertyTable>
         </div>
     </div>
@@ -27,13 +33,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import EditButton from './button/EditButton.vue'
 import PropertyTable from './oapi/PropertyTable.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
+import UniqueItem from '@/model/Base/UniqueItem'
+import File from '@/model/Service/File'
 
 export default defineComponent({
     components: {
+        EditButton,
         PropertyTable,
         SideBar,
     },
@@ -41,6 +51,12 @@ export default defineComponent({
         return {
             sss,
         }
+    },
+    computed: {
+        file() {
+            const itme = sss.sidebar.item as UniqueItem
+            return File.getScriptPath(itme.ui + '.js')
+        },
     },
     created() {
         sss.show(SideBarEnum.Script)
