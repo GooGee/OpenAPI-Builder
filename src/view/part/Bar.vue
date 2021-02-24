@@ -1,6 +1,6 @@
 <template>
     <nav id="bar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-        <div v-if="sss.ready" class="container">
+        <div v-if="ready" class="container">
             <ul class="navbar-nav mr-auto">
                 <li v-for="item in routes" :key="item.path" class="nav-item">
                     <router-link :to="item.path" active-class="active" class="nav-link">
@@ -16,13 +16,17 @@
 import { defineComponent } from 'vue'
 import { routes } from '@/router.ts'
 import sss from '@/sss.ts'
+import { EventEnum } from '@/model/Event/StateEvent'
 
 export default defineComponent({
     data() {
         return {
             routes,
-            sss,
+            ready: sss.ready,
         }
+    },
+    created() {
+        sss.event.state.ee.on(EventEnum.AfterProjectLoad, data => (this.ready = true))
     },
 })
 </script>
