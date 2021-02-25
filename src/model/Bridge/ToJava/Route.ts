@@ -15,8 +15,8 @@ export default class Route {
 
     call(action: ActionEnum, key: string, data: string, handler?: Handler) {
         console.log(`${action} ${key}`)
-        const payload = Payload.make(action, key, data)
         this.manager.add(action, key, handler)
+        const payload = Payload.make(action, key, data)
         const text = JSON.stringify(payload)
         this.window.JavaBridge.call(text)
     }
