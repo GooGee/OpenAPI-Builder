@@ -1,14 +1,12 @@
 <template>
-    <nav id="bar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-        <div v-if="ready" class="container">
-            <ul class="navbar-nav mr-auto">
-                <li v-for="item in routes" :key="item.path" class="nav-item">
-                    <router-link :to="item.path" active-class="active" class="nav-link">
-                        {{ item.name }}
-                    </router-link>
-                </li>
-            </ul>
-        </div>
+    <nav id="bar" class="navbar navbar-expand fixed-top navbar-dark bg-primary">
+        <ul v-if="ready" class="navbar-nav mr-auto">
+            <li v-for="item in routes" :key="item.path" class="nav-item">
+                <router-link :to="item.path" active-class="active" class="nav-link">
+                    {{ item.name }}
+                </router-link>
+            </li>
+        </ul>
     </nav>
 </template>
 
