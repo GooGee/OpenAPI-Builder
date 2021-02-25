@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import UniqueItem from '@/model/Base/UniqueItem'
 import UniqueItemManager from '@/model/Base/UniqueItemManager'
 import { defineComponent, PropType } from 'vue'
@@ -41,7 +42,11 @@ export default defineComponent({
                 this.manager.add(item)
                 this.$emit('added', item)
             } catch (error) {
-                alert(error.message)
+                new Noty({
+                    text: error.message,
+                    theme: 'bootstrap-v4',
+                    type: 'error',
+                }).show()
             }
         },
     },

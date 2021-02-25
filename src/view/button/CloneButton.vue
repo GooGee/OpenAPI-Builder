@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import UniqueItem from '@/model/Base/UniqueItem'
 import UniqueItemManager from '@/model/Base/UniqueItemManager'
 import { defineComponent, PropType } from 'vue'
@@ -22,10 +23,18 @@ export default defineComponent({
         clone() {
             const text = prompt('Please input the name', this.item.ui + '1')
             if (text) {
-                const one = this.manager.make(text)
-                one.load(this.item)
-                one.ui = text
-                this.manager.add(one)
+                try {
+                    const one = this.manager.make(text)
+                    one.load(this.item)
+                    one.ui = text
+                    this.manager.add(one)
+                } catch (error) {
+                    new Noty({
+                        text: error.message,
+                        theme: 'bootstrap-v4',
+                        type: 'error',
+                    }).show()
+                }
             }
         },
     },

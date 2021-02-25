@@ -22,6 +22,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import { defineComponent } from 'vue'
 import MediaType from './MediaType.vue'
 import sss from '@/sss.ts'
@@ -59,7 +60,11 @@ export default defineComponent({
                 this.manager.add(item)
                 this.selected = ''
             } catch (error) {
-                alert(error)
+                new Noty({
+                    text: error.message,
+                    theme: 'bootstrap-v4',
+                    type: 'error',
+                }).show()
             }
         },
     },

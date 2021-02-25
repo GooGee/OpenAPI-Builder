@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import UniqueItem from '@/model/Base/UniqueItem'
 import { defineComponent, PropType } from 'vue'
 
@@ -24,8 +25,16 @@ export default defineComponent({
             const name = this.name as keyof UniqueItem
             const text = prompt(`Please input the ${this.name}`, item[name] as string)
             if (text) {
-                item[name as 'ui'] = text
-                this.$emit('changed', text)
+                try {
+                    item[name as 'ui'] = text
+                    this.$emit('changed', text)
+                } catch (error) {
+                    new Noty({
+                        text: error.message,
+                        theme: 'bootstrap-v4',
+                        type: 'error',
+                    }).show()
+                }
             }
         },
     },

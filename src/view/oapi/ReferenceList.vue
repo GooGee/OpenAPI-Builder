@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import { defineComponent, PropType } from 'vue'
 import { ReferenceManager, ReferenceType } from '@/model/OAPI/Reference'
 import sss from '@/sss.ts'
@@ -37,7 +38,11 @@ export default defineComponent({
                 const item = this.manager.make(selected.ui, this.type)
                 this.manager.add(item)
             } catch (error) {
-                alert(error)
+                new Noty({
+                    text: error.message,
+                    theme: 'bootstrap-v4',
+                    type: 'error',
+                }).show()
             }
         },
     },

@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -37,7 +38,11 @@ export default defineComponent({
                 this.$emit('select', ui)
                 this.item = ''
             } catch (error) {
-                alert(error)
+                new Noty({
+                    text: error.message,
+                    theme: 'bootstrap-v4',
+                    type: 'error',
+                }).show()
             }
         },
     },

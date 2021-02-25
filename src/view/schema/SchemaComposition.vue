@@ -34,6 +34,7 @@
 </template>
 
 <script lang="ts">
+import Noty from 'noty'
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -67,7 +68,11 @@ export default defineComponent({
                 const item = this.manager.make(selected.ui)
                 this.manager.add(item)
             } catch (error) {
-                alert(error)
+                new Noty({
+                    text: error.message,
+                    theme: 'bootstrap-v4',
+                    type: 'error',
+                }).show()
             }
         },
     },
