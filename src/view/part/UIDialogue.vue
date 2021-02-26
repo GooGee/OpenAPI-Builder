@@ -2,7 +2,7 @@
     <div v-if="uiDialogue.visible">
         <Dialogue :dData="uiDialogue" @hide="hide(false)">
             <template v-slot:body>
-                <input v-model="uiDialogue.text" type="text" class="form-control" />
+                <input v-model="uiDialogue.text" ref="uiInput" type="text" class="form-control" />
                 <span @click="hide(true)" class="btn btn-outline-primary mt11">OK</span>
             </template>
         </Dialogue>
@@ -13,7 +13,7 @@
 import Dialogue from './Dialogue.vue'
 import Noty from 'noty'
 import sss from '@/sss.ts'
-import { defineComponent, inject, PropType, Ref } from 'vue'
+import { defineComponent, inject, PropType, ref, Ref, watchEffect } from 'vue'
 import UIDialogue from '@/model/Dialogue/UIDialogue'
 
 export default defineComponent({
@@ -45,7 +45,20 @@ export default defineComponent({
                 }).show()
             }
         }
-        return { hide, uiDialogue }
+
+        const uiInput = ref(null)
+        watchEffect(
+            () => {
+                if (uiDialogue.value.visible) {
+                    const input = uiInput.value as any
+                    input.focus()
+                }
+            },
+            {
+                flush: 'post',
+            },
+        )
+        return { hide, uiDialogue, uiInput }
     },
 })
 </script>

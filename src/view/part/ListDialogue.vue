@@ -4,6 +4,7 @@
             <template v-slot:body>
                 <input
                     v-model="listDialogue.keyword"
+                    ref="listInput"
                     placeholder="search"
                     type="text"
                     class="form-control mb11"
@@ -33,7 +34,7 @@
 <script lang="ts">
 import Dialogue from './Dialogue.vue'
 import UniqueItem from '@/model/Base/UniqueItem'
-import { defineComponent, inject, PropType, Ref } from 'vue'
+import { defineComponent, inject, PropType, ref, Ref, watchEffect } from 'vue'
 import ListDialogue from '@/model/Dialogue/ListDialogue'
 
 export default defineComponent({
@@ -49,7 +50,20 @@ export default defineComponent({
             listDialogue.value.visible = false
             listDialogue.value.select(item)
         }
-        return { hide, listDialogue, select }
+
+        const listInput = ref(null)
+        watchEffect(
+            () => {
+                if (listDialogue.value.visible) {
+                    const input = listInput.value as any
+                    input.focus()
+                }
+            },
+            {
+                flush: 'post',
+            },
+        )
+        return { hide, listDialogue, listInput, select }
     },
 })
 </script>
