@@ -4,6 +4,7 @@ import Route from './Bridge/ToJava/Route'
 import Project from './Data/Project'
 import SideBar, { SideBarEnum, SideBarManager } from './Data/SideBar'
 import ListDialogue from './Dialogue/ListDialogue'
+import UIDialogue from './Dialogue/UIDialogue'
 import EventManager from './Event/EventManager'
 import Manager from './Service/Manager'
 
@@ -13,6 +14,7 @@ export default class Vendor {
 
     readonly event = EventManager.manager
     readonly listDialogue = new ListDialogue()
+    readonly uiDialogue = new UIDialogue()
     readonly route: Route
     readonly service: Manager
 
