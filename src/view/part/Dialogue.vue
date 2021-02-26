@@ -1,14 +1,11 @@
 <template>
-    <div class="modal" tabindex="-1" style="display: block">
-        <div class="modal-dialog">
+    <div @click="hide" class="modal" tabindex="-1" style="display: block">
+        <div v-on:click.stop class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
                         <slot name="title">{{ dData.title }}</slot>
                     </h5>
-                    <span v-show="dData.canClose" @click="close" class="close pointer">
-                        <span aria-hidden="true">&times;</span>
-                    </span>
                 </div>
                 <div class="modal-body">
                     <slot name="body"></slot>
@@ -36,8 +33,10 @@ export default defineComponent({
         },
     },
     methods: {
-        close() {
-            this.dData.hide()
+        hide() {
+            if (this.dData.canClose) {
+                this.$emit('hide')
+            }
         },
     },
 })
