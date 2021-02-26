@@ -3,7 +3,7 @@
         <tr v-if="isParameter">
             <td class="text-right">name</td>
             <td>
-                <ChangeButton :item="sss.sidebar.item" name="name"></ChangeButton>
+                <input type="text" class="form-control" v-model="sss.sidebar.item.name" />
             </td>
         </tr>
         <tr v-if="isParameter">
@@ -80,14 +80,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import ChangeButton from '../button/ChangeButton.vue'
 import PropertyTable from './PropertyTable.vue'
 import SchemaSimple from '../schema/SchemaSimple.vue'
 import sss from '@/sss.ts'
 
 export default defineComponent({
     components: {
-        ChangeButton,
         PropertyTable,
         SchemaSimple,
     },

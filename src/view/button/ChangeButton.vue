@@ -1,5 +1,5 @@
 <template>
-    <span @click="change" class="btn btn-outline-primary"> {{ item[name] }} </span>
+    <span @click="change" class="btn btn-outline-primary"> {{ item.ui }} </span>
 </template>
 
 <script lang="ts">
@@ -13,20 +13,14 @@ export default defineComponent({
             type: Object as PropType<UniqueItem>,
             required: true,
         },
-        name: {
-            type: String,
-            required: false,
-            default: 'ui',
-        },
     },
     methods: {
         change() {
             const item = this.item as UniqueItem
-            const name = this.name as keyof UniqueItem
-            const text = prompt(`Please input the ${this.name}`, item[name] as string)
+            const text = prompt('Please input the ui', item.ui)
             if (text) {
                 try {
-                    item[name as 'ui'] = text
+                    item.ui = text
                     this.$emit('changed', text)
                 } catch (error) {
                     new Noty({
