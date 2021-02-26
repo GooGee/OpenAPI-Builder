@@ -1,7 +1,9 @@
 import lodash from 'lodash'
+import { exclude, include } from './Decorator'
 import Item from './Item'
 
 export default class UniqueItem extends Item {
+    @exclude
     protected _ui: string
 
     constructor(name: string) {
@@ -21,6 +23,7 @@ export default class UniqueItem extends Item {
         return lodash.camelCase(this.ui)
     }
 
+    @include
     get ui() {
         return this._ui
     }

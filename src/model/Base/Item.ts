@@ -67,7 +67,7 @@ export default class Item {
 
     toJSON(): KeyValue {
         const result: KeyValue = {}
-        Object.getOwnPropertyNames(this).forEach(name => {
+        this.getKeyList().forEach(name => {
             const item = this[name as keyof this]
             if (item instanceof Item) {
                 result[name] = item.toJSON()
