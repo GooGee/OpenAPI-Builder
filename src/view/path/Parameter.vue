@@ -1,5 +1,9 @@
 <template>
-    <ReferenceList :manager="sss.sidebar.item.parameterManager" type="parameters"></ReferenceList>
+    <ReferenceList
+        :manager="sss.sidebar.item.parameterManager"
+        type="parameters"
+        class="mt11"
+    ></ReferenceList>
 </template>
 
 <script lang="ts">
