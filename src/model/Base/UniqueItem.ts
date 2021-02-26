@@ -1,4 +1,3 @@
-import EventManager from '../Event/EventManager'
 import lodash from 'lodash'
 import Item from './Item'
 
@@ -31,10 +30,6 @@ export default class UniqueItem extends Item {
             return
         }
 
-        const old = this.ui
-        EventManager.manager.uiChange.emitBeforeUIChange(this, name, old)
         this._ui = name
-        EventManager.manager.uiChange.emitAfterUIChange(this, name, old)
-        return
     }
 }

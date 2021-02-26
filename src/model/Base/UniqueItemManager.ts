@@ -1,17 +1,11 @@
 import ItemManager from './ItemManager'
 import UniqueItem from './UniqueItem'
 import Newable from './Newable'
-import EventManager from '../Event/EventManager'
 import KeyValue from './KeyValue'
 
 export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
     constructor(type: Newable<T>) {
         super(type)
-        EventManager.manager.uiChange.onBeforeUIChange((sender: UniqueItem, ui: string) => {
-            if (this.list.includes(sender as T)) {
-                this.throwIfExist(ui)
-            }
-        })
     }
 
     throwIfExist(ui: string) {
