@@ -7,22 +7,62 @@
             v-model="sss.sidebar.item.composition.discriminator.propertyName"
             placeholder="propertyName"
         />
-        <ItemTable :manager="sss.sidebar.item.composition.discriminator.manager" class="mt11">
-            <template v-slot:caption>
+
+        <table class="table">
+            <caption class="caption-top">
                 <h4>mapping</h4>
-            </template>
-        </ItemTable>
-    </div> </template
->>
+            </caption>
+            <thead>
+                <tr>
+                    <th class="w111">ui</th>
+                    <th>value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    v-for="item in sss.sidebar.item.composition.discriminator.manager.list"
+                    :key="item.ui"
+                >
+                    <td>
+                        <div class="btn-group">
+                            <DeleteButton
+                                :manager="sss.sidebar.item.composition.discriminator.manager"
+                                :item="item"
+                            ></DeleteButton>
+                            <ChangeButton :item="item"></ChangeButton>
+                        </div>
+                    </td>
+                    <td>
+                        <input v-model="item.value" type="text" class="form-control" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <AddButton
+                            :manager="sss.sidebar.item.composition.discriminator.manager"
+                        ></AddButton>
+                    </td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
-import ItemTable from '../part/ItemTable.vue'
+import AddButton from '../button/AddButton.vue'
+import ChangeButton from '../button/ChangeButton.vue'
+import DeleteButton from '../button/DeleteButton.vue'
 
 export default defineComponent({
     components: {
-        ItemTable,
+        AddButton,
+        ChangeButton,
+        DeleteButton,
     },
     data() {
         return {
