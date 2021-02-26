@@ -5,49 +5,29 @@
         </div>
 
         <div class="col-9">
-            <PropertyTable v-if="sss.sidebar.item">
-                <tr>
-                    <td class="text-right">required</td>
-                    <td>
-                        <span class="custom-control custom-switch">
-                            <input
-                                id="required"
-                                v-model="sss.sidebar.item.required"
-                                type="checkbox"
-                                class="custom-control-input"
-                            />
-                            <label for="required" class="custom-control-label"></label>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-right">content</td>
-                    <td>
-                        <MediaTypeList :manager="sss.sidebar.item.mediaTypeManager"></MediaTypeList>
-                    </td>
-                </tr>
-            </PropertyTable>
+            <h1></h1>
+            <TabBar :route="route"></TabBar>
+            <router-view v-if="sss.sidebar.item"></router-view>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import MediaTypeList from './oapi/MediaTypeList.vue'
-import PropertyTable from './oapi/PropertyTable.vue'
+import TabBar from './part/TabBar.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
 
 export default defineComponent({
     components: {
-        MediaTypeList,
-        PropertyTable,
+        TabBar,
         SideBar,
     },
     data() {
         return {
             sss,
+            route: this.$router.options.routes.find(route => route.name === 'request'),
         }
     },
     created() {

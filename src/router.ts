@@ -53,6 +53,11 @@ export const routes = [
         path: '/request',
         name: 'request',
         component: () => import('@/view/RequestBody.vue'),
+        children: [
+            { path: '', redirect: '/request/property' },
+            { path: 'content', component: () => import('@/view/response/Content.vue') },
+            { path: 'property', component: () => import('@/view/response/Property.vue') },
+        ],
     },
     {
         path: '/response',

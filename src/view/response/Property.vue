@@ -1,5 +1,20 @@
 <template>
-    <PropertyTable></PropertyTable>
+    <PropertyTable>
+        <tr v-if="required">
+            <td class="text-right">required</td>
+            <td>
+                <span class="custom-control custom-switch">
+                    <input
+                        id="required"
+                        v-model="sss.sidebar.item.required"
+                        type="checkbox"
+                        class="custom-control-input"
+                    />
+                    <label for="required" class="custom-control-label"></label>
+                </span>
+            </td>
+        </tr>
+    </PropertyTable>
 </template>
 
 <script lang="ts">
@@ -14,6 +29,7 @@ export default defineComponent({
     data() {
         return {
             sss,
+            required: this.$router.currentRoute.value.path === '/request/property',
         }
     },
 })
