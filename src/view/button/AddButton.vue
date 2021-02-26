@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Noty from 'noty'
 import UniqueItem from '@/model/Base/UniqueItem'
 import UniqueItemManager from '@/model/Base/UniqueItemManager'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, inject, PropType, Ref } from 'vue'
+import UIDialogue from '@/model/Dialogue/UIDialogue'
 
 export default defineComponent({
     props: {
@@ -25,30 +25,25 @@ export default defineComponent({
             default: false,
         },
     },
-    methods: {
-        add() {
-            if (this.noinput) {
-                this.make(this.value)
+    setup(props, context) {
+        const make = (value: string) => {
+            const item = props.manager.make(value)
+            props.manager.add(item)
+            context.emit('added', item)
+        }
+
+        const uiDialogue = inject('uiDialogue') as Ref<UIDialogue>
+        const add = () => {
+            if (props.noinput) {
+                make(props.value)
                 return
             }
-            const text = prompt('Please input the ui', this.value)
-            if (text) {
-                this.make(text)
-            }
-        },
-        make(value: string) {
-            try {
-                const item = this.manager.make(value)
-                this.manager.add(item)
-                this.$emit('added', item)
-            } catch (error) {
-                new Noty({
-                    text: error.message,
-                    theme: 'bootstrap-v4',
-                    type: 'error',
-                }).show()
-            }
-        },
+            uiDialogue.value.showInput('Please input the ui', props.value, (text: string) => {
+                make(text)
+            })
+            uiDialogue.value.visible = true
+        }
+        return { add }
     },
 })
 </script>

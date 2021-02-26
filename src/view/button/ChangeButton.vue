@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts">
-import Noty from 'noty'
 import UniqueItem from '@/model/Base/UniqueItem'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, inject, PropType, Ref } from 'vue'
+import UIDialogue from '@/model/Dialogue/UIDialogue'
 
 export default defineComponent({
     props: {
@@ -14,23 +14,15 @@ export default defineComponent({
             required: true,
         },
     },
-    methods: {
-        change() {
-            const item = this.item as UniqueItem
-            const text = prompt('Please input the ui', item.ui)
-            if (text) {
-                try {
-                    item.ui = text
-                    this.$emit('changed', text)
-                } catch (error) {
-                    new Noty({
-                        text: error.message,
-                        theme: 'bootstrap-v4',
-                        type: 'error',
-                    }).show()
-                }
-            }
-        },
+    setup(props) {
+        const uiDialogue = inject('uiDialogue') as Ref<UIDialogue>
+        const change = () => {
+            uiDialogue.value.showInput('Please input the ui', props.item.ui, (text: string) => {
+                props.item.ui = text
+            })
+            uiDialogue.value.visible = true
+        }
+        return { change }
     },
 })
 </script>

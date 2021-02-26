@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Noty from 'noty'
 import UniqueItem from '@/model/Base/UniqueItem'
 import UniqueItemManager from '@/model/Base/UniqueItemManager'
-import { defineComponent, PropType } from 'vue'
+import UIDialogue from '@/model/Dialogue/UIDialogue'
+import { defineComponent, inject, PropType, Ref } from 'vue'
 
 export default defineComponent({
     props: {
@@ -19,24 +19,18 @@ export default defineComponent({
             required: true,
         },
     },
-    methods: {
-        clone() {
-            const text = prompt('Please input the name', this.item.ui + '1')
-            if (text) {
-                try {
-                    const one = this.manager.make(text)
-                    one.load(this.item)
-                    one.ui = text
-                    this.manager.add(one)
-                } catch (error) {
-                    new Noty({
-                        text: error.message,
-                        theme: 'bootstrap-v4',
-                        type: 'error',
-                    }).show()
-                }
-            }
-        },
+    setup(props) {
+        const uiDialogue = inject('uiDialogue') as Ref<UIDialogue>
+        const clone = () => {
+            uiDialogue.value.showInput('Please input the ui', props.item.ui, (text: string) => {
+                const one = props.manager.make(text)
+                one.load(props.item)
+                one.ui = text
+                props.manager.add(one)
+            })
+            uiDialogue.value.visible = true
+        }
+        return { clone }
     },
 })
 </script>
