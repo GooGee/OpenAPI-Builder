@@ -1,17 +1,23 @@
 <template>
-    <div v-if="visible">
-        <Dialogue :dData="sss.listDialogue">
+    <div v-if="listDialogue.visible">
+        <Dialogue :dData="listDialogue" @hide="hide">
             <template v-slot:body>
+                <input
+                    v-model="listDialogue.keyword"
+                    placeholder="search"
+                    type="text"
+                    class="form-control mb11"
+                />
                 <ul class="list-group">
                     <li
-                        v-if="sss.listDialogue.showBlank"
+                        v-if="listDialogue.showBlank"
                         @click="select(null)"
                         class="list-group-item pointer"
                     >
                         ----
                     </li>
                     <li
-                        v-for="item in sss.listDialogue.list"
+                        v-for="item in listDialogue.list"
                         :key="item.ui"
                         @click="select(item)"
                         class="list-group-item pointer"
@@ -26,30 +32,24 @@
 
 <script lang="ts">
 import Dialogue from './Dialogue.vue'
-import sss from '@/sss.ts'
-import { EventEnum } from '@/model/Event/DialogueEvent'
 import UniqueItem from '@/model/Base/UniqueItem'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, inject, PropType, Ref } from 'vue'
+import ListDialogue from '@/model/Dialogue/ListDialogue'
 
 export default defineComponent({
     components: {
         Dialogue,
     },
-    data() {
-        return {
-            sss,
-            visible: false,
+    setup() {
+        const listDialogue = inject('listDialogue') as Ref<ListDialogue>
+        const hide = () => {
+            listDialogue.value.visible = false
         }
-    },
-    created() {
-        sss.event.dialogue.ee.on(EventEnum.VisibilityChange, data => (this.visible = data.visible))
-    },
-    methods: {
-        select(item: UniqueItem) {
-            this.visible = false
-            sss.listDialogue.hide()
-            sss.listDialogue.select(item)
-        },
+        const select = (item: UniqueItem) => {
+            listDialogue.value.visible = false
+            listDialogue.value.select(item)
+        }
+        return { hide, listDialogue, select }
     },
 })
 </script>

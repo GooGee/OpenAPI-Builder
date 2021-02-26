@@ -5,10 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, inject, PropType, Ref } from 'vue'
 import { ReferenceType } from '@/model/OAPI/Reference'
 import UniqueItem from '@/model/Base/UniqueItem'
 import sss from '@/sss.ts'
+import ListDialogue from '@/model/Dialogue/ListDialogue'
 
 export default defineComponent({
     props: {
@@ -18,17 +19,20 @@ export default defineComponent({
             default: ReferenceType.schemas,
         },
     },
-    methods: {
-        show() {
-            const manager = sss.getProject().oapi.getManager(this.type)
-            sss.listDialogue.showList(
+    setup(props, context) {
+        const listDialogue = inject('listDialogue') as Ref<ListDialogue>
+        const show = () => {
+            const manager = sss.getProject().oapi.getManager(props.type)
+            listDialogue.value.showList(
                 manager.list,
-                'Select a ' + this.type,
+                'Select a ' + props.type,
                 (selected: UniqueItem) => {
-                    this.$emit('select', selected)
+                    context.emit('select', selected)
                 },
             )
-        },
+            listDialogue.value.visible = true
+        }
+        return { show }
     },
 })
 </script>
