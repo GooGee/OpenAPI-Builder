@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-3">
-            <SideBar></SideBar>
+            <SideBar :sidebar="sss.sidebar" @select="select"></SideBar>
         </div>
 
         <div class="col-9">
@@ -50,16 +50,19 @@ export default defineComponent({
     data() {
         return {
             sss,
+            file: '',
         }
-    },
-    computed: {
-        file() {
-            const itme = sss.sidebar.item as UniqueItem
-            return File.getScriptPath(itme.ui + '.js')
-        },
     },
     created() {
         sss.show(SideBarEnum.Script)
+        if (sss.sidebar.item) {
+            this.select(sss.sidebar.item)
+        }
+    },
+    methods: {
+        select(item: UniqueItem) {
+            this.file = File.getScriptPath(item.ui + '.js')
+        },
     },
 })
 </script>
