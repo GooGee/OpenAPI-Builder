@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-3">
-            <SideBar></SideBar>
+            <SideBar :sidebar="sss.sidebar"></SideBar>
         </div>
 
         <div class="col-9">
