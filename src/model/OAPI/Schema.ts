@@ -1,7 +1,7 @@
 import XML from './XML'
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 
-export default abstract class Schema extends UniqueItem {
+export default abstract class Schema extends SideBarItem {
     deprecated = false
     nullable = false
     readOnly = false

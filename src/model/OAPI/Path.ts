@@ -1,9 +1,9 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import { OperationManager } from './Operation'
 import { ParameterManager, Location } from './Parameter'
 
-export default class Path extends UniqueItem {
+export default class Path extends SideBarItem {
     description = ''
     summary = ''
 

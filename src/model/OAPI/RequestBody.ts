@@ -1,8 +1,8 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import { MediaTypeManager } from './MediaType'
 
-export default class RequestBody extends UniqueItem {
+export default class RequestBody extends SideBarItem {
     required = true
     description = ''
     readonly mediaTypeManager = new MediaTypeManager()

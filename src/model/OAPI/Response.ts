@@ -1,9 +1,9 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import { MediaTypeManager } from './MediaType'
 import { ReferenceManager, ReferenceType } from './Reference'
 
-export default class Response extends UniqueItem {
+export default class Response extends SideBarItem {
     description = ''
     readonly headerManager = new ReferenceManager(ReferenceType.headers)
     readonly linkManager = new ReferenceManager(ReferenceType.links)

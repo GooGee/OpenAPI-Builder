@@ -1,8 +1,8 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import { PropertyManager } from './Property'
 
-export default class Preset extends UniqueItem {
+export default class Preset extends SideBarItem {
     required = false
     description = ''
     version = 1

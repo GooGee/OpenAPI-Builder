@@ -1,8 +1,8 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import External from './External'
 
-export default class Tag extends UniqueItem {
+export default class Tag extends SideBarItem {
     description = ''
     // readonly externalDocs = new External
 }

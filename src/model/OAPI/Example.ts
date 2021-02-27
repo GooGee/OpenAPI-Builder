@@ -1,7 +1,7 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 
-export default class Example extends UniqueItem {
+export default class Example extends SideBarItem {
     description = ''
     externalValue = ''
     summary = ''

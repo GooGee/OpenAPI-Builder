@@ -1,5 +1,5 @@
 import KeyValue from '../Base/KeyValue'
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import SchemaSimple from './SchemaSimple'
 
@@ -10,7 +10,7 @@ export enum Location {
     query = 'query',
 }
 
-export default class Parameter extends UniqueItem {
+export default class Parameter extends SideBarItem {
     allowEmptyValue = false
 
     deprecated = false

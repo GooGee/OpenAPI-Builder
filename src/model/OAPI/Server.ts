@@ -1,8 +1,8 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 import { ServerVariableManager } from './ServerVariable'
 
-export default class Server extends UniqueItem {
+export default class Server extends SideBarItem {
     description = ''
     readonly variableManager = new ServerVariableManager()
 
