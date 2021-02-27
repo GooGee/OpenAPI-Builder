@@ -1,10 +1,10 @@
 import Item from '../Base/Item'
 import KeyValue from '../Base/KeyValue'
-import { NameValueManager } from '../Base/NameValue'
+import { ValueItemManager } from '../Base/ValueItem'
 
 export default class Discriminator extends Item {
     propertyName = ''
-    readonly manager = new NameValueManager()
+    readonly manager = new ValueItemManager()
 
     toOAPI() {
         const result: KeyValue = {
