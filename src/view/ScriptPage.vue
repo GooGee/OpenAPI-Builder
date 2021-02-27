@@ -7,6 +7,21 @@
         <div class="col-9">
             <PropertyTable v-if="sss.sidebar.item">
                 <tr>
+                    <td class="text-right">global</td>
+                    <td>
+                        <span class="custom-control custom-switch inline mr11">
+                            <input
+                                id="global"
+                                v-model="sss.sidebar.item.global"
+                                type="checkbox"
+                                class="custom-control-input"
+                            />
+                            <label for="global" class="custom-control-label"></label>
+                        </span>
+                        <span>e.g. define global variable / function</span>
+                    </td>
+                </tr>
+                <tr v-show="sss.sidebar.item.global === false">
                     <td class="text-right">single</td>
                     <td>
                         <span class="custom-control custom-switch">
@@ -17,6 +32,10 @@
                                 class="custom-control-input"
                             />
                             <label for="single" class="custom-control-label"></label>
+                        </span>
+                        <span>
+                            if set to single, this script will not show in `Schema` page, <br />
+                            and there will be no schema in DataForScript
                         </span>
                     </td>
                 </tr>

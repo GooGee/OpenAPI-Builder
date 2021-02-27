@@ -1,9 +1,10 @@
-import UniqueItem from '../Base/UniqueItem'
+import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
 
-export default class Script extends UniqueItem {
-    code = ''
+export default class Script extends SideBarItem {
+    code = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}'
     description = ''
+    global = false
     single = false
 }
 
