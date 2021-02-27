@@ -22,11 +22,12 @@ export default defineComponent({
             required: true,
         },
     },
-    setup(props) {
+    setup(props, context) {
         const ddd = Wait(() => {
             sss.route.edit(props.file, props.content, response => {
                 Toast(response)
                 ddd.stopWaiting()
+                context.emit('update', response.data)
             })
         })
         return ddd

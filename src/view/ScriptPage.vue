@@ -42,7 +42,11 @@
                 <tr>
                     <td class="text-right">code</td>
                     <td>
-                        <EditButton :file="file" :content="sss.sidebar.item.code"></EditButton>
+                        <EditButton
+                            @update="update"
+                            :file="file"
+                            :content="sss.sidebar.item.code"
+                        ></EditButton>
                     </td>
                 </tr>
             </PropertyTable>
@@ -59,6 +63,7 @@ import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
 import UniqueItem from '@/model/Base/UniqueItem'
 import File from '@/model/Service/File'
+import Script from '@/model/Data/Script'
 
 export default defineComponent({
     components: {
@@ -81,6 +86,10 @@ export default defineComponent({
     methods: {
         select(item: UniqueItem) {
             this.file = File.getScriptPath(item.ui + '.js')
+        },
+        update(text: string) {
+            const item = sss.sidebar.item as Script
+            item.code = text
         },
     },
 })
