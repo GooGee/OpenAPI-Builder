@@ -49,6 +49,10 @@
     margin-bottom: 11px;
 }
 
+.noty_layout .noty_close_button {
+    display: none;
+}
+
 .p0 {
     padding: 0;
 }

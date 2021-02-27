@@ -39,7 +39,7 @@ export default defineComponent({
                 closeWith: ['button'],
                 layout: 'topCenter',
                 modal: true,
-                text: '<h4>Are you sure?</h4>',
+                text: '<h4 class="mtb11">Are you sure?</h4>',
             })
             nnn.show()
         },
