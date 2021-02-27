@@ -16,7 +16,7 @@ export default defineComponent({
         const ddd = Wait(() => {
             sss.service.export(sss.getProject(), response => {
                 Toast(response)
-                ddd.waiting.value = false
+                ddd.stopWaiting()
             })
         })
         return ddd

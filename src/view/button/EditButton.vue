@@ -26,7 +26,7 @@ export default defineComponent({
         const ddd = Wait(() => {
             sss.route.edit(props.file, props.content, response => {
                 Toast(response)
-                ddd.waiting.value = false
+                ddd.stopWaiting()
             })
         })
         return ddd

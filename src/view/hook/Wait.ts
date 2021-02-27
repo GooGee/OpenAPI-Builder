@@ -4,6 +4,12 @@ import { ref } from 'vue'
 export default function(run: Function) {
     const waiting = ref(false)
 
+    function stopWaiting(timeout = 1112) {
+        setTimeout(() => {
+            waiting.value = false
+        }, timeout)
+    }
+
     const call = () => {
         if (waiting.value) {
             return
@@ -13,7 +19,7 @@ export default function(run: Function) {
         try {
             run()
         } catch (error) {
-            waiting.value = false
+            stopWaiting()
             new Noty({
                 text: error.message,
                 theme: 'bootstrap-v4',
@@ -22,5 +28,5 @@ export default function(run: Function) {
         }
     }
 
-    return { call, waiting }
+    return { call, stopWaiting, waiting }
 }
