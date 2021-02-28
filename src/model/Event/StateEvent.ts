@@ -6,10 +6,12 @@ interface CallBack {
 }
 
 export enum EventEnum {
+    AfterCodeRun = 'AfterCodeRun',
     AfterProjectLoad = 'AfterProjectLoad',
 }
 
 interface Event {
+    [EventEnum.AfterCodeRun]: CallBack
     [EventEnum.AfterProjectLoad]: CallBack
 }
 

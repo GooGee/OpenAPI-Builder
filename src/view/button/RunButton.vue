@@ -10,6 +10,7 @@ import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import Toast from '../hook/Toast'
 import Wait from '../hook/Wait'
+import { EventEnum } from '@/model/Event/StateEvent'
 
 export default defineComponent({
     props: {
@@ -22,6 +23,7 @@ export default defineComponent({
         const ddd = Wait(() => {
             sss.run(props.code)
             ddd.stopWaiting()
+            sss.event.state.ee.emit(EventEnum.AfterCodeRun, {})
         })
         return ddd
     },

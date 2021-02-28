@@ -7,7 +7,7 @@
 
         <input type="text" class="form-control" placeholder="Search" v-model="sidebar.keyword" />
 
-        <div class="list-group mt11">
+        <div :key="key" class="list-group mt11">
             <div
                 v-for="item in sidebar.list"
                 :key="item.ui"
@@ -22,10 +22,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import sss from '@/sss.ts'
 import AddButton from '../button/AddButton.vue'
 import UniqueItem from '@/model/Base/UniqueItem'
 import SideBar from '@/model/Data/SideBar'
+import { EventEnum } from '@/model/Event/StateEvent'
 
 export default defineComponent({
     components: {
@@ -38,11 +40,16 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        const key = ref(new Date().toISOString())
+        sss.event.state.ee.on(
+            EventEnum.AfterCodeRun,
+            data => (key.value = new Date().toISOString()),
+        )
         const select = (item: UniqueItem) => {
             props.sidebar.item = item
             context.emit('select', item)
         }
-        return { select }
+        return { key, select }
     },
 })
 </script>
