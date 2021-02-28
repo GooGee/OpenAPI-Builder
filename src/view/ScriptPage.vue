@@ -24,7 +24,7 @@
                 <tr v-show="sss.sidebar.item.global === false">
                     <td class="text-right">single</td>
                     <td>
-                        <span class="custom-control custom-switch">
+                        <span class="custom-control custom-switch inline mr11">
                             <input
                                 id="single"
                                 v-model="sss.sidebar.item.single"
@@ -33,10 +33,7 @@
                             />
                             <label for="single" class="custom-control-label"></label>
                         </span>
-                        <span>
-                            if set to single, this script will not show in `Schema` page, <br />
-                            and there will be no schema in DataForScript
-                        </span>
+                        <span> if set to single, this script will not show in `Schema` page </span>
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +43,12 @@
                             @update="update"
                             :file="file"
                             :content="sss.sidebar.item.code"
+                            class="mr11"
                         ></EditButton>
+                        <RunButton
+                            v-if="sss.sidebar.item.single"
+                            :code="sss.sidebar.item.code"
+                        ></RunButton>
                     </td>
                 </tr>
             </PropertyTable>
@@ -57,6 +59,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import EditButton from './button/EditButton.vue'
+import RunButton from './button/RunButton.vue'
 import PropertyTable from './oapi/PropertyTable.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '@/sss.ts'
@@ -69,6 +72,7 @@ export default defineComponent({
     components: {
         EditButton,
         PropertyTable,
+        RunButton,
         SideBar,
     },
     data() {
