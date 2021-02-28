@@ -5,6 +5,12 @@ import { EncodingManager } from './Encoding'
 import { ReferenceManager, ReferenceType } from './Reference'
 import SchemaSimple from './SchemaSimple'
 
+export enum MediaTypeEnum {
+    form = 'multipart/form-data',
+    json = 'application/json',
+    xml = 'application/xml',
+}
+
 export default class MediaType extends UniqueItem {
     readonly schema = new SchemaSimple('Schema')
     readonly exampleManager = new ReferenceManager(ReferenceType.examples)
