@@ -13,6 +13,12 @@ export default class SchemaSimple extends Schema {
 
     readonly reference = new Reference('', ReferenceType.schemas)
 
+    refer(ui: string, type: ReferenceType = ReferenceType.schemas) {
+        this.type = SimpleType.reference
+        this.reference.ui = ui
+        this.reference.type = type
+    }
+
     makeArray() {
         const data: KeyValue = {
             required: this.required,
