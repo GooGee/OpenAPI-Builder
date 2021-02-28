@@ -1,3 +1,4 @@
+import lodash from 'lodash'
 import UniqueItem from './Base/UniqueItem'
 import UniqueItemManager from './Base/UniqueItemManager'
 import Route from './Bridge/ToJava/Route'
@@ -7,6 +8,7 @@ import ListDialogue from './Dialogue/ListDialogue'
 import UIDialogue from './Dialogue/UIDialogue'
 import EventManager from './Event/EventManager'
 import Manager from './Service/Manager'
+import { run } from './Service/Text'
 
 export default class Vendor {
     readonly preset: Project
@@ -36,6 +38,14 @@ export default class Vendor {
 
     getProject() {
         return this.project!
+    }
+
+    run(code: string) {
+        const data = {
+            lodash,
+            project: this.getProject(),
+        }
+        run(code, data)
     }
 
     show(title: SideBarEnum) {
