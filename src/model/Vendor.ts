@@ -7,6 +7,7 @@ import SideBar, { SideBarEnum, SideBarManager } from './Data/SideBar'
 import ListDialogue from './Dialogue/ListDialogue'
 import UIDialogue from './Dialogue/UIDialogue'
 import EventManager from './Event/EventManager'
+import Generator from './Service/Generator'
 import Manager from './Service/Manager'
 import { run } from './Service/Text'
 
@@ -41,9 +42,13 @@ export default class Vendor {
     }
 
     run(code: string) {
+        const project = this.getProject()
+        const generator = new Generator(project)
         const data = {
+            generator,
             lodash,
-            project: this.getProject(),
+            project,
+            schema: this.sidebar.item,
         }
         run(code, data)
     }

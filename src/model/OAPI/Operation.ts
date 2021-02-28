@@ -18,7 +18,6 @@ export enum OperationType {
 export default class Operation extends UniqueItem {
     @exclude
     private readonly path: Path
-    operationId = ''
     summary = ''
     deprecated = false
     description = ''
@@ -57,7 +56,7 @@ export default class Operation extends UniqueItem {
             return data
         }
 
-        data['requestBody'] = this.requestBody.toOAPI()
+        data.requestBody = this.requestBody.toOAPI()
         return data
     }
 }

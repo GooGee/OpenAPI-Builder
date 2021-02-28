@@ -61,7 +61,7 @@ export default class Start {
                     console.log(json.data)
                     json.data = ''
                     json.status = 444
-                    json.message = 'Error'
+                    json.message = 'Echo'
                     cefw.bridge.call(json)
                 },
             }

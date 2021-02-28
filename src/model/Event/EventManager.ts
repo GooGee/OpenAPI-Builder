@@ -13,6 +13,7 @@ export default class EventManager {
 
     constructor() {
         this.itemDelete.ee.setMaxListeners(111222333)
+        this.state.ee.setMaxListeners(11)
         this.uiChange.ee.setMaxListeners(111222333)
     }
 }

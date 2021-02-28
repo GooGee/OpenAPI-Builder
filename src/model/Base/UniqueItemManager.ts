@@ -20,9 +20,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
     }
 
     find(ui: string) {
-        return this.list.find(item => {
-            return item.ui === ui
-        })
+        return this.list.find(item => item.ui === ui)
     }
 
     load(manager: UniqueItemManager<T>) {
