@@ -19,12 +19,10 @@ export default class Item {
     protected getKeyList() {
         const excludedxx = getExcludedList(this.constructor)
         const includedxx = getIncludedList(this.constructor)
-        const set = new Set(Object.getOwnPropertyNames(this))
-        excludedxx?.forEach(item => {
+        const list = includedxx.concat(Object.getOwnPropertyNames(this))
+        const set = new Set(list)
+        excludedxx.forEach(item => {
             set.delete(item)
-        })
-        includedxx?.forEach(item => {
-            set.add(item)
         })
         return Array.from(set.keys())
     }
