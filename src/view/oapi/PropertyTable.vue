@@ -24,11 +24,12 @@
             <tr>
                 <td class="text-right">description</td>
                 <td>
-                    <input
-                        type="text"
-                        class="form-control"
+                    <textarea
                         v-model="sss.sidebar.item.description"
-                    />
+                        class="form-control"
+                        spellcheck="false"
+                        rows="3"
+                    ></textarea>
                 </td>
             </tr>
             <slot></slot>
