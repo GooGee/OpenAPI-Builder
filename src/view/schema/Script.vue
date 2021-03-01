@@ -3,7 +3,7 @@
         <tbody>
             <tr v-for="item in list" :key="item.ui">
                 <td>
-                    <RunButton :code="item.code"></RunButton>
+                    <RunButton :item="item"></RunButton>
                     <span class="ml11">{{ item.ui }}</span>
                 </td>
                 <td>{{ item.description }}</td>

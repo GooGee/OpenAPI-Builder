@@ -47,7 +47,7 @@
                         ></EditButton>
                         <RunButton
                             v-if="sss.sidebar.item.single"
-                            :code="sss.sidebar.item.code"
+                            :item="sss.sidebar.item"
                         ></RunButton>
                     </td>
                 </tr>
