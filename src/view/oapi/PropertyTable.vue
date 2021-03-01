@@ -4,10 +4,7 @@
             <tr>
                 <td class="text-right w111">ui</td>
                 <td>
-                    <h5 v-if="sss.sidebar.item.required" class="inline mr11">
-                        {{ sss.sidebar.item.ui }}
-                    </h5>
-                    <div v-else class="btn-group mr11">
+                    <div class="btn-group mr11">
                         <DeleteButton
                             :manager="sss.sidebar.manager"
                             :item="sss.sidebar.item"
