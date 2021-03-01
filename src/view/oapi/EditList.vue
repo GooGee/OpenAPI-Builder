@@ -1,23 +1,14 @@
 <template>
     <div>
-        <div v-if="editing">
-            <span @click="editing = false" class="btn btn-outline-primary"> OK </span>
-
-            <div v-for="item in manager.list" :key="item.ui" class="mtb11">
-                <div class="btn-group">
-                    <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                    <ChangeButton v-if="canEdit" :item="item"></ChangeButton>
-                    <span v-else class="btn btn-outline-secondary"> {{ item.ui }} </span>
-                </div>
+        <div v-for="item in manager.list" :key="item.ui" class="mb11">
+            <div class="btn-group">
+                <DeleteButton :manager="manager" :item="item"></DeleteButton>
+                <ChangeButton v-if="canEdit" :item="item"></ChangeButton>
+                <span v-else class="btn btn-outline-secondary"> {{ item.ui }} </span>
             </div>
-
-            <AddButton v-if="canAdd" :manager="manager"></AddButton>
         </div>
 
-        <ul v-else @click="editing = true">
-            <li v-if="canAdd" style="list-style-type: none">+</li>
-            <li v-for="item in manager.list" :key="item.ui">{{ item.ui }}</li>
-        </ul>
+        <AddButton v-if="canAdd" :manager="manager"></AddButton>
     </div>
 </template>
 
@@ -48,11 +39,6 @@ export default defineComponent({
             required: false,
             default: true,
         },
-    },
-    data() {
-        return {
-            editing: false,
-        }
     },
 })
 </script>
