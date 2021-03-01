@@ -5,9 +5,9 @@
             v-for="item in list"
             :key="item"
             class="btn"
-            :class="manager.find(item) ? 'btn-outline-primary' : 'btn-outline-secondary'"
+            :class="item === name ? 'btn-primary' : 'btn-outline-secondary'"
         >
-            <span :class="item === name ? 'text-primary' : ''">
+            <span :class="textColor(item)">
                 {{ item }}
             </span>
         </span>
@@ -30,6 +30,17 @@ export default defineComponent({
         manager: {
             type: Object,
             required: true,
+        },
+    },
+    methods: {
+        textColor(item: string) {
+            if (item === this.name) {
+                return ''
+            }
+            if (this.manager.find(item)) {
+                return 'text-primary'
+            }
+            return ''
         },
     },
 })
