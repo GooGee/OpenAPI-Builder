@@ -2,7 +2,13 @@
     <div v-if="uiDialogue.visible">
         <Dialogue :dData="uiDialogue" @hide="hide(false)">
             <template v-slot:body>
-                <input v-model="uiDialogue.text" ref="uiInput" type="text" class="form-control" />
+                <input
+                    @keyup.enter="hide(true)"
+                    v-model="uiDialogue.text"
+                    ref="uiInput"
+                    type="text"
+                    class="form-control"
+                />
                 <span @click="hide(true)" class="btn btn-outline-primary mt11">OK</span>
             </template>
         </Dialogue>
