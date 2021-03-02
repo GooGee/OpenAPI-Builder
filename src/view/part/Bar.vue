@@ -24,6 +24,9 @@ export default defineComponent({
         }
     },
     created() {
+        if (this.ready) {
+            return
+        }
         sss.event.state.ee.on(EventEnum.AfterProjectLoad, data => (this.ready = true))
     },
 })
