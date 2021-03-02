@@ -39,6 +39,7 @@ export enum SideBarEnum {
     Script = 'Script',
     Server = 'Server',
     Tag = 'Tag',
+    Template = 'Template',
 }
 
 export class SideBarManager {
@@ -78,6 +79,10 @@ export class SideBarManager {
             new SideBar(SideBarEnum.Server, project.oapi.serverManager),
         )
         this.map.set(SideBarEnum.Tag, new SideBar(SideBarEnum.Tag, project.oapi.tagManager))
+        this.map.set(
+            SideBarEnum.Template,
+            new SideBar(SideBarEnum.Template, project.templateManager),
+        )
     }
 
     get(name: SideBarEnum) {

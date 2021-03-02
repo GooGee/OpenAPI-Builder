@@ -14,6 +14,10 @@ export default class File {
         return OAPIFolder + '/script/' + file
     }
 
+    static getTemplatePath(file: string) {
+        return OAPIFolder + '/template/' + file
+    }
+
     move(file: string, destination: string, handler?: Handler) {
         return this.route.move(file, destination, handler)
     }
