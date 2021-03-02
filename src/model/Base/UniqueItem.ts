@@ -1,9 +1,10 @@
 import lodash from 'lodash'
-import { exclude, include } from './Decorator'
+import { exclude, excludeOAPI, include } from './Decorator'
 import Item from './Item'
 
 export default class UniqueItem extends Item {
     @exclude
+    @excludeOAPI
     protected _ui: string
 
     constructor(name: string) {

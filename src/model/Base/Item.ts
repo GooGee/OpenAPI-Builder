@@ -1,11 +1,16 @@
-import { getExcludedList, getIncludedList } from './Decorator'
+import {
+    getExcludedList,
+    getIncludedList,
+    getOAPIExcludedList,
+    getOAPIIncludedList,
+} from './Decorator'
 import ItemManager from './ItemManager'
 import KeyValue from './KeyValue'
 
 export default class Item {
     protected getDescriptor(name: string) {
         let descriptor = null
-        let item: KeyValue = this as Object as KeyValue
+        let item: KeyValue = (this as Record<string, any>) as KeyValue
         while (item) {
             descriptor = Object.getOwnPropertyDescriptor(item, name)
             if (descriptor) {
@@ -28,9 +33,21 @@ export default class Item {
         return Array.from(set.keys())
     }
 
+    protected getOAPIKeyList() {
+        const excludedxx = getOAPIExcludedList(this.constructor)
+        const includedxx = getOAPIIncludedList(this.constructor)
+        // console.log(this.constructor.name, excludedxx, includedxx)
+        const list = includedxx.concat(Object.getOwnPropertyNames(this))
+        const set = new Set(list)
+        excludedxx.forEach(item => {
+            set.delete(item)
+        })
+        return Array.from(set.keys())
+    }
+
     load(source: Item) {
         this.getKeyList().forEach(name => {
-            this.loadProperty(name, source as Object as KeyValue)
+            this.loadProperty(name, (source as Record<string, any>) as KeyValue)
         })
     }
 
@@ -49,7 +66,7 @@ export default class Item {
                 return
             }
 
-            const me: KeyValue = this as Object as KeyValue
+            const me: KeyValue = (this as Record<string, any>) as KeyValue
             if (me[name] instanceof Item) {
                 const item = me[name] as Item
                 item.load(source[name] as Item)
@@ -73,7 +90,7 @@ export default class Item {
             } else if (item instanceof ItemManager) {
                 result[name] = item.toJSON()
             } else {
-                result[name] = item as Object as KeyValue
+                result[name] = (item as Record<string, any>) as KeyValue
             }
         })
         return result
@@ -81,14 +98,14 @@ export default class Item {
 
     toOAPI(): KeyValue | string {
         const result: KeyValue = {}
-        Object.getOwnPropertyNames(this).forEach(name => {
+        this.getOAPIKeyList().forEach(name => {
             const item = this[name as keyof this]
             if (item instanceof Item) {
                 result[name] = item.toOAPI()
             } else if (item instanceof ItemManager) {
                 result[name] = item.toOAPI()
             } else {
-                result[name] = item as Object as KeyValue
+                result[name] = (item as Record<string, any>) as KeyValue
             }
         })
         return result

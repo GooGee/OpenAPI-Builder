@@ -1,5 +1,7 @@
 const excludedMap = new Map<Function, string[]>()
 const includedMap = new Map<Function, string[]>()
+const excludedOAPIMap = new Map<Function, string[]>()
+const includedOAPIMap = new Map<Function, string[]>()
 
 function makeList(constructor: Function, map: Map<Function, string[]>) {
     let list: string[] = []
@@ -49,3 +51,15 @@ export const include = (target: Record<string, any>, propertyKey: string) => {
 export const getExcludedList = (constructor: Function) => getList(constructor, excludedMap)
 
 export const getIncludedList = (constructor: Function) => getList(constructor, includedMap)
+
+export const excludeOAPI = (target: Record<string, any>, propertyKey: string) => {
+    setMap(target.constructor, propertyKey, excludedOAPIMap)
+}
+
+export const includeOAPI = (target: Record<string, any>, propertyKey: string) => {
+    setMap(target.constructor, propertyKey, includedOAPIMap)
+}
+
+export const getOAPIExcludedList = (constructor: Function) => getList(constructor, excludedOAPIMap)
+
+export const getOAPIIncludedList = (constructor: Function) => getList(constructor, includedOAPIMap)
