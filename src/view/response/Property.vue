@@ -1,6 +1,6 @@
 <template>
     <PropertyTable>
-        <tr v-if="required">
+        <tr v-if="isRequestBody">
             <td class="text-right">required</td>
             <td>
                 <span class="custom-control custom-switch">
@@ -14,6 +14,12 @@
                 </span>
             </td>
         </tr>
+        <tr>
+            <td class="text-right">template</td>
+            <td>
+                <SelectTemplate :item="sss.sidebar.item.template"></SelectTemplate>
+            </td>
+        </tr>
     </PropertyTable>
 </template>
 
@@ -21,15 +27,17 @@
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import PropertyTable from '../oapi/PropertyTable.vue'
+import SelectTemplate from '../button/SelectTemplate.vue'
 
 export default defineComponent({
     components: {
         PropertyTable,
+        SelectTemplate,
     },
     data() {
         return {
             sss,
-            required: this.$router.currentRoute.value.path === '/request/property',
+            isRequestBody: this.$router.currentRoute.value.path === '/request/property',
         }
     },
 })
