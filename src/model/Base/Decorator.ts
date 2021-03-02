@@ -1,34 +1,17 @@
 const excludedMap = new Map<Function, string[]>()
 const includedMap = new Map<Function, string[]>()
 
-export const exclude = (target: Record<string, any>, propertyKey: string) => {
-    const fff = target.constructor
-    let list = excludedMap.get(fff)
-    if (!list) {
-        list = []
-        excludedMap.set(fff, list)
-    }
-    list.push(propertyKey)
+export const exclude = (target: Object, propertyKey: string) => {
+    setMap(target.constructor, propertyKey, excludedMap)
 }
 
-function getBase(targetClass: Function) {
-    let baseClass = targetClass
-
-    while (baseClass) {
-        const newBaseClass = Object.getPrototypeOf(baseClass)
-        if (newBaseClass === Object) {
-            break
-        }
-
-        if (newBaseClass && newBaseClass.name) {
-            baseClass = newBaseClass
-        } else {
-            break
-        }
-    }
-
-    return baseClass
+export const include = (target: Object, propertyKey: string) => {
+    setMap(target.constructor, propertyKey, includedMap)
 }
+
+export const getExcludedList = (constructor: Function) => getList(constructor, excludedMap)
+
+export const getIncludedList = (constructor: Function) => getList(constructor, includedMap)
 
 function getList(constructor: Function, map: Map<Function, string[]>) {
     let list: string[] = []
@@ -39,7 +22,6 @@ function getList(constructor: Function, map: Map<Function, string[]>) {
         if (found) {
             list = list.concat(found)
         }
-
         const newBaseClass = Object.getPrototypeOf(baseClass)
         if (newBaseClass === Object) {
             break
@@ -50,16 +32,11 @@ function getList(constructor: Function, map: Map<Function, string[]>) {
     return list
 }
 
-export const getExcludedList = (constructor: Function) => getList(constructor, excludedMap)
-
-export const getIncludedList = (constructor: Function) => getList(constructor, includedMap)
-
-export const include = (target: Record<string, any>, propertyKey: string) => {
-    const fff = target.constructor
-    let list = includedMap.get(fff)
-    if (!list) {
+function setMap(constructor: Function, propertyKey: string, map: Map<Function, string[]>) {
+    let list = map.get(constructor)
+    if (list === undefined) {
         list = []
-        includedMap.set(fff, list)
+        map.set(constructor, list)
     }
     list.push(propertyKey)
 }
