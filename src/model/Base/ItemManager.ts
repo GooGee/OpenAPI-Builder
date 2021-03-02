@@ -20,8 +20,8 @@ export default class ItemManager<T extends Item> extends Manager<T> {
         })
     }
 
-    make() {
-        return new this.type()
+    make(...args: any[]) {
+        return new this.type(...args)
     }
 
     toJSON() {

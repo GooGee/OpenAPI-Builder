@@ -2,7 +2,7 @@ import { EventEmitter } from 'events'
 import StrictEventEmitter from 'strict-event-emitter-types'
 
 interface CallBack {
-    (data: Record<string, any>): void
+    (...args: any[]): void
 }
 
 export enum EventEnum {

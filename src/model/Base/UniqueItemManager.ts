@@ -32,8 +32,8 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         })
     }
 
-    make(...args: any[]) {
-        const item = new this.type(...args)
+    make(ui: string) {
+        const item = new this.type(ui)
         return item
     }
 
