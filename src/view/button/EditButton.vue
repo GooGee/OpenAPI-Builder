@@ -17,17 +17,17 @@ export default defineComponent({
             type: String,
             required: true,
         },
-        content: {
+        code: {
             type: String,
             required: true,
         },
     },
     setup(props, context) {
         const ddd = Wait(() => {
-            sss.route.edit(props.file, props.content, response => {
+            sss.route.edit(props.file, props.code, response => {
                 Toast(response)
                 ddd.stopWaiting()
-                context.emit('update', response.data)
+                context.emit('update:code', response.data)
             })
         })
         return ddd

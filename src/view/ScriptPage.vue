@@ -5,14 +5,14 @@
         </div>
 
         <div class="col-9">
-            <PropertyTable v-if="sss.sidebar.item">
+            <PropertyTable v-if="item">
                 <tr>
                     <td class="text-right">global</td>
                     <td>
                         <span class="custom-control custom-switch inline mr11">
                             <input
                                 id="global"
-                                v-model="sss.sidebar.item.global"
+                                v-model="item.global"
                                 type="checkbox"
                                 class="custom-control-input"
                             />
@@ -21,13 +21,13 @@
                         <span>e.g. define global variable / function</span>
                     </td>
                 </tr>
-                <tr v-show="sss.sidebar.item.global === false">
+                <tr v-show="item.global === false">
                     <td class="text-right">single</td>
                     <td>
                         <span class="custom-control custom-switch inline mr11">
                             <input
                                 id="single"
-                                v-model="sss.sidebar.item.single"
+                                v-model="item.single"
                                 type="checkbox"
                                 class="custom-control-input"
                             />
@@ -39,16 +39,8 @@
                 <tr>
                     <td class="text-right">code</td>
                     <td>
-                        <EditButton
-                            @update="update"
-                            :file="file"
-                            :content="sss.sidebar.item.code"
-                            class="mr11"
-                        ></EditButton>
-                        <RunButton
-                            v-if="sss.sidebar.item.single"
-                            :item="sss.sidebar.item"
-                        ></RunButton>
+                        <EditButton v-model:code="item.code" :file="file" class="mr11"></EditButton>
+                        <RunButton v-if="item.single" :item="item"></RunButton>
                     </td>
                 </tr>
             </PropertyTable>
@@ -66,7 +58,6 @@ import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
 import UniqueItem from '@/model/Base/UniqueItem'
 import File from '@/model/Service/File'
-import Script from '@/model/Data/Script'
 
 export default defineComponent({
     components: {
@@ -79,6 +70,7 @@ export default defineComponent({
         return {
             sss,
             file: '',
+            item: sss.sidebar.item as UniqueItem,
         }
     },
     created() {
@@ -89,11 +81,8 @@ export default defineComponent({
     },
     methods: {
         select(item: UniqueItem) {
+            this.item = item
             this.file = File.getScriptPath(item.ui + '.js')
-        },
-        update(text: string) {
-            const item = sss.sidebar.item as Script
-            item.code = text
         },
     },
 })
