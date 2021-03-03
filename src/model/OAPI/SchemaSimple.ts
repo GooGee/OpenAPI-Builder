@@ -1,8 +1,8 @@
 import KeyValue from '../Base/KeyValue'
+import UniqueItemManager from '../Base/UniqueItemManager'
+import { SimpleType } from './DataType'
 import Reference, { ReferenceType } from './Reference'
 import Schema from './Schema'
-import { SimpleType } from './DataType'
-import UniqueItemManager from '../Base/UniqueItemManager'
 
 export default class SchemaSimple extends Schema {
     example = ''
@@ -21,7 +21,6 @@ export default class SchemaSimple extends Schema {
 
     makeArray() {
         const data: KeyValue = {
-            required: this.required,
             type: 'array',
             items: this.makeData(),
         }
@@ -46,12 +45,15 @@ export default class SchemaSimple extends Schema {
     }
 
     toOAPI() {
+        if (this.type === SimpleType.template) {
+            return JSON.parse(this.text)
+        }
+
         if (this.isArray) {
             return this.makeArray()
         }
 
         const data = this.makeData()
-        data.required = this.required
         return data
     }
 }

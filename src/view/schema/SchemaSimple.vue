@@ -10,18 +10,25 @@
 
         <Reference v-if="schema.type === 'reference'" :reference="schema.reference"></Reference>
 
-        <template v-else>
-            <select
-                v-if="schema.type !== 'boolean'"
-                v-model="schema.format"
-                class="form-control inline wa"
-            >
-                <option value="">----</option>
-                <option v-for="format in formatxx" :value="format.ui" :key="format.ui">
-                    {{ format.ui }}
-                </option>
-            </select>
-        </template>
+        <textarea
+            v-if="schema.type === 'template'"
+            v-model="schema.text"
+            class="form-control inline wa"
+            style="vertical-align: top;"
+            spellcheck="false"
+            rows="3"
+        ></textarea>
+
+        <select
+            v-if="list.includes(schema.type)"
+            v-model="schema.format"
+            class="form-control inline wa"
+        >
+            <option value="">----</option>
+            <option v-for="format in formatxx" :value="format.ui" :key="format.ui">
+                {{ format.ui }}
+            </option>
+        </select>
     </div>
 </template>
 
@@ -54,6 +61,7 @@ export default defineComponent({
     },
     data() {
         return {
+            list: ['integer', 'number', 'string'],
             formatxx: [] as Property[],
             typexx: [] as string[],
         }

@@ -1,8 +1,7 @@
 import Project from '../Data/Project'
 import { CompositionType } from '../OAPI/DataType'
 import { MediaTypeEnum, MediaTypeManager } from '../OAPI/MediaType'
-import { OperationManager, OperationType } from '../OAPI/Operation'
-import { StatusManager } from '../OAPI/Status'
+import { SchemaType } from '../OAPI/SchemaComplex'
 
 export default class Generator {
     constructor(readonly project: Project) {}
@@ -58,7 +57,7 @@ export default class Generator {
         type: CompositionType = CompositionType.allOf,
     ) {
         const schema = this.schemaManager.make(ui)
-        schema.isObject = false
+        schema.type = SchemaType.composition
         schema.composition.type = type
         list.forEach(name => {
             const item = schema.composition.schemaManager.make(name)
@@ -69,7 +68,7 @@ export default class Generator {
 
     makeSchemaObject(ui: string, list: string[] = []) {
         const schema = this.schemaManager.make(ui)
-        schema.isObject = true
+        schema.type = SchemaType.object
         list.forEach(name => {
             const item = schema.object.schemaManager.make(name)
             schema.object.schemaManager.add(item)

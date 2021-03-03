@@ -13,6 +13,7 @@ export enum SimpleType {
     number = 'number',
     reference = 'reference',
     string = 'string',
+    template = 'template',
 }
 
 export const DataType = { ...CompositionType, object, ...SimpleType }
