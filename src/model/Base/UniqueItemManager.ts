@@ -23,6 +23,15 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         return this.list.find(item => item.ui === ui)
     }
 
+    findOrMake(ui: string) {
+        let found = this.find(ui)
+        if (found === undefined) {
+            found = this.make(ui)
+            this.add(found)
+        }
+        return found
+    }
+
     load(manager: UniqueItemManager<T>) {
         // console.log('-- load UniqueItemManager')
         manager.list.forEach(item => {
