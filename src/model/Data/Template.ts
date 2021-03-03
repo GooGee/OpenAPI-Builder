@@ -1,9 +1,10 @@
 import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
+import Constant from '../Service/Constant'
 
 export default class Template extends SideBarItem {
+    code = Constant.CodeForTemplate
     description = ''
-    text = '{\n  "$ref": "#/components/schemas/Response"\n}'
 }
 
 export class TemplateManager extends UniqueItemManager<Template> {

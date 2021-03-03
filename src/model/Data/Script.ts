@@ -1,8 +1,9 @@
 import SideBarItem from '../Base/SideBarItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
+import Constant from '../Service/Constant'
 
 export default class Script extends SideBarItem {
-    code = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}'
+    code = Constant.CodeForScript
     description = ''
     global = false
     single = false
