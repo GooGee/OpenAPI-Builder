@@ -8,6 +8,14 @@ export default class Response extends SideBarItem {
     readonly headerManager = new ReferenceManager(ReferenceType.headers)
     readonly linkManager = new ReferenceManager(ReferenceType.links)
     readonly mediaTypeManager = new MediaTypeManager()
+
+    toOAPI() {
+        return {
+            content: this.mediaTypeManager.toOAPI(),
+            description: this.description,
+            headers: this.headerManager.toOAPI(),
+        }
+    }
 }
 
 export class ResponseManager extends UniqueItemManager<Response> {
