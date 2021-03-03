@@ -1,4 +1,3 @@
-import lodash from 'lodash'
 import UniqueItem from './Base/UniqueItem'
 import UniqueItemManager from './Base/UniqueItemManager'
 import Route from './Bridge/ToJava/Route'
@@ -7,7 +6,6 @@ import SideBar, { SideBarEnum, SideBarManager } from './Data/SideBar'
 import ListDialogue from './Dialogue/ListDialogue'
 import UIDialogue from './Dialogue/UIDialogue'
 import EventManager from './Event/EventManager'
-import Generator from './Service/Generator'
 import Manager from './Service/Manager'
 import { run } from './Service/Text'
 
@@ -42,15 +40,7 @@ export default class Vendor {
     }
 
     run(code: string) {
-        const project = this.getProject()
-        const generator = new Generator(project)
-        const data = {
-            generator,
-            lodash,
-            project,
-            schema: this.sidebar.item,
-        }
-        run(code, data)
+        run(code, this.getProject(), this.sidebar.item!)
     }
 
     show(title: SideBarEnum) {
