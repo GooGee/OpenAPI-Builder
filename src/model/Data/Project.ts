@@ -2,7 +2,6 @@ import Item from '../Base/Item'
 import Document from '../OAPI/Document'
 import { PresetManager } from './Preset'
 import { ScriptManager } from './Script'
-import { TemplateManager } from './Template'
 
 const Version = 1
 
@@ -12,7 +11,6 @@ export default class Project extends Item {
 
     readonly presetManager = new PresetManager()
     readonly scriptManager = new ScriptManager()
-    readonly templateManager = new TemplateManager()
 
     readonly oapi = new Document()
 

@@ -97,11 +97,6 @@ export const routes = [
         name: 'tag',
         component: () => import('@/view/TagPage.vue'),
     },
-    {
-        path: '/template',
-        name: 'template',
-        component: () => import('@/view/TemplatePage.vue'),
-    },
 ]
 
 const router = createRouter({
