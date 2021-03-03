@@ -14,10 +14,6 @@
                 </span>
             </td>
         </tr>
-        <tr>
-            <td class="text-right">template</td>
-            <td></td>
-        </tr>
     </PropertyTable>
 </template>
 

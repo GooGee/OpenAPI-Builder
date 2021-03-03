@@ -1,7 +1,7 @@
 import KeyValue from '../Base/KeyValue'
 import UniqueItem from '../Base/UniqueItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
-import { EncodingManager } from './Encoding'
+// import { EncodingManager } from './Encoding'
 import { ReferenceManager, ReferenceType } from './Reference'
 import SchemaSimple from './SchemaSimple'
 

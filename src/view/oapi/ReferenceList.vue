@@ -1,9 +1,7 @@
 <template>
     <div>
-        <div>
-            <ReferenceShow @select="select" :type="type"> + </ReferenceShow>
-        </div>
         <EditList :manager="manager" :canAdd="false" :canEdit="false"></EditList>
+        <ReferenceShow @select="select" :type="type"> + </ReferenceShow>
     </div>
 </template>
 
@@ -11,7 +9,6 @@
 import Noty from 'noty'
 import { defineComponent, PropType } from 'vue'
 import { ReferenceManager, ReferenceType } from '@/model/OAPI/Reference'
-import sss from '@/sss.ts'
 import EditList from './EditList.vue'
 import ReferenceShow from './ReferenceShow.vue'
 import UniqueItem from '@/model/Base/UniqueItem'
