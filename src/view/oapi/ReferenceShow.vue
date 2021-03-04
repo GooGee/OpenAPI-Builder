@@ -1,7 +1,7 @@
 <template>
-    <span @click="show" class="btn btn-outline-primary">
+    <SelectList v-bind="$attrs" :list="list" :title="title">
         <slot></slot>
-    </span>
+    </SelectList>
 </template>
 
 <script lang="ts">
@@ -10,8 +10,12 @@ import { ReferenceType } from '@/model/OAPI/Reference'
 import UniqueItem from '@/model/Base/UniqueItem'
 import sss from '@/sss.ts'
 import ListDialogue from '@/model/Dialogue/ListDialogue'
+import SelectList from '../part/SelectList.vue'
 
 export default defineComponent({
+    components: {
+        SelectList,
+    },
     props: {
         type: {
             type: String as PropType<ReferenceType>,
@@ -19,20 +23,11 @@ export default defineComponent({
             default: ReferenceType.schemas,
         },
     },
-    setup(props, context) {
-        const listDialogue = inject('listDialogue') as Ref<ListDialogue>
-        const show = () => {
-            const manager = sss.getProject().oapi.getManager(props.type)
-            listDialogue.value.showList(
-                manager.list,
-                'Select a ' + props.type,
-                (selected: UniqueItem) => {
-                    context.emit('select', selected)
-                },
-            )
-            listDialogue.value.visible = true
+    data() {
+        return {
+            list: sss.getProject().oapi.getManager(this.type).list,
+            title: 'Select a ' + this.type,
         }
-        return { show }
     },
 })
 </script>
