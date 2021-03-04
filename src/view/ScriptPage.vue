@@ -82,7 +82,9 @@ export default defineComponent({
     methods: {
         select(item: UniqueItem) {
             this.item = item
-            this.file = File.getScriptPath(item.ui + '.js')
+            if (item) {
+                this.file = File.getScriptPath(item.ui + '.js')
+            }
         },
     },
 })
