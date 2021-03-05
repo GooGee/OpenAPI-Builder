@@ -1,7 +1,7 @@
 import KeyValue from '../Base/KeyValue'
 import UniqueItem from '../Base/UniqueItem'
 import UniqueItemManager from '../Base/UniqueItemManager'
-// import { EncodingManager } from './Encoding'
+import { EncodingManager } from './Encoding'
 import { ReferenceManager, ReferenceType } from './Reference'
 import SchemaSimple from './SchemaSimple'
 
@@ -12,9 +12,9 @@ export enum MediaTypeEnum {
 }
 
 export default class MediaType extends UniqueItem {
-    readonly schema = new SchemaSimple('Schema')
+    readonly schema = new SchemaSimple('')
+    readonly encodingManager = new EncodingManager()
     readonly exampleManager = new ReferenceManager(ReferenceType.examples)
-    // readonly encodingManager = new EncodingManager
 
     toOAPI() {
         const result: KeyValue = {
@@ -22,6 +22,9 @@ export default class MediaType extends UniqueItem {
         }
         if (this.exampleManager.list.length > 0) {
             result.examples = this.exampleManager.toOAPI()
+        }
+        if (this.encodingManager.list.length > 0) {
+            result.encoding = this.encodingManager.toOAPI()
         }
         return result
     }
