@@ -96,7 +96,7 @@ export default class Item {
         return result
     }
 
-    toOAPI(): KeyValue | string {
+    toOAPI(): any {
         const result: KeyValue = {}
         this.getOAPIKeyList().forEach(name => {
             const item = this[name as keyof this]

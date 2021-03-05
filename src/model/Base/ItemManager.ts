@@ -30,11 +30,11 @@ export default class ItemManager<T extends Item> extends Manager<T> {
         }
     }
 
-    toOAPI(): KeyValue | (KeyValue | string)[] {
+    toOAPI(): any {
         return this.toOAPIArray()
     }
 
-    toOAPIArray(): (KeyValue | string)[] {
+    toOAPIArray(): any[] {
         return this.list.map(item => item.toOAPI())
     }
 }
