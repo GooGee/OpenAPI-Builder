@@ -26,6 +26,7 @@
         v-model="sss.sidebar.item.text"
         class="form-control"
         spellcheck="false"
+        wrap="off"
         rows="11"
     ></textarea>
     <SchemaObject

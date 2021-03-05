@@ -14,8 +14,9 @@
             v-if="schema.type === 'template'"
             v-model="schema.text"
             class="form-control inline wa"
-            style="vertical-align: top;"
+            style="vertical-align: top"
             spellcheck="false"
+            wrap="off"
             rows="3"
         ></textarea>
 
