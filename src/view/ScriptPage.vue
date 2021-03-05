@@ -1,18 +1,18 @@
 <template>
     <div class="row">
         <div class="col-3">
-            <SideBar :sidebar="sss.sidebar" @select="select"></SideBar>
+            <SideBar :sidebar="sidebar" @select="select"></SideBar>
         </div>
 
         <div class="col-9">
-            <PropertyTable v-if="item">
+            <PropertyTable v-if="sidebar.item">
                 <tr>
                     <td class="text-right">global</td>
                     <td>
                         <span class="custom-control custom-switch inline mr11">
                             <input
                                 id="global"
-                                v-model="item.global"
+                                v-model="sidebar.item.global"
                                 type="checkbox"
                                 class="custom-control-input"
                             />
@@ -21,13 +21,13 @@
                         <span>e.g. define global variable / function</span>
                     </td>
                 </tr>
-                <tr v-show="item.global === false">
+                <tr v-show="sidebar.item.global === false">
                     <td class="text-right">single</td>
                     <td>
                         <span class="custom-control custom-switch inline mr11">
                             <input
                                 id="single"
-                                v-model="item.single"
+                                v-model="sidebar.item.single"
                                 type="checkbox"
                                 class="custom-control-input"
                             />
@@ -39,8 +39,12 @@
                 <tr>
                     <td class="text-right">code</td>
                     <td>
-                        <EditButton v-model:code="item.code" :file="file" class="mr11"></EditButton>
-                        <RunButton v-if="item.single" :item="item"></RunButton>
+                        <EditButton
+                            v-model:code="sidebar.item.code"
+                            :file="file"
+                            class="mr11"
+                        ></EditButton>
+                        <RunButton v-if="sidebar.item.single" :item="sidebar.itemitem"></RunButton>
                     </td>
                 </tr>
             </PropertyTable>
@@ -54,10 +58,10 @@ import EditButton from './button/EditButton.vue'
 import RunButton from './button/RunButton.vue'
 import PropertyTable from './oapi/PropertyTable.vue'
 import SideBar from './part/SideBar.vue'
-import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
 import UniqueItem from '@/model/Base/UniqueItem'
 import File from '@/model/Service/File'
+import PageSetup from './hook/PageSetup'
 
 export default defineComponent({
     components: {
@@ -66,26 +70,13 @@ export default defineComponent({
         RunButton,
         SideBar,
     },
-    data() {
-        return {
-            sss,
-            file: '',
-            item: sss.sidebar.item as UniqueItem,
+    setup() {
+        const data = PageSetup(SideBarEnum.Script) as any
+        data.file = ''
+        data.select = function(item: UniqueItem) {
+            data.file = File.getScriptPath(item.ui + '.js')
         }
-    },
-    created() {
-        sss.show(SideBarEnum.Script)
-        if (sss.sidebar.item) {
-            this.select(sss.sidebar.item)
-        }
-    },
-    methods: {
-        select(item: UniqueItem) {
-            this.item = item
-            if (item) {
-                this.file = File.getScriptPath(item.ui + '.js')
-            }
-        },
+        return data
     },
 })
 </script>
