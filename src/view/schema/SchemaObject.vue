@@ -22,18 +22,19 @@
         <tfoot>
             <tr>
                 <td>
-                    <select
-                        v-model="selected"
-                        @change="add($event.target.value)"
-                        class="form-control wa"
-                    >
-                        <option value="" disabled>----</option>
-                        <option v-for="item in nameManager.list" :key="item.ui" :value="item.ui">
-                            {{ item.ui }}
-                        </option>
-                    </select>
+                    <SelectButton
+                        @select="addName"
+                        :list="nameManager.list"
+                        :manager="manager"
+                    ></SelectButton>
                 </td>
-                <td></td>
+                <td>
+                    <SelectButton
+                        @select="addType"
+                        :list="typexx"
+                        :manager="manager"
+                    ></SelectButton>
+                </td>
             </tr>
         </tfoot>
     </table>
@@ -45,13 +46,16 @@ import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import SelectButton from '../button/SelectButton.vue'
 import SchemaSimple from './SchemaSimple.vue'
+import Property from '@/model/Data/Property'
 
 export default defineComponent({
     components: {
         ChangeButton,
         DeleteButton,
         SchemaSimple,
+        SelectButton,
     },
     props: {
         manager: {
@@ -59,28 +63,33 @@ export default defineComponent({
             required: true,
         },
     },
-    data() {
-        return {
-            selected: '',
-            nameManager: sss.getProject().getPreset('FieldName')!.propertyManager,
-        }
-    },
-    methods: {
-        add(name: string) {
-            try {
-                const found = this.nameManager.find(name)!
-                const item = this.manager.make(found.ui)
-                item.type = found.tag
-                this.manager.add(item)
-                this.selected = ''
-            } catch (error) {
-                new Noty({
-                    text: error.message,
-                    theme: 'bootstrap-v4',
-                    type: 'error',
-                }).show()
+    setup() {
+        const nameManager = sss.getProject().getPreset('FieldName')!.propertyManager
+        const typexx = ['boolean', 'integer', 'number', 'string'].map(item => {
+            return {
+                ui: item,
             }
-        },
+        })
+
+        class Schema {
+            ui = ''
+            type = ''
+        }
+
+        function addName(selected: Property, item: Schema) {
+            item.type = selected.tag
+        }
+
+        function addType(selected: Record<string, any>, item: Schema) {
+            item.type = item.ui
+        }
+
+        return {
+            addName,
+            addType,
+            nameManager,
+            typexx,
+        }
     },
 })
 </script>
