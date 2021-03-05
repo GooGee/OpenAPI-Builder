@@ -10,11 +10,11 @@ export default class SchemaComposition extends Item {
     type: CompositionType = CompositionType.allOf
 
     toOAPI() {
-        const data: KeyValue = {}
-        data[this.type] = this.schemaManager.list.map(item => item.toOAPI())
+        const result: KeyValue = {}
+        result[this.type] = this.schemaManager.list.map(item => item.toOAPI())
         if (this.discriminator.propertyName) {
-            data.discriminator = this.discriminator.toOAPI()
+            result.discriminator = this.discriminator.toOAPI()
         }
-        return data
+        return result
     }
 }

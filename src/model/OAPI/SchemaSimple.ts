@@ -20,11 +20,10 @@ export default class SchemaSimple extends Schema {
     }
 
     makeArray() {
-        const data: KeyValue = {
+        return {
             type: 'array',
             items: this.makeData(),
         }
-        return data
     }
 
     makeData() {
@@ -32,16 +31,16 @@ export default class SchemaSimple extends Schema {
             return this.reference.toOAPI()
         }
 
-        const data: KeyValue = {
+        const result: KeyValue = {
             type: this.type,
         }
         if (this.example) {
-            data.example = this.example
+            result.example = this.example
         }
         if (this.format) {
-            data.format = this.format
+            result.format = this.format
         }
-        return data
+        return result
     }
 
     toOAPI() {
@@ -53,8 +52,7 @@ export default class SchemaSimple extends Schema {
             return this.makeArray()
         }
 
-        const data = this.makeData()
-        return data
+        return this.makeData()
     }
 }
 

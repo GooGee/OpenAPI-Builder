@@ -39,7 +39,7 @@ export default class Operation extends UniqueItem {
         const id = [this.type].concat(this.path.ui.split('/')).join('_')
         const tags = this.tagManager.list.map(tag => tag.ui)
         const parameters = this.parameterManager.list.map(parameter => parameter.toOAPI())
-        const data: KeyValue = {
+        const result: KeyValue = {
             operationId: id,
             summary: this.summary,
             description: this.description,
@@ -53,11 +53,11 @@ export default class Operation extends UniqueItem {
             this.type === OperationType.get ||
             this.type === OperationType.delete
         ) {
-            return data
+            return result
         }
 
-        data.requestBody = this.requestBody.toOAPI()
-        return data
+        result.requestBody = this.requestBody.toOAPI()
+        return result
     }
 }
 

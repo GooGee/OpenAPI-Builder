@@ -9,17 +9,17 @@ export default class SchemaObject extends Item {
     readonly type = DataType.object
 
     toOAPI() {
-        const data: KeyValue = {
+        const result: KeyValue = {
             type: this.type,
             properties: this.schemaManager.toOAPI(),
         }
         const list = this.schemaManager.list.filter(one => one.required).map(one => one.ui)
         if (list.length) {
-            data.required = list
+            result.required = list
         }
         if (this.example) {
-            data.example = this.example
+            result.example = this.example
         }
-        return data
+        return result
     }
 }
