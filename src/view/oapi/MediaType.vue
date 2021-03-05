@@ -33,6 +33,12 @@
                     ></textarea>
                 </td>
             </tr>
+            <tr>
+                <td class="text-right">encoding</td>
+                <td>
+                    <EncodingList :manager="item.encodingManager"></EncodingList>
+                </td>
+            </tr>
         </tbody>
     </table>
 </template>
@@ -40,12 +46,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import EncodingList from './EncodingList.vue'
 import ReferenceList from './ReferenceList.vue'
 import SchemaSimple from '../schema/SchemaSimple.vue'
 
 export default defineComponent({
     components: {
         DeleteButton,
+        EncodingList,
         ReferenceList,
         SchemaSimple,
     },
