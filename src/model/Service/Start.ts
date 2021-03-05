@@ -29,9 +29,6 @@ export default class Start {
             state.sbManager.bind(state.project!)
             state.show(SideBarEnum.Example)
             state.event.state.ee.emit(EventEnum.AfterProjectLoad, state.project!)
-            if (response.status === 444) {
-                this.setJavaBridge(window)
-            }
         })
 
         manager.add(ActionEnum.save, 'project', response => {
@@ -51,20 +48,5 @@ export default class Start {
         }, 11122)
 
         return state
-    }
-
-    static setJavaBridge(cefw: CEFW) {
-        if (process.env.NODE_ENV === 'development') {
-            cefw.JavaBridge = {
-                call(text) {
-                    const json = JSON.parse(text)
-                    console.log(json.data)
-                    json.data = ''
-                    json.status = 444
-                    json.message = 'Echo'
-                    cefw.bridge.call(json)
-                },
-            }
-        }
     }
 }
