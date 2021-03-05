@@ -1,11 +1,12 @@
 <template>
-    <select v-model="item" @change="add($event.target.value)" class="form-control wa">
+    <select v-model="item" @change="add" class="form-control wa">
         <option value="" disabled>----</option>
-        <option v-for="item in list" :key="item.ui" :value="item.ui">{{ item.ui }}</option>
+        <option v-for="item in list" :key="item.ui" :value="item">{{ item.ui }}</option>
     </select>
 </template>
 
 <script lang="ts">
+import UniqueItem from '@/model/Base/UniqueItem'
 import Noty from 'noty'
 import { defineComponent } from 'vue'
 
@@ -15,11 +16,6 @@ export default defineComponent({
             type: Array,
             required: true,
         },
-        selected: {
-            type: String,
-            required: false,
-            default: '',
-        },
         manager: {
             type: Object,
             required: true,
@@ -27,16 +23,17 @@ export default defineComponent({
     },
     data() {
         return {
-            item: this.selected,
+            item: '',
         }
     },
     methods: {
-        add(ui: string) {
+        add() {
             try {
-                const item = this.manager.make(ui)
+                const selected = (this.item as any) as UniqueItem
+                const item = this.manager.make(selected.ui)
                 this.manager.add(item)
-                this.$emit('select', ui)
                 this.item = ''
+                this.$emit('select', selected, item)
             } catch (error) {
                 new Noty({
                     text: error.message,
