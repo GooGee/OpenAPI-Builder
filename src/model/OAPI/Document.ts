@@ -61,7 +61,7 @@ export default class Document extends Item {
             components: this.component.toOAPI(),
             paths: this.pathManager.toOAPI(),
             // security: this.securityManager.toOAPIArray(),
-            // servers: this.serverManager.toOAPIArray(),
+            servers: this.serverManager.toOAPIArray(),
             tags: this.tagManager.toOAPIArray(),
             externalDocs: this.externalDocs.toOAPI(),
         }
