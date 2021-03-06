@@ -20,7 +20,7 @@ export default class SchemaComplex extends Schema {
         return (
             this.composition.schemaManager.list.length === 0 &&
             this.object.schemaManager.list.length === 0 &&
-            this.text === ''
+            (this.text === '' || this.text === '{}')
         )
     }
 
