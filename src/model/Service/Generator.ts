@@ -10,6 +10,10 @@ export default class Generator {
         return this.project.oapi.component.exampleManager
     }
 
+    get headerManager() {
+        return this.project.oapi.component.headerManager
+    }
+
     get parameterManager() {
         return this.project.oapi.component.parameterManager
     }
@@ -28,6 +32,18 @@ export default class Generator {
 
     get schemaManager() {
         return this.project.oapi.component.schemaManager
+    }
+
+    get securityRequirement() {
+        return this.project.oapi.securityManager
+    }
+
+    get securityScheme() {
+        return this.project.oapi.component.securitySchemeManager
+    }
+
+    get serverManager() {
+        return this.project.oapi.serverManager
     }
 
     get tagManager() {

@@ -37,7 +37,7 @@ export enum SideBarEnum {
     Response = 'Response',
     Schema = 'Schema',
     Security = 'Security',
-    SecurityScheme = 'SecurityScheme',
+    SecurityScheme = 'Security',
     Script = 'Script',
     Server = 'Server',
     Tag = 'Tag',
