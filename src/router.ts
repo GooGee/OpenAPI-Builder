@@ -83,6 +83,16 @@ export const routes = [
         ],
     },
     {
+        path: '/security',
+        name: 'security',
+        component: () => import('@/view/SecurityPage.vue'),
+        children: [
+            { path: '', redirect: '/security/scheme' },
+            { path: 'requirement', component: () => import('@/view/security/Requirement.vue') },
+            { path: 'scheme', component: () => import('@/view/security/Scheme.vue') },
+        ],
+    },
+    {
         path: '/script',
         name: 'script',
         component: () => import('@/view/ScriptPage.vue'),
