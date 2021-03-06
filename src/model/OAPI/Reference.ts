@@ -9,6 +9,7 @@ export enum ReferenceType {
     requestBodies = 'requestBodies',
     responses = 'responses',
     schemas = 'schemas',
+    security = 'security',
 }
 
 export default class Reference extends UniqueItem {

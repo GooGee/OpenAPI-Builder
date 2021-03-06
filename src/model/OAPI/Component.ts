@@ -17,7 +17,7 @@ export default class Component extends Item {
     readonly requestBodyManager = new RequestBodyManager()
     readonly responseManager = new ResponseManager()
     readonly schemaManager = new SchemaManager()
-    // readonly securitySchemeManager = new SecuritySchemeManager
+    readonly securitySchemeManager = new SecuritySchemeManager()
 
     toOAPI() {
         return {
@@ -29,7 +29,7 @@ export default class Component extends Item {
             requestBodies: this.requestBodyManager.toOAPI(),
             responses: this.responseManager.toOAPI(),
             schemas: this.schemaManager.toOAPI(),
-            // securitySchemes: this.securitySchemeManager.toOAPI(),
+            securitySchemes: this.securitySchemeManager.toOAPI(),
         }
     }
 }
