@@ -16,7 +16,7 @@ export default class Document extends Item {
     readonly component = new Component()
     readonly externalDocs = new External()
     readonly pathManager = new PathManager()
-    // readonly securityManager = new SecurityManager
+    readonly securityManager = new SecurityManager()
     readonly serverManager = new ServerManager()
     readonly tagManager = new TagManager()
 
@@ -48,6 +48,9 @@ export default class Document extends Item {
             case ReferenceType.schemas:
                 return this.component.schemaManager
 
+            case ReferenceType.security:
+                return this.component.securitySchemeManager
+
             default:
                 break
         }
@@ -60,7 +63,7 @@ export default class Document extends Item {
             info: this.info.toOAPI(),
             components: this.component.toOAPI(),
             paths: this.pathManager.toOAPI(),
-            // security: this.securityManager.toOAPIArray(),
+            security: this.securityManager.toOAPIArray(),
             servers: this.serverManager.toOAPIArray(),
             tags: this.tagManager.toOAPIArray(),
             externalDocs: this.externalDocs.toOAPI(),
