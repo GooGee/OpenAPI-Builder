@@ -37,16 +37,6 @@ export default class Start {
             }
         })
 
-        setInterval(() => {
-            if (state.ready) {
-                if (window.JavaBridge) {
-                    if (state.project!.autoSave) {
-                        service.save(state.getProject())
-                    }
-                }
-            }
-        }, 11122)
-
         return state
     }
 }
