@@ -13,10 +13,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import PageSetup from './hook/PageSetup'
 import SideBar from './part/SideBar.vue'
 import TabBar from './part/TabBar.vue'
 import { SideBarEnum } from '@/model/Data/SideBar'
+import PageSetup from '@/store/SetupPage'
 
 export default defineComponent({
     components: {

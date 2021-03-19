@@ -8,8 +8,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
-import Toast from '../hook/Toast'
-import Wait from '../hook/Wait'
+import callJava from '@/helper/callJava'
 
 export default defineComponent({
     props: {
@@ -23,10 +22,9 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const ddd = Wait(() => {
-            sss.route.edit(props.file, props.code, response => {
-                Toast(response)
-                ddd.stopWaiting()
+        const ddd = callJava((route, toast) => {
+            route.edit(props.file, props.code, response => {
+                toast.show(response.message, response.status)
                 context.emit('update:code', response.data)
             })
         })

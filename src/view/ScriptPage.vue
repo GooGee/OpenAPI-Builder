@@ -61,7 +61,7 @@ import SideBar from './part/SideBar.vue'
 import { SideBarEnum } from '@/model/Data/SideBar'
 import UniqueItem from '@/model/Base/UniqueItem'
 import File from '@/model/Service/File'
-import PageSetup from './hook/PageSetup'
+import PageSetup from '@/store/SetupPage'
 
 export default defineComponent({
     components: {

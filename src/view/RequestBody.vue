@@ -16,7 +16,7 @@ import { defineComponent } from 'vue'
 import TabBar from './part/TabBar.vue'
 import SideBar from './part/SideBar.vue'
 import { SideBarEnum } from '@/model/Data/SideBar'
-import PageSetup from './hook/PageSetup'
+import PageSetup from '@/store/SetupPage'
 
 export default defineComponent({
     components: {

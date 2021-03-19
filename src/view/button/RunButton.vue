@@ -6,13 +6,12 @@
 </template>
 
 <script lang="ts">
-import Noty from 'noty'
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
-import Toast from '../hook/Toast'
-import Wait from '../hook/Wait'
+import Wait from '@/store/wait'
 import { EventEnum } from '@/model/Event/StateEvent'
 import Script from '@/model/Data/Script'
+import toast from '@/helper/toast'
 
 export default defineComponent({
     props: {
@@ -26,12 +25,7 @@ export default defineComponent({
             sss.run(props.item.code)
             ddd.stopWaiting()
             sss.event.state.ee.emit(EventEnum.AfterCodeRun, {})
-            new Noty({
-                text: 'OK! Run ' + props.item.ui,
-                theme: 'bootstrap-v4',
-                timeout: 3331,
-                type: 'info',
-            }).show()
+            toast.toast('OK! Run ' + props.item.ui)
         })
         return ddd
     },

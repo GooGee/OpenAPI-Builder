@@ -8,15 +8,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
-import Toast from '../hook/Toast'
-import Wait from '../hook/Wait'
+import callJava from '@/helper/callJava'
 
 export default defineComponent({
     setup() {
-        const ddd = Wait(() => {
+        const ddd = callJava((route, toast) => {
             sss.service.export(sss.getProject(), response => {
-                Toast(response)
-                ddd.stopWaiting()
+                toast.show(response.message, response.status)
             })
         })
         return ddd

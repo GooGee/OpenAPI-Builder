@@ -31,7 +31,7 @@ import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import ServerVariable from './oapi/ServerVariable.vue'
 import SideBar from './part/SideBar.vue'
-import PageSetup from './hook/PageSetup'
+import PageSetup from '@/store/SetupPage'
 
 export default defineComponent({
     components: {
