@@ -1,7 +1,7 @@
 import Handler from '../Bridge/FromJava/Handler'
 import Route from '../Bridge/ToJava/Route'
 
-export const OAPIFolder = 'open-api-gui'
+export const OAPIFolder = 'open-api'
 
 export default class File {
     constructor(readonly route: Route) {}
