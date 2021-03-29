@@ -46,6 +46,14 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         return item
     }
 
+    sort(asc = true) {
+        if (asc) {
+            this.list.sort((aaa, bbb) => aaa.ui.localeCompare(bbb.ui))
+        } else {
+            this.list.sort((aaa, bbb) => bbb.ui.localeCompare(aaa.ui))
+        }
+    }
+
     toOAPI() {
         const map: KeyValue = {}
         this.list.forEach(item => {
