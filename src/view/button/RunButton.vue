@@ -8,10 +8,10 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
-import Wait from '@/store/wait'
 import { EventEnum } from '@/model/Event/StateEvent'
 import Script from '@/model/Data/Script'
 import toast from '@/helper/toast'
+import Wait from '@/helper/wait'
 
 export default defineComponent({
     props: {

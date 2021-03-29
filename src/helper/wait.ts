@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import toast from '../helper/toast'
+import toast from './toast'
 
 export default function wait(callback: Function) {
     const waiting = ref(false)

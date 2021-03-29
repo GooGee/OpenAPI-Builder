@@ -1,7 +1,7 @@
 import Route from '@/model/Bridge/ToJava/Route'
 import sss from '@/sss'
 import Toast from './toast'
-import wait from '../store/wait'
+import wait from './wait'
 
 interface CallBack {
     (route: Route, toast: typeof Toast): void
