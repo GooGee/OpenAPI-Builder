@@ -10,6 +10,7 @@ import Manager from './Service/Manager'
 import { run } from './Service/Text'
 
 export default class Vendor {
+    ide = ''
     readonly preset: Project
     project: Project | null = null
 
@@ -26,6 +27,10 @@ export default class Vendor {
         this.preset = preset
         this.route = route
         this.service = service
+    }
+
+    get inBrowser() {
+        return this.ide === ''
     }
 
     get ready() {
