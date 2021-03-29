@@ -61,7 +61,7 @@ import SideBar from './part/SideBar.vue'
 import { SideBarEnum } from '@/model/Data/SideBar'
 import UniqueItem from '@/model/Base/UniqueItem'
 import File from '@/model/Service/File'
-import PageSetup from '@/store/SetupPage'
+import SetupPage from '@/helper/SetupPage'
 
 export default defineComponent({
     components: {
@@ -71,7 +71,7 @@ export default defineComponent({
         SideBar,
     },
     setup() {
-        const data = PageSetup(SideBarEnum.Script) as any
+        const data = SetupPage(SideBarEnum.Script) as any
         data.file = ''
         data.select = function(item: UniqueItem) {
             data.file = File.getScriptPath(item.ui + '.js')

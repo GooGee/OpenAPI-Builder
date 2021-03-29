@@ -31,7 +31,7 @@ import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import ServerVariable from './oapi/ServerVariable.vue'
 import SideBar from './part/SideBar.vue'
-import PageSetup from '@/store/SetupPage'
+import SetupPage from '@/helper/SetupPage'
 
 export default defineComponent({
     components: {
@@ -41,7 +41,7 @@ export default defineComponent({
         SideBar,
     },
     setup() {
-        const data = PageSetup(SideBarEnum.Server)
+        const data = SetupPage(SideBarEnum.Server)
         return data
     },
 })

@@ -26,14 +26,14 @@
 import { defineComponent } from 'vue'
 import { SideBarEnum } from '@/model/Data/SideBar'
 import SideBar from './part/SideBar.vue'
-import PageSetup from '@/store/SetupPage'
+import SetupPage from '@/helper/SetupPage'
 
 export default defineComponent({
     components: {
         SideBar,
     },
     setup() {
-        const data = PageSetup(SideBarEnum.SecurityScheme)
+        const data = SetupPage(SideBarEnum.SecurityScheme)
         return data
     },
 })
