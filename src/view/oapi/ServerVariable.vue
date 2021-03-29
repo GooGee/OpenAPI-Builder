@@ -1,8 +1,14 @@
 <template>
-    <table class="table b-table b-table-caption-top">
+    <table class="table">
+        <caption class="caption-top">
+            <h2>Variable</h2>
+        </caption>
         <thead>
             <tr>
-                <th>ui</th>
+                <th>
+                    <SortButton :manager="manager"></SortButton>
+                    ui
+                </th>
                 <th>default</th>
                 <th>description</th>
                 <th>enum</th>
@@ -45,6 +51,7 @@ import { defineComponent } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import SortButton from '../button/SortButton.vue'
 import EditList from './EditList.vue'
 
 export default defineComponent({
@@ -52,6 +59,7 @@ export default defineComponent({
         AddButton,
         ChangeButton,
         DeleteButton,
+        SortButton,
         EditList,
     },
     props: {

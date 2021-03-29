@@ -25,7 +25,10 @@
                 </caption>
                 <thead>
                     <tr>
-                        <th>ui</th>
+                        <th>
+                            <SortButton :manager="sss.sidebar.item.propertyManager"></SortButton>
+                            ui
+                        </th>
                         <th>value</th>
                         <th>tag</th>
                     </tr>
@@ -68,6 +71,7 @@ import { defineComponent } from 'vue'
 import AddButton from './button/AddButton.vue'
 import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
+import SortButton from './button/SortButton.vue'
 import SideBar from './part/SideBar.vue'
 import sss from '@/sss.ts'
 import { SideBarEnum } from '@/model/Data/SideBar'
@@ -77,6 +81,7 @@ export default defineComponent({
         AddButton,
         ChangeButton,
         DeleteButton,
+        SortButton,
         SideBar,
     },
     data() {

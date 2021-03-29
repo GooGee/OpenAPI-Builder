@@ -4,9 +4,15 @@
 
         <div class="col-9">
             <table class="table">
+                <caption class="caption-top">
+                    <h2>Tag</h2>
+                </caption>
                 <thead>
                     <tr>
-                        <th class="w111">ui</th>
+                        <th class="w111">
+                            <SortButton :manager="manager"></SortButton>
+                            ui
+                        </th>
                         <th>description</th>
                     </tr>
                 </thead>
@@ -43,12 +49,14 @@ import { SideBarEnum } from '@/model/Data/SideBar'
 import AddButton from './button/AddButton.vue'
 import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
+import SortButton from './button/SortButton.vue'
 
 export default defineComponent({
     components: {
         AddButton,
         ChangeButton,
         DeleteButton,
+        SortButton,
     },
     data() {
         return {
