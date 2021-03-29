@@ -14,10 +14,10 @@
             v-if="schema.type === 'template'"
             v-model="schema.text"
             class="form-control inline wa"
-            style="vertical-align: top"
+            style="vertical-align: top; width: 444px"
             spellcheck="false"
             wrap="off"
-            rows="3"
+            rows="5"
         ></textarea>
 
         <select
