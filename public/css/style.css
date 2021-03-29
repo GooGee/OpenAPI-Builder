@@ -17,6 +17,14 @@
     background-color: transparent;
 }
 
+.cgray {
+    color: gray;
+}
+
+.clgray {
+    color: lightgray;
+}
+
 .inline {
     display: inline-block;
 }
