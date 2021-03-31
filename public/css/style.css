@@ -25,6 +25,10 @@
     color: lightgray;
 }
 
+.cred {
+    color: red;
+}
+
 .inline {
     display: inline-block;
 }
@@ -93,6 +97,10 @@
 
 .w111 {
     width: 111px;
+}
+
+.w222 {
+    width: 222px;
 }
 
 .wa {
