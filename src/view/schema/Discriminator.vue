@@ -1,6 +1,5 @@
 <template>
-    <span v-if="sss.sidebar.item.isObject" class="mtb11">Only for composition</span>
-    <div v-else>
+    <div v-if="sss.sidebar.item.isComposition">
         <input
             type="text"
             class="form-control mt11"
@@ -49,6 +48,7 @@
             </tfoot>
         </table>
     </div>
+    <span v-else class="mtb11">Only for composition</span>
 </template>
 
 <script lang="ts">
