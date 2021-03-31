@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/events": "^3.0.0",
     "@types/lodash": "^4.14.168",
+    "@types/papaparse": "^5.2.5",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-eslint": "^4.5.12",
