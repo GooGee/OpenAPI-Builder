@@ -32,12 +32,12 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         return found
     }
 
-    load(manager: UniqueItemManager<T>) {
+    loadList(list: T[]) {
         // console.log('-- load UniqueItemManager')
-        manager.list.forEach(item => {
+        list.forEach(item => {
             const iii = this.make(item.ui)
             iii.load(item)
-            this.add(iii)
+            this.list.push(iii)
         })
     }
 

@@ -12,8 +12,12 @@ export default class ItemManager<T extends Item> extends Manager<T> {
     }
 
     load(manager: ItemManager<T>) {
+        this.loadList(manager.list)
+    }
+
+    loadList(list: T[]) {
         // console.log('-- load ItemManager')
-        manager.list.forEach(item => {
+        list.forEach(item => {
             const iii = this.make()
             iii.load(item)
             this.list.push(iii)
