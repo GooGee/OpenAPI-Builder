@@ -16,7 +16,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="text-right">type</td>
+                <td class="text-right">format</td>
                 <td>
                     <label class="mr11">
                         <input v-model="csv" :value="true" type="radio" /> CSV
@@ -47,12 +47,18 @@ import { parseCSV } from '@/helper/parseCSV'
 import toast from '@/helper/toast'
 
 export default defineComponent({
+    props: {
+        keyxx: {
+            type: Array,
+            required: true,
+        },
+    },
     setup(props, context) {
         const data = reactive({
             csv: true,
             delimiter: ',',
             namexx: [],
-            text: '',
+            text: props.keyxx.join(','),
             parse() {
                 try {
                     if (this.csv) {

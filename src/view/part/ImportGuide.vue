@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ImportText v-show="importing" @parsed="convert"></ImportText>
+        <ImportText v-show="importing" :keyxx="keyxx" @parsed="convert"></ImportText>
         <table v-show="importing === false" class="table">
             <caption class="caption-top">
                 <h2>Map</h2>
