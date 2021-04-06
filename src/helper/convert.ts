@@ -17,8 +17,3 @@ export function convert(data: StringObject[], map: Map<string, string>) {
     })
     return list
 }
-
-export interface MapObject {
-    name: string
-    value: string
-}
