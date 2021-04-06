@@ -48,6 +48,11 @@ export const routes = [
         path: '/preset',
         name: 'preset',
         component: () => import('@/view/PresetPage.vue'),
+        children: [
+            { path: '', redirect: '/preset/property' },
+            { path: 'import', component: () => import('@/view/preset/ImportItem.vue') },
+            { path: 'property', component: () => import('@/view/preset/Property.vue') },
+        ],
     },
     {
         path: '/request',
