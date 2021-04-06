@@ -1,5 +1,5 @@
 <template>
-    <span @click="call" :disabled="waiting" class="btn btn-outline-success">
+    <span @click="run" :disabled="waiting" class="btn btn-outline-success">
         <span v-if="waiting" class="spinner-border spinner-border-sm"></span>
         Save
     </span>
