@@ -7,6 +7,19 @@
                 </router-link>
             </li>
         </ul>
+
+        <ul v-if="sss.inBrowser" class="navbar-nav ml-auto mr11">
+            <li class="nav-item">
+                <a
+                    href="https://github.com/GooGee/OpenAPI-Builder"
+                    rel="noopener"
+                    target="_blank"
+                    class="nav-link"
+                >
+                    GitHub
+                </a>
+            </li>
+        </ul>
     </nav>
 </template>
 
@@ -19,6 +32,7 @@ import { EventEnum } from '@/model/Event/StateEvent'
 export default defineComponent({
     data() {
         return {
+            sss,
             routes,
             ready: sss.ready,
         }
