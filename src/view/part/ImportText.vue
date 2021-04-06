@@ -22,7 +22,10 @@
                         <input v-model="csv" :value="true" type="radio" /> CSV
                     </label>
                     <label> <input v-model="csv" :value="false" type="radio" /> JSON </label>
-                    <p v-if="csv" class="cred">make sure the first line is field names</p>
+                    <p class="cred">
+                        <span v-if="csv">make sure the first line is field names</span>
+                        <span v-else>text must be an array of object</span>
+                    </p>
                 </td>
             </tr>
             <tr v-if="csv" class="text-right">
