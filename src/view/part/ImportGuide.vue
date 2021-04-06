@@ -1,13 +1,13 @@
 <template>
     <div>
-        <ImportText v-show="importing" :keyxx="keyxx" @parsed="convert"></ImportText>
+        <ImportText v-show="importing" :manager="manager" @parsed="convert"></ImportText>
         <table v-show="importing === false" class="table">
             <caption class="caption-top">
                 <h2>Map</h2>
             </caption>
             <tbody>
-                <tr v-for="key in list" :key="key.name">
-                    <td class="text-right w111">{{ key.name }}</td>
+                <tr v-for="key in manager.list" :key="key.ui">
+                    <td class="text-right w111">{{ key.ui }}</td>
                     <td>
                         <select v-model="key.value" class="form-control">
                             <option value="" disabled selected>----</option>
@@ -33,34 +33,26 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
-import { convert, MapObject } from '@/helper/convert'
+import { convert } from '@/helper/convert'
 import { StringObject } from '@/helper/parseCSV'
 import ImportText from './ImportText.vue'
 import toast from '@/helper/toast'
+import { KeyManager } from '@/model/Data/Key'
 
 export default defineComponent({
     components: {
         ImportText,
     },
     props: {
-        keyxx: {
-            type: Array,
+        manager: {
+            type: KeyManager,
             required: true,
         },
     },
     setup(props, context) {
-        const list: MapObject[] = []
-        props.keyxx.forEach(item => {
-            list.push({
-                name: item as string,
-                value: '',
-            })
-        })
-
         let itemxx: StringObject[] = []
 
         const data = reactive({
-            list,
             valuexx: [] as string[],
             importing: true,
             convert(result: StringObject[]) {
@@ -73,14 +65,28 @@ export default defineComponent({
             },
             run() {
                 // console.log(itemxx)
-                const empty = list.every(item => item.value === '')
-                if (empty) {
-                    toast.toast('Please set the map')
+                try {
+                    props.manager.list.forEach(item => {
+                        if (item.required) {
+                            if (item.value === '') {
+                                throw new Error('Please set the ' + item.ui)
+                            }
+                        }
+                    })
+                } catch (error) {
+                    toast.error(error.message)
                     return
                 }
+
+                const empty = props.manager.list.every(item => item.value === '')
+                if (empty) {
+                    toast.error('Please set the map')
+                    return
+                }
+
                 const map = new Map<string, string>()
-                list.forEach(item => {
-                    map.set(item.name, item.value)
+                props.manager.list.forEach(item => {
+                    map.set(item.ui, item.value)
                 })
                 const result = convert(itemxx, map)
                 context.emit('converted', result)

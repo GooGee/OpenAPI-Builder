@@ -45,20 +45,22 @@
 import { defineComponent, reactive } from 'vue'
 import { parseCSV } from '@/helper/parseCSV'
 import toast from '@/helper/toast'
+import { KeyManager } from '@/model/Data/Key'
 
 export default defineComponent({
     props: {
-        keyxx: {
-            type: Array,
+        manager: {
+            type: KeyManager,
             required: true,
         },
     },
     setup(props, context) {
+        const text = props.manager.list.map(item => item.ui).join(',')
         const data = reactive({
             csv: true,
             delimiter: ',',
             namexx: [],
-            text: props.keyxx.join(','),
+            text,
             parse() {
                 try {
                     if (this.csv) {
