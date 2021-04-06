@@ -1,5 +1,5 @@
 <template>
-    <table v-if="sss.sidebar.item" class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th>

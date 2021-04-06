@@ -4,24 +4,22 @@
             <SideBar :sidebar="sss.sidebar"></SideBar>
         </div>
 
-        <div class="col-9">
-            <template v-if="sss.sidebar.item">
-                <h2 v-if="sss.sidebar.item.required">{{ sss.sidebar.item.ui }}</h2>
-                <div v-else class="btn-group mt11">
-                    <DeleteButton
-                        :manager="sss.sidebar.manager"
-                        :item="sss.sidebar.item"
-                        @deleted="sss.sidebar.item = null"
-                    ></DeleteButton>
-                    <ChangeButton :item="sss.sidebar.item"></ChangeButton>
-                </div>
-                <input
-                    type="text"
-                    class="form-control mt11"
-                    placeholder="description"
-                    v-model="sss.sidebar.item.description"
-                />
-            </template>
+        <div v-if="sss.sidebar.item" class="col-9">
+            <h2 v-if="sss.sidebar.item.required">{{ sss.sidebar.item.ui }}</h2>
+            <div v-else class="btn-group mt11">
+                <DeleteButton
+                    :manager="sss.sidebar.manager"
+                    :item="sss.sidebar.item"
+                    @deleted="sss.sidebar.item = null"
+                ></DeleteButton>
+                <ChangeButton :item="sss.sidebar.item"></ChangeButton>
+            </div>
+            <input
+                type="text"
+                class="form-control mt11"
+                placeholder="description"
+                v-model="sss.sidebar.item.description"
+            />
 
             <TabBar :route="route" class="mt11"></TabBar>
             <router-view></router-view>
