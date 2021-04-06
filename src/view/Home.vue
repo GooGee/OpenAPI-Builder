@@ -1,8 +1,8 @@
 <template>
     <div>
         <div class="text-center" style="margin-top: 11%">
-            <img v-if="ready" alt="logo" src="logo.svg" style="width: 222px" />
-            <img v-else alt="loading" src="loading.svg" class="mb11" />
+            <img v-if="ready" alt="logo" src="../assets/image/logo.svg" style="width: 222px" />
+            <img v-else alt="loading" src="../assets/image/loading.svg" class="mb11" />
             <h1>OpenAPI GUI</h1>
             <p>{{ version }}</p>
             <p v-if="sss.inBrowser">
