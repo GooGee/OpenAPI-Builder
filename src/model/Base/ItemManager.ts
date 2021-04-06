@@ -1,5 +1,4 @@
 import Item from './Item'
-import KeyValue from './KeyValue'
 import Manager from './Manager'
 import Newable from './Newable'
 

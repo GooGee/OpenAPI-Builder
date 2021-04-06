@@ -37,7 +37,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         list.forEach(item => {
             const iii = this.make(item.ui)
             iii.load(item)
-            this.list.push(iii)
+            this.add(iii)
         })
     }
 
