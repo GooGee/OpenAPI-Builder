@@ -44,7 +44,10 @@
                                             :manager="item.scopeManager"
                                             :item="scope"
                                         ></DeleteButton>
-                                        <ChangeButton :item="scope"></ChangeButton>
+                                        <ChangeButton
+                                            :manager="item.scopeManager"
+                                            :item="scope"
+                                        ></ChangeButton>
                                     </div>
                                 </td>
                                 <td>

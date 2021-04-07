@@ -20,7 +20,7 @@
                     </span>
                     <div class="btn-group">
                         <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                        <ChangeButton :item="item"></ChangeButton>
+                        <ChangeButton :manager="manager" :item="item"></ChangeButton>
                     </div>
                 </td>
                 <td>

@@ -3,7 +3,7 @@
         <div v-for="item in manager.list" :key="item.ui" class="mb11">
             <div class="btn-group">
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                <ChangeButton v-if="canEdit" :item="item"></ChangeButton>
+                <ChangeButton v-if="canEdit" :manager="manager" :item="item"></ChangeButton>
                 <span v-else class="btn btn-outline-secondary"> {{ item.ui }} </span>
             </div>
         </div>

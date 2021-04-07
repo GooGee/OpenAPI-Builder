@@ -12,7 +12,10 @@
                     :item="sss.sidebar.item"
                     @deleted="sss.sidebar.item = null"
                 ></DeleteButton>
-                <ChangeButton :item="sss.sidebar.item"></ChangeButton>
+                <ChangeButton
+                    :manager="sss.sidebar.manager"
+                    :item="sss.sidebar.item"
+                ></ChangeButton>
             </div>
             <input
                 type="text"

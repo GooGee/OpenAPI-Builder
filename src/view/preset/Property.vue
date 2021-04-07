@@ -18,7 +18,10 @@
                             :manager="sss.sidebar.item.propertyManager"
                             :item="item"
                         ></DeleteButton>
-                        <ChangeButton :item="item"></ChangeButton>
+                        <ChangeButton
+                            :manager="sss.sidebar.item.propertyManager"
+                            :item="item"
+                        ></ChangeButton>
                     </div>
                 </td>
                 <td>

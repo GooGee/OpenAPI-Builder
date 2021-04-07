@@ -11,7 +11,7 @@
                     :item="sidebar.item"
                     @deleted="sidebar.item = null"
                 ></DeleteButton>
-                <ChangeButton :item="sidebar.item"></ChangeButton>
+                <ChangeButton :manager="sidebar.manager" :item="sidebar.item"></ChangeButton>
             </div>
             <input
                 type="text"
