@@ -9,12 +9,13 @@
 import { defineComponent } from 'vue'
 import sss from '@/sss.ts'
 import callJava from '@/helper/callJava'
+import { OAPIJSON } from '@/model/Service/Export'
 
 export default defineComponent({
     setup() {
         const ddd = callJava((route, toast) => {
             sss.service.export(sss.getProject(), response => {
-                toast.show(response.message, response.status)
+                toast.show('Export ' + OAPIJSON, response.status)
             })
         })
         return ddd
