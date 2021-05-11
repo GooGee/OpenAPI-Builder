@@ -9,7 +9,7 @@
     "dts": "tsc --project tsd.json"
   },
   "dependencies": {
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "noty": "^3.1.4",
     "papaparse": "^5.3.0",
     "reflect-metadata": "^0.1.13",
