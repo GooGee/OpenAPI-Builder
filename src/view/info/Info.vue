@@ -43,7 +43,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     setup(props, context) {
-        const info = ss.project?.oapi.info
+        const info = ss.project.oapi.info
         return { info }
     },
 })

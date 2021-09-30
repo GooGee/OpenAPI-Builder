@@ -23,7 +23,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     setup(props, context) {
-        const license = ss.project?.oapi.info.license
+        const license = ss.project.oapi.info.license
         return { license }
     },
 })

@@ -29,7 +29,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     setup(props, context) {
-        const contact = ss.project?.oapi.info.contact
+        const contact = ss.project.oapi.info.contact
         return { contact }
     },
 })
