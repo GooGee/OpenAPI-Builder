@@ -1,5 +1,5 @@
 <template>
-    <nav v-if="ss.ready" class="navbar navbar-expand fixed-top navbar-dark bg-primary">
+    <nav v-if="store.ready" class="navbar navbar-expand fixed-top navbar-dark bg-primary">
         <ul class="navbar-nav mr-auto">
             <li v-for="item in routes" :key="item.path" class="nav-item">
                 <router-link :to="item.path" active-class="active" class="nav-link">
@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { routes } from '@/router'
-import ss from '@/ss'
+import store from '@/store'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -36,7 +36,7 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        return { routes, ss }
+        return { routes, store }
     },
 })
 </script>
