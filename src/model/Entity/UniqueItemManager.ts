@@ -10,12 +10,6 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         super(type)
     }
 
-    throwIfExist(name: string) {
-        if (this.find(name)) {
-            throw new Error(`${this.type.name} ${name} already exists!`)
-        }
-    }
-
     add(item: T) {
         this.throwIfExist(item.un)
         super.add(item)
@@ -36,13 +30,21 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         return found
     }
 
-    loadList(list: T[]) {
-        // console.log('-- load UniqueItemManager')
-        list.forEach((item) => {
+    has(name: string) {
+        return this.find(name) !== undefined
+    }
+
+    load(manager: UniqueItemManager<T>) {
+        manager.list.forEach((item) => {
             const iii = this.make(item.un)
             iii.load(item)
-            this.list.push(iii)
+            if (item.id === undefined) {
+                this.add(iii)
+            } else {
+                this.list.push(iii)
+            }
         })
+        this.nextId = manager.nextId ?? this.nextId
     }
 
     make(name: string) {
@@ -55,6 +57,19 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
             this.list.sort((aaa, bbb) => aaa.un.localeCompare(bbb.un))
         } else {
             this.list.sort((aaa, bbb) => bbb.un.localeCompare(aaa.un))
+        }
+    }
+
+    throwIfExist(name: string) {
+        if (this.find(name)) {
+            throw new Error(`${this.type.name} ${name} already exists!`)
+        }
+    }
+
+    toJSON() {
+        return {
+            list: this.list,
+            nextId: this.nextId,
         }
     }
 
