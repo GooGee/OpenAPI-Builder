@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
+    "notyf": "^3.10.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
