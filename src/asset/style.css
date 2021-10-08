@@ -37,10 +37,24 @@
     margin-bottom: 11px;
 }
 
+.nav-item.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+    top: 88%;
+}
+
 .pointer {
     cursor: pointer;
 }
 
 .table caption.caption-top {
     caption-side: top;
+}
+
+.w111 {
+    width: 111px;
+}
+
+.wa {
+    width: auto;
 }

@@ -1,10 +1,45 @@
 <template>
-    <nav v-if="store.ready" class="navbar navbar-expand fixed-top navbar-dark bg-primary">
+    <nav
+        v-if="store.ready"
+        class="navbar navbar-expand fixed-top navbar-dark bg-primary"
+    >
         <ul class="navbar-nav mr-auto">
-            <li v-for="item in routes" :key="item.path" class="nav-item">
+            <li v-for="item in routexx" :key="item.path" class="nav-item">
                 <router-link :to="item.path" active-class="active" class="nav-link">
                     {{ item.name }}
                 </router-link>
+            </li>
+            <li class="nav-item dropdown">
+                <span class="nav-link dropdown-toggle pointer">preset</span>
+                <ul class="dropdown-menu">
+                    <li>
+                        <router-link
+                            to="/preset"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            property
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link
+                            to="/script"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            script
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link
+                            to="/template"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            template
+                        </router-link>
+                    </li>
+                </ul>
             </li>
         </ul>
 
@@ -36,7 +71,9 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        return { routes, store }
+        const excludexx = ['/preset', '/script', '/template']
+        const routexx = routes.filter((route) => !excludexx.includes(route.path))
+        return { routexx, store }
     },
 })
 </script>
