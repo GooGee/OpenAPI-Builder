@@ -23,12 +23,12 @@
 
 <script lang="ts">
 import External from '@/model/OAPI/External'
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
     props: {
         item: {
-            type: External,
+            type: Object as PropType<External>,
             required: true,
         },
     },
