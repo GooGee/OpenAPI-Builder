@@ -63,6 +63,14 @@
     top: 88%;
 }
 
+.navbar-dark .navbar-nav .nav-link.active {
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: white;
+}
+
 .pointer {
     cursor: pointer;
 }

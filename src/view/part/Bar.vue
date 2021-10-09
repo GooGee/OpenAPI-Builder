@@ -10,6 +10,29 @@
                 </router-link>
             </li>
             <li class="nav-item dropdown">
+                <span class="nav-link dropdown-toggle pointer">security</span>
+                <ul class="dropdown-menu">
+                    <li>
+                        <router-link
+                            to="/security-requirement"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            requirement
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link
+                            to="/security-scheme"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            scheme
+                        </router-link>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
                 <span class="nav-link dropdown-toggle pointer">preset</span>
                 <ul class="dropdown-menu">
                     <li>
@@ -71,7 +94,13 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const excludexx = ['/preset', '/script', '/template']
+        const excludexx = [
+            '/preset',
+            '/script',
+            '/template',
+            '/security-requirement',
+            '/security-scheme',
+        ]
         const routexx = routes.filter((route) => !excludexx.includes(route.path))
         return { routexx, store }
     },
