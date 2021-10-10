@@ -1,5 +1,5 @@
 <template>
-    <table v-if="sidebar.item" class="table">
+    <table class="table">
         <tbody>
             <tr>
                 <td class="text-right w111">description</td>

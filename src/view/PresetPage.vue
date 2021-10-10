@@ -4,7 +4,7 @@
             <SideBar :sidebar="sidebar"></SideBar>
         </div>
 
-        <div class="col-9">
+        <div v-if="sidebar.item" class="col-9">
             <Preset :sidebar="sidebar"></Preset>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <table v-if="sidebar.item" class="table">
+    <table class="table">
         <caption class="caption-top">
             <input
                 v-model="sidebar.item.description"

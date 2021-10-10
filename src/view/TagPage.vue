@@ -9,7 +9,7 @@
                 </caption>
                 <thead>
                     <tr>
-                        <th class="w111">name</th>
+                        <th class="w111">un</th>
                         <th>description</th>
                     </tr>
                 </thead>

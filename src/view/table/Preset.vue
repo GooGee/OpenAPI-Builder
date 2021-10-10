@@ -1,5 +1,5 @@
 <template>
-    <table v-if="sidebar.item" class="table">
+    <table class="table">
         <caption class="caption-top">
             <input
                 v-model="sidebar.item.description"
@@ -12,7 +12,7 @@
             <tr>
                 <th>
                     <SortButton :manager="sidebar.item.propertyManager"></SortButton>
-                    name
+                    un
                 </th>
                 <th>value</th>
                 <th>tag</th>
