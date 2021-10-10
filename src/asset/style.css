@@ -2,21 +2,17 @@
     color: lightgray;
 }
 
-.hover-bg:not(:hover) .hover-border {
-    border-width: 0;
+.hover-bg:hover .text {
+    display: none;
 }
-.hover-bg.active .hover-border {
-    color: white;
-}
-.hover-bg.active:hover .hover-border {
-    border-color: white;
-}
-
 .hover-bg:not(:hover) .hover-button {
     display: none;
 }
-.hover-bg.active:hover .hover-button:not(:hover) {
-    background-color: rgba(255, 255, 255, 0.8);
+.active .hover-bg:hover .hover-button {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.active .hover-bg:hover .hover-button:hover {
+    color: black;
 }
 
 .inline {

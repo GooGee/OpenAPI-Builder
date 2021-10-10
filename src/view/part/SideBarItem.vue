@@ -1,15 +1,18 @@
 <template>
-    <div class="list-group-item list-group-item-action hover-bg">
-        <DeleteButton
-            :manager="manager"
-            :item="item"
-            class="btn-sm hover-button mr11"
-        ></DeleteButton>
-        <ChangeButton
-            :manager="manager"
-            :item="item"
-            class="btn-sm hover-border"
-        ></ChangeButton>
+    <div class="list-group-item list-group-item-action">
+        <div class="hover-bg inline">
+            <span class="text">{{ item.un }}</span>
+            <DeleteButton
+                :manager="manager"
+                :item="item"
+                class="btn-sm hover-button mr11"
+            ></DeleteButton>
+            <ChangeButton
+                :manager="manager"
+                :item="item"
+                class="btn-sm hover-button"
+            ></ChangeButton>
+        </div>
     </div>
 </template>
 
