@@ -26,19 +26,25 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const add = () => {
-            const text = prompt('Please input a name', props.value)
-            if (text === null) {
+        function add() {
+            let name = props.value
+            if (props.noinput) {
+                //
+            } else {
+                const text = prompt('Please input a name', props.value)
+                if (text === null) {
+                    return
+                }
+                name = text
+            }
+            if (name === '') {
                 return
             }
-            if (text === '') {
+            if (props.manager.has(name)) {
+                Toast.error(name + ' already exists')
                 return
             }
-            if (props.manager.has(text)) {
-                Toast.error(text + ' already exists')
-                return
-            }
-            const item = props.manager.make(text)
+            const item = props.manager.make(name)
             props.manager.add(item)
             context.emit('added', item)
         }
