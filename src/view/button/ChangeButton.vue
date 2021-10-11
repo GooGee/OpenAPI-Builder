@@ -20,7 +20,8 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        function change() {
+        function change(event: Event) {
+            event.stopPropagation()
             const text = prompt('Please input the name', props.item.un)
             if (text === null) {
                 return

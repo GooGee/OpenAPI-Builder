@@ -19,10 +19,11 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        function remove() {
+        function remove(event: Event) {
+            event.stopPropagation()
             if (confirm('Are you sure?')) {
                 props.manager.remove(props.item)
-                context.emit('removed')
+                context.emit('remove')
             }
         }
         return { remove }
