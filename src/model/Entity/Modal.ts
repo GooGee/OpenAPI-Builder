@@ -7,7 +7,7 @@ export default class Modal {
         this.visible = false
     }
 
-    show(title: string, callback: CallableFunction) {
+    protected show(title: string, callback: CallableFunction) {
         this.title = title
         this.callback = callback
         this.visible = true

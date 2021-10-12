@@ -23,6 +23,7 @@ export default class ListModal extends Modal {
         if (this.callback) {
             this.callback(item)
         }
+        this.hide()
     }
 
     showList(list: Array<UniqueItem>, title: string, callback: CallBack) {
