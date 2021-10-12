@@ -38,11 +38,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         manager.list.forEach((item) => {
             const iii = this.make(item.un)
             iii.load(item)
-            if (item.id === undefined) {
-                this.add(iii)
-            } else {
-                this.list.push(iii)
-            }
+            this.list.push(iii)
         })
         this.nextId = manager.nextId ?? this.nextId
     }

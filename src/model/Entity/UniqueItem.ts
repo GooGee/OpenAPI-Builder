@@ -4,7 +4,7 @@ import Item from './Item'
 
 export default class UniqueItem extends Item {
     @excludeOAPI
-    private _id: number = 0
+    protected _id: number = 0
 
     @exclude
     @excludeOAPI
