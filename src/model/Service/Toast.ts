@@ -12,12 +12,20 @@ function error(message: string) {
     })
 }
 
+function show(message: string, code: number) {
+    if (code < 300) {
+        return success(message)
+    }
+    error(message)
+}
+
 function success(message: string) {
     notyf.success(message)
 }
 
 const Toast = {
     error,
+    show,
     success,
 }
 
