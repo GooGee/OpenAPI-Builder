@@ -1,7 +1,7 @@
 import Project from './Entity/Project'
 import { SideBarManager } from './Entity/SideBar'
 import UniqueItem from './Entity/UniqueItem'
-import Text from './Helper/Text'
+import Text from './Service/Text'
 
 export default class Vendor {
     preset: Project

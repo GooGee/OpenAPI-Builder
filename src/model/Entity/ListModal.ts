@@ -1,4 +1,4 @@
-import { filter } from '../Helper/Text'
+import { filter } from '../Service/Text'
 import Modal from './Modal'
 import UniqueItem from './UniqueItem'
 

@@ -1,4 +1,4 @@
-import { filter } from '../Helper/Text'
+import { filter } from '../Service/Text'
 import Project from './Project'
 import SideBarItem from './SideBarItem'
 import UniqueItemManager from './UniqueItemManager'
