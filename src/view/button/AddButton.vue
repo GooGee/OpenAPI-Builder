@@ -5,7 +5,7 @@
 <script lang="ts">
 import UniqueItem from '@/model/Entity/UniqueItem'
 import UniqueItemManager from '@/model/Entity/UniqueItemManager'
-import Toast from '@/model/Helper/Toast'
+import Toast from '@/model/Service/Toast'
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
