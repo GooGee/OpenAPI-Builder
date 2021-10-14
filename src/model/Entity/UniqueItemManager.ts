@@ -2,6 +2,7 @@ import ItemManager from './ItemManager'
 import UniqueItem from './UniqueItem'
 import Newable from './Newable'
 import KeyValue from './KeyValue'
+import { filter } from '../Service/Text'
 
 export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
     private nextId = 1
@@ -15,6 +16,10 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         super.add(item)
         item.id = this.nextId
         this.nextId += 1
+    }
+
+    filter(keyword: string) {
+        return filter(keyword, this.list)
     }
 
     find(name: string) {
