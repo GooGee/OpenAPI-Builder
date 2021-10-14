@@ -1,30 +1,12 @@
-import { filter } from '../Service/Text'
 import Project from './Project'
 import SideBarItem from './SideBarItem'
 import UniqueItemManager from './UniqueItemManager'
 
 export default class SideBar<T extends SideBarItem = SideBarItem> {
-    readonly manager: UniqueItemManager<T>
-
     item: T | null = null
     keyword = ''
-    title: string
 
-    constructor(title: string, manager: UniqueItemManager<T>) {
-        this.title = title
-        this.manager = manager
-    }
-
-    get list() {
-        if (!this.manager) {
-            return []
-        }
-
-        if (this.keyword) {
-            return filter(this.keyword, this.manager.list)
-        }
-        return this.manager.list
-    }
+    constructor(readonly title: string, readonly manager: UniqueItemManager<T>) {}
 }
 
 export enum SideBarEnum {
