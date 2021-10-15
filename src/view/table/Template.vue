@@ -11,7 +11,10 @@
         <tbody>
             <tr>
                 <td>
-                    <EditButton :item="sidebar.item"></EditButton>
+                    <EditButton
+                        v-model:code="sidebar.item.code"
+                        :file="file"
+                    ></EditButton>
                 </td>
             </tr>
             <tr>
@@ -31,6 +34,7 @@
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
+import File from '@/model/Service/File'
 import { defineComponent, PropType } from 'vue'
 import EditButton from '../button/EditButton.vue'
 
@@ -43,6 +47,10 @@ export default defineComponent({
             type: Object as PropType<SideBar>,
             required: true,
         },
+    },
+    setup(props, context) {
+        const file = File.getTemplatePath(props.sidebar.item!.un + '.txt')
+        return { file }
     },
 })
 </script>
