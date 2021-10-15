@@ -1,0 +1,49 @@
+<template>
+    <select v-model="selected" @change="select" class="form-control wa">
+        <option :value="0" disabled>----</option>
+        <option v-for="item in list" :key="item.id" :value="item.id">
+            {{ item.un }}
+        </option>
+    </select>
+</template>
+
+<script lang="ts">
+import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemManager from '@/model/Entity/UniqueItemManager'
+import Toast from '@/model/Service/Toast'
+import { defineComponent, PropType, ref } from 'vue'
+
+export default defineComponent({
+    props: {
+        list: {
+            type: Object as PropType<UniqueItem[]>,
+            required: true,
+        },
+        manager: {
+            type: Object as PropType<UniqueItemManager<UniqueItem>>,
+            required: true,
+        },
+    },
+    setup(props, context) {
+        const selected = ref(0)
+        function select() {
+            try {
+                const found = props.list.find((item) => item.id === selected.value)
+                if (found === undefined) {
+                    return
+                }
+                const item = props.manager.make(found.un)
+                props.manager.add(item)
+                selected.value = 0
+                context.emit('select', found, item)
+            } catch (error) {
+                Toast.error(error.message)
+            }
+        }
+        return {
+            select,
+            selected,
+        }
+    },
+})
+</script>
