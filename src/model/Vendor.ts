@@ -1,14 +1,13 @@
+import JavaWorker from './Bridge/ToJava/JavaWorker'
 import Project from './Entity/Project'
 import { SideBarManager } from './Entity/SideBar'
-import UniqueItem from './Entity/UniqueItem'
-import Text from './Service/Text'
 
 export default class Vendor {
-    preset: Project
+    readonly preset: Project
     project: Project
     readonly sbManager = new SideBarManager()
 
-    constructor(readonly data: Project) {
+    constructor(readonly data: Project, readonly worker: JavaWorker) {
         this.preset = new Project()
         this.preset.load(data)
         this.project = this.preset
@@ -18,9 +17,5 @@ export default class Vendor {
         this.project = new Project()
         this.project.load(this.data)
         this.sbManager.bind(this.project)
-    }
-
-    run(code: string, schema: UniqueItem) {
-        Text.run(code, this.project,schema)
     }
 }
