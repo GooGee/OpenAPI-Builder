@@ -26,6 +26,7 @@
 </template>
 
 <script lang="ts">
+import { EmitterType, EventEnum } from '@/model/Entity/Event'
 import SideBar from '@/model/Entity/SideBar'
 import SideBarItemData from '@/model/Entity/SideBarItem'
 import { defineComponent, inject, PropType, ref } from 'vue'
@@ -54,8 +55,8 @@ export default defineComponent({
         }
 
         const list = ref(props.sidebar.manager.filter(props.sidebar.keyword))
-        const emitter = inject('emitter') as any
-        emitter.on('sidebar-list-change', function () {
+        const emitter = inject('emitter') as EmitterType
+        emitter.on(EventEnum['sidebar-list-change'], function () {
             list.value = props.sidebar.manager.filter(props.sidebar.keyword)
         })
         return { select, list }
