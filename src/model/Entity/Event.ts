@@ -1,6 +1,7 @@
 import { Emitter } from 'mitt'
 
 export enum EventEnum {
+    ready,
     'sidebar-list-change',
 }
 

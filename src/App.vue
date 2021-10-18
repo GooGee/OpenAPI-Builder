@@ -8,7 +8,10 @@
 
 <script lang="ts">
 import { defineComponent, provide, reactive } from 'vue'
+import emitter from './emitter'
+import { EventEnum } from './model/Entity/Event'
 import ListModalData from './model/Entity/ListModal'
+import { setReady } from './store'
 import Bar from './view/part/Bar.vue'
 import ListModal from './view/part/ListModal.vue'
 
@@ -24,6 +27,9 @@ export default defineComponent({
 
         const listModalData = reactive(new ListModalData())
         provide('listModalData', listModalData)
+
+        emitter.on(EventEnum.ready, setReady)
+
         return {
             inBrowser,
             listModalData,
