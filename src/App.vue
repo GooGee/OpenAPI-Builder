@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import { defineComponent, provide, reactive } from 'vue'
-import { useRoute } from 'vue-router'
 import ListModalData from './model/Entity/ListModal'
 import Bar from './view/part/Bar.vue'
 import ListModal from './view/part/ListModal.vue'
@@ -19,17 +18,8 @@ export default defineComponent({
         ListModal,
     },
     setup(props, context) {
-        const route = useRoute()
-        let ide = ''
-        if (route.params.ide === undefined) {
-        } else {
-            if (Array.isArray(route.params.ide)) {
-                ide = route.params.ide[0]
-            } else {
-                ide = route.params.ide
-            }
-        }
-        const inBrowser = ide === ''
+        const sp = new URLSearchParams(window.location.search)
+        const inBrowser = sp.get('ide') === null
         provide('inBrowser', inBrowser)
 
         const listModalData = reactive(new ListModalData())
