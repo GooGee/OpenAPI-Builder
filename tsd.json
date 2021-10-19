@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "esnext",
+        "strict": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "outFile": "public/index.js",
+        "importHelpers": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": [
+            "webpack-env"
+        ],
+        "lib": [
+            "dom",
+            "esnext"
+        ]
+    },
+    "include": [
+        "src/model/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
