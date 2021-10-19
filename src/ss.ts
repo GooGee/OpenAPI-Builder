@@ -1,9 +1,7 @@
 import data from './asset/data.json'
-import Vendor from './model/Vendor'
+import emitter from './emitter'
+import Start from './model/Service/Start'
 
-const ss = new Vendor(data as any)
-
-const w = window as any
-w.ss = ss
+const ss = Start.run(data as any, emitter, window as any)
 
 export default ss
