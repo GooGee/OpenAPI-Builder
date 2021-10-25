@@ -100,3 +100,7 @@
 .wa {
     width: auto;
 }
+
+textarea {
+    background-color: whitesmoke;
+}
