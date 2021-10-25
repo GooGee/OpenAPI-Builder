@@ -1,17 +1,20 @@
 <template>
     <div class="list-group-item list-group-item-action">
         <div class="hover-bg inline">
-            <span class="text">{{ item.un }}</span>
-            <DeleteButton
-                :manager="manager"
-                :item="item"
-                class="btn-sm hover-button mr11"
-            ></DeleteButton>
-            <ChangeButton
-                :manager="manager"
-                :item="item"
-                class="btn-sm hover-button"
-            ></ChangeButton>
+            <span class="btn-group">
+                <DeleteButton
+                    :manager="manager"
+                    :item="item"
+                    class="btn-sm hover-button"
+                ></DeleteButton>
+                <ChangeButton
+                    :manager="manager"
+                    :item="item"
+                    text="/"
+                    class="btn-sm hover-button mr11"
+                ></ChangeButton>
+            </span>
+            <span class="pointer">{{ item.un }}</span>
         </div>
     </div>
 </template>

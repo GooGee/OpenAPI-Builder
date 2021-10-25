@@ -21,9 +21,6 @@
     color: lightgray;
 }
 
-.hover-bg:hover .text {
-    display: none;
-}
 .hover-bg:not(:hover) .hover-button {
     display: none;
 }
