@@ -30,6 +30,18 @@ export default class File {
         return this.read(File.getOAPIPath(file), data, handler)
     }
 
+    saveDTS() {
+        const FileName = 'index.d.ts'
+        const LocalFile = File.getOAPIPath(FileName)
+        fetch(FileName)
+            .then((response) => response.blob())
+            .then((blob) => blob.text())
+            .then((text) => {
+                this.write(LocalFile, text)
+            })
+            .catch((errror) => console.log(errror))
+    }
+
     write(file: string, data: string, handler?: Handler) {
         return this.worker.write(file, data, handler)
     }
