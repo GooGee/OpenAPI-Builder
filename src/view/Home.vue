@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import ss from '@/ss'
-import store, { setReady } from '@/store'
+import store from '@/store'
 import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
@@ -25,7 +25,6 @@ export default defineComponent({
         const inBrowser = inject('inBrowser', true)
         function create() {
             ss.create()
-            setReady()
         }
         return {
             create,
