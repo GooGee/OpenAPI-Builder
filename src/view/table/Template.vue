@@ -22,7 +22,7 @@
                     <textarea
                         v-model="sidebar.item.code"
                         class="form-control"
-                        rows="11"
+                        rows="33"
                         spellcheck="false"
                         readonly
                     ></textarea>

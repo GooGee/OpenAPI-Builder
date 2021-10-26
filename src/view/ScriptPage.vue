@@ -1,10 +1,10 @@
 <template>
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
             <SideBar :sidebar="sidebar"></SideBar>
         </div>
 
-        <div v-if="sidebar.item" class="col-9">
+        <div v-if="sidebar.item" class="col-8">
             <Script :sidebar="sidebar"></Script>
         </div>
     </div>
