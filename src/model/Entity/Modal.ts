@@ -1,5 +1,6 @@
 export default class Modal {
     callback: CallableFunction = () => {}
+    size = ''
     title = ''
     visible = false
 

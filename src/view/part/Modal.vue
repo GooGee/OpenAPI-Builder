@@ -1,5 +1,5 @@
 <template>
-    <VueFinalModal v-model="value" content-class="modal-dialog modal-dialog-scrollable">
+    <VueFinalModal v-model="value" :content-class="css">
         <div class="modal-content" style="margin-top: 66px">
             <slot></slot>
         </div>
@@ -19,6 +19,11 @@ export default {
             type: Boolean,
             required: true,
         },
+        size: {
+            type: String,
+            required: false,
+            default: '',
+        },
     },
     setup(props, context) {
         const value = computed({
@@ -29,7 +34,11 @@ export default {
                 context.emit('update:visible', v)
             },
         })
-        return { value }
+        const css = 'modal-dialog modal-dialog-scrollable ' + props.size
+        return {
+            css,
+            value,
+        }
     },
 }
 </script>

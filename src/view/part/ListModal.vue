@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model:visible="listModalData.visible">
+    <Modal v-model:visible="listModalData.visible" :size="listModalData.size">
         <div class="modal-header">
             {{ listModalData.title }}
         </div>
