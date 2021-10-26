@@ -53,7 +53,7 @@
                             script
                         </router-link>
                     </li>
-                    <li>
+                    <!-- <li>
                         <router-link
                             to="/template"
                             active-class="active"
@@ -61,7 +61,7 @@
                         >
                             template
                         </router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
         </ul>
