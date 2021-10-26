@@ -1,5 +1,5 @@
 <template>
-    <span @click="change" class="btn btn-outline-primary"> {{ item.un }} </span>
+    <span @click="change" class="btn btn-outline-primary"> {{ text ?? item.un }} </span>
 </template>
 
 <script lang="ts">
@@ -17,6 +17,11 @@ export default defineComponent({
         manager: {
             type: Object as PropType<UniqueItemManager<UniqueItem>>,
             required: true,
+        },
+        text: {
+            type: String,
+            required: false,
+            default: undefined,
         },
     },
     setup(props, context) {
