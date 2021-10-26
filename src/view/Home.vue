@@ -10,7 +10,10 @@
         <h1>{{ title }}</h1>
         <p>{{ version }}</p>
         <p v-if="inBrowser">
-            <span @click="create" class="btn btn-outline-primary"> New </span>
+            <span @click="create" class="btn btn-outline-primary mr11"> New </span>
+            <span v-if="store.ready" @click="toJSON" class="btn btn-outline-success">
+                toJSON
+            </span>
         </p>
     </div>
 </template>
@@ -21,14 +24,20 @@ import store from '@/store'
 import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
-    setup() {
+    setup(props, context) {
         const inBrowser = inject('inBrowser', true)
+        const inputModalData = inject('inputModalData') as any
         function create() {
             ss.create()
+        }
+        function toJSON() {
+            inputModalData.text = JSON.stringify(ss.project)
+            inputModalData.show('Project JSON')
         }
         return {
             create,
             inBrowser,
+            toJSON,
             store,
             title: process.env.VUE_APP_TITLE,
             version: process.env.VUE_APP_VERSION,
