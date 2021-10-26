@@ -1,5 +1,5 @@
 <template>
-    <div class="pre-scrollable position-fixed" style="max-height: 90%; height: 90vh">
+    <div>
         <div class="text-center mtb11">
             <h2 class="inline mr11">{{ sidebar.title }}</h2>
             <AddButton :manager="sidebar.manager" @added="select"></AddButton>
@@ -30,7 +30,7 @@ import emitter from '@/emitter'
 import { EventEnum } from '@/model/Entity/Event'
 import SideBar from '@/model/Entity/SideBar'
 import SideBarItemData from '@/model/Entity/SideBarItem'
-import { defineComponent, inject, PropType, ref } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import SideBarItem from './SideBarItem.vue'
 
