@@ -56,3 +56,15 @@ export default defineComponent({
     },
 })
 </script>
+
+<style scoped>
+.hover-bg:not(:hover) .hover-button {
+    display: none;
+}
+.active .hover-bg:hover .hover-button {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.active .hover-bg:hover .hover-button:hover {
+    color: black;
+}
+</style>
