@@ -31,8 +31,8 @@ export default defineComponent({
             ss.create()
         }
         function toJSON() {
-            inputModalData.text = JSON.stringify(ss.project)
-            inputModalData.show('Project JSON')
+            inputModalData.text = JSON.stringify(ss.project.toOAPI())
+            inputModalData.show('OpenAPI JSON')
         }
         return {
             create,
