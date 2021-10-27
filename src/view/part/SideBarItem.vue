@@ -5,6 +5,7 @@
                 <DeleteButton
                     :manager="manager"
                     :item="item"
+                    @remove="remove"
                     class="btn-sm hover-button"
                 ></DeleteButton>
                 <ChangeButton
@@ -20,6 +21,8 @@
 </template>
 
 <script lang="ts">
+import emitter from '@/emitter'
+import { EventEnum } from '@/model/Entity/Event'
 import UniqueItem from '@/model/Entity/UniqueItem'
 import UniqueItemManager from '@/model/Entity/UniqueItemManager'
 import { defineComponent, PropType } from 'vue'
@@ -42,9 +45,13 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        function remove() {
+            emitter.emit(EventEnum['sidebar-list-change'])
+        }
         return {
             item: props.item,
             manager: props.manager,
+            remove,
         }
     },
 })
