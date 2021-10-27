@@ -18,4 +18,8 @@ export default class Project extends Item {
     getPreset(name: string) {
         return this.presetManager.find(name)
     }
+
+    toOAPI() {
+        return this.oapi.toOAPI()
+    }
 }
