@@ -1,7 +1,7 @@
 import Handler from '../Bridge/FromJava/Handler'
 import JavaWorker from '../Bridge/ToJava/JavaWorker'
 
-export const OAPIFolder = 'open-api'
+const OAPIFolder = 'open-api'
 
 export default class File {
     constructor(readonly worker: JavaWorker) {}
@@ -32,12 +32,11 @@ export default class File {
 
     saveDTS() {
         const FileName = 'index.d.ts'
-        const LocalFile = File.getOAPIPath(FileName)
         fetch(FileName)
             .then((response) => response.blob())
             .then((blob) => blob.text())
             .then((text) => {
-                this.write(LocalFile, text)
+                this.write(File.getOAPIPath(FileName), text)
             })
             .catch((errror) => console.log(errror))
     }
@@ -46,8 +45,8 @@ export default class File {
         return this.worker.write(file, data, handler)
     }
 
-    writeOAPI(file: string, data: string, handler?: Handler) {
-        return this.write(File.getOAPIPath(file), data, handler)
+    writeOAPI(data: string, handler?: Handler) {
+        return this.write(File.getOAPIPath('openapi.json'), data, handler)
     }
 
     writeScript(file: string, data: string, handler?: Handler) {

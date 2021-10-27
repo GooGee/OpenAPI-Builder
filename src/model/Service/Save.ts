@@ -3,10 +3,10 @@ import Handler from '../Bridge/FromJava/Handler'
 import Response from '../Bridge/FromJava/Response'
 import { StatusEnum } from '../Bridge/FromJava/StatusEnum'
 import Project from '../Entity/Project'
-import File, { OAPIFolder } from './File'
+import File from './File'
 
-const BackupFolder = OAPIFolder + '/backup'
-const FileName = OAPIFolder + '/data.json'
+const BackupFolder = File.getOAPIPath('backup')
+const FileName = File.getOAPIPath('data.json')
 
 export default class Save {
     static last = ''
