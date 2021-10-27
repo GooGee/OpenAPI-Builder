@@ -47,6 +47,7 @@ export default defineComponent({
     },
     setup(props, context) {
         function select(item: SideBarItemData) {
+            emitter.emit(EventEnum['sidebar-list-change'])
             props.sidebar.item = item
         }
         if (props.sidebar.item === null) {
@@ -59,7 +60,10 @@ export default defineComponent({
         emitter.on(EventEnum['sidebar-list-change'], function () {
             list.value = props.sidebar.manager.filter(props.sidebar.keyword)
         })
-        return { select, list }
+        return {
+            select,
+            list,
+        }
     },
 })
 </script>
