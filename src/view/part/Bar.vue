@@ -106,3 +106,21 @@ export default defineComponent({
     },
 })
 </script>
+
+<style scoped>
+.nav-item.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+    top: 88%;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    font-weight: bold;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: white;
+}
+.navbar-dark .navbar-nav .dropdown-item:not(.active):hover {
+    background-color: #e9ecef;
+}
+</style>
