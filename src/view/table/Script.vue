@@ -5,8 +5,9 @@
                 v-model="sidebar.item.description"
                 placeholder="description"
                 type="text"
-                class="form-control"
+                class="form-control mb11"
             />
+            <ColorPanel v-model:color="sidebar.item.color"></ColorPanel>
         </caption>
         <tbody>
             <tr>
@@ -37,9 +38,11 @@ import SideBar from '@/model/Entity/SideBar'
 import File from '@/model/Service/File'
 import { defineComponent, PropType } from 'vue'
 import EditButton from '../button/EditButton.vue'
+import ColorPanel from '../part/ColorPanel.vue'
 
 export default defineComponent({
     components: {
+        ColorPanel,
         EditButton,
     },
     props: {
