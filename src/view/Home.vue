@@ -10,7 +10,13 @@
         <h1>{{ title }}</h1>
         <p>{{ version }}</p>
         <p v-if="inBrowser">
-            <span @click="create" class="btn btn-outline-primary mr11"> New </span>
+            <span
+                v-if="!store.loading"
+                @click="create"
+                class="btn btn-outline-primary mr11"
+            >
+                New
+            </span>
             <span v-if="store.ready" @click="toJSON" class="btn btn-outline-success">
                 toJSON
             </span>
