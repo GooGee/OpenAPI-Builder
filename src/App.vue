@@ -3,16 +3,14 @@
     <div class="container-fluid" style="margin-top: 55px">
         <router-view></router-view>
     </div>
-    <InputModal :modalData="inputModalData"></InputModal>
-    <ListModal :listModalData="listModalData"></ListModal>
+    <InputModal></InputModal>
+    <ListModal></ListModal>
 </template>
 
 <script lang="ts">
-import { defineComponent, provide, reactive } from 'vue'
+import { defineComponent, provide } from 'vue'
 import emitter from './emitter'
 import { EventEnum } from './model/Entity/Event'
-import InputModalData from './model/Entity/InputModal'
-import ListModalData from './model/Entity/ListModal'
 import ss from './ss'
 import { setLoading, setReady } from './store'
 import Bar from './view/part/Bar.vue'
@@ -38,18 +36,10 @@ export default defineComponent({
             })
             .catch((reason) => alert(reason))
 
-        const listModalData = reactive(new ListModalData())
-        provide('listModalData', listModalData)
-
-        const inputModalData = reactive(new InputModalData())
-        provide('inputModalData', inputModalData)
-
         emitter.on(EventEnum.ready, setReady)
 
         return {
             inBrowser,
-            inputModalData,
-            listModalData,
         }
     },
 })
