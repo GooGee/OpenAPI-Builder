@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import ListModal from '@/model/Entity/ListModal'
-import { defineComponent, inject, PropType } from 'vue'
+import UniqueItem from '@/model/Entity/UniqueItem'
 import Reference from '@/model/OAPI/Reference'
 import ss from '@/ss'
-import UniqueItem from '@/model/Entity/UniqueItem'
+import store from '@/store'
+import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
     props: {
@@ -29,7 +29,6 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const listModalData = inject('listModalData') as ListModal
         function select() {
             const list = ss.project.oapi.getManager(props.reference.type).list
             const title = 'Select ' + props.reference.type
@@ -44,9 +43,9 @@ export default defineComponent({
                 context.emit('select')
             }
             if (props.withBlank) {
-                listModalData.showWithBlank(list, title, callback)
+                store.listModal.showWithBlank(list, title, callback)
             } else {
-                listModalData.showList(list, title, callback)
+                store.listModal.showList(list, title, callback)
             }
         }
         return { select }

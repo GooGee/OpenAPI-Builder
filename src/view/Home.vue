@@ -32,13 +32,12 @@ import { defineComponent, inject } from 'vue'
 export default defineComponent({
     setup(props, context) {
         const inBrowser = inject('inBrowser', true)
-        const inputModalData = inject('inputModalData') as any
         function create() {
             ss.create()
         }
         function toJSON() {
-            inputModalData.text = JSON.stringify(ss.project.toOAPI())
-            inputModalData.show('OpenAPI JSON')
+            store.inputModal.text = JSON.stringify(ss.project.toOAPI())
+            store.inputModal.show('OpenAPI JSON', () => {})
         }
         return {
             create,

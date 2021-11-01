@@ -77,12 +77,12 @@
 </template>
 
 <script lang="ts">
-import ListModal from '@/model/Entity/ListModal'
 import UniqueItem from '@/model/Entity/UniqueItem'
-import Toast from '@/model/Service/Toast'
 import Operation from '@/model/OAPI/Operation'
+import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
-import { defineComponent, inject, PropType } from 'vue'
+import store from '@/store'
+import { defineComponent, PropType } from 'vue'
 import Reference from '../oapi/Reference.vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
 import EditList from '../part/EditList.vue'
@@ -102,16 +102,16 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const listModalData = inject('listModalData') as ListModal
+        const listModal = store.listModal
         function select() {
-            listModalData.showList(
+            listModal.showList(
                 ss.project.oapi.tagManager.list,
                 'Select a Tag',
                 function addTag(tag: UniqueItem) {
                     try {
                         const one = props.item.tagManager.make(tag.un)
                         props.item.tagManager.add(one)
-                    } catch (error) {
+                    } catch (error: any) {
                         Toast.error(error.message)
                     }
                 },
