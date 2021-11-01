@@ -1,11 +1,11 @@
 <template>
-    <Modal v-model:visible="modalData.visible" :size="modalData.size">
+    <Modal v-model:visible="store.inputModal.visible" :size="store.inputModal.size">
         <div class="modal-header">
-            {{ modalData.title }}
+            {{ store.inputModal.title }}
         </div>
         <div class="modal-body">
             <textarea
-                v-model="modalData.text"
+                v-model="store.inputModal.text"
                 class="form-control"
                 rows="11"
                 spellcheck="false"
@@ -18,26 +18,21 @@
 </template>
 
 <script lang="ts">
-import ModalData from '@/model/Entity/Modal'
-import { defineComponent, PropType } from 'vue'
+import store from '@/store'
+import { defineComponent } from 'vue'
 import Modal from './Modal.vue'
 
 export default defineComponent({
     components: {
         Modal,
     },
-    props: {
-        modalData: {
-            type: Object as PropType<ModalData>,
-            required: true,
-        },
-    },
     setup(props, context) {
         function hide() {
-            props.modalData.hide()
+            store.inputModal.hide()
         }
         return {
             hide,
+            store,
         }
     },
 })

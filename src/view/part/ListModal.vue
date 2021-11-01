@@ -1,11 +1,11 @@
 <template>
-    <Modal v-model:visible="listModalData.visible" :size="listModalData.size">
+    <Modal v-model:visible="store.listModal.visible" :size="store.listModal.size">
         <div class="modal-header">
-            {{ listModalData.title }}
+            {{ store.listModal.title }}
         </div>
         <div class="modal-body">
             <input
-                v-model="listModalData.keyword"
+                v-model="store.listModal.keyword"
                 ref="listInput"
                 placeholder="search"
                 type="text"
@@ -13,16 +13,16 @@
             />
             <ul class="list-group">
                 <li
-                    v-if="listModalData.showBlank"
-                    @click="listModalData.select(null)"
+                    v-if="store.listModal.showBlank"
+                    @click="store.listModal.select(null)"
                     class="list-group-item pointer"
                 >
                     ----
                 </li>
                 <li
-                    v-for="item in listModalData.list"
+                    v-for="item in store.listModal.list"
                     :key="item.id"
-                    @click="listModalData.select(item)"
+                    @click="store.listModal.select(item)"
                     class="list-group-item pointer"
                 >
                     {{ item.un }}
@@ -33,19 +33,18 @@
 </template>
 
 <script lang="ts">
-import ListModal from '@/model/Entity/ListModal'
-import { defineComponent, PropType } from 'vue'
+import store from '@/store'
+import { defineComponent } from 'vue'
 import Modal from './Modal.vue'
 
 export default defineComponent({
     components: {
         Modal,
     },
-    props: {
-        listModalData: {
-            type: Object as PropType<ListModal>,
-            required: true,
-        },
+    setup(props, context) {
+        return {
+            store,
+        }
     },
 })
 </script>
