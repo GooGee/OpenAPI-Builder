@@ -13,7 +13,8 @@ import emitter from './emitter'
 import { EventEnum } from './model/Entity/Event'
 import InputModalData from './model/Entity/InputModal'
 import ListModalData from './model/Entity/ListModal'
-import { setReady } from './store'
+import ss from './ss'
+import { setLoading, setReady } from './store'
 import Bar from './view/part/Bar.vue'
 import InputModal from './view/part/InputModal.vue'
 import ListModal from './view/part/ListModal.vue'
@@ -28,6 +29,14 @@ export default defineComponent({
         const sp = new URLSearchParams(window.location.search)
         const inBrowser = sp.get('ide') === null
         provide('inBrowser', inBrowser)
+
+        fetch('data.json')
+            .then((response) => response.json())
+            .then((json) => {
+                ss.data = json
+                setLoading()
+            })
+            .catch((reason) => alert(reason))
 
         const listModalData = reactive(new ListModalData())
         provide('listModalData', listModalData)
