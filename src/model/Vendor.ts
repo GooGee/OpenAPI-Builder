@@ -29,7 +29,7 @@ export default class Vendor {
         return this._data
     }
 
-    set data(data: Project) {
+    setData(data: Project) {
         this._data = data
         this._preset = new Project()
         this._preset.load(data)
