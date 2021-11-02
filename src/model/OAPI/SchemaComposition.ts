@@ -1,17 +1,22 @@
 import Item from '../Entity/Item'
 import KeyValue from '../Entity/KeyValue'
+import UniqueItem from '../Entity/UniqueItem'
+import UniqueItemManager from '../Entity/UniqueItemManager'
 import { CompositionType } from './DataType'
 import Discriminator from './Discriminator'
 import { ReferenceManager, ReferenceType } from './Reference'
 
 export default class SchemaComposition extends Item {
     readonly discriminator = new Discriminator()
+    readonly requiredManager = new UniqueItemManager(UniqueItem)
     readonly schemaManager = new ReferenceManager(ReferenceType.schemas)
     type: CompositionType = CompositionType.allOf
 
     toOAPI() {
-        const result: KeyValue = {}
-        result[this.type] = this.schemaManager.list.map((item) => item.toOAPI())
+        const result: KeyValue = {
+            [this.type]: this.schemaManager.list.map((item) => item.toOAPI()),
+            required: this.requiredManager.list.map((item) => item.un),
+        }
         if (this.discriminator.propertyName) {
             result.discriminator = this.discriminator.toOAPI()
         }
