@@ -11,6 +11,7 @@ export default class RequestBody extends SideBarItem {
         return {
             content: this.mediaTypeManager.toOAPI(),
             description: this.description,
+            required: this.required,
         }
     }
 }
