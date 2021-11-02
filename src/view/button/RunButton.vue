@@ -22,7 +22,8 @@ export default defineComponent({
     props: {
         schema: {
             type: Object as PropType<UniqueItem>,
-            required: true,
+            required: false,
+            default: undefined,
         },
         script: {
             type: Object as PropType<Script>,

@@ -8,7 +8,7 @@ export function filter(keyword: string, list: Array<UniqueItem>) {
     return list.filter((item) => item.un.search(re) > -1)
 }
 
-function run(code: string, project: Project, schema: UniqueItem) {
+function run(code: string, project: Project, schema?: UniqueItem) {
     const generator = new Generator(project)
     const data = {
         generator,
