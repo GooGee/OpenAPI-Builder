@@ -79,6 +79,7 @@ export default defineComponent({
         function update() {
             operation.value = getManager().find(option.value) ?? null
         }
+        update()
 
         const manager = ref(getManager())
         watch(
