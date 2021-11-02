@@ -79,6 +79,7 @@ export const routes: Array<RouteRecordRaw> = [
             { path: 'discriminator', component: () => import('@/view/schema/Discriminator.vue') },
             { path: 'import', component: () => import('@/view/schema/Import.vue') },
             { path: 'property', component: () => import('@/view/schema/Property.vue') },
+            { path: 'required', component: () => import('@/view/schema/RequiredField.vue') },
             { path: 'script', component: () => import('@/view/schema/Script.vue') },
             { path: 'structure', component: () => import('@/view/schema/SchemaComplex.vue') },
         ],
