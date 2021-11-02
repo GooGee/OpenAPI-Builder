@@ -2,13 +2,25 @@
     <table class="table">
         <thead>
             <tr>
-                <th>un</th>
+                <th>required / un</th>
                 <th>type</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="item in manager.list" :key="item.id">
                 <td>
+                    <span class="custom-control custom-switch inline">
+                        <input
+                            :id="'required' + item.id"
+                            v-model="item.required"
+                            type="checkbox"
+                            class="custom-control-input"
+                        />
+                        <label
+                            :for="'required' + item.id"
+                            class="custom-control-label"
+                        ></label>
+                    </span>
                     <div class="btn-group">
                         <DeleteButton :manager="manager" :item="item"></DeleteButton>
                         <ChangeButton :manager="manager" :item="item"></ChangeButton>
