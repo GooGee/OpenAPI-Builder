@@ -4,11 +4,13 @@ import External from './External'
 import Info from './Info'
 import { PathManager } from './Path'
 import { ReferenceType } from './Reference'
+import SchemaComplex, { SchemaType } from './SchemaComplex'
+import SchemaSimple from './SchemaSimple'
 import { SecurityRequirementManager } from './SecurityRequirement'
 import { ServerManager } from './Server'
 import { TagManager } from './Tag'
 
-const Version = '3.1.0'
+const Version = '3.0.3'
 
 export default class Document extends Item {
     readonly component = new Component()
@@ -46,6 +48,21 @@ export default class Document extends Item {
                 break
         }
         throw new Error('Unknown ReferenceType: ' + type)
+    }
+
+    getSchemaFieldList(schema: SchemaComplex) {
+        if (schema.type === SchemaType.object) {
+            return schema.object.schemaManager.list
+        }
+
+        let list: SchemaSimple[] = []
+        schema.composition.schemaManager.list.forEach((item) => {
+            const found = this.component.schemaManager.find(item.un)
+            if (found) {
+                list = list.concat(this.getSchemaFieldList(found))
+            }
+        })
+        return list
     }
 
     toOAPI() {
