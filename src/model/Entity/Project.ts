@@ -4,7 +4,7 @@ import { PresetManager } from './Preset'
 import { ScriptManager } from './Script'
 import { TemplateManager } from './Template'
 
-const Version = 1
+const Version = 2
 
 export default class Project extends Item {
     version = Version
