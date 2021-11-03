@@ -10,19 +10,20 @@
 </template>
 
 <script lang="ts">
+import Script from '@/model/Entity/Script'
 import Timer from '@/model/Service/Timer'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
-import { defineComponent, inject } from 'vue'
+import { defineComponent, inject, PropType } from 'vue'
 
 export default defineComponent({
     props: {
-        code: {
+        file: {
             type: String,
             required: true,
         },
-        file: {
-            type: String,
+        item: {
+            type: Object as PropType<Script>,
             required: true,
         },
     },
@@ -33,9 +34,8 @@ export default defineComponent({
                 Toast.error('No available in browser')
                 return
             }
-            ss.worker.edit(props.file, props.code, (response) => {
-                // ok response, no change
-                // context.emit('update:code', response.data)
+            ss.worker.edit(props.file, props.item.code, (response) => {
+                props.item.code = response.data
                 Toast.show(response.message, response.status)
                 dd.stopWaiting()
             })
