@@ -13,7 +13,7 @@
 import Timer from '@/model/Service/Timer'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
-import { defineComponent } from 'vue'
+import { defineComponent, inject } from 'vue'
 
 export default defineComponent({
     props: {
@@ -27,9 +27,15 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        const inBrowser = inject('inBrowser', true)
         const dd = Timer.wait(() => {
+            if (inBrowser) {
+                Toast.error('No available in browser')
+                return
+            }
             ss.worker.edit(props.file, props.code, (response) => {
-                context.emit('update:code', response.data)
+                // ok response, no change
+                // context.emit('update:code', response.data)
                 Toast.show(response.message, response.status)
                 dd.stopWaiting()
             })
