@@ -37,7 +37,7 @@
 
     <SchemaComposition
         v-if="sidebar.item.isComposition"
-        :manager="sidebar.item.composition.schemaManager"
+        :manager="sidebar.item.composition.referenceManager"
         :un="sidebar.item.un"
     ></SchemaComposition>
 </template>

@@ -8,13 +8,13 @@ import { ReferenceManager, ReferenceType } from './Reference'
 
 export default class SchemaComposition extends Item {
     readonly discriminator = new Discriminator()
+    readonly referenceManager = new ReferenceManager(ReferenceType.schemas)
     readonly requiredManager = new UniqueItemManager(UniqueItem)
-    readonly schemaManager = new ReferenceManager(ReferenceType.schemas)
     type: CompositionType = CompositionType.allOf
 
     toOAPI() {
         const result: KeyValue = {
-            [this.type]: this.schemaManager.list.map((item) => item.toOAPI()),
+            [this.type]: this.referenceManager.list.map((item) => item.toOAPI()),
             required: this.requiredManager.list.map((item) => item.un),
         }
         if (this.discriminator.propertyName) {

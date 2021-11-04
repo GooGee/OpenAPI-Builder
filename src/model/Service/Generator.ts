@@ -76,8 +76,8 @@ export default class Generator {
         schema.type = SchemaType.composition
         schema.composition.type = type
         list.forEach((name) => {
-            const item = schema.composition.schemaManager.make(name)
-            schema.composition.schemaManager.add(item)
+            const item = schema.composition.referenceManager.make(name)
+            schema.composition.referenceManager.add(item)
         })
         return schema
     }
