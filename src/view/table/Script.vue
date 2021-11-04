@@ -11,7 +11,6 @@
         </caption>
         <tbody>
             <tr>
-                <td class="text-right">global</td>
                 <td>
                     <span class="custom-control custom-switch">
                         <input
@@ -20,24 +19,21 @@
                             type="checkbox"
                             class="custom-control-input"
                         />
-                        <label for="global" class="custom-control-label"></label>
+                        <label for="global" class="custom-control-label">global</label>
                     </span>
                 </td>
             </tr>
             <tr v-if="sidebar.item.global">
-                <td class="text-right"></td>
                 <td>
                     <RunButton :script="sidebar.item"></RunButton>
                 </td>
             </tr>
             <tr>
-                <td class="text-right"></td>
                 <td>
                     <EditButton :file="file" :item="item"></EditButton>
                 </td>
             </tr>
             <tr>
-                <td class="text-right">code</td>
                 <td>
                     <textarea
                         v-model="sidebar.item.code"
