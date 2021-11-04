@@ -61,7 +61,7 @@ export default class Document extends Item {
         }
         set.add(schema)
         if (schema.type === SchemaType.object) {
-            return schema.object.schemaManager.list
+            return schema.object.fieldManager.list
         }
 
         let list: SchemaSimple[] = []

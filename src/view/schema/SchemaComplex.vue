@@ -32,7 +32,7 @@
 
     <SchemaObject
         v-if="sidebar.item.isObject"
-        :manager="sidebar.item.object.schemaManager"
+        :manager="sidebar.item.object.fieldManager"
     ></SchemaObject>
 
     <SchemaComposition

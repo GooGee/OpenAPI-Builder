@@ -5,15 +5,15 @@ import { SchemaSimpleManager } from './SchemaSimple'
 
 export default class SchemaObject extends Item {
     example = ''
-    readonly schemaManager = new SchemaSimpleManager()
+    readonly fieldManager = new SchemaSimpleManager()
     readonly type = DataType.object
 
     toOAPI() {
         const result: KeyValue = {
             type: this.type,
-            properties: this.schemaManager.toOAPI(),
+            properties: this.fieldManager.toOAPI(),
         }
-        const list = this.schemaManager.list
+        const list = this.fieldManager.list
             .filter((one) => one.required)
             .map((one) => one.un)
         if (list.length) {

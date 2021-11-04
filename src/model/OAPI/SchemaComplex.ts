@@ -19,7 +19,7 @@ export default class SchemaComplex extends Schema {
     get empty() {
         return (
             this.composition.referenceManager.list.length === 0 &&
-            this.object.schemaManager.list.length === 0 &&
+            this.object.fieldManager.list.length === 0 &&
             this.text === ''
         )
     }
