@@ -51,6 +51,14 @@ export default class Document extends Item {
     }
 
     getSchemaFieldList(schema: SchemaComplex) {
+        return this.getSchemaFieldxx(schema, new Set())
+    }
+
+    private getSchemaFieldxx(schema: SchemaComplex, set: Set<SchemaComplex>) {
+        if (set.has(schema)) {
+            return []
+        }
+        set.add(schema)
         if (schema.type === SchemaType.object) {
             return schema.object.schemaManager.list
         }
@@ -59,7 +67,7 @@ export default class Document extends Item {
         schema.composition.schemaManager.list.forEach((item) => {
             const found = this.component.schemaManager.find(item.un)
             if (found) {
-                list = list.concat(this.getSchemaFieldList(found))
+                list = list.concat(this.getSchemaFieldxx(found, set))
             }
         })
         return list
