@@ -1,4 +1,5 @@
 import Item from '../Entity/Item'
+import UniqueItem from '../Entity/UniqueItem'
 import Component from './Component'
 import External from './External'
 import Info from './Info'
@@ -73,7 +74,26 @@ export default class Document extends Item {
         return list
     }
 
+    private removeNullReference() {
+        this.component.schemaManager.list.forEach((schema) => {
+            if (schema.type === SchemaType.composition) {
+                const fieldxx = this.getSchemaFieldList(schema)
+                const notFoundxx: UniqueItem[] = []
+                schema.composition.requiredManager.list.forEach((item) => {
+                    const found = fieldxx.find((field) => field.un === item.un)
+                    if (found === undefined) {
+                        notFoundxx.push(item)
+                    }
+                })
+                notFoundxx.forEach((item) => {
+                    schema.composition.requiredManager.remove(item)
+                })
+            }
+        })
+    }
+
     toOAPI() {
+        this.removeNullReference()
         return {
             openapi: Version,
             info: this.info.toOAPI(),
