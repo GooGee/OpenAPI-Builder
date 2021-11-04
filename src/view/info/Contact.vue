@@ -2,7 +2,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right">name</td>
+                <td class="text-right w222">name</td>
                 <td>
                     <input type="text" class="form-control" v-model="contact.name" />
                 </td>

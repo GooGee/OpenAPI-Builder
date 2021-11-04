@@ -2,7 +2,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right" width="222px">title</td>
+                <td class="text-right w222">title</td>
                 <td>
                     <input type="text" class="form-control" v-model="info.title" />
                 </td>

@@ -2,7 +2,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right" width="222px">description</td>
+                <td class="text-right w222">description</td>
                 <td>
                     <input
                         type="text"
