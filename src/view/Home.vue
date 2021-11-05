@@ -21,10 +21,20 @@
                 toJSON
             </span>
         </p>
+        <p v-else>
+            <span
+                v-if="store.ready"
+                @click="exportJSON"
+                class="btn btn-outline-success"
+            >
+                export JSON
+            </span>
+        </p>
     </div>
 </template>
 
 <script lang="ts">
+import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
 import store from '@/store'
 import { defineComponent, inject } from 'vue'
@@ -35,12 +45,19 @@ export default defineComponent({
         function create() {
             ss.create()
         }
+        function exportJSON() {
+            const text = JSON.stringify(ss.project.toOAPI())
+            ss.worker.edit('OpenAPI.json', text, (response) => {
+                Toast.show(response.message, response.status)
+            })
+        }
         function toJSON() {
             store.inputModal.text = JSON.stringify(ss.project.toOAPI())
             store.inputModal.show('OpenAPI JSON', () => {})
         }
         return {
             create,
+            exportJSON,
             inBrowser,
             toJSON,
             store,
