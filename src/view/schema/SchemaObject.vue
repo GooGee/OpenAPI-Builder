@@ -2,7 +2,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>required / un</th>
+                <th>required / hidden / un</th>
                 <th>type</th>
             </tr>
         </thead>
@@ -18,6 +18,18 @@
                         />
                         <label
                             :for="'required' + item.id"
+                            class="custom-control-label"
+                        ></label>
+                    </span>
+                    <span class="custom-control custom-switch inline">
+                        <input
+                            :id="'hidden' + item.id"
+                            v-model="item.hidden"
+                            type="checkbox"
+                            class="custom-control-input"
+                        />
+                        <label
+                            :for="'hidden' + item.id"
                             class="custom-control-label"
                         ></label>
                     </span>
@@ -46,6 +58,14 @@
                         :list="typexx"
                         :manager="manager"
                     ></SelectButton>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    `required` is for RequestBody.
+                    <br />
+                    `hidden` is for Response.
+                    The hidden fields will be removed from Response.
                 </td>
             </tr>
         </tfoot>
