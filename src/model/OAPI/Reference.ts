@@ -4,8 +4,9 @@ import UniqueItemManager from '../Entity/UniqueItemManager'
 export enum ReferenceType {
     examples = 'examples',
     headers = 'headers',
-    links = ' links',
+    links = 'links',
     parameters = 'parameters',
+    path = 'path',
     requestBodies = 'requestBodies',
     responses = 'responses',
     schemas = 'schemas',
