@@ -33,7 +33,7 @@ export default class Document extends Item {
             case ReferenceType.parameters:
                 return this.component.parameterManager
 
-            case ReferenceType.path:
+            case ReferenceType.paths:
                 return this.pathManager
 
             case ReferenceType.requestBodies:

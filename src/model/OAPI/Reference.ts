@@ -6,7 +6,7 @@ export enum ReferenceType {
     headers = 'headers',
     links = 'links',
     parameters = 'parameters',
-    path = 'path',
+    paths = 'paths',
     requestBodies = 'requestBodies',
     responses = 'responses',
     schemas = 'schemas',
@@ -30,6 +30,10 @@ export default class Reference extends UniqueItem {
     }
 
     get text() {
+        if (this.type === 'paths') {
+            const name = this.un.split('/').join('~1')
+            return `#/${this.type}/${name}`
+        }
         return `#/components/${this.type}/${this.un}`
     }
 
