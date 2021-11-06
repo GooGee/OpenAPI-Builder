@@ -38,7 +38,13 @@ export default class Operation extends UniqueItem {
     }
 
     toOAPI() {
-        const id = [this.type].concat(this.path.un.split('/')).join('_')
+        const id = [this.type]
+            .concat(this.path.un.split('/'))
+            .join('_')
+            .split('{')
+            .join('')
+            .split('}')
+            .join('')
         const tags = this.tagManager.list.map((tag) => tag.un)
         const callbacks = this.callbackManager.toOAPI()
         const parameters = this.parameterManager.toOAPIArray()
