@@ -62,6 +62,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">callbacks</td>
+                <td>
+                    <CallBackList :manager="item.callbackManager"></CallBackList>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">tags</td>
                 <td>
                     <EditList
@@ -86,10 +92,12 @@ import { defineComponent, PropType } from 'vue'
 import Reference from '../oapi/Reference.vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
 import EditList from '../part/EditList.vue'
+import CallBackList from './CallBackList.vue'
 import StatusList from './StatusList.vue'
 
 export default defineComponent({
     components: {
+        CallBackList,
         EditList,
         Reference,
         ReferenceList,
@@ -111,7 +119,7 @@ export default defineComponent({
                     try {
                         const one = props.item.tagManager.make(tag.un)
                         props.item.tagManager.add(one)
-                    } catch (error: any) {
+                    } catch (error) {
                         Toast.error(error.message)
                     }
                 },
