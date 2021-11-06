@@ -3,12 +3,10 @@ import UniqueItemManager from '../Entity/UniqueItemManager'
 import Reference, { ReferenceType } from './Reference'
 
 export default class CallBack extends SideBarItem {
-    readonly path = new Reference('', ReferenceType.path)
+    readonly path = new Reference('', ReferenceType.paths)
 
     toOAPI() {
-        return {
-            [this.un]: this.path.toOAPI(),
-        }
+        return this.path.toOAPI()
     }
 }
 
