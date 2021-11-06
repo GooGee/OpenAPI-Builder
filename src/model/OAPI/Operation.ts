@@ -37,15 +37,15 @@ export default class Operation extends UniqueItem {
 
     toOAPI() {
         const id = [this.type].concat(this.path.un.split('/')).join('_')
-        const tags = this.tagManager.list.map(tag => tag.un)
-        const parameters = this.parameterManager.list.map(parameter => parameter.toOAPI())
+        const tags = this.tagManager.list.map((tag) => tag.un)
+        const parameters = this.parameterManager.toOAPIArray()
         const result: KeyValue = {
             operationId: id,
             summary: this.summary,
             description: this.description,
-            parameters: parameters,
+            parameters,
             responses: this.statusManager.toOAPI(),
-            tags: tags,
+            tags,
         }
 
         if (
