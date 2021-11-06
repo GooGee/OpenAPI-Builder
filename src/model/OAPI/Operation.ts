@@ -1,9 +1,10 @@
-import Reference, { ReferenceManager, ReferenceType } from './Reference'
-import Path from './Path'
 import { exclude } from '../Decorator'
 import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import { CallBackManager } from './CallBack'
+import Path from './Path'
+import Reference, { ReferenceManager, ReferenceType } from './Reference'
 import { StatusManager } from './Status'
 
 export enum OperationType {
@@ -21,6 +22,7 @@ export default class Operation extends UniqueItem {
     summary = ''
     deprecated = false
     description = ''
+    readonly callbackManager = new CallBackManager()
     readonly parameterManager = new ReferenceManager(ReferenceType.parameters)
     readonly requestBody = new Reference('', ReferenceType.requestBodies)
     readonly statusManager = new StatusManager()
@@ -38,10 +40,12 @@ export default class Operation extends UniqueItem {
     toOAPI() {
         const id = [this.type].concat(this.path.un.split('/')).join('_')
         const tags = this.tagManager.list.map((tag) => tag.un)
+        const callbacks = this.callbackManager.toOAPI()
         const parameters = this.parameterManager.toOAPIArray()
         const result: KeyValue = {
             operationId: id,
             summary: this.summary,
+            callbacks,
             description: this.description,
             parameters,
             responses: this.statusManager.toOAPI(),
