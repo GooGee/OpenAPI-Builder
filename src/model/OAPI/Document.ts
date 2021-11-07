@@ -63,11 +63,7 @@ export default class Document extends Item {
             return []
         }
         set.add(schema)
-        if (schema.type === SchemaType.object) {
-            return schema.object.fieldManager.list
-        }
-
-        let list: SchemaSimple[] = []
+        let list: SchemaSimple[] = schema.object.fieldManager.list
         schema.composition.referenceManager.list.forEach((item) => {
             const found = this.component.schemaManager.find(item.un)
             if (found) {

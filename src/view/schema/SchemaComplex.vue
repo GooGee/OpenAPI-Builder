@@ -30,16 +30,14 @@
         rows="11"
     ></textarea>
 
-    <SchemaObject
-        v-if="sidebar.item.isObject"
-        :manager="sidebar.item.object.fieldManager"
-    ></SchemaObject>
+    <template v-else>
+        <SchemaObject :manager="sidebar.item.object.fieldManager"></SchemaObject>
 
-    <SchemaComposition
-        v-if="sidebar.item.isComposition"
-        :manager="sidebar.item.composition.referenceManager"
-        :un="sidebar.item.un"
-    ></SchemaComposition>
+        <SchemaComposition
+            :manager="sidebar.item.composition.referenceManager"
+            :un="sidebar.item.un"
+        ></SchemaComposition>
+    </template>
 </template>
 
 <script lang="ts">

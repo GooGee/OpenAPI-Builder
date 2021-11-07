@@ -1,5 +1,5 @@
 <template>
-    <div v-if="sidebar.item.isObject">
+    <div v-if="sidebar.item.isComposition">
         <ImportText v-if="importing" @parse="showMap">
             <tr>
                 <td class="text-right"></td>

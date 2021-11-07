@@ -5,14 +5,13 @@ import SchemaObject from './SchemaObject'
 
 export enum SchemaType {
     composition = 'composition',
-    object = 'object',
     template = 'template',
 }
 
 export const schemaTypeList = Object.keys(SchemaType)
 
 export default class SchemaComplex extends Schema {
-    type: SchemaType = SchemaType.object
+    type: SchemaType = SchemaType.composition
     readonly composition = new SchemaComposition()
     readonly object = new SchemaObject()
 
@@ -28,10 +27,6 @@ export default class SchemaComplex extends Schema {
         return this.type === SchemaType.composition
     }
 
-    get isObject() {
-        return this.type === SchemaType.object
-    }
-
     get isTemplate() {
         return this.type === SchemaType.template
     }
@@ -41,11 +36,14 @@ export default class SchemaComplex extends Schema {
             return JSON.parse(this.text)
         }
 
-        if (this.isObject) {
-            return this.object.toOAPI()
+        if (this.composition.referenceManager.list.length) {
+            const data = this.composition.toOAPI()
+            const list = data[this.composition.type] as any
+            list.push(this.object.toOAPI())
+            return data
         }
 
-        return this.composition.toOAPI()
+        return this.object.toOAPI()
     }
 }
 

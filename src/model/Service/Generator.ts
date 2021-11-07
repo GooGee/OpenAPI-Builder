@@ -84,7 +84,7 @@ export default class Generator {
 
     makeSchemaObject(un: string, list: string[] = []) {
         const schema = this.schemaManager.make(un)
-        schema.type = SchemaType.object
+        schema.type = SchemaType.composition
         list.forEach((name) => {
             const item = schema.object.fieldManager.make(name)
             schema.object.fieldManager.add(item)
