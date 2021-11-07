@@ -4,7 +4,7 @@ import Item from './Item'
 
 export default class UniqueItem extends Item {
     @excludeOAPI
-    protected _id: number = 0
+    protected _ui: number = 0
 
     @exclude
     @excludeOAPI
@@ -27,16 +27,16 @@ export default class UniqueItem extends Item {
         return lodash.camelCase(this.un)
     }
 
-    get id() {
-        return this._id
+    get ui() {
+        return this._ui
     }
 
-    set id(id: number) {
-        if (this._id === 0) {
-            this._id = id
+    set ui(ui: number) {
+        if (this._ui === 0) {
+            this._ui = ui
             return
         }
-        throw new Error('Cannot change id')
+        throw new Error('Cannot change unique identifier')
     }
 
     @include

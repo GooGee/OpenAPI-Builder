@@ -21,12 +21,12 @@ export default class Reference extends UniqueItem {
         this.type = type
     }
 
-    get id() {
-        return this._id
+    get ui() {
+        return this._ui
     }
 
-    set id(id: number) {
-        this._id = id
+    set ui(ui: number) {
+        this._ui = ui
     }
 
     get text() {

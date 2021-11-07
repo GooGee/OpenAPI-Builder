@@ -5,7 +5,7 @@ import KeyValue from './KeyValue'
 import { filter } from '../Service/Text'
 
 export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
-    private nextId = 1
+    private nextUI = 1
 
     constructor(type: Newable<T>) {
         super(type)
@@ -14,8 +14,8 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
     add(item: T) {
         this.throwIfExist(item.un)
         super.add(item)
-        item.id = this.nextId
-        this.nextId += 1
+        item.ui = this.nextUI
+        this.nextUI += 1
     }
 
     filter(keyword: string) {
@@ -45,7 +45,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
             iii.load(item)
             this.list.push(iii)
         })
-        this.nextId = manager.nextId ?? this.nextId
+        this.nextUI = manager.nextUI ?? this.nextUI
     }
 
     make(name: string) {
@@ -69,8 +69,8 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
 
     toJSON() {
         return {
+            nextUI: this.nextUI,
             list: this.list,
-            nextId: this.nextId,
         }
     }
 
