@@ -57,7 +57,7 @@ export default class SchemaField extends Schema {
 }
 
 export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
-    constructor() {
-        super(SchemaField)
+    constructor(unique = true) {
+        super(SchemaField, unique)
     }
 }

@@ -7,12 +7,14 @@ import { filter } from '../Service/Text'
 export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
     private nextUI = 1
 
-    constructor(type: Newable<T>) {
+    constructor(type: Newable<T>, readonly unique = true) {
         super(type)
     }
 
     add(item: T) {
-        this.throwIfExist(item.un)
+        if (this.unique) {
+            this.throwIfExist(item.un)
+        }
         super.add(item)
         item.ui = this.nextUI
         this.nextUI += 1
