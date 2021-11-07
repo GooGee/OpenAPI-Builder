@@ -4,8 +4,8 @@ import SchemaComposition from './SchemaComposition'
 import SchemaObject from './SchemaObject'
 
 export enum SchemaType {
-    composition = 'composition',
     template = 'template',
+    composition = 'composition',
 }
 
 export const schemaTypeList = Object.keys(SchemaType)

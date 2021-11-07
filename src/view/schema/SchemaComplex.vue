@@ -11,8 +11,8 @@
         </label>
 
         <select
-            v-if="sidebar.item.isComposition"
             v-model="sidebar.item.composition.type"
+            :disabled="sidebar.item.isTemplate"
             class="form-control inline wa"
         >
             <option v-for="type in dtypexx" :value="type" :key="type">
