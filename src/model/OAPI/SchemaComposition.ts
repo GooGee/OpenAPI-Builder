@@ -15,10 +15,12 @@ export default class SchemaComposition extends Item {
     toOAPI() {
         const result: KeyValue = {
             [this.type]: this.referenceManager.toOAPIArray(),
-            required: this.requiredManager.list.map((item) => item.un),
         }
         if (this.discriminator.propertyName) {
             result.discriminator = this.discriminator.toOAPI()
+        }
+        if (this.requiredManager.list.length) {
+            result.required = this.requiredManager.list.map((item) => item.un)
         }
         return result
     }
