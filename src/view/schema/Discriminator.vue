@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in discriminator.manager.list" :key="item.id">
+                <tr v-for="item in discriminator.manager.list" :key="item.ui">
                     <td>
                         <div class="btn-group">
                             <DeleteButton

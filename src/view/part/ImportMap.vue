@@ -4,7 +4,7 @@
             <h2>Map</h2>
         </caption>
         <tbody>
-            <tr v-for="key in manager.list" :key="key.id">
+            <tr v-for="key in manager.list" :key="key.ui">
                 <td class="text-right w111">
                     {{ key.un }}
                     <span v-if="key.required" class="text-danger">*</span>

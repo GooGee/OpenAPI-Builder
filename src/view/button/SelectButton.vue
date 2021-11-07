@@ -1,7 +1,7 @@
 <template>
     <select v-model="selected" @change="select" class="form-control wa">
         <option :value="0" disabled>----</option>
-        <option v-for="item in list" :key="item.id" :value="item.id">
+        <option v-for="item in list" :key="item.ui" :value="item.ui">
             {{ item.un }}
         </option>
     </select>
@@ -28,7 +28,7 @@ export default defineComponent({
         const selected = ref(0)
         function select() {
             try {
-                const found = props.list.find((item) => item.id === selected.value)
+                const found = props.list.find((item) => item.ui === selected.value)
                 if (found === undefined) {
                     return
                 }

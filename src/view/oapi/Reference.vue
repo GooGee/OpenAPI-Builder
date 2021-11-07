@@ -34,10 +34,10 @@ export default defineComponent({
             const title = 'Select ' + props.reference.type
             function callback(item: UniqueItem | null) {
                 if (item === null) {
-                    props.reference.id = 0
+                    props.reference.ui = 0
                     props.reference.un = ''
                 } else {
-                    props.reference.id = item.id
+                    props.reference.ui = item.ui
                     props.reference.un = item.un
                 }
                 context.emit('select')

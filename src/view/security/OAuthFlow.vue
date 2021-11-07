@@ -34,7 +34,7 @@
                 <td>
                     <table class="table">
                         <tbody>
-                            <tr v-for="scope in item.scopeManager.list" :key="scope.id">
+                            <tr v-for="scope in item.scopeManager.list" :key="scope.ui">
                                 <td>
                                     <div class="btn-group">
                                         <DeleteButton

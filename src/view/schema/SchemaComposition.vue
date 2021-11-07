@@ -7,7 +7,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in manager.list" :key="item.id">
+            <tr v-for="item in manager.list" :key="item.ui">
                 <td>
                     <div class="btn-group">
                         <DeleteButton :manager="manager" :item="item"></DeleteButton>

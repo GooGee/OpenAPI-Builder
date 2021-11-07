@@ -7,17 +7,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in manager.list" :key="item.id">
+            <tr v-for="item in manager.list" :key="item.ui">
                 <td>
                     <span class="custom-control custom-switch inline">
                         <input
-                            :id="'required' + item.id"
+                            :id="'required' + item.ui"
                             v-model="item.required"
                             type="checkbox"
                             class="custom-control-input"
                         />
                         <label
-                            :for="'required' + item.id"
+                            :for="'required' + item.ui"
                             class="custom-control-label"
                         ></label>
                     </span>
@@ -80,7 +80,7 @@ export default defineComponent({
         const nameManager = ss.project.getPreset('FieldName')!.propertyManager
         const typexx = ['boolean', 'integer', 'number', 'string'].map((item, index) => {
             return {
-                id: index + 1,
+                ui: index + 1,
                 un: item,
             }
         })

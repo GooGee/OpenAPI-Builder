@@ -5,7 +5,7 @@
         class="form-control wa mtb11"
     >
         <option value="" disabled>----</option>
-        <option v-for="item in optionxx" :value="item.un" :key="item.id">
+        <option v-for="item in optionxx" :value="item.un" :key="item.ui">
             {{ item.un }}
         </option>
     </select>
@@ -13,7 +13,7 @@
     <div class="btn-group mtb11">
         <span
             v-for="item in manager.list"
-            :key="item.id"
+            :key="item.ui"
             @click="current = item"
             class="btn"
             :class="

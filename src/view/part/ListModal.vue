@@ -21,7 +21,7 @@
                 </li>
                 <li
                     v-for="item in store.listModal.list"
-                    :key="item.id"
+                    :key="item.ui"
                     @click="store.listModal.select(item)"
                     class="list-group-item pointer"
                 >

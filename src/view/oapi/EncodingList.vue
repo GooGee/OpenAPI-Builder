@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in manager.list" :key="item.id">
+            <tr v-for="item in manager.list" :key="item.ui">
                 <td>
                     <div class="btn-group">
                         <DeleteButton :manager="manager" :item="item"></DeleteButton>
@@ -31,13 +31,13 @@
                 <td>
                     <span class="custom-control custom-switch">
                         <input
-                            :id="item.id + 'explode'"
+                            :id="item.ui + 'explode'"
                             v-model="item.explode"
                             type="checkbox"
                             class="custom-control-input"
                         />
                         <label
-                            :for="item.id + 'explode'"
+                            :for="item.ui + 'explode'"
                             class="custom-control-label"
                         ></label>
                     </span>
@@ -45,13 +45,13 @@
                 <td>
                     <span class="custom-control custom-switch">
                         <input
-                            :id="item.id + 'allowReserved'"
+                            :id="item.ui + 'allowReserved'"
                             v-model="item.allowReserved"
                             type="checkbox"
                             class="custom-control-input"
                         />
                         <label
-                            :for="item.id + 'allowReserved'"
+                            :for="item.ui + 'allowReserved'"
                             class="custom-control-label"
                         ></label>
                     </span>

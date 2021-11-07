@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="item in manager.list" :key="item.id" class="mb11">
+        <div v-for="item in manager.list" :key="item.ui" class="mb11">
             <div class="btn-group">
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
                 <ChangeButton

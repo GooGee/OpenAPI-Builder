@@ -8,7 +8,7 @@
                     <h2>Security Requirement</h2>
                 </caption>
                 <tbody>
-                    <tr v-for="item in sidebar.manager.list" :key="item.id">
+                    <tr v-for="item in sidebar.manager.list" :key="item.ui">
                         <td>
                             <div class="btn-group">
                                 <DeleteButton

@@ -4,7 +4,7 @@
             <SelectButton :list="codexx" :manager="manager"></SelectButton>
         </div>
 
-        <div v-for="item in manager.list" :key="item.id" class="mtb11">
+        <div v-for="item in manager.list" :key="item.ui" class="mtb11">
             <div class="btn-group">
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
                 <ChangeButton :manager="manager" :item="item"></ChangeButton>

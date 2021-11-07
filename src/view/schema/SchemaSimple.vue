@@ -32,7 +32,7 @@
             class="form-control inline wa"
         >
             <option value="">----</option>
-            <option v-for="format in formatxx" :value="format.un" :key="format.id">
+            <option v-for="format in formatxx" :value="format.un" :key="format.ui">
                 {{ format.un }}
             </option>
         </select>

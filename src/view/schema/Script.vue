@@ -8,7 +8,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in list" :key="item.un">
+            <tr v-for="item in list" :key="item.ui">
                 <td>
                     <RunButton
                         :schema="sidebar.item"

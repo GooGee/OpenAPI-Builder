@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in sidebar.item.propertyManager.list" :key="item.id">
+            <tr v-for="item in sidebar.item.propertyManager.list" :key="item.ui">
                 <td>
                     <div class="btn-group mr11">
                         <DeleteButton

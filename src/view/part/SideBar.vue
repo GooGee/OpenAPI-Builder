@@ -15,7 +15,7 @@
         <div v-if="list.length" class="list-group mt11">
             <SideBarItem
                 v-for="item in list"
-                :key="item.id"
+                :key="item.ui"
                 :item="item"
                 :manager="sidebar.manager"
                 @click="select(item)"

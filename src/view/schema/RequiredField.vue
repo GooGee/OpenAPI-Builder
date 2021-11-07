@@ -6,18 +6,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in fieldxx" :key="item.id">
+            <tr v-for="item in fieldxx" :key="item.ui">
                 <td>
                     <span class="custom-control custom-switch inline">
                         <input
-                            :id="'required' + item.id"
+                            :id="'required' + item.ui"
                             :checked="exist(item.un)"
                             @click="add(item.un)"
                             type="checkbox"
                             class="custom-control-input"
                         />
                         <label
-                            :for="'required' + item.id"
+                            :for="'required' + item.ui"
                             class="custom-control-label"
                         ></label>
                     </span>
