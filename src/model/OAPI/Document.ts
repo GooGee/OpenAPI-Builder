@@ -6,7 +6,7 @@ import Info from './Info'
 import { PathManager } from './Path'
 import { ReferenceType } from './Reference'
 import SchemaComplex, { SchemaType } from './SchemaComplex'
-import SchemaSimple from './SchemaSimple'
+import SchemaField from './SchemaField'
 import { SecurityRequirementManager } from './SecurityRequirement'
 import { ServerManager } from './Server'
 import { TagManager } from './Tag'
@@ -63,7 +63,7 @@ export default class Document extends Item {
             return []
         }
         set.add(schema)
-        let list: SchemaSimple[] = schema.object.fieldManager.list
+        let list: SchemaField[] = schema.object.fieldManager.list
         schema.composition.referenceManager.list.forEach((item) => {
             const found = this.component.schemaManager.find(item.un)
             if (found) {

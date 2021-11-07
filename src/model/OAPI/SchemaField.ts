@@ -4,7 +4,7 @@ import { SimpleType } from './DataType'
 import Reference, { ReferenceType } from './Reference'
 import Schema from './Schema'
 
-export default class SchemaSimple extends Schema {
+export default class SchemaField extends Schema {
     example = ''
     format = ''
     isArray = false
@@ -56,8 +56,8 @@ export default class SchemaSimple extends Schema {
     }
 }
 
-export class SchemaSimpleManager extends UniqueItemManager<SchemaSimple> {
+export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
     constructor() {
-        super(SchemaSimple)
+        super(SchemaField)
     }
 }

@@ -27,7 +27,7 @@
                     </div>
                 </td>
                 <td>
-                    <SchemaSimple :schema="item"></SchemaSimple>
+                    <SchemaField :schema="item"></SchemaField>
                 </td>
             </tr>
         </tbody>
@@ -61,13 +61,13 @@ import { defineComponent, PropType } from 'vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import SelectButton from '../button/SelectButton.vue'
-import SchemaSimple from './SchemaSimple.vue'
+import SchemaField from './SchemaField.vue'
 
 export default defineComponent({
     components: {
         ChangeButton,
         DeleteButton,
-        SchemaSimple,
+        SchemaField,
         SelectButton,
     },
     props: {

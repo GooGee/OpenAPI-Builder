@@ -34,7 +34,7 @@
             <tr>
                 <td class="text-right">schema</td>
                 <td>
-                    <SchemaSimple :schema="sidebar.item.schema"></SchemaSimple>
+                    <SchemaField :schema="sidebar.item.schema"></SchemaField>
                 </td>
             </tr>
             <tr>
@@ -100,11 +100,11 @@
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
 import { defineComponent, PropType } from 'vue'
-import SchemaSimple from '../schema/SchemaSimple.vue'
+import SchemaField from '../schema/SchemaField.vue'
 
 export default defineComponent({
     components: {
-        SchemaSimple,
+        SchemaField,
     },
     props: {
         isHeader: {

@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { simpleTypeList } from '@/model/OAPI/DataType'
-import SchemaSimple from '@/model/OAPI/SchemaSimple'
+import SchemaField from '@/model/OAPI/SchemaField'
 import ss from '@/ss'
 import { defineComponent, PropType } from 'vue'
 import Reference from '../oapi/Reference.vue'
@@ -52,7 +52,7 @@ export default defineComponent({
     },
     props: {
         schema: {
-            type: Object as PropType<SchemaSimple>,
+            type: Object as PropType<SchemaField>,
             required: true,
         },
     },

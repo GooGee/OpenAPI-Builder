@@ -1,7 +1,7 @@
 import KeyValue from '../Entity/KeyValue'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import SchemaSimple from './SchemaSimple'
+import SchemaField from './SchemaField'
 
 export enum Location {
     cookie = 'cookie',
@@ -19,7 +19,7 @@ export default class Parameter extends SideBarItem {
     location: Location
     name = ''
     required = true
-    readonly schema = new SchemaSimple(this.un)
+    readonly schema = new SchemaField(this.un)
 
     constructor(name: string, location: Location = Location.cookie) {
         super(name)
