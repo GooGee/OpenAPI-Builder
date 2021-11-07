@@ -27,6 +27,7 @@
                 <td>
                     <Reference
                         :reference="reference"
+                        :withBlank="false"
                         text="+"
                         @select="select"
                     ></Reference>
