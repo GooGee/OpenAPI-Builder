@@ -7,7 +7,6 @@ import Schema from './Schema'
 export default class SchemaSimple extends Schema {
     example = ''
     format = ''
-    hidden = false
     isArray = false
     required = true
     type: SimpleType = SimpleType.string
