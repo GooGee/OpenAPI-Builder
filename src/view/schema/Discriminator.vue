@@ -14,7 +14,7 @@
             <thead>
                 <tr>
                     <th class="w111">un</th>
-                    <th>value</th>
+                    <th>schema path</th>
                 </tr>
             </thead>
             <tbody>
