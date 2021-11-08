@@ -9,6 +9,7 @@ export default class SchemaField extends Schema {
     format = ''
     isArray = false
     required = true
+    schemaUI = 0
     type: SimpleType = SimpleType.string
 
     readonly reference = new Reference('', ReferenceType.schemas)
@@ -59,5 +60,9 @@ export default class SchemaField extends Schema {
 export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
     constructor(unique = true) {
         super(SchemaField, unique)
+    }
+
+    findAll(ui: number) {
+        return this.list.filter((field) => field.schemaUI === ui)
     }
 }
