@@ -16,6 +16,14 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         super.add(item)
     }
 
+    arrayToOAPI(list: T[]) {
+        const map: KeyValue = {}
+        list.forEach((item) => {
+            map[item.un] = item.toOAPI()
+        })
+        return map
+    }
+
     filter(keyword: string) {
         return filter(keyword, this.list)
     }
@@ -76,11 +84,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         }
     }
 
-    toOAPI() {
-        const map: KeyValue = {}
-        this.list.forEach((item) => {
-            map[item.un] = item.toOAPI()
-        })
-        return map
+    toOAPI(...args: any[]) {
+        return this.arrayToOAPI(this.list)
     }
 }
