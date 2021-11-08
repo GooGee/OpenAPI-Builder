@@ -33,7 +33,7 @@ export default class ItemManager<T extends Item> extends Manager<T> {
         }
     }
 
-    toOAPI(): any {
+    toOAPI(...args: any[]): any {
         return this.toOAPIArray()
     }
 
