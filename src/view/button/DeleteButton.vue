@@ -23,7 +23,7 @@ export default defineComponent({
             event.stopPropagation()
             if (confirm('Are you sure?')) {
                 props.manager.remove(props.item)
-                context.emit('remove')
+                context.emit('remove', props.item)
             }
         }
         return { remove }
