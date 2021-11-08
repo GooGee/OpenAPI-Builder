@@ -23,9 +23,10 @@
 import { ImportItemManager } from '@/model/Entity/ImportItem'
 import SideBar from '@/model/Entity/SideBar'
 import StringObject from '@/model/Entity/StringObject'
+import SchemaComplex from '@/model/OAPI/SchemaComplex'
 import Converter from '@/model/Service/Converter'
 import Toast from '@/model/Service/Toast'
-import SchemaComplex from '@/model/OAPI/SchemaComplex'
+import ss from '@/ss'
 import { defineComponent, inject, ref } from 'vue'
 import ImportMap from '../part/ImportMap.vue'
 import ImportText from '../part/ImportText.vue'
@@ -65,7 +66,7 @@ export default defineComponent({
         function migrate(map: Map<string, string>) {
             try {
                 const list = Converter.migrate(itemxx.value, map)
-                sidebar.item?.fieldManager.load({ list } as any)
+                ss.project.oapi.importSchema({ list } as any, sidebar.item!.ui)
                 Toast.success('OK')
             } catch (error) {
                 Toast.error(error.message)

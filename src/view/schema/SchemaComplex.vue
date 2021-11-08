@@ -40,7 +40,7 @@
     ></textarea>
 
     <template v-else>
-        <FieldList :manager="sidebar.item.fieldManager"></FieldList>
+        <FieldList :ui="sidebar.item.ui"></FieldList>
 
         <SchemaComposition
             :manager="sidebar.item.composition.referenceManager"
@@ -64,8 +64,8 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar
         return {
-            typexx: compositionTypeList,
             sidebar,
+            typexx: compositionTypeList,
         }
     },
 })

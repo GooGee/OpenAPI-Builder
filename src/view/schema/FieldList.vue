@@ -7,7 +7,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in manager.list" :key="item.ui">
+            <tr v-for="item in fieldxx" :key="item.ui">
                 <td>
                     <span class="custom-control custom-switch inline">
                         <input
@@ -36,7 +36,7 @@
                 <td>
                     <SelectButton
                         @select="addName"
-                        :list="nameManager.list"
+                        :list="namexx"
                         :manager="manager"
                     ></SelectButton>
                 </td>
@@ -55,9 +55,8 @@
 <script lang="ts">
 import Property from '@/model/Entity/Property'
 import UniqueItem from '@/model/Entity/UniqueItem'
-import UniqueItemManager from '@/model/Entity/UniqueItemManager'
 import ss from '@/ss'
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import SelectButton from '../button/SelectButton.vue'
@@ -71,13 +70,20 @@ export default defineComponent({
         SelectButton,
     },
     props: {
-        manager: {
-            type: Object as PropType<UniqueItemManager<UniqueItem>>,
+        ui: {
+            type: Number,
             required: true,
         },
     },
     setup(props, context) {
-        const nameManager = ss.project.getPreset('FieldName')!.propertyManager
+        const manager = ss.project.oapi.fieldManager
+        const fieldxx = ref<UniqueItem[]>(manager.findAll(props.ui))
+        function update() {
+            fieldxx.value = manager.findAll(props.ui)
+        }
+        watch(() => props.ui, update)
+
+        const namexx = ss.project.getPreset('FieldName')!.propertyManager.list
         const typexx = ['boolean', 'integer', 'number', 'string'].map((item, index) => {
             return {
                 ui: index + 1,
@@ -86,22 +92,30 @@ export default defineComponent({
         })
 
         class Schema {
+            ui = 0
+            schemaUI = 0
             un = ''
             type = ''
         }
 
         function addName(selected: Property, item: Schema) {
             item.type = selected.tag
+            item.schemaUI = props.ui
+            update()
         }
 
         function addType(selected: Record<string, any>, item: Schema) {
             item.type = item.un
+            item.schemaUI = props.ui
+            update()
         }
 
         return {
             addName,
             addType,
-            nameManager,
+            fieldxx,
+            manager,
+            namexx,
             typexx,
         }
     },
