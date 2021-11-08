@@ -65,7 +65,7 @@ export default defineComponent({
         function migrate(map: Map<string, string>) {
             try {
                 const list = Converter.migrate(itemxx.value, map)
-                sidebar.item?.object.fieldManager.load({ list } as any)
+                sidebar.item?.fieldManager.load({ list } as any)
                 Toast.success('OK')
             } catch (error) {
                 Toast.error(error.message)

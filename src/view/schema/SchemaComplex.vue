@@ -40,7 +40,7 @@
     ></textarea>
 
     <template v-else>
-        <SchemaObject :manager="sidebar.item.object.fieldManager"></SchemaObject>
+        <FieldList :manager="sidebar.item.fieldManager"></FieldList>
 
         <SchemaComposition
             :manager="sidebar.item.composition.referenceManager"
@@ -53,13 +53,13 @@
 import SideBar from '@/model/Entity/SideBar'
 import { compositionTypeList } from '@/model/OAPI/DataType'
 import { defineComponent, inject } from 'vue'
+import FieldList from './FieldList.vue'
 import SchemaComposition from './SchemaComposition.vue'
-import SchemaObject from './SchemaObject.vue'
 
 export default defineComponent({
     components: {
+        FieldList,
         SchemaComposition,
-        SchemaObject,
     },
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar
