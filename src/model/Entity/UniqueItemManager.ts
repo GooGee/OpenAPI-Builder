@@ -16,8 +16,6 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
             this.throwIfExist(item.un)
         }
         super.add(item)
-        item.ui = this.nextUI
-        this.nextUI += 1
     }
 
     filter(keyword: string) {

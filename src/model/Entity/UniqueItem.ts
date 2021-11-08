@@ -1,11 +1,8 @@
 import lodash from 'lodash'
 import { exclude, excludeOAPI, include } from '../Decorator'
-import Item from './Item'
+import UIItem from './UIItem'
 
-export default class UniqueItem extends Item {
-    @excludeOAPI
-    protected _ui: number = 0
-
+export default class UniqueItem extends UIItem {
     @exclude
     @excludeOAPI
     protected _un: string // unique name
@@ -25,18 +22,6 @@ export default class UniqueItem extends Item {
 
     get wavelCase() {
         return lodash.camelCase(this.un)
-    }
-
-    get ui() {
-        return this._ui
-    }
-
-    set ui(ui: number) {
-        if (this._ui === 0) {
-            this._ui = ui
-            return
-        }
-        throw new Error('Cannot change unique identifier')
     }
 
     @include
