@@ -6,7 +6,7 @@ import Info from './Info'
 import { PathManager } from './Path'
 import { ReferenceType } from './Reference'
 import SchemaComplex from './SchemaComplex'
-import SchemaField from './SchemaField'
+import SchemaField, { SchemaFieldManager } from './SchemaField'
 import { SecurityRequirementManager } from './SecurityRequirement'
 import { ServerManager } from './Server'
 import { TagManager } from './Tag'
@@ -16,6 +16,7 @@ const Version = '3.0.3'
 export default class Document extends Item {
     readonly component = new Component()
     readonly externalDocs = new External()
+    readonly fieldManager = new SchemaFieldManager(false)
     readonly info = new Info()
     readonly pathManager = new PathManager()
     readonly securityManager = new SecurityRequirementManager()
@@ -58,7 +59,10 @@ export default class Document extends Item {
         return this.getSchemaFieldxx(schema, new Set())
     }
 
-    private getSchemaFieldxx(schema: SchemaComplex, set: Set<SchemaComplex>) {
+    private getSchemaFieldxx(
+        schema: SchemaComplex,
+        set: Set<SchemaComplex>,
+    ): SchemaField[] {
         if (set.has(schema)) {
             return []
         }
@@ -66,14 +70,23 @@ export default class Document extends Item {
         if (schema.isTemplate) {
             return []
         }
-        let list: SchemaField[] = schema.fieldManager.list
+        let list: SchemaField[] = this.fieldManager.findAll(schema.ui)
         schema.composition.referenceManager.list.forEach((item) => {
-            const found = this.component.schemaManager.find(item.un)
+            const found = this.component.schemaManager.findByUN(item.un)
             if (found) {
                 list = list.concat(this.getSchemaFieldxx(found, set))
             }
         })
         return list
+    }
+
+    importSchema(fieldxx: SchemaField[], ui: number) {
+        fieldxx.forEach((field) => {
+            const item = this.fieldManager.make(field.un)
+            item.load(field)
+            item.schemaUI = ui
+            this.fieldManager.add(item)
+        })
     }
 
     private removeNullReference() {
@@ -99,7 +112,7 @@ export default class Document extends Item {
         return {
             openapi: Version,
             info: this.info.toOAPI(),
-            components: this.component.toOAPI(),
+            components: this.component.toOAPI(this),
             paths: this.pathManager.toOAPI(),
             security: this.securityManager.toOAPIArray(),
             servers: this.serverManager.toOAPIArray(),

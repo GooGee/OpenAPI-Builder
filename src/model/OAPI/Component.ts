@@ -1,5 +1,6 @@
 import Item from '../Entity/Item'
 import { CallBackManager } from './CallBack'
+import Document from './Document'
 import { ExampleManager } from './Example'
 import { LinkManager } from './Link'
 import { ParameterManager, Location } from './Parameter'
@@ -19,7 +20,7 @@ export default class Component extends Item {
     readonly schemaManager = new SchemaManager()
     readonly securitySchemeManager = new SecuritySchemeManager()
 
-    toOAPI() {
+    toOAPI(oapi: Document) {
         return {
             callbacks: this.callbackManager.toOAPI(),
             examples: this.exampleManager.toOAPI(),
@@ -28,7 +29,7 @@ export default class Component extends Item {
             parameters: this.parameterManager.toOAPI(),
             requestBodies: this.requestBodyManager.toOAPI(),
             responses: this.responseManager.toOAPI(),
-            schemas: this.schemaManager.toOAPI(),
+            schemas: this.schemaManager.toOAPI(oapi.fieldManager),
             securitySchemes: this.securitySchemeManager.toOAPI(),
         }
     }
