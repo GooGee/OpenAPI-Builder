@@ -1,6 +1,7 @@
 import Project from '../Entity/Project'
 import { CompositionType } from '../OAPI/DataType'
 import { MediaTypeEnum, MediaTypeManager } from '../OAPI/MediaType'
+import SchemaComplex from '../OAPI/SchemaComplex'
 
 export default class Generator {
     constructor(readonly project: Project) {}
@@ -78,5 +79,12 @@ export default class Generator {
             schema.composition.referenceManager.add(item)
         })
         return schema
+    }
+
+    makeSchemaField(un: string, schema: SchemaComplex) {
+        const field = this.project.oapi.fieldManager.make(un)
+        this.project.oapi.fieldManager.add(field)
+        field.schemaUI = schema.ui
+        return field
     }
 }
