@@ -41,7 +41,7 @@ export default class Load {
         preset: UniqueItemManager<UniqueItem>,
     ) {
         preset.list.forEach((data) => {
-            if (manager.find(data.un) === undefined) {
+            if (manager.findByUN(data.un) === undefined) {
                 manager.add(data)
             }
         })

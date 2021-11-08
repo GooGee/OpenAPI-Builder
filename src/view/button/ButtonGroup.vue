@@ -39,7 +39,7 @@ export default defineComponent({
             if (item === props.option) {
                 return ''
             }
-            if (props.manager.find(item)) {
+            if (props.manager.findByUN(item)) {
                 return 'text-primary'
             }
             return ''

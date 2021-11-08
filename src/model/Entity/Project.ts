@@ -16,7 +16,7 @@ export default class Project extends Item {
     readonly oapi = new Document()
 
     getPreset(name: string) {
-        return this.presetManager.find(name)
+        return this.presetManager.findByUN(name)
     }
 
     toOAPI() {

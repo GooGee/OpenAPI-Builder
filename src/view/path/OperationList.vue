@@ -77,7 +77,7 @@ export default defineComponent({
 
         const operation = ref<UniqueItem | null>(null)
         function update() {
-            operation.value = getManager().find(option.value) ?? null
+            operation.value = getManager().findByUN(option.value) ?? null
         }
         update()
 

@@ -63,7 +63,7 @@ export default defineComponent({
     },
     setup(props, context) {
         function find(un: string) {
-            return ss.project.oapi.component.schemaManager.find(un)
+            return ss.project.oapi.component.schemaManager.findByUN(un)
         }
         const reference = props.manager.make('')
         function select() {

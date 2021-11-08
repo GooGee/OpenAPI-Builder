@@ -1,12 +1,10 @@
-import ItemManager from './ItemManager'
-import UniqueItem from './UniqueItem'
-import Newable from './Newable'
-import KeyValue from './KeyValue'
 import { filter } from '../Service/Text'
+import KeyValue from './KeyValue'
+import Newable from './Newable'
+import { UIItemManager } from './UIItem'
+import UniqueItem from './UniqueItem'
 
-export default class UniqueItemManager<T extends UniqueItem> extends ItemManager<T> {
-    private nextUI = 1
-
+export default class UniqueItemManager<T extends UniqueItem> extends UIItemManager<T> {
     constructor(type: Newable<T>, readonly unique = true) {
         super(type)
     }
@@ -22,12 +20,12 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
         return filter(keyword, this.list)
     }
 
-    find(name: string) {
+    findByUN(name: string) {
         return this.list.find((item) => item.un === name)
     }
 
     findOrMake(name: string) {
-        let found = this.find(name)
+        let found = this.findByUN(name)
         if (found === undefined) {
             found = this.make(name)
             this.add(found)
@@ -36,14 +34,18 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
     }
 
     has(name: string) {
-        return this.find(name) !== undefined
+        return this.findByUN(name) !== undefined
     }
 
     load(manager: UniqueItemManager<T>) {
         manager.list.forEach((item) => {
-            const iii = this.make(item.un)
-            iii.load(item)
-            this.list.push(iii)
+            const ii = this.make(item.un)
+            ii.load(item)
+            if (ii.ui === 0) {
+                this.add(ii)
+            } else {
+                this.list.push(ii)
+            }
         })
         this.nextUI = manager.nextUI ?? this.nextUI
     }
@@ -62,7 +64,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends ItemManager
     }
 
     throwIfExist(name: string) {
-        if (this.find(name)) {
+        if (this.findByUN(name)) {
             throw new Error(`${this.type.name} ${name} already exists!`)
         }
     }

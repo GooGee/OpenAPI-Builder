@@ -67,9 +67,9 @@ export default defineComponent({
                 update()
             },
         })
-        const flow = ref<UniqueItem | null>(props.manager.find(option.value) ?? null)
+        const flow = ref<UniqueItem | null>(props.manager.findByUN(option.value) ?? null)
         function update() {
-            flow.value = props.manager.find(option.value) ?? null
+            flow.value = props.manager.findByUN(option.value) ?? null
         }
 
         watch(

@@ -48,7 +48,7 @@ export default defineComponent({
         const schema = sidebar.item!
         const manager = schema.composition.requiredManager
         function add(name: string) {
-            const found = manager.find(name)
+            const found = manager.findByUN(name)
             if (found) {
                 manager.remove(found)
             } else {
