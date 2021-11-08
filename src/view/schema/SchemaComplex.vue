@@ -1,13 +1,22 @@
 <template>
     <div :class="{ 'text-secondary': sidebar.item.empty === false }" class="mtb11">
-        <label v-for="item in stypexx" :key="item" class="mr11">
+        <label class="mr11">
             <input
                 type="radio"
-                v-model="sidebar.item.type"
-                :value="item"
+                v-model="sidebar.item.isTemplate"
+                :value="true"
                 :disabled="sidebar.item.empty === false"
             />
-            {{ item }}
+            template
+        </label>
+        <label class="mr11">
+            <input
+                type="radio"
+                v-model="sidebar.item.isTemplate"
+                :value="false"
+                :disabled="sidebar.item.empty === false"
+            />
+            composition
         </label>
 
         <select
@@ -15,7 +24,7 @@
             :disabled="sidebar.item.isTemplate"
             class="form-control inline wa"
         >
-            <option v-for="type in dtypexx" :value="type" :key="type">
+            <option v-for="type in typexx" :value="type" :key="type">
                 {{ type }}
             </option>
         </select>
@@ -43,7 +52,6 @@
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
 import { compositionTypeList } from '@/model/OAPI/DataType'
-import { schemaTypeList } from '@/model/OAPI/SchemaComplex'
 import { defineComponent, inject } from 'vue'
 import SchemaComposition from './SchemaComposition.vue'
 import SchemaObject from './SchemaObject.vue'
@@ -56,8 +64,7 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar
         return {
-            dtypexx: compositionTypeList,
-            stypexx: schemaTypeList,
+            typexx: compositionTypeList,
             sidebar,
         }
     },

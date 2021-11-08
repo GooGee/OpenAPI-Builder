@@ -3,15 +3,8 @@ import Schema from './Schema'
 import SchemaComposition from './SchemaComposition'
 import SchemaObject from './SchemaObject'
 
-export enum SchemaType {
-    template = 'template',
-    composition = 'composition',
-}
-
-export const schemaTypeList = Object.keys(SchemaType)
-
 export default class SchemaComplex extends Schema {
-    type: SchemaType = SchemaType.composition
+    isTemplate = false
     readonly composition = new SchemaComposition()
     readonly object = new SchemaObject()
 
@@ -24,11 +17,7 @@ export default class SchemaComplex extends Schema {
     }
 
     get isComposition() {
-        return this.type === SchemaType.composition
-    }
-
-    get isTemplate() {
-        return this.type === SchemaType.template
+        return this.isTemplate === false
     }
 
     toOAPI() {

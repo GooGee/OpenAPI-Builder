@@ -5,7 +5,7 @@ import External from './External'
 import Info from './Info'
 import { PathManager } from './Path'
 import { ReferenceType } from './Reference'
-import SchemaComplex, { SchemaType } from './SchemaComplex'
+import SchemaComplex from './SchemaComplex'
 import SchemaField from './SchemaField'
 import { SecurityRequirementManager } from './SecurityRequirement'
 import { ServerManager } from './Server'
@@ -63,6 +63,9 @@ export default class Document extends Item {
             return []
         }
         set.add(schema)
+        if (schema.isTemplate) {
+            return []
+        }
         let list: SchemaField[] = schema.object.fieldManager.list
         schema.composition.referenceManager.list.forEach((item) => {
             const found = this.component.schemaManager.find(item.un)
@@ -75,7 +78,7 @@ export default class Document extends Item {
 
     private removeNullReference() {
         this.component.schemaManager.list.forEach((schema) => {
-            if (schema.type === SchemaType.composition) {
+            if (schema.isComposition) {
                 const fieldxx = this.getSchemaFieldList(schema)
                 const notFoundxx: UniqueItem[] = []
                 schema.composition.requiredManager.list.forEach((item) => {
