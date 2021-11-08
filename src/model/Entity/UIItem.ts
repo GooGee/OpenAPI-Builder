@@ -20,7 +20,7 @@ export default class UIItem extends Item {
 }
 
 export class UIItemManager<T extends UIItem> extends ItemManager<T> {
-    private nextUI = 1
+    protected nextUI = 1
 
     add(item: T) {
         super.add(item)
@@ -28,11 +28,19 @@ export class UIItemManager<T extends UIItem> extends ItemManager<T> {
         this.nextUI += 1
     }
 
+    find(ui: number) {
+        return this.list.find((item) => item.ui === ui)
+    }
+
     load(manager: UIItemManager<T>) {
         manager.list.forEach((item) => {
-            const iii = this.make()
-            iii.load(item)
-            this.list.push(iii)
+            const ii = this.make()
+            ii.load(item)
+            if (ii.ui === 0) {
+                this.add(ii)
+            } else {
+                this.list.push(ii)
+            }
         })
         this.nextUI = manager.nextUI ?? this.nextUI
     }
