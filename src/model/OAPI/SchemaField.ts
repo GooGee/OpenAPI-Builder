@@ -62,6 +62,16 @@ export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
         super(SchemaField, unique)
     }
 
+    add(item: SchemaField) {
+        const found = this.list.find(
+            (field) => field.schemaUI === item.schemaUI && field.un === item.un,
+        )
+        if (found) {
+            throw new Error(`Field ${item.un} already exists!`)
+        }
+        super.add(item)
+    }
+
     findAll(ui: number) {
         return this.list.filter((field) => field.schemaUI === ui)
     }
