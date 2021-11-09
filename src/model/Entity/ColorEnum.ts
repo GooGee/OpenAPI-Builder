@@ -7,7 +7,7 @@ enum ColorEnum {
     green = '#0f0',
     aqua = '#0ff',
     blue = '#00f',
-    DodgerBlue = '#08f',
+    skyblue = '#08f',
     purple = '#80f',
 }
 
