@@ -57,10 +57,7 @@
                     </span>
                 </td>
                 <td>
-                    <ReferenceList
-                        :manager="item.headerManager"
-                        type="headers"
-                    ></ReferenceList>
+                    <ReferenceList :manager="item.headerManager"></ReferenceList>
                 </td>
             </tr>
         </tbody>

@@ -1,7 +1,6 @@
 <template>
     <ReferenceList
         :manager="sidebar.item.parameterManager"
-        type="parameters"
         class="mt11"
     ></ReferenceList>
 </template>

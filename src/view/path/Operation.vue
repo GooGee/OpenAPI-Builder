@@ -40,10 +40,7 @@
             <tr>
                 <td class="text-right">parameters</td>
                 <td>
-                    <ReferenceList
-                        :manager="item.parameterManager"
-                        type="parameters"
-                    ></ReferenceList>
+                    <ReferenceList :manager="item.parameterManager"></ReferenceList>
                 </td>
             </tr>
             <tr>

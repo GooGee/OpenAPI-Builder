@@ -16,10 +16,7 @@
             <tr>
                 <td class="text-right">examples</td>
                 <td>
-                    <ReferenceList
-                        :manager="item.exampleManager"
-                        type="examples"
-                    ></ReferenceList>
+                    <ReferenceList :manager="item.exampleManager"></ReferenceList>
                 </td>
             </tr>
             <tr>
