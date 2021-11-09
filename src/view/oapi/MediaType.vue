@@ -10,7 +10,7 @@
             <tr>
                 <td class="text-right">schema</td>
                 <td>
-                    <SchemaField :schema="item.schema"></SchemaField>
+                    <Field :schema="item.schema"></Field>
                 </td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
 import MediaType from '@/model/OAPI/MediaType'
 import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import SchemaField from '../schema/SchemaField.vue'
+import Field from '../schema/Field.vue'
 import EncodingList from './EncodingList.vue'
 import ReferenceList from './ReferenceList.vue'
 
@@ -55,8 +55,8 @@ export default defineComponent({
     components: {
         DeleteButton,
         EncodingList,
+        Field,
         ReferenceList,
-        SchemaField,
     },
     props: {
         item: {
