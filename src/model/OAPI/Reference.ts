@@ -45,15 +45,12 @@ export default class Reference extends UniqueItem {
 }
 
 export class ReferenceManager extends UniqueItemManager<Reference> {
-    readonly referenceType: ReferenceType
-
-    constructor(type: ReferenceType) {
+    constructor(readonly referenceType: ReferenceType) {
         super(Reference)
-        this.referenceType = type
     }
 
-    make(name: string, type: ReferenceType = this.referenceType) {
-        const item = new Reference(name, type)
+    make(name: string) {
+        const item = new Reference(name, this.referenceType)
         return item
     }
 }
