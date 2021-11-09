@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="form-inline">
         <label class="mr11">
-            <input v-model="schema.isArray" type="checkbox" />
+            <input v-model="schema.isArray" type="checkbox" class="mr3" />
             <span :class="{ 'text-secondary': !schema.isArray }"> Array</span>
         </label>
 
-        <select v-model="schema.type" class="form-control inline wa mr11">
+        <select v-model="schema.type" class="form-control mr11">
             <option v-for="type in typexx" :value="type" :key="type">
                 {{ type }}
             </option>
@@ -20,7 +20,7 @@
         <textarea
             v-if="schema.type === 'template'"
             v-model="schema.text"
-            class="form-control inline wa"
+            class="form-control"
             style="vertical-align: top; width: 444px"
             spellcheck="false"
             wrap="off"
@@ -30,7 +30,7 @@
         <select
             v-if="list.includes(schema.type)"
             v-model="schema.format"
-            class="form-control inline wa"
+            class="form-control"
         >
             <option value="">----</option>
             <option v-for="format in formatxx" :value="format.un" :key="format.ui">
