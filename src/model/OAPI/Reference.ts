@@ -49,6 +49,10 @@ export class ReferenceManager extends UniqueItemManager<Reference> {
         super(Reference)
     }
 
+    add(item: Reference) {
+        this.list.push(item)
+    }
+
     make(name: string) {
         const item = new Reference(name, this.referenceType)
         return item
