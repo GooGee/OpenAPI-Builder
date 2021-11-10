@@ -2,12 +2,15 @@ import JavaWorker from './Bridge/ToJava/JavaWorker'
 import { EmitterType, EventEnum } from './Entity/Event'
 import Project from './Entity/Project'
 import { SideBarManager } from './Entity/SideBar'
+import TargetFinder from './Service/TargetFinder'
 
 export default class Vendor {
     private _data: Project
     private _preset: Project
     private _project: Project
+
     readonly sbManager = new SideBarManager()
+    targetFinder: TargetFinder
 
     constructor(
         data: Project,
@@ -17,6 +20,7 @@ export default class Vendor {
         this._data = data
         this._preset = new Project()
         this._project = this._preset
+        this.targetFinder = new TargetFinder(this.project)
     }
 
     create() {
@@ -46,6 +50,7 @@ export default class Vendor {
 
     set project(project: Project) {
         this._project = project
+        this.targetFinder = new TargetFinder(project)
         this.sbManager.bind(this.project)
         this.emitter.emit(EventEnum.ready)
     }
