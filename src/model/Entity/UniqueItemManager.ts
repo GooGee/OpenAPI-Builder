@@ -11,7 +11,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
 
     add(item: T) {
         if (this.unique) {
-            this.throwIfExist(item.un)
+            this.throwIfFindUN(item.un)
         }
         super.add(item)
     }
@@ -76,7 +76,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         }
     }
 
-    throwIfExist(name: string) {
+    throwIfFindUN(name: string) {
         if (this.findByUN(name)) {
             throw new Error(`${this.type.name} ${name} already exists!`)
         }
