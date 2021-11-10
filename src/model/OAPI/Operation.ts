@@ -1,11 +1,13 @@
 import { exclude } from '../Decorator'
 import KeyValue from '../Entity/KeyValue'
+import { TargetManager, TargetType } from '../Entity/Target'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import { CallBackManager } from './CallBack'
 import Path from './Path'
 import Reference, { ReferenceManager, ReferenceType } from './Reference'
 import { StatusManager } from './Status'
+import Tag from './Tag'
 
 export enum OperationType {
     get = 'get',
@@ -26,7 +28,7 @@ export default class Operation extends UniqueItem {
     readonly parameterManager = new ReferenceManager(ReferenceType.parameters)
     readonly requestBody = new Reference('', ReferenceType.requestBodies)
     readonly statusManager = new StatusManager()
-    readonly tagManager = new UniqueItemManager(UniqueItem)
+    readonly tagManager = new TargetManager(TargetType.Tag)
 
     constructor(name: string, path: Path) {
         super(name)
@@ -37,7 +39,7 @@ export default class Operation extends UniqueItem {
         return this.un
     }
 
-    toOAPI() {
+    toOAPI(tagxx: Tag[]) {
         const id = [this.type]
             .concat(this.path.un.split('/'))
             .join('_')
@@ -45,7 +47,7 @@ export default class Operation extends UniqueItem {
             .join('')
             .split('}')
             .join('')
-        const tags = this.tagManager.list.map((tag) => tag.un)
+        const tags = this.tagManager.findAll(tagxx).map((tag) => tag.un)
         const callbacks = this.callbackManager.toOAPI()
         const parameters = this.parameterManager.toOAPIArray()
         const result: KeyValue = {
