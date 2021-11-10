@@ -32,6 +32,10 @@ export class UIItemManager<T extends UIItem> extends ItemManager<T> {
         return this.list.find((item) => item.ui === ui)
     }
 
+    has(ui: number) {
+        return this.find(ui) !== undefined
+    }
+
     load(manager: UIItemManager<T>) {
         manager.list.forEach((item) => {
             const ii = this.make()
