@@ -5,8 +5,6 @@ export enum CompositionType {
     oneOf = 'oneOf',
 }
 
-const object = 'object'
-
 export enum SimpleType {
     boolean = 'boolean',
     integer = 'integer',
@@ -16,12 +14,6 @@ export enum SimpleType {
     template = 'template',
 }
 
-const DataType = { ...CompositionType, object, ...SimpleType }
-
-export default DataType
-
 export const compositionTypeList = Object.values(CompositionType)
-
-export const dataTypeList = Object.values(DataType)
 
 export const simpleTypeList = Object.values(SimpleType)
