@@ -23,6 +23,7 @@ export class UIItemManager<T extends UIItem> extends ItemManager<T> {
     protected nextUI = 1
 
     add(item: T) {
+        this.throwIfFind(item.ui)
         super.add(item)
         item.ui = this.nextUI
         this.nextUI += 1
@@ -47,5 +48,11 @@ export class UIItemManager<T extends UIItem> extends ItemManager<T> {
             }
         })
         this.nextUI = manager.nextUI ?? this.nextUI
+    }
+
+    throwIfFind(ui: number) {
+        if (this.find(ui)) {
+            throw new Error(`${this.type.name} already exists!`)
+        }
     }
 }
