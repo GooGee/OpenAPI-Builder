@@ -43,9 +43,9 @@ export default defineComponent({
                 context.emit('select')
             }
             if (props.withBlank) {
-                store.listModal.showWithBlank(list, title, callback)
+                store.listModal.showWithBlank<UniqueItem>(list, title, callback)
             } else {
-                store.listModal.showList(list, title, callback)
+                store.listModal.showList<UniqueItem>(list, title, callback)
             }
         }
         return { select }
