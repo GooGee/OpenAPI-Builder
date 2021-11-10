@@ -31,7 +31,7 @@ export default defineComponent({
             if (text === null) {
                 return
             }
-            if (props.manager.has(text)) {
+            if (props.manager.hasUN(text)) {
                 Toast.error(text + ' already exists')
                 return
             }

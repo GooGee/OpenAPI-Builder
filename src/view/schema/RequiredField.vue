@@ -62,7 +62,7 @@ export default defineComponent({
             }
         }
         function exist(name: string) {
-            return manager.has(name)
+            return manager.hasUN(name)
         }
         const fieldxx = ss.project.oapi.getSchemaFieldList(schema)
         return { add, clear, exist, fieldxx, sidebar }

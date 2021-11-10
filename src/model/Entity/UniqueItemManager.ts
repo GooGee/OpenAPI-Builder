@@ -41,7 +41,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         return found
     }
 
-    has(name: string) {
+    hasUN(name: string) {
         return this.findByUN(name) !== undefined
     }
 

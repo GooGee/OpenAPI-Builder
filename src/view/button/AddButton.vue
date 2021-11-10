@@ -40,7 +40,7 @@ export default defineComponent({
             if (name === '') {
                 return
             }
-            if (props.manager.has(name)) {
+            if (props.manager.hasUN(name)) {
                 Toast.error(name + ' already exists')
                 return
             }
