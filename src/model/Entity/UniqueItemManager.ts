@@ -41,6 +41,11 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         return found
     }
 
+    hasSame(ui: number, un: string) {
+        const found = this.list.find((field) => field.ui === ui && field.un === un)
+        return found !== undefined
+    }
+
     hasUN(name: string) {
         return this.findByUN(name) !== undefined
     }
