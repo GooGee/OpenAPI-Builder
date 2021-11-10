@@ -28,7 +28,11 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const reference = props.manager.make('')
+        const reference = {
+            ui: 0,
+            un: '',
+            type: props.manager.referenceType,
+        }
         function select() {
             try {
                 const item = props.manager.make(reference.un)

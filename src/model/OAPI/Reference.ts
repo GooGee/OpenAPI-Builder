@@ -21,14 +21,6 @@ export default class Reference extends UniqueItem {
         this.type = type
     }
 
-    get ui() {
-        return this._ui
-    }
-
-    set ui(ui: number) {
-        this._ui = ui
-    }
-
     get text() {
         if (this.type === 'paths') {
             const name = this.un.split('/').join('~1')
