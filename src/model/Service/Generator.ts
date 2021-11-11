@@ -1,5 +1,4 @@
 import Project from '../Entity/Project'
-import { CompositionType } from '../OAPI/DataType'
 import { MediaTypeEnum, MediaTypeManager } from '../OAPI/MediaType'
 import SchemaComplex from '../OAPI/SchemaComplex'
 
@@ -65,20 +64,6 @@ export default class Generator {
 
     makeMediaTypeXML(manager: MediaTypeManager) {
         return this.makeMediaType(MediaTypeEnum.xml, manager)
-    }
-
-    makeSchemaComposition(
-        un: string,
-        list: string[] = [],
-        type: CompositionType = CompositionType.allOf,
-    ) {
-        const schema = this.schemaManager.make(un)
-        schema.composition.type = type
-        list.forEach((name) => {
-            const item = schema.composition.referenceManager.make(name)
-            schema.composition.referenceManager.add(item)
-        })
-        return schema
     }
 
     makeSchemaField(un: string, schema: SchemaComplex) {
