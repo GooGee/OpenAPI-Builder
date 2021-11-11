@@ -2,8 +2,8 @@ import { filter } from '../Service/Text'
 import Modal from './Modal'
 import UniqueItem from './UniqueItem'
 
-interface CallBack<T extends UniqueItem> {
-    (item: T): void
+interface CallBack {
+    (item: UniqueItem): void
 }
 
 export default class ListModal extends Modal {
@@ -26,22 +26,14 @@ export default class ListModal extends Modal {
         this.hide()
     }
 
-    showList<T extends UniqueItem>(
-        list: Array<T>,
-        title: string,
-        callback: CallBack<T>,
-    ) {
+    showList(list: Array<UniqueItem>, title: string, callback: CallBack) {
         this.source = list
         this.keyword = ''
         this.showBlank = false
         super.show(title, callback)
     }
 
-    showWithBlank<T extends UniqueItem>(
-        list: Array<T>,
-        title: string,
-        callback: CallBack<T>,
-    ) {
+    showWithBlank(list: Array<UniqueItem>, title: string, callback: CallBack) {
         this.showList(list, title, callback)
         this.showBlank = true
     }
