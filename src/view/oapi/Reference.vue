@@ -30,22 +30,20 @@ export default defineComponent({
     },
     setup(props, context) {
         function select() {
-            const list = ss.project.oapi.getManager(props.reference.type).list
+            const list = ss.project.finder.findManager(props.reference.type).list
             const title = 'Select ' + props.reference.type
             function callback(item: UniqueItem | null) {
                 if (item === null) {
                     props.reference.ui = 0
-                    props.reference.un = ''
                 } else {
                     props.reference.ui = item.ui
-                    props.reference.un = item.un
                 }
                 context.emit('select')
             }
             if (props.withBlank) {
-                store.listModal.showWithBlank<UniqueItem>(list, title, callback)
+                store.listModal.showWithBlank(list, title, callback)
             } else {
-                store.listModal.showList<UniqueItem>(list, title, callback)
+                store.listModal.showList(list, title, callback)
             }
         }
         return { select }

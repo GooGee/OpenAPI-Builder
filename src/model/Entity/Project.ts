@@ -1,4 +1,6 @@
+import { exclude } from '../Decorator'
 import Document from '../OAPI/Document'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import Item from './Item'
 import { PresetManager } from './Preset'
 import { ScriptManager } from './Script'
@@ -15,11 +17,14 @@ export default class Project extends Item {
 
     readonly oapi = new Document()
 
+    @exclude
+    readonly finder = new ReferenceFinder(this)
+
     getPreset(name: string) {
         return this.presetManager.findByUN(name)
     }
 
     toOAPI() {
-        return this.oapi.toOAPI()
+        return this.oapi.toOAPI(this.finder)
     }
 }
