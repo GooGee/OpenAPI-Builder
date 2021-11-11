@@ -67,7 +67,7 @@
             <tr>
                 <td class="text-right">tags</td>
                 <td>
-                    <TargetList :manager="item.tagManager"></TargetList>
+                    <ReferenceList :manager="item.tagManager"></ReferenceList>
                 </td>
             </tr>
         </tbody>
@@ -80,7 +80,6 @@ import { defineComponent, PropType } from 'vue'
 import Reference from '../oapi/Reference.vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
 import EditList from '../part/EditList.vue'
-import TargetList from '../part/TargetList.vue'
 import CallBackList from './CallBackList.vue'
 import StatusList from './StatusList.vue'
 
@@ -91,7 +90,6 @@ export default defineComponent({
         Reference,
         ReferenceList,
         StatusList,
-        TargetList,
     },
     props: {
         item: {
