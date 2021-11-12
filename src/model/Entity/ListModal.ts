@@ -9,7 +9,7 @@ interface CallBack {
 export default class ListModal extends Modal {
     keyword = ''
     source: Array<UniqueItem> = []
-    showBlank = false
+    withBlank = false
 
     get list() {
         if (this.keyword) {
@@ -29,12 +29,12 @@ export default class ListModal extends Modal {
     showList(list: Array<UniqueItem>, title: string, callback: CallBack) {
         this.source = list
         this.keyword = ''
-        this.showBlank = false
+        this.withBlank = false
         super.show(title, callback)
     }
 
     showWithBlank(list: Array<UniqueItem>, title: string, callback: CallBack) {
         this.showList(list, title, callback)
-        this.showBlank = true
+        this.withBlank = true
     }
 }

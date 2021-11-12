@@ -13,7 +13,7 @@
             />
             <ul class="list-group">
                 <li
-                    v-if="store.listModal.showBlank"
+                    v-if="store.listModal.withBlank"
                     @click="store.listModal.select(null)"
                     class="list-group-item pointer"
                 >
