@@ -44,7 +44,7 @@
 
         <SchemaComposition
             :manager="sidebar.item.composition.referenceManager"
-            :un="sidebar.item.un"
+            :ui="sidebar.item.ui"
         ></SchemaComposition>
     </template>
 </template>

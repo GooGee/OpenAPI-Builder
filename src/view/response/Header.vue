@@ -1,5 +1,7 @@
 <template>
-    <ReferenceList :manager="sidebar.item.headerManager" class="mt11"></ReferenceList>
+    <div class="mt11">
+        <ReferenceList :manager="sidebar.item.headerManager"></ReferenceList>
+    </div>
 </template>
 
 <script lang="ts">

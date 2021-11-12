@@ -56,8 +56,8 @@ export default defineComponent({
             type: Object as PropType<ReferenceManager>,
             required: true,
         },
-        un: {
-            type: String,
+        ui: {
+            type: Number,
             required: true,
         },
     },
@@ -65,13 +65,13 @@ export default defineComponent({
         function find(un: string) {
             return ss.project.oapi.component.schemaManager.findByUN(un)
         }
-        const reference = props.manager.make('')
+        const reference = props.manager.make(0)
         function select() {
             try {
-                if (props.un === reference.un) {
+                if (props.ui === reference.ui) {
                     throw new Error('Cannot include self!')
                 }
-                const item = props.manager.make(reference.un)
+                const item = props.manager.make(reference.ui)
                 props.manager.add(item)
             } catch (error) {
                 Toast.error(error.message)

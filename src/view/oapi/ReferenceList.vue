@@ -1,25 +1,25 @@
 <template>
-    <div>
-        <EditList :manager="manager" :canAdd="false" :canEdit="false"></EditList>
-        <Reference
-            :reference="reference"
-            :withBlank="false"
-            @select="select"
-        ></Reference>
+    <div v-for="item in list" :key="item.ui" class="mb11">
+        <div class="btn-group">
+            <DeleteButton :manager="manager" :item="find(item.ui)"></DeleteButton>
+            <span class="btn btn-outline-secondary"> {{ item.un }} </span>
+        </div>
     </div>
+    <span @click="select" class="btn btn-outline-primary"> + </span>
 </template>
 
 <script lang="ts">
-import Toast from '@/model/Service/Toast'
+import UniqueItem from '@/model/Entity/UniqueItem'
 import { ReferenceManager } from '@/model/OAPI/Reference'
-import { defineComponent, PropType } from 'vue'
-import EditList from '../part/EditList.vue'
-import Reference from './Reference.vue'
+import Toast from '@/model/Service/Toast'
+import ss from '@/ss'
+import store from '@/store'
+import { defineComponent, PropType, ref, watch } from 'vue'
+import DeleteButton from '../button/DeleteButton.vue'
 
-export default defineComponent({
+const ReferenceList = defineComponent({
     components: {
-        EditList,
-        Reference,
+        DeleteButton,
     },
     props: {
         manager: {
@@ -28,20 +28,35 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const reference = {
-            ui: 0,
-            un: '',
-            type: props.manager.referenceType,
+        const list = ref<UniqueItem[]>([])
+        const source = ss.project.finder.findManager(props.manager.targetType)
+            .list as UniqueItem[]
+        watch(() => props.manager.list.length, getList, { immediate: true })
+
+        function find(ui: number) {
+            return props.manager.find(ui)
         }
+
+        function getList() {
+            const uixx = props.manager.list.map((item) => item.ui)
+            const set = new Set(uixx)
+            list.value = source.filter((item) => set.has(item.ui))
+        }
+
         function select() {
-            try {
-                const item = props.manager.make(reference.un)
-                props.manager.add(item)
-            } catch (error) {
-                Toast.error(error.message)
-            }
+            const listModal = store.listModal
+            listModal.showList(source, 'Select a ', function add(tag) {
+                try {
+                    const one = props.manager.make(tag.ui)
+                    props.manager.add(one)
+                } catch (error) {
+                    Toast.error(error.message)
+                }
+            })
         }
-        return { reference, select }
+        return { find, list, select }
     },
 })
+
+export default ReferenceList
 </script>
