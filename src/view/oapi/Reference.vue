@@ -1,6 +1,6 @@
 <template>
     <span @click="select" class="btn btn-outline-primary">
-        {{ text ? text : reference.un ? reference.un : '+' }}
+        {{ text ? text : reference.ui ? getUN() : '+' }}
     </span>
 </template>
 
@@ -29,6 +29,18 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        function getUN() {
+            const found = ss.project.finder.find(
+                props.reference.ui,
+                props.reference.type,
+            )
+            if (found === undefined) {
+                return '??'
+            } else {
+                return found.un
+            }
+        }
+
         function select() {
             const list = ss.project.finder.findManager(props.reference.type).list
             const title = 'Select ' + props.reference.type
@@ -46,7 +58,7 @@ export default defineComponent({
                 store.listModal.showList(list, title, callback)
             }
         }
-        return { select }
+        return { getUN, select }
     },
 })
 </script>
