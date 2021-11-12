@@ -3,57 +3,25 @@
         <div class="col-3"></div>
 
         <div class="col-9">
-            <table class="table">
-                <caption class="caption-top">
-                    <h2>Security Requirement</h2>
-                </caption>
-                <tbody>
-                    <tr v-for="item in sidebar.manager.list" :key="item.ui">
-                        <td>
-                            <div class="btn-group">
-                                <DeleteButton
-                                    :manager="sidebar.manager"
-                                    :item="item"
-                                ></DeleteButton>
-                                <span class="btn btn-outline-secondary">
-                                    {{ item.un }}
-                                </span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td>
-                            <SelectButton
-                                :list="list"
-                                :manager="sidebar.manager"
-                            ></SelectButton>
-                        </td>
-                    </tr>
-                </tfoot>
-            </table>
+            <h2>Security Requirement</h2>
+            <ReferenceList :manager="manager"></ReferenceList>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { SideBarEnum } from '@/model/Entity/SideBar'
 import ss from '@/ss'
-import { defineComponent, reactive } from 'vue'
-import DeleteButton from './button/DeleteButton.vue'
-import SelectButton from './button/SelectButton.vue'
+import { defineComponent, ref } from 'vue'
+import ReferenceList from './oapi/ReferenceList.vue'
 
 export default defineComponent({
     components: {
-        DeleteButton,
-        SelectButton,
+        ReferenceList,
     },
     setup(props, context) {
-        const sidebar = reactive(ss.sbManager.get(SideBarEnum.SecurityRequirement))
+        const manager = ref(ss.project.oapi.securityManager)
         return {
-            list: ss.sbManager.get(SideBarEnum.SecurityScheme).manager.list,
-            sidebar,
+            manager,
         }
     },
 })

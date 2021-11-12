@@ -1,16 +1,20 @@
-import SideBarItem from '../Entity/SideBarItem'
-import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
+import Reference, { ReferenceManager, TargetType } from './Reference'
 
-export default class SecurityRequirement extends SideBarItem {
-    toOAPI() {
+export default class SecurityRequirement extends Reference {
+    toOAPI(finder: ReferenceFinder) {
+        const target = finder.find(this.ui, this.type)
+        if (target === undefined) {
+            return {}
+        }
         return {
-            [this.un]: [],
+            [target.un]: [],
         }
     }
 }
 
-export class SecurityRequirementManager extends UniqueItemManager<SecurityRequirement> {
+export class SecurityRequirementManager extends ReferenceManager<SecurityRequirement> {
     constructor() {
-        super(SecurityRequirement)
+        super(TargetType.security, SecurityRequirement)
     }
 }

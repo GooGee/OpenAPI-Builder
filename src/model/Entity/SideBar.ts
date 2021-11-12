@@ -18,7 +18,6 @@ export enum SideBarEnum {
     Request = 'Request',
     Response = 'Response',
     Schema = 'Schema',
-    SecurityRequirement = 'SecurityRequirement',
     SecurityScheme = 'SecurityScheme',
     Script = 'Script',
     Server = 'Server',
@@ -61,10 +60,6 @@ export class SideBarManager {
         this.map.set(
             SideBarEnum.Schema,
             new SideBar(SideBarEnum.Schema, project.oapi.component.schemaManager),
-        )
-        this.map.set(
-            SideBarEnum.SecurityRequirement,
-            new SideBar(SideBarEnum.SecurityRequirement, project.oapi.securityManager),
         )
         this.map.set(
             SideBarEnum.SecurityScheme,
