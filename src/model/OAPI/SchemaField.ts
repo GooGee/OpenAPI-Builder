@@ -1,7 +1,7 @@
 import KeyValue from '../Entity/KeyValue'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import { SimpleType } from './DataType'
+import DataType from './DataType'
 import Reference, { TargetType } from './Reference'
 import Schema from './Schema'
 
@@ -11,12 +11,12 @@ export default class SchemaField extends Schema {
     isArray = false
     required = true
     schemaUI = 0
-    type: SimpleType = SimpleType.string
+    type: DataType = DataType.string
 
     readonly reference = new Reference(0, TargetType.schemas)
 
     refer(ui: number) {
-        this.type = SimpleType.reference
+        this.type = DataType.reference
         this.reference.ui = ui
     }
 
@@ -28,7 +28,7 @@ export default class SchemaField extends Schema {
     }
 
     makeData(finder: ReferenceFinder) {
-        if (this.type === SimpleType.reference) {
+        if (this.type === DataType.reference) {
             return this.reference.toOAPI(finder)
         }
 
@@ -45,7 +45,7 @@ export default class SchemaField extends Schema {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        if (this.type === SimpleType.template) {
+        if (this.type === DataType.template) {
             return JSON.parse(this.text)
         }
 

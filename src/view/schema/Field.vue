@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { simpleTypeList } from '@/model/OAPI/DataType'
+import { dataTypeList } from '@/model/OAPI/DataType'
 import SchemaField from '@/model/OAPI/SchemaField'
 import ss from '@/ss'
 import { defineComponent, PropType } from 'vue'
@@ -59,7 +59,7 @@ export default defineComponent({
     },
     setup(props, context) {
         const formatxx = ss.project.getPreset('DataFormat')?.propertyManager.list ?? []
-        const typexx = simpleTypeList
+        const typexx = dataTypeList
         return {
             list: ['integer', 'number', 'string'],
             formatxx,
