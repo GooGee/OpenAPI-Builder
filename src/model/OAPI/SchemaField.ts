@@ -1,7 +1,8 @@
 import KeyValue from '../Entity/KeyValue'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { SimpleType } from './DataType'
-import Reference, { ReferenceType } from './Reference'
+import Reference, { TargetType } from './Reference'
 import Schema from './Schema'
 
 export default class SchemaField extends Schema {
@@ -12,24 +13,23 @@ export default class SchemaField extends Schema {
     schemaUI = 0
     type: SimpleType = SimpleType.string
 
-    readonly reference = new Reference('', ReferenceType.schemas)
+    readonly reference = new Reference(0, TargetType.schemas)
 
-    refer(un: string, type: ReferenceType = ReferenceType.schemas) {
+    refer(ui: number) {
         this.type = SimpleType.reference
-        this.reference.un = un
-        this.reference.type = type
+        this.reference.ui = ui
     }
 
-    makeArray() {
+    makeArray(finder: ReferenceFinder) {
         return {
             type: 'array',
-            items: this.makeData(),
+            items: this.makeData(finder),
         }
     }
 
-    makeData() {
+    makeData(finder: ReferenceFinder) {
         if (this.type === SimpleType.reference) {
-            return this.reference.toOAPI()
+            return this.reference.toOAPI(finder)
         }
 
         const result: KeyValue = {
@@ -44,16 +44,16 @@ export default class SchemaField extends Schema {
         return result
     }
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         if (this.type === SimpleType.template) {
             return JSON.parse(this.text)
         }
 
         if (this.isArray) {
-            return this.makeArray()
+            return this.makeArray(finder)
         }
 
-        return this.makeData()
+        return this.makeData(finder)
     }
 }
 

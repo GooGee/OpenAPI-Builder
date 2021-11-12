@@ -1,6 +1,6 @@
 import Item from '../Entity/Item'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { CallBackManager } from './CallBack'
-import Document from './Document'
 import { ExampleManager } from './Example'
 import { LinkManager } from './Link'
 import { ParameterManager, Location } from './Parameter'
@@ -20,17 +20,17 @@ export default class Component extends Item {
     readonly schemaManager = new SchemaManager()
     readonly securitySchemeManager = new SecuritySchemeManager()
 
-    toOAPI(oapi: Document) {
+    toOAPI(finder: ReferenceFinder) {
         return {
-            callbacks: this.callbackManager.toOAPI(),
-            examples: this.exampleManager.toOAPI(),
-            headers: this.headerManager.toOAPI(),
-            links: this.linkManager.toOAPI(),
-            parameters: this.parameterManager.toOAPI(),
-            requestBodies: this.requestBodyManager.toOAPI(),
-            responses: this.responseManager.toOAPI(),
-            schemas: this.schemaManager.toOAPI(oapi.fieldManager),
-            securitySchemes: this.securitySchemeManager.toOAPI(),
+            callbacks: this.callbackManager.toOAPI(finder),
+            examples: this.exampleManager.toOAPI(finder),
+            headers: this.headerManager.toOAPI(finder),
+            links: this.linkManager.toOAPI(finder),
+            parameters: this.parameterManager.toOAPI(finder),
+            requestBodies: this.requestBodyManager.toOAPI(finder),
+            responses: this.responseManager.toOAPI(finder),
+            schemas: this.schemaManager.toOAPI(finder),
+            securitySchemes: this.securitySchemeManager.toOAPI(finder),
         }
     }
 }

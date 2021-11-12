@@ -1,21 +1,22 @@
 import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import { ReferenceManager, ReferenceType } from './Reference'
+import ReferenceFinder from '../Service/ReferenceFinder'
+import { ReferenceManager, TargetType } from './Reference'
 
 export default class Encoding extends UniqueItem {
     allowReserved = false
     contentType = ''
     explode = false
-    readonly headerManager = new ReferenceManager(ReferenceType.headers)
+    readonly headerManager = new ReferenceManager(TargetType.headers)
     style = ''
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         const result: KeyValue = {
             allowReserved: this.allowReserved,
             contentType: this.contentType,
             explode: this.explode,
-            headers: this.headerManager.toOAPI(),
+            headers: this.headerManager.toOAPI(finder),
             style: this.style,
         }
         return result

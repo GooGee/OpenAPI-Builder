@@ -1,12 +1,13 @@
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import Reference, { ReferenceType } from './Reference'
+import ReferenceFinder from '../Service/ReferenceFinder'
+import Reference, { TargetType } from './Reference'
 
 export default class Status extends UniqueItem {
-    readonly response = new Reference('', ReferenceType.responses)
+    readonly response = new Reference(0, TargetType.responses)
 
-    toOAPI() {
-        return this.response.toOAPI()
+    toOAPI(finder: ReferenceFinder) {
+        return this.response.toOAPI(finder)
     }
 }
 

@@ -1,6 +1,7 @@
 import KeyValue from '../Entity/KeyValue'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import SchemaField from './SchemaField'
 
 export enum Location {
@@ -27,11 +28,11 @@ export default class Parameter extends SideBarItem {
         this.location = location
     }
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         const result: KeyValue = {
             required: this.required,
             description: this.description,
-            schema: this.schema.toOAPI(),
+            schema: this.schema.toOAPI(finder),
         }
 
         if (this.location === Location.header) {

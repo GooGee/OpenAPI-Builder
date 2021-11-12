@@ -1,5 +1,7 @@
 import KeyValue from '../Entity/KeyValue'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
+import { TargetType } from './Reference'
 import Schema from './Schema'
 import SchemaComposition from './SchemaComposition'
 import { SchemaFieldManager } from './SchemaField'
@@ -33,13 +35,14 @@ export default class SchemaComplex extends Schema {
         return result
     }
 
-    toOAPI(fieldManager: SchemaFieldManager) {
+    toOAPI(finder: ReferenceFinder) {
         if (this.isTemplate) {
             return JSON.parse(this.text)
         }
 
+        const fieldManager = finder.findManager(TargetType.field) as SchemaFieldManager
         if (this.composition.referenceManager.list.length) {
-            const data = this.composition.toOAPI()
+            const data = this.composition.toOAPI(finder)
             const list = data[this.composition.type] as any
             list.push(this.field2KV(fieldManager))
             return data
@@ -54,10 +57,10 @@ export class SchemaManager extends UniqueItemManager<SchemaComplex> {
         super(SchemaComplex)
     }
 
-    toOAPI(fieldManager: SchemaFieldManager) {
+    toOAPI(finder: ReferenceFinder) {
         const map: KeyValue = {}
         this.list.forEach((item) => {
-            map[item.un] = item.toOAPI(fieldManager)
+            map[item.un] = item.toOAPI(finder)
         })
         return map
     }

@@ -1,12 +1,13 @@
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import Reference, { ReferenceType } from './Reference'
+import ReferenceFinder from '../Service/ReferenceFinder'
+import Reference, { TargetType } from './Reference'
 
 export default class CallBack extends SideBarItem {
-    readonly path = new Reference('', ReferenceType.paths)
+    readonly path = new Reference(0, TargetType.paths)
 
-    toOAPI() {
-        return this.path.toOAPI()
+    toOAPI(finder: ReferenceFinder) {
+        return this.path.toOAPI(finder)
     }
 }
 

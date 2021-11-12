@@ -1,8 +1,9 @@
 import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { EncodingManager } from './Encoding'
-import { ReferenceManager, ReferenceType } from './Reference'
+import { ReferenceManager, TargetType } from './Reference'
 import SchemaField from './SchemaField'
 
 export enum MediaTypeEnum {
@@ -14,14 +15,14 @@ export enum MediaTypeEnum {
 export default class MediaType extends UniqueItem {
     readonly schema = new SchemaField('')
     readonly encodingManager = new EncodingManager()
-    readonly exampleManager = new ReferenceManager(ReferenceType.examples)
+    readonly exampleManager = new ReferenceManager(TargetType.examples)
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         const result: KeyValue = {
-            schema: this.schema.toOAPI(),
+            schema: this.schema.toOAPI(finder),
         }
         if (this.exampleManager.list.length > 0) {
-            result.examples = this.exampleManager.toOAPI()
+            result.examples = this.exampleManager.toOAPI(finder)
         }
         if (this.encodingManager.list.length > 0) {
             result.encoding = this.encodingManager.toOAPI()

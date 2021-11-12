@@ -1,13 +1,12 @@
 import { exclude } from '../Decorator'
 import KeyValue from '../Entity/KeyValue'
-import { TargetManager, TargetType } from '../Entity/Target'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { CallBackManager } from './CallBack'
 import Path from './Path'
-import Reference, { ReferenceManager, ReferenceType } from './Reference'
+import Reference, { ReferenceManager, TargetType } from './Reference'
 import { StatusManager } from './Status'
-import Tag from './Tag'
 
 export enum OperationType {
     get = 'get',
@@ -25,10 +24,10 @@ export default class Operation extends UniqueItem {
     deprecated = false
     description = ''
     readonly callbackManager = new CallBackManager()
-    readonly parameterManager = new ReferenceManager(ReferenceType.parameters)
-    readonly requestBody = new Reference('', ReferenceType.requestBodies)
+    readonly parameterManager = new ReferenceManager(TargetType.parameters)
+    readonly requestBody = new Reference(0, TargetType.requestBodies)
     readonly statusManager = new StatusManager()
-    readonly tagManager = new TargetManager(TargetType.Tag)
+    readonly tagManager = new ReferenceManager(TargetType.tag)
 
     constructor(name: string, path: Path) {
         super(name)
@@ -39,7 +38,7 @@ export default class Operation extends UniqueItem {
         return this.un
     }
 
-    toOAPI(tagxx: Tag[]) {
+    toOAPI(finder: ReferenceFinder) {
         const id = [this.type]
             .concat(this.path.un.split('/'))
             .join('_')
@@ -47,9 +46,9 @@ export default class Operation extends UniqueItem {
             .join('')
             .split('}')
             .join('')
-        const tags = this.tagManager.findAll(tagxx).map((tag) => tag.un)
+        const tags = this.tagManager.getTargetxx(finder).map((tag) => tag.un)
         const callbacks = this.callbackManager.toOAPI()
-        const parameters = this.parameterManager.toOAPIArray()
+        const parameters = this.parameterManager.toOAPIArray(finder)
         const result: KeyValue = {
             operationId: id,
             summary: this.summary,
@@ -61,14 +60,17 @@ export default class Operation extends UniqueItem {
         }
 
         if (
-            this.requestBody.un === '' ||
+            this.requestBody.ui === 0 ||
             this.type === OperationType.get ||
             this.type === OperationType.delete
         ) {
             return result
         }
 
-        result.requestBody = this.requestBody.toOAPI()
+        const request = finder.find(this.requestBody.ui, this.requestBody.type)
+        if (request) {
+            result.requestBody = this.requestBody.toOAPI(request as any)
+        }
         return result
     }
 }

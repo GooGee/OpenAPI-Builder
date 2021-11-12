@@ -16,10 +16,10 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         super.add(item)
     }
 
-    arrayToOAPI(list: T[]) {
+    arrayToOAPI(list: T[], ...args: any[]) {
         const map: KeyValue = {}
         list.forEach((item) => {
-            map[item.un] = item.toOAPI()
+            map[item.un] = item.toOAPI(args)
         })
         return map
     }
@@ -90,6 +90,6 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
     }
 
     toOAPI(...args: any[]) {
-        return this.arrayToOAPI(this.list)
+        return this.arrayToOAPI(this.list, args)
     }
 }

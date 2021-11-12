@@ -1,19 +1,20 @@
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { MediaTypeManager } from './MediaType'
-import { ReferenceManager, ReferenceType } from './Reference'
+import { ReferenceManager, TargetType } from './Reference'
 
 export default class Response extends SideBarItem {
     description = ''
-    readonly headerManager = new ReferenceManager(ReferenceType.headers)
-    readonly linkManager = new ReferenceManager(ReferenceType.links)
+    readonly headerManager = new ReferenceManager(TargetType.headers)
+    readonly linkManager = new ReferenceManager(TargetType.links)
     readonly mediaTypeManager = new MediaTypeManager()
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         return {
             content: this.mediaTypeManager.toOAPI(),
             description: this.description,
-            headers: this.headerManager.toOAPI(),
+            headers: this.headerManager.toOAPI(finder),
         }
     }
 }
