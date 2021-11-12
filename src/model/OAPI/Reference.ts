@@ -1,8 +1,11 @@
+import KeyValue from '../Entity/KeyValue'
+import UIItem, { UIItemManager } from '../Entity/UIItem'
 import UniqueItem from '../Entity/UniqueItem'
-import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 
-export enum ReferenceType {
+export enum TargetType {
     examples = 'examples',
+    field = 'field',
     headers = 'headers',
     links = 'links',
     parameters = 'parameters',
@@ -11,42 +14,84 @@ export enum ReferenceType {
     responses = 'responses',
     schemas = 'schemas',
     security = 'security',
+    tag = 'tag',
 }
 
-export default class Reference extends UniqueItem {
-    type: ReferenceType
-
-    constructor(name: string, type: ReferenceType = ReferenceType.schemas) {
-        super(name)
-        this.type = type
+export default class Reference extends UIItem {
+    constructor(ui: number, readonly type: TargetType) {
+        super()
+        this.ui = ui
     }
 
-    get text() {
+    getText<T extends UniqueItem>(source: T) {
         if (this.type === 'paths') {
-            const name = this.un.split('/').join('~1')
+            const name = source.un.split('/').join('~1')
             return `#/${this.type}/${name}`
         }
-        return `#/components/${this.type}/${this.un}`
+        return `#/components/${this.type}/${source.un}`
     }
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
+        const target = finder.find(this.ui, this.type)
+        return this.toOAPIofTarget(target)
+    }
+
+    toOAPIofTarget<T extends UniqueItem>(target?: T) {
+        if (target === undefined) {
+            return {
+                $ref: '??',
+            }
+        }
         return {
-            $ref: this.text,
+            $ref: this.getText(target),
         }
     }
 }
 
-export class ReferenceManager extends UniqueItemManager<Reference> {
-    constructor(readonly referenceType: ReferenceType) {
+export class ReferenceManager extends UIItemManager<Reference> {
+    constructor(readonly targetType: TargetType) {
         super(Reference)
     }
 
     add(item: Reference) {
+        this.throwIfFind(item.ui)
         this.list.push(item)
     }
 
-    make(name: string) {
-        const item = new Reference(name, this.referenceType)
+    getTargetxx(finder: ReferenceFinder) {
+        if (this.list.length === 0) {
+            return []
+        }
+
+        const manager = finder.findManager(this.targetType) as UIItemManager<UniqueItem>
+        const set = new Set(this.list.map((item) => item.ui))
+        return manager.list.filter((target) => set.has(target.ui))
+    }
+
+    make(ui: number) {
+        const item = new this.type(ui, this.targetType)
         return item
+    }
+
+    toOAPI(finder: ReferenceFinder) {
+        const targetxx = this.getTargetxx(finder)
+        const map: KeyValue = {}
+        this.list.forEach((item) => {
+            const found = targetxx.find((aa) => aa.ui === item.ui)
+            if (found) {
+                map[found.un] = item.toOAPIofTarget(found)
+            }
+        })
+        return map
+    }
+
+    toOAPIArray(finder: ReferenceFinder) {
+        const targetxx = this.getTargetxx(finder)
+        return this.list.map((item) => {
+            const found = targetxx.find((aa) => aa.ui === item.ui)
+            if (found) {
+                item.toOAPIofTarget(found)
+            }
+        })
     }
 }
