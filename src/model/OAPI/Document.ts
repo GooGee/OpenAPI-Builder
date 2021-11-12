@@ -1,10 +1,10 @@
 import Item from '../Entity/Item'
 import UniqueItem from '../Entity/UniqueItem'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import Component from './Component'
 import External from './External'
 import Info from './Info'
 import { PathManager } from './Path'
-import { ReferenceType } from './Reference'
 import SchemaComplex from './SchemaComplex'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
 import { SecurityRequirementManager } from './SecurityRequirement'
@@ -23,38 +23,6 @@ export default class Document extends Item {
     readonly serverManager = new ServerManager()
     readonly tagManager = new TagManager()
 
-    getManager(type: ReferenceType) {
-        switch (type) {
-            case ReferenceType.examples:
-                return this.component.exampleManager
-
-            case ReferenceType.headers:
-                return this.component.headerManager
-
-            case ReferenceType.parameters:
-                return this.component.parameterManager
-
-            case ReferenceType.paths:
-                return this.pathManager
-
-            case ReferenceType.requestBodies:
-                return this.component.requestBodyManager
-
-            case ReferenceType.responses:
-                return this.component.responseManager
-
-            case ReferenceType.schemas:
-                return this.component.schemaManager
-
-            case ReferenceType.security:
-                return this.component.securitySchemeManager
-
-            default:
-                break
-        }
-        throw new Error('Unknown ReferenceType: ' + type)
-    }
-
     getSchemaFieldList(schema: SchemaComplex) {
         return this.getSchemaFieldxx(schema, new Set())
     }
@@ -72,7 +40,7 @@ export default class Document extends Item {
         }
         let list: SchemaField[] = this.fieldManager.findAll(schema.ui)
         schema.composition.referenceManager.list.forEach((item) => {
-            const found = this.component.schemaManager.findByUN(item.un)
+            const found = this.component.schemaManager.find(item.ui)
             if (found) {
                 list = list.concat(this.getSchemaFieldxx(found, set))
             }
@@ -107,16 +75,16 @@ export default class Document extends Item {
         })
     }
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         this.removeNullReference()
         return {
             openapi: Version,
             info: this.info.toOAPI(),
-            components: this.component.toOAPI(this),
-            paths: this.pathManager.toOAPI(),
-            security: this.securityManager.toOAPIArray(),
-            servers: this.serverManager.toOAPIArray(),
-            tags: this.tagManager.toOAPIArray(),
+            components: this.component.toOAPI(finder),
+            paths: this.pathManager.toOAPI(finder),
+            security: this.securityManager.toOAPIArray(finder),
+            servers: this.serverManager.toOAPIArray(finder),
+            tags: this.tagManager.toOAPIArray(finder),
             externalDocs: this.externalDocs.toOAPI(),
         }
     }
