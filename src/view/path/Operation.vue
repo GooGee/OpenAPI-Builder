@@ -79,14 +79,12 @@ import Operation from '@/model/OAPI/Operation'
 import { defineComponent, PropType } from 'vue'
 import Reference from '../oapi/Reference.vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
-import EditList from '../part/EditList.vue'
 import CallBackList from './CallBackList.vue'
 import StatusList from './StatusList.vue'
 
 export default defineComponent({
     components: {
         CallBackList,
-        EditList,
         Reference,
         ReferenceList,
         StatusList,
