@@ -23,6 +23,14 @@ export default class Reference extends UIItem {
         this.ui = ui
     }
 
+    get ui() {
+        return this._ui
+    }
+
+    set ui(ui: number) {
+        this._ui = ui
+    }
+
     getText<T extends UniqueItem>(source: T) {
         if (this.type === 'paths') {
             const name = source.un.split('/').join('~1')
