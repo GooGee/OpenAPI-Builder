@@ -3,8 +3,7 @@ import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { EncodingManager } from './Encoding'
-import { ReferenceManager, TargetType } from './Reference'
-import SchemaField from './SchemaField'
+import Reference, { ReferenceManager, TargetType } from './Reference'
 
 export enum MediaTypeEnum {
     form = 'multipart/form-data',
@@ -13,7 +12,7 @@ export enum MediaTypeEnum {
 }
 
 export default class MediaType extends UniqueItem {
-    readonly schema = new SchemaField('')
+    readonly schema = new Reference(0, TargetType.schemas)
     readonly encodingManager = new EncodingManager()
     readonly exampleManager = new ReferenceManager(TargetType.examples)
 

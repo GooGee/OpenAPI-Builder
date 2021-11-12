@@ -10,7 +10,7 @@
             <tr>
                 <td class="text-right">schema</td>
                 <td>
-                    <Field :schema="item.schema"></Field>
+                    <Reference :reference="item.schema" :withBlank="false"></Reference>
                 </td>
             </tr>
             <tr>
@@ -44,15 +44,15 @@
 import MediaType from '@/model/OAPI/MediaType'
 import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import Field from '../schema/Field.vue'
 import EncodingList from './EncodingList.vue'
+import Reference from './Reference.vue'
 import ReferenceList from './ReferenceList.vue'
 
 export default defineComponent({
     components: {
         DeleteButton,
         EncodingList,
-        Field,
+        Reference,
         ReferenceList,
     },
     props: {
