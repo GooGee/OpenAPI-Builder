@@ -1,11 +1,11 @@
 <template>
-    <div :class="{ 'text-secondary': sidebar.item.empty === false }" class="mtb11">
+    <div :class="{ 'text-secondary': empty() === false }" class="mtb11">
         <label class="mr11">
             <input
                 type="radio"
                 v-model="sidebar.item.isTemplate"
                 :value="true"
-                :disabled="sidebar.item.empty === false"
+                :disabled="empty() === false"
             />
             template
         </label>
@@ -14,7 +14,7 @@
                 type="radio"
                 v-model="sidebar.item.isTemplate"
                 :value="false"
-                :disabled="sidebar.item.empty === false"
+                :disabled="empty() === false"
             />
             composition
         </label>
@@ -28,6 +28,13 @@
                 {{ type }}
             </option>
         </select>
+
+        <div>
+            <ReferenceList
+                v-if="sidebar.item.isComposition"
+                :manager="sidebar.item.composition.referenceManager"
+            ></ReferenceList>
+        </div>
     </div>
 
     <textarea
@@ -39,31 +46,38 @@
         rows="11"
     ></textarea>
 
-    <template v-else>
-        <FieldList :ui="sidebar.item.ui"></FieldList>
-
-        <SchemaComposition
-            :manager="sidebar.item.composition.referenceManager"
-            :ui="sidebar.item.ui"
-        ></SchemaComposition>
-    </template>
+    <FieldList v-else :ui="sidebar.item.ui"></FieldList>
 </template>
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
 import { compositionTypeList } from '@/model/OAPI/DataType'
+import SchemaComplex from '@/model/OAPI/SchemaComplex'
+import ss from '@/ss'
 import { defineComponent, inject } from 'vue'
+import ReferenceList from '../oapi/ReferenceList.vue'
 import FieldList from './FieldList.vue'
-import SchemaComposition from './SchemaComposition.vue'
 
 export default defineComponent({
     components: {
         FieldList,
-        SchemaComposition,
+        ReferenceList,
     },
     setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar
+        const sidebar = inject('sidebar') as SideBar<SchemaComplex>
+        const manager = ss.project.oapi.fieldManager
+        function empty() {
+            if (manager.list.find((aa) => aa.schemaUI === sidebar.item!.ui)) {
+                return false
+            }
+            return (
+                sidebar.item!.composition.referenceManager.list.length === 0 &&
+                sidebar.item!.text === ''
+            )
+        }
+
         return {
+            empty,
             sidebar,
             typexx: compositionTypeList,
         }
