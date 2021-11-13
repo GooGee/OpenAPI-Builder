@@ -1,6 +1,7 @@
 import KeyValue from '../Entity/KeyValue'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { OAuthFlowManager } from './OAuthFlow'
 import { Location } from './Parameter'
 
@@ -26,7 +27,7 @@ export default class SecurityScheme extends SideBarItem {
         this.location = location
     }
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         const result: KeyValue = {
             type: this.type,
             description: this.description,
@@ -49,7 +50,7 @@ export default class SecurityScheme extends SideBarItem {
             return result
         }
 
-        result.flows = this.oAuthFlowManager.toOAPI()
+        result.flows = this.oAuthFlowManager.toOAPI(finder)
         return result
     }
 }

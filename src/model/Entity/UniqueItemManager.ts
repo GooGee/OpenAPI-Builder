@@ -1,3 +1,4 @@
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { filter } from '../Service/Text'
 import KeyValue from './KeyValue'
 import Newable from './Newable'
@@ -16,10 +17,10 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         super.add(item)
     }
 
-    arrayToOAPI(list: T[], ...args: any[]) {
+    arrayToOAPI(list: T[], finder: ReferenceFinder) {
         const map: KeyValue = {}
         list.forEach((item) => {
-            map[item.un] = item.toOAPI(args)
+            map[item.un] = item.toOAPI(finder)
         })
         return map
     }
@@ -89,7 +90,7 @@ export default class UniqueItemManager<T extends UniqueItem> extends UIItemManag
         }
     }
 
-    toOAPI(...args: any[]) {
-        return this.arrayToOAPI(this.list, args)
+    toOAPI(finder: ReferenceFinder) {
+        return this.arrayToOAPI(this.list, finder)
     }
 }

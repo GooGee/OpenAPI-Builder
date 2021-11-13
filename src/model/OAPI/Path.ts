@@ -13,7 +13,7 @@ export default class Path extends SideBarItem {
     readonly parameterManager = new ReferenceManager(TargetType.parameters)
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = this.operationManager.toOAPI()
+        const result: KeyValue = this.operationManager.toOAPI(finder)
         if (this.parameterManager.list.length) {
             result.parameters = this.parameterManager.toOAPIArray(finder)
         }

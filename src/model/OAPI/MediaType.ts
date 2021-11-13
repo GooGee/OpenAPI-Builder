@@ -24,7 +24,7 @@ export default class MediaType extends UniqueItem {
             result.examples = this.exampleManager.toOAPI(finder)
         }
         if (this.encodingManager.list.length > 0) {
-            result.encoding = this.encodingManager.toOAPI()
+            result.encoding = this.encodingManager.toOAPI(finder)
         }
         return result
     }

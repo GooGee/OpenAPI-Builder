@@ -2,6 +2,7 @@ import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import { ValueItemManager } from '../Entity/ValueItem'
+import ReferenceFinder from '../Service/ReferenceFinder'
 
 enum OAuthFlowEnum {
     authorizationCode = 'authorizationCode',
@@ -16,10 +17,10 @@ export default class OAuthFlow extends UniqueItem {
     tokenUrl = ''
     readonly scopeManager = new ValueItemManager()
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         const result: KeyValue = {
             refreshUrl: this.refreshUrl,
-            scopes: this.scopeManager.toOAPI(),
+            scopes: this.scopeManager.toOAPI(finder),
         }
 
         if (this.un === OAuthFlowEnum.authorizationCode) {

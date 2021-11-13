@@ -12,7 +12,7 @@ export default class Response extends SideBarItem {
 
     toOAPI(finder: ReferenceFinder) {
         return {
-            content: this.mediaTypeManager.toOAPI(),
+            content: this.mediaTypeManager.toOAPI(finder),
             description: this.description,
             headers: this.headerManager.toOAPI(finder),
         }

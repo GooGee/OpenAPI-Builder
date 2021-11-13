@@ -18,7 +18,7 @@ export default class SchemaComposition extends Item {
             [this.type]: this.referenceManager.toOAPIArray(finder),
         }
         if (this.discriminator.propertyName) {
-            result.discriminator = this.discriminator.toOAPI()
+            result.discriminator = this.discriminator.toOAPI(finder)
         }
         if (this.requiredManager.list.length) {
             result.required = this.requiredManager.list.map((item) => item.un)

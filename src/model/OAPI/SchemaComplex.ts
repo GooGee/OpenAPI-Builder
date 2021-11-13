@@ -19,11 +19,11 @@ export default class SchemaComplex extends Schema {
         return this.isTemplate === false
     }
 
-    field2KV(fieldManager: SchemaFieldManager) {
+    field2KV(finder: ReferenceFinder, fieldManager: SchemaFieldManager) {
         const fieldxx = fieldManager.findAll(this.ui)
         const result: KeyValue = {
             type: 'object',
-            properties: fieldManager.arrayToOAPI(fieldxx),
+            properties: fieldManager.arrayToOAPI(fieldxx, finder),
         }
         const list = fieldxx.filter((one) => one.required).map((one) => one.un)
         if (list.length) {
@@ -44,11 +44,11 @@ export default class SchemaComplex extends Schema {
         if (this.composition.referenceManager.list.length) {
             const data = this.composition.toOAPI(finder)
             const list = data[this.composition.type] as any
-            list.push(this.field2KV(fieldManager))
+            list.push(this.field2KV(finder, fieldManager))
             return data
         }
 
-        return this.field2KV(fieldManager)
+        return this.field2KV(finder, fieldManager)
     }
 }
 

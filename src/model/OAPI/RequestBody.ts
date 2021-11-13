@@ -1,5 +1,6 @@
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { MediaTypeManager } from './MediaType'
 
 export default class RequestBody extends SideBarItem {
@@ -7,9 +8,9 @@ export default class RequestBody extends SideBarItem {
     description = ''
     readonly mediaTypeManager = new MediaTypeManager()
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         return {
-            content: this.mediaTypeManager.toOAPI(),
+            content: this.mediaTypeManager.toOAPI(finder),
             description: this.description,
             required: this.required,
         }

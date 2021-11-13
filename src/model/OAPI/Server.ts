@@ -1,6 +1,7 @@
 import KeyValue from '../Entity/KeyValue'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import { ServerVariableManager } from './ServerVariable'
 
 export default class Server extends SideBarItem {
@@ -15,13 +16,13 @@ export default class Server extends SideBarItem {
         this.un = name
     }
 
-    toOAPI() {
+    toOAPI(finder: ReferenceFinder) {
         const result: KeyValue = {
             url: this.url,
             description: this.description,
         }
         if (this.variableManager.list.length) {
-            result.variables = this.variableManager.toOAPI()
+            result.variables = this.variableManager.toOAPI(finder)
         }
         return result
     }
