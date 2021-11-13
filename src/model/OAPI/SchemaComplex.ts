@@ -11,10 +11,6 @@ export default class SchemaComplex extends Schema {
     isTemplate = false
     readonly composition = new SchemaComposition()
 
-    get empty() {
-        return this.composition.referenceManager.list.length === 0 && this.text === ''
-    }
-
     get isComposition() {
         return this.isTemplate === false
     }
