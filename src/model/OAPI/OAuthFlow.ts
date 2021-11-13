@@ -3,8 +3,6 @@ import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import { ValueItemManager } from '../Entity/ValueItem'
 
-class ScopeManager extends ValueItemManager {}
-
 enum OAuthFlowEnum {
     authorizationCode = 'authorizationCode',
     clientCredentials = 'clientCredentials',
@@ -16,7 +14,7 @@ export default class OAuthFlow extends UniqueItem {
     authorizationUrl = ''
     refreshUrl = ''
     tokenUrl = ''
-    readonly scopeManager = new ScopeManager()
+    readonly scopeManager = new ValueItemManager()
 
     toOAPI() {
         const result: KeyValue = {
