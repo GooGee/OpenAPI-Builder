@@ -47,7 +47,7 @@ export default class Operation extends UniqueItem {
             .split('}')
             .join('')
         const tags = this.tagManager.getTargetxx(finder).map((tag) => tag.un)
-        const callbacks = this.callbackManager.toOAPI()
+        const callbacks = this.callbackManager.toOAPI(finder)
         const parameters = this.parameterManager.toOAPIArray(finder)
         const result: KeyValue = {
             operationId: id,
@@ -55,7 +55,7 @@ export default class Operation extends UniqueItem {
             callbacks,
             description: this.description,
             parameters,
-            responses: this.statusManager.toOAPI(),
+            responses: this.statusManager.toOAPI(finder),
             tags,
         }
 
@@ -69,7 +69,7 @@ export default class Operation extends UniqueItem {
 
         const request = finder.find(this.requestBody.ui, this.requestBody.type)
         if (request) {
-            result.requestBody = this.requestBody.toOAPI(request as any)
+            result.requestBody = this.requestBody.toOAPIofTarget(request)
         }
         return result
     }
