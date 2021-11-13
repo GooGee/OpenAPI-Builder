@@ -1,7 +1,10 @@
 <template>
     <div v-for="item in list" :key="item.ui" class="mb11">
         <div class="btn-group">
-            <DeleteButton :manager="manager" :item="find(item.ui)"></DeleteButton>
+            <DeleteButton
+                :manager="manager"
+                :item="manager.find(item.ui)"
+            ></DeleteButton>
             <span class="btn btn-outline-secondary"> {{ item.un }} </span>
         </div>
     </div>
@@ -33,10 +36,6 @@ const ReferenceList = defineComponent({
             .list as UniqueItem[]
         watch(() => props.manager.list.length, getList, { immediate: true })
 
-        function find(ui: number) {
-            return props.manager.find(ui)
-        }
-
         function getList() {
             const uixx = props.manager.list.map((item) => item.ui)
             const set = new Set(uixx)
@@ -54,7 +53,7 @@ const ReferenceList = defineComponent({
                 }
             })
         }
-        return { find, list, select }
+        return { list, select }
     },
 })
 
