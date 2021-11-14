@@ -2,7 +2,7 @@ import SideBarItem from './SideBarItem'
 import UniqueItemManager from './UniqueItemManager'
 
 export default class Script extends SideBarItem {
-    code = 'function run(data) {\n    /** @type {DataForScript} */\n    const ddd = data\n}'
+    code = 'function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n}'
     description = ''
     global = false
     single = false
