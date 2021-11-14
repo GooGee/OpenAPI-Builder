@@ -31,7 +31,7 @@ export default defineComponent({
             if (props.noinput) {
                 //
             } else {
-                const text = prompt('Please input a name', props.value)
+                const text = prompt('Please input the name', props.value)
                 if (text === null) {
                     return
                 }
