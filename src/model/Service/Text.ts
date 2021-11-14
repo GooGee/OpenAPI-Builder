@@ -18,12 +18,12 @@ function run(code: string, project: Project, schema?: UniqueItem) {
         project,
         schema,
     }
-    const fff = new Function('return ' + code)()
-    return fff(data)
+    const ff: Function = new Function(`"use strict";return (${code})`)()
+    return ff(data)
 }
 
 function runText(text: string, data: object): string {
-    return new Function(`return \`${text}\`;`)(data)
+    return new Function(`"use strict";return (\`${text}\`);`)(data)
 }
 
 const Text = {
