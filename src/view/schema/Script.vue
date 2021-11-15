@@ -46,9 +46,6 @@ export default defineComponent({
                 if (item.global) {
                     return false
                 }
-                if (item.single) {
-                    return false
-                }
                 if (color.value === '') {
                     return true
                 }
