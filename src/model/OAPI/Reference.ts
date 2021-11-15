@@ -101,8 +101,9 @@ export class ReferenceManager<
         return this.list.map((item) => {
             const found = targetxx.find((aa) => aa.ui === item.ui)
             if (found) {
-                item.toOAPIofTarget(found)
+                return item.toOAPIofTarget(found)
             }
+            return null
         })
     }
 }
