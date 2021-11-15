@@ -53,7 +53,7 @@ export default defineComponent({
         }
         function toJSON() {
             store.inputModal.text = JSON.stringify(ss.project.toOAPI())
-            store.inputModal.show('OpenAPI JSON', () => {})
+            store.inputModal.show('OpenAPI JSON', () => false)
         }
         return {
             create,

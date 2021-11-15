@@ -28,7 +28,7 @@ export default defineComponent({
     },
     setup(props, context) {
         function hide() {
-            store.inputModal.hide()
+            store.inputModal.ok()
         }
         return {
             hide,
