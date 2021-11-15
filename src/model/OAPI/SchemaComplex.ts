@@ -17,6 +17,10 @@ export default class SchemaComplex extends Schema {
 
     field2KV(finder: ReferenceFinder, fieldManager: SchemaFieldManager) {
         const fieldxx = fieldManager.findAll(this.ui)
+        if (fieldxx.length === 0) {
+            return null
+        }
+
         const result: KeyValue = {
             type: 'object',
             properties: fieldManager.arrayToOAPI(fieldxx, finder),
@@ -39,12 +43,20 @@ export default class SchemaComplex extends Schema {
         const fieldManager = finder.findManager(TargetType.field) as SchemaFieldManager
         if (this.composition.referenceManager.list.length) {
             const data = this.composition.toOAPI(finder)
-            const list = data[this.composition.type] as any
-            list.push(this.field2KV(finder, fieldManager))
+            const item = this.field2KV(finder, fieldManager)
+            if (item === null) {
+                return data
+            }
+            const list = data[this.composition.type] as KeyValue[]
+            list.push(item)
             return data
         }
 
-        return this.field2KV(finder, fieldManager)
+        const item = this.field2KV(finder, fieldManager)
+        if (item === null) {
+            return {}
+        }
+        return item
     }
 }
 
