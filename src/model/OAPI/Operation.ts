@@ -47,16 +47,20 @@ export default class Operation extends UniqueItem {
             .split('}')
             .join('')
         const tags = this.tagManager.getTargetxx(finder).map((tag) => tag.un)
-        const callbacks = this.callbackManager.toOAPI(finder)
-        const parameters = this.parameterManager.toOAPIArray(finder)
         const result: KeyValue = {
             operationId: id,
             summary: this.summary,
-            callbacks,
             description: this.description,
-            parameters,
             responses: this.statusManager.toOAPI(finder),
             tags,
+        }
+
+        if (this.parameterManager.list.length) {
+            result.parameters = this.parameterManager.toOAPIArray(finder)
+        }
+
+        if (this.callbackManager.list.length) {
+            result.callbacks = this.callbackManager.toOAPI(finder)
         }
 
         if (
