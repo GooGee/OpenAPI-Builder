@@ -2,7 +2,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right w111">description</td>
+                <td class="text-right w222">description</td>
                 <td>
                     <input
                         type="text"
@@ -63,14 +63,11 @@
                     />
                 </td>
             </tr>
-            <tr v-if="item.type === 'oauth2'">
-                <td class="text-right">flows</td>
-                <td>
-                    <OAuthFlowList :manager="item.oAuthFlowManager"></OAuthFlowList>
-                </td>
-            </tr>
         </tbody>
     </table>
+    <div v-if="item.type === 'oauth2'">
+        <OAuthFlowList :manager="item.oAuthFlowManager"></OAuthFlowList>
+    </div>
 </template>
 
 <script lang="ts">
