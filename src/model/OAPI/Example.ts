@@ -6,7 +6,7 @@ export default class Example extends SideBarItem {
     description = ''
     externalValue = ''
     summary = ''
-    value = new JSONText()
+    readonly value = new JSONText()
 }
 
 export class ExampleManager extends UniqueItemManager<Example> {

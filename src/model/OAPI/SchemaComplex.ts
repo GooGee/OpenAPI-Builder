@@ -8,9 +8,9 @@ import SchemaComposition from './SchemaComposition'
 import { SchemaFieldManager } from './SchemaField'
 
 export default class SchemaComplex extends Schema {
-    example = new JSONText()
+    readonly example = new JSONText()
     isTemplate = false
-    text = new JSONText()
+    readonly text = new JSONText()
     readonly composition = new SchemaComposition()
 
     get isComposition() {

@@ -37,14 +37,11 @@
         </div>
     </div>
 
-    <textarea
+    <JSONText
         v-if="sidebar.item.isTemplate"
-        v-model="sidebar.item.text"
-        class="form-control"
-        spellcheck="false"
-        wrap="off"
-        rows="11"
-    ></textarea>
+        :item="sidebar.item.text"
+        title="template"
+    ></JSONText>
 
     <FieldList v-else :ui="sidebar.item.ui"></FieldList>
 </template>
@@ -55,12 +52,14 @@ import { compositionTypeList } from '@/model/OAPI/DataType'
 import SchemaComplex from '@/model/OAPI/SchemaComplex'
 import ss from '@/ss'
 import { defineComponent, inject } from 'vue'
+import JSONText from '../oapi/JSONText.vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
 import FieldList from './FieldList.vue'
 
 export default defineComponent({
     components: {
         FieldList,
+        JSONText,
         ReferenceList,
     },
     setup(props, context) {
@@ -72,7 +71,7 @@ export default defineComponent({
             }
             return (
                 sidebar.item!.composition.referenceManager.list.length === 0 &&
-                sidebar.item!.text === ''
+                sidebar.item!.text.text === '{}'
             )
         }
 
