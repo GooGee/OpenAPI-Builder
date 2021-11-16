@@ -14,12 +14,7 @@
             <tr>
                 <td class="text-right">example</td>
                 <td>
-                    <textarea
-                        v-model="sidebar.item.example"
-                        class="form-control"
-                        spellcheck="false"
-                        rows="3"
-                    ></textarea>
+                    <JSONText :item="sidebar.item.example" title="example"></JSONText>
                 </td>
             </tr>
         </tbody>
@@ -29,8 +24,12 @@
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
 import { defineComponent, inject } from 'vue'
+import JSONText from '../oapi/JSONText.vue'
 
 export default defineComponent({
+    components: {
+        JSONText,
+    },
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar
         return { sidebar }

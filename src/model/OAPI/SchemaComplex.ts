@@ -1,3 +1,4 @@
+import JSONText from '../Entity/JSONText'
 import KeyValue from '../Entity/KeyValue'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
@@ -7,8 +8,9 @@ import SchemaComposition from './SchemaComposition'
 import { SchemaFieldManager } from './SchemaField'
 
 export default class SchemaComplex extends Schema {
-    example = ''
+    example = new JSONText()
     isTemplate = false
+    text = new JSONText()
     readonly composition = new SchemaComposition()
 
     get isComposition() {
@@ -29,15 +31,16 @@ export default class SchemaComplex extends Schema {
         if (list.length) {
             result.required = list
         }
-        if (this.example) {
-            result.example = this.example
+        if (this.example.text === '{}') {
+            return result
         }
+        result.example = this.example.toOAPI()
         return result
     }
 
     toOAPI(finder: ReferenceFinder) {
         if (this.isTemplate) {
-            return JSON.parse(this.text)
+            return this.text.toOAPI()
         }
 
         const fieldManager = finder.findManager(TargetType.field) as SchemaFieldManager
