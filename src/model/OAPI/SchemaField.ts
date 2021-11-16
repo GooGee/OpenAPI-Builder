@@ -6,7 +6,6 @@ import Reference, { TargetType } from './Reference'
 import Schema from './Schema'
 
 export default class SchemaField extends Schema {
-    example = ''
     format = ''
     isArray = false
     required = true
@@ -34,9 +33,6 @@ export default class SchemaField extends Schema {
 
         const result: KeyValue = {
             type: this.type,
-        }
-        if (this.example) {
-            result.example = this.example
         }
         if (this.format) {
             result.format = this.format
