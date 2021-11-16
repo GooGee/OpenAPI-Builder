@@ -1,9 +1,8 @@
-import ReferenceFinder from '../Service/ReferenceFinder'
+import UniqueItem from '../Entity/UniqueItem'
 import Reference, { ReferenceManager, TargetType } from './Reference'
 
 export default class SecurityRequirement extends Reference {
-    toOAPI(finder: ReferenceFinder) {
-        const target = finder.find(this.ui, this.type)
+    toOAPIofTarget<T extends UniqueItem>(target?: T) {
         if (target === undefined) {
             return {}
         }

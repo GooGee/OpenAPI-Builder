@@ -45,7 +45,7 @@ export default class Reference extends UIItem {
         return this.toOAPIofTarget(target)
     }
 
-    toOAPIofTarget<T extends UniqueItem>(target?: T) {
+    toOAPIofTarget<T extends UniqueItem>(target?: T): KeyValue {
         if (target === undefined) {
             return {
                 $ref: '??',
