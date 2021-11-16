@@ -45,10 +45,6 @@ export default class SchemaField extends Schema {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        if (this.type === DataType.template) {
-            return JSON.parse(this.text)
-        }
-
         if (this.isArray) {
             return this.makeArray(finder)
         }
