@@ -1,0 +1,1339 @@
+{
+    "version": 2,
+    "presetManager": {
+        "nextUI": 7,
+        "list": [
+            {
+                "un": "DataFormat",
+                "_ui": 1,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 10,
+                    "list": [
+                        {
+                            "un": "int32",
+                            "_ui": 1,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "int64",
+                            "_ui": 2,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "float",
+                            "_ui": 3,
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "un": "double",
+                            "_ui": 4,
+                            "tag": "number",
+                            "value": ""
+                        },
+                        {
+                            "un": "byte",
+                            "_ui": 5,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "binary",
+                            "_ui": 6,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "date",
+                            "_ui": 7,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "date-time",
+                            "_ui": 8,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "password",
+                            "_ui": 9,
+                            "tag": "string",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "FieldName",
+                "_ui": 2,
+                "color": "",
+                "description": "commonly used names",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 23,
+                    "list": [
+                        {
+                            "un": "id",
+                            "_ui": 1,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "content",
+                            "_ui": 2,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "date",
+                            "_ui": 3,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "datetime",
+                            "_ui": 4,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "email",
+                            "_ui": 5,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "image",
+                            "_ui": 6,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "link",
+                            "_ui": 7,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "message",
+                            "_ui": 8,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "name",
+                            "_ui": 9,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "parent_id",
+                            "_ui": 10,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "password",
+                            "_ui": 11,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "phone",
+                            "_ui": 12,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "sort",
+                            "_ui": 13,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "status",
+                            "_ui": 14,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "text",
+                            "_ui": 15,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "time",
+                            "_ui": 16,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "title",
+                            "_ui": 17,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "type",
+                            "_ui": 18,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "uri",
+                            "_ui": 19,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "url",
+                            "_ui": 20,
+                            "tag": "string",
+                            "value": ""
+                        },
+                        {
+                            "un": "user_id",
+                            "_ui": 21,
+                            "tag": "integer",
+                            "value": ""
+                        },
+                        {
+                            "un": "uuid",
+                            "_ui": 22,
+                            "tag": "string",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "HttpStatus",
+                "_ui": 3,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 6,
+                    "list": [
+                        {
+                            "un": "200",
+                            "_ui": 1,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "401",
+                            "_ui": 2,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "403",
+                            "_ui": 3,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "404",
+                            "_ui": 4,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "422",
+                            "_ui": 5,
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "MediaType",
+                "_ui": 4,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 6,
+                    "list": [
+                        {
+                            "un": "application/json",
+                            "_ui": 1,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "application/xml",
+                            "_ui": 2,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "multipart/form-data",
+                            "_ui": 3,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "text/plain",
+                            "_ui": 4,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "*/*",
+                            "_ui": 5,
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "RequestBodyExcludeField",
+                "_ui": 5,
+                "color": "",
+                "description": "field names will be excluded in RequestBody",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 3,
+                    "list": [
+                        {
+                            "un": "id",
+                            "_ui": 1,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "user_id",
+                            "_ui": 2,
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "SchemaProperty",
+                "_ui": 6,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 20,
+                    "list": [
+                        {
+                            "un": "title",
+                            "_ui": 1,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "maximum",
+                            "_ui": 2,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "exclusiveMaximum",
+                            "_ui": 3,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "minimum",
+                            "_ui": 4,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "exclusiveMinimum",
+                            "_ui": 5,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "maxLength",
+                            "_ui": 6,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "minLength",
+                            "_ui": 7,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "pattern",
+                            "_ui": 8,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "maxItems",
+                            "_ui": 9,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "minItems",
+                            "_ui": 10,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "uniqueItems",
+                            "_ui": 11,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "maxProperties",
+                            "_ui": 12,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "minProperties",
+                            "_ui": 13,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "enum",
+                            "_ui": 14,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "not",
+                            "_ui": 15,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "nullable",
+                            "_ui": 16,
+                            "tag": "",
+                            "value": "true"
+                        },
+                        {
+                            "un": "readOnly",
+                            "_ui": 17,
+                            "tag": "",
+                            "value": "true"
+                        },
+                        {
+                            "un": "writeOnly",
+                            "_ui": 18,
+                            "tag": "",
+                            "value": "true"
+                        },
+                        {
+                            "un": "deprecated",
+                            "_ui": 19,
+                            "tag": "",
+                            "value": "true"
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "scriptManager": {
+        "nextUI": 100,
+        "list": [
+            {
+                "un": "make Tag",
+                "_ui": 1,
+                "color": "",
+                "description": "e.g. User",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    /**\n     * @param ui {number}\n     * @param uri {string}\n     */\n    function addTag(ui, uri) {\n        const path = dd.generator.pathManager.findByUN(uri)\n        if (path === undefined) {\n            return\n        }\n\n        path.operationManager.list.forEach(item => {\n            if (item.tagManager.find(ui)) {\n                return\n            }\n            const one = item.tagManager.make(ui)\n            item.tagManager.add(one)\n        })\n    }\n\n    const tag = dd.generator.tagManager.findOrMake(dd.schema.un)\n    addTag(tag.ui, '/' + dd.schema.snakeCase)\n    addTag(tag.ui, '/' + dd.schema.snakeCase + '/{id}')\n}",
+                "global": false
+            },
+            {
+                "un": "make Parameter",
+                "_ui": 2,
+                "color": "",
+                "description": "e.g. user_id",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const parameter = dd.generator.parameterManager.make(dd.schema.snakeCase + '_id')\n    dd.generator.parameterManager.add(parameter)\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of RequestBody get many",
+                "_ui": 11,
+                "color": "#f00",
+                "description": "Schema is used in RequestBody get many",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_RequestBody_get_x')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of RequestBody post",
+                "_ui": 12,
+                "color": "#f00",
+                "description": "Schema is used in RequestBody post",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_RequestBody_post')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.composition.type = 'allOf'\n\n    const source = schema.composition.referenceManager.make(dd.schema.ui)\n    schema.composition.referenceManager.add(source)\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of RequestBody delete",
+                "_ui": 15,
+                "color": "#f00",
+                "description": "Schema is used in RequestBody delete",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_RequestBody_delete')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of RequestBody get one",
+                "_ui": 16,
+                "color": "#f00",
+                "description": "Schema is used in RequestBody get one",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_RequestBody_get_1')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of RequestBody patch",
+                "_ui": 17,
+                "color": "#f00",
+                "description": "Schema is used in RequestBody patch",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_RequestBody_patch')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.composition.type = 'allOf'\n\n    const source = schema.composition.referenceManager.make(dd.schema.ui)\n    schema.composition.referenceManager.add(source)\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of Response get many",
+                "_ui": 21,
+                "color": "#f0f",
+                "description": "Schema is used in Response get many",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_x')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.composition.referenceManager.make(1)\n    schema.composition.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of Response post",
+                "_ui": 22,
+                "color": "#f0f",
+                "description": "Schema is used in Response post",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_post')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.composition.referenceManager.make(1)\n    schema.composition.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of Response delete",
+                "_ui": 25,
+                "color": "#f0f",
+                "description": "Schema is used in Response delete",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_delete')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.composition.referenceManager.make(1)\n    schema.composition.referenceManager.add(reference)\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of Response get one",
+                "_ui": 26,
+                "color": "#f0f",
+                "description": "Schema is used in Response get one",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_1')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.composition.referenceManager.make(1)\n    schema.composition.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "global": false
+            },
+            {
+                "un": "make Schema of Response patch",
+                "_ui": 27,
+                "color": "#f0f",
+                "description": "Schema is used in Response patch",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_patch')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.composition.referenceManager.make(1)\n    schema.composition.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "global": false
+            },
+            {
+                "un": "make RequestBody get many",
+                "_ui": 31,
+                "color": "#f80",
+                "description": "e.g. for 'get /user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_get_x')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_get_x')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make RequestBody post",
+                "_ui": 32,
+                "color": "#f80",
+                "description": "e.g. for 'post /user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_post')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_post')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make RequestBody delete",
+                "_ui": 35,
+                "color": "#f80",
+                "description": "e.g. for 'delete /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_delete')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_delete')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make RequestBody get one",
+                "_ui": 36,
+                "color": "#f80",
+                "description": "e.g. for 'get /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_get_1')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_get_1')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make RequestBody patch",
+                "_ui": 37,
+                "color": "#f80",
+                "description": "e.g. for 'patch /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_patch')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_patch')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Response get many",
+                "_ui": 41,
+                "color": "#ff0",
+                "description": "e.g. for 'get /user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_x')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_x')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Response post",
+                "_ui": 42,
+                "color": "#ff0",
+                "description": "e.g. for 'post /user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_post')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_post')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Response delete",
+                "_ui": 45,
+                "color": "#ff0",
+                "description": "e.g. for 'delete /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_delete')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_delete')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Response get one",
+                "_ui": 46,
+                "color": "#ff0",
+                "description": "e.g. for 'get /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_1')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_1')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Response patch",
+                "_ui": 47,
+                "color": "#ff0",
+                "description": "e.g. for 'patch /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_patch')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_patch')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Path",
+                "_ui": 51,
+                "color": "#0f0",
+                "description": "e.g. '/user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const path = dd.generator.pathManager.make('/' + dd.schema.snakeCase)\n    dd.generator.pathManager.add(path)\n}",
+                "global": false
+            },
+            {
+                "un": "make Path with id",
+                "_ui": 52,
+                "color": "#0f0",
+                "description": "e.g. '/user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const path = dd.generator.pathManager.make('/' + dd.schema.snakeCase + '/{id}')\n    dd.generator.pathManager.add(path)\n\n    const parameter = path.parameterManager.make(1)\n    path.parameterManager.add(parameter)\n}",
+                "global": false
+            },
+            {
+                "un": "make Operation get many",
+                "_ui": 61,
+                "color": "#0ff",
+                "description": "e.g. 'get /user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase\n    const path = dd.generator.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('get')\n    path.operationManager.add(operation)\n\n    const status = operation.statusManager.make('200')\n    operation.statusManager.add(status)\n    const response = dd.generator.responseManager.findByUN(dd.schema.un + '_x')\n    if (response) {\n        status.response.ui = response.ui\n    }\n}",
+                "global": false
+            },
+            {
+                "un": "make Operation post",
+                "_ui": 62,
+                "color": "#0ff",
+                "description": "e.g. 'post /user'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase\n    const path = dd.generator.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('post')\n    path.operationManager.add(operation)\n    const request = dd.generator.requestBodyManager.findByUN(dd.schema.un + '_post')\n    if (request) {\n        operation.requestBody.ui = request.ui\n    }\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.generator.responseManager.findByUN(dd.schema.un + '_1')\n    if (response) {\n        ok.response.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "global": false
+            },
+            {
+                "un": "make Operation delete",
+                "_ui": 65,
+                "color": "#0ff",
+                "description": "e.g. 'delete /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.generator.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('delete')\n    path.operationManager.add(operation)\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    ok.response.ui = 1\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "global": false
+            },
+            {
+                "un": "make Operation get one",
+                "_ui": 66,
+                "color": "#0ff",
+                "description": "e.g. 'get /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.generator.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('get')\n    path.operationManager.add(operation)\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.generator.responseManager.findByUN(dd.schema.un + '_1')\n    if (response) {\n        ok.response.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('404')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "global": false
+            },
+            {
+                "un": "make Operation patch",
+                "_ui": 67,
+                "color": "#0ff",
+                "description": "e.g. 'patch /user/{id}'",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.generator.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('patch')\n    path.operationManager.add(operation)\n    const request = dd.generator.requestBodyManager.findByUN(dd.schema.un + '_patch')\n    if (request) {\n        operation.requestBody.ui = request.ui\n    }\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.generator.responseManager.findByUN(dd.schema.un + '_1')\n    if (response) {\n        ok.response.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of RequestBody get many",
+                "_ui": 81,
+                "color": "#08f",
+                "description": "Example is used in RequestBody get many",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_RequestBody_get_x')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of RequestBody post",
+                "_ui": 82,
+                "color": "#08f",
+                "description": "Example is used in RequestBody post",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_RequestBody_post')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of RequestBody delete",
+                "_ui": 85,
+                "color": "#08f",
+                "description": "Example is used in RequestBody delete",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_RequestBody_delete')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of RequestBody get one",
+                "_ui": 86,
+                "color": "#08f",
+                "description": "Example is used in RequestBody get one",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_RequestBody_get_1')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of RequestBody patch",
+                "_ui": 87,
+                "color": "#08f",
+                "description": "Example is used in RequestBody patch",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_RequestBody_patch')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of Response get many",
+                "_ui": 91,
+                "color": "#80f",
+                "description": "Example is used in Response get many",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_Response_x')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of Response post",
+                "_ui": 92,
+                "color": "#80f",
+                "description": "Example is used in Response post",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_Response_post')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of Response delete",
+                "_ui": 95,
+                "color": "#80f",
+                "description": "Example is used in Response delete",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_Response_delete')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of Response get one",
+                "_ui": 96,
+                "color": "#80f",
+                "description": "Example is used in Response get one",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_Response_1')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n}",
+                "global": false
+            },
+            {
+                "un": "make Example of Response patch",
+                "_ui": 97,
+                "color": "#80f",
+                "description": "Example is used in Response patch",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.exampleManager.make(dd.schema.un + '_Response_patch')\n    dd.generator.exampleManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n}",
+                "global": false
+            },
+            {
+                "un": "log",
+                "_ui": 99,
+                "color": "",
+                "description": "",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n    console.log(JSON.stringify(data.project))\n}",
+                "global": true
+            }
+        ]
+    },
+    "templateManager": {
+        "nextUI": 1,
+        "list": []
+    },
+    "oapi": {
+        "component": {
+            "callbackManager": {
+                "nextUI": 1,
+                "list": []
+            },
+            "exampleManager": {
+                "nextUI": 2,
+                "list": [
+                    {
+                        "un": "Response",
+                        "_ui": 1,
+                        "color": "",
+                        "description": "",
+                        "externalValue": "",
+                        "summary": "",
+                        "value": {
+                            "value": {
+                                "code": 0,
+                                "message": "message"
+                            }
+                        }
+                    }
+                ]
+            },
+            "headerManager": {
+                "nextUI": 3,
+                "list": [
+                    {
+                        "un": "X-Rate-Limit",
+                        "_ui": 1,
+                        "color": "",
+                        "description": "",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "example": "",
+                        "name": "",
+                        "required": true,
+                        "schema": {
+                            "un": "X-Rate-Limit",
+                            "_ui": 0,
+                            "color": "",
+                            "description": "",
+                            "format": "int32",
+                            "isArray": false,
+                            "required": true,
+                            "schemaUI": 0,
+                            "type": "integer",
+                            "reference": {
+                                "_ui": 0,
+                                "type": "schemas"
+                            }
+                        },
+                        "location": "header"
+                    },
+                    {
+                        "un": "X-Expires-After",
+                        "_ui": 2,
+                        "color": "",
+                        "description": "",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "example": "",
+                        "name": "",
+                        "required": true,
+                        "schema": {
+                            "un": "X-Expires-After",
+                            "_ui": 0,
+                            "color": "",
+                            "description": "",
+                            "format": "date-time",
+                            "isArray": false,
+                            "required": true,
+                            "schemaUI": 0,
+                            "type": "string",
+                            "reference": {
+                                "_ui": 0,
+                                "type": "schemas"
+                            }
+                        },
+                        "location": "header"
+                    }
+                ]
+            },
+            "linkManager": {
+                "nextUI": 1,
+                "list": []
+            },
+            "parameterManager": {
+                "nextUI": 5,
+                "list": [
+                    {
+                        "un": "id",
+                        "_ui": 1,
+                        "color": "",
+                        "description": "",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "example": "",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "un": "id",
+                            "_ui": 0,
+                            "color": "",
+                            "description": "",
+                            "format": "",
+                            "isArray": false,
+                            "required": true,
+                            "schemaUI": 0,
+                            "type": "integer",
+                            "reference": {
+                                "_ui": 0,
+                                "type": "schemas"
+                            }
+                        },
+                        "location": "path"
+                    },
+                    {
+                        "un": "id-",
+                        "_ui": 2,
+                        "color": "",
+                        "description": "",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "example": "",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "un": "id-",
+                            "_ui": 0,
+                            "color": "",
+                            "description": "",
+                            "format": "",
+                            "isArray": false,
+                            "required": true,
+                            "schemaUI": 0,
+                            "type": "integer",
+                            "reference": {
+                                "_ui": 0,
+                                "type": "schemas"
+                            }
+                        },
+                        "location": "query"
+                    },
+                    {
+                        "un": "page",
+                        "_ui": 3,
+                        "color": "",
+                        "description": "",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "example": "",
+                        "name": "page",
+                        "required": true,
+                        "schema": {
+                            "un": "page",
+                            "_ui": 0,
+                            "color": "",
+                            "description": "",
+                            "format": "",
+                            "isArray": false,
+                            "required": true,
+                            "schemaUI": 0,
+                            "type": "integer",
+                            "reference": {
+                                "_ui": 0,
+                                "type": "schemas"
+                            }
+                        },
+                        "location": "path"
+                    },
+                    {
+                        "un": "page-",
+                        "_ui": 4,
+                        "color": "",
+                        "description": "",
+                        "allowEmptyValue": false,
+                        "deprecated": false,
+                        "example": "",
+                        "name": "page",
+                        "required": true,
+                        "schema": {
+                            "un": "page-",
+                            "_ui": 0,
+                            "color": "",
+                            "description": "",
+                            "format": "",
+                            "isArray": false,
+                            "required": true,
+                            "schemaUI": 0,
+                            "type": "integer",
+                            "reference": {
+                                "_ui": 0,
+                                "type": "schemas"
+                            }
+                        },
+                        "location": "query"
+                    }
+                ]
+            },
+            "requestBodyManager": {
+                "nextUI": 1,
+                "list": []
+            },
+            "responseManager": {
+                "nextUI": 4,
+                "list": [
+                    {
+                        "un": "Response",
+                        "_ui": 1,
+                        "color": "",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "un": "application/json",
+                                    "_ui": 1,
+                                    "example": {
+                                        "value": {}
+                                    },
+                                    "schema": {
+                                        "_ui": 1,
+                                        "type": "schemas"
+                                    },
+                                    "encodingManager": {
+                                        "nextUI": 1,
+                                        "list": []
+                                    },
+                                    "exampleManager": {
+                                        "list": [
+                                            {
+                                                "_ui": 1,
+                                                "type": "examples"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "un": "Response404",
+                        "_ui": 2,
+                        "color": "",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "un": "application/json",
+                                    "_ui": 1,
+                                    "example": {
+                                        "value": {}
+                                    },
+                                    "schema": {
+                                        "_ui": 1,
+                                        "type": "schemas"
+                                    },
+                                    "encodingManager": {
+                                        "nextUI": 1,
+                                        "list": []
+                                    },
+                                    "exampleManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "un": "Response422",
+                        "_ui": 3,
+                        "color": "",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "un": "application/json",
+                                    "_ui": 1,
+                                    "example": {
+                                        "value": {}
+                                    },
+                                    "schema": {
+                                        "_ui": 1,
+                                        "type": "schemas"
+                                    },
+                                    "encodingManager": {
+                                        "nextUI": 1,
+                                        "list": []
+                                    },
+                                    "exampleManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "schemaManager": {
+                "nextUI": 3,
+                "list": [
+                    {
+                        "un": "Response",
+                        "_ui": 1,
+                        "color": "",
+                        "description": "",
+                        "example": {
+                            "value": {}
+                        },
+                        "isTemplate": false,
+                        "text": {
+                            "value": {}
+                        },
+                        "composition": {
+                            "discriminator": {
+                                "propertyName": "",
+                                "manager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "referenceManager": {
+                                "list": []
+                            },
+                            "requiredManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
+                            "type": "allOf"
+                        }
+                    },
+                    {
+                        "un": "User",
+                        "_ui": 2,
+                        "color": "",
+                        "description": "",
+                        "example": {
+                            "value": {}
+                        },
+                        "isTemplate": false,
+                        "text": {
+                            "value": {}
+                        },
+                        "composition": {
+                            "discriminator": {
+                                "propertyName": "",
+                                "manager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "referenceManager": {
+                                "list": []
+                            },
+                            "requiredManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
+                            "type": "allOf"
+                        }
+                    }
+                ]
+            },
+            "securitySchemeManager": {
+                "nextUI": 1,
+                "list": []
+            }
+        },
+        "externalDocs": {
+            "description": "",
+            "url": ""
+        },
+        "fieldManager": {
+            "nextUI": 7,
+            "list": [
+                {
+                    "un": "code",
+                    "_ui": 1,
+                    "color": "",
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "required": true,
+                    "schemaUI": 1,
+                    "type": "integer",
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                },
+                {
+                    "un": "message",
+                    "_ui": 2,
+                    "color": "",
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "required": true,
+                    "schemaUI": 1,
+                    "type": "string",
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                },
+                {
+                    "un": "id",
+                    "_ui": 3,
+                    "color": "",
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "required": false,
+                    "schemaUI": 2,
+                    "type": "integer",
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                },
+                {
+                    "un": "email",
+                    "_ui": 4,
+                    "color": "",
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "required": true,
+                    "schemaUI": 2,
+                    "type": "string",
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                },
+                {
+                    "un": "name",
+                    "_ui": 5,
+                    "color": "",
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "required": true,
+                    "schemaUI": 2,
+                    "type": "string",
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                },
+                {
+                    "un": "password",
+                    "_ui": 6,
+                    "color": "",
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "required": true,
+                    "schemaUI": 2,
+                    "type": "string",
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                }
+            ]
+        },
+        "info": {
+            "contact": {
+                "name": "contact",
+                "url": "",
+                "email": ""
+            },
+            "description": "description",
+            "license": {
+                "name": "license",
+                "url": ""
+            },
+            "termsOfService": "",
+            "title": "title",
+            "version": "0.1.0"
+        },
+        "pathManager": {
+            "nextUI": 1,
+            "list": []
+        },
+        "securityManager": {
+            "list": []
+        },
+        "serverManager": {
+            "nextUI": 2,
+            "list": [
+                {
+                    "un": "http://localhost/{version}",
+                    "_ui": 1,
+                    "color": "",
+                    "description": "",
+                    "variableManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "un": "version",
+                                "_ui": 1,
+                                "default": "v2",
+                                "description": "",
+                                "valueManager": {
+                                    "nextUI": 3,
+                                    "list": [
+                                        {
+                                            "un": "v1",
+                                            "_ui": 1
+                                        },
+                                        {
+                                            "un": "v2",
+                                            "_ui": 2
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "tagManager": {
+            "nextUI": 2,
+            "list": [
+                {
+                    "un": "User",
+                    "_ui": 1,
+                    "color": "",
+                    "description": ""
+                }
+            ]
+        }
+    }
+}
