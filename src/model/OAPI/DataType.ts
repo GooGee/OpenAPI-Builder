@@ -11,7 +11,6 @@ enum DataType {
     number = 'number',
     reference = 'reference',
     string = 'string',
-    template = 'template',
 }
 
 export const compositionTypeList = Object.values(CompositionType)
