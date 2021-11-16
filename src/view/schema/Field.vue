@@ -17,16 +17,6 @@
             :withBlank="false"
         ></Reference>
 
-        <textarea
-            v-if="schema.type === 'template'"
-            v-model="schema.text"
-            class="form-control"
-            style="vertical-align: top; width: 444px"
-            spellcheck="false"
-            wrap="off"
-            rows="5"
-        ></textarea>
-
         <select
             v-if="list.includes(schema.type)"
             v-model="schema.format"
