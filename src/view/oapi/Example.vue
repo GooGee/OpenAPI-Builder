@@ -34,12 +34,7 @@
             <tr>
                 <td class="text-right">value</td>
                 <td>
-                    <textarea
-                        v-model="sidebar.item.value"
-                        class="form-control"
-                        spellcheck="false"
-                        rows="11"
-                    ></textarea>
+                    <JSONText :item="sidebar.item.value" title="example"></JSONText>
                 </td>
             </tr>
         </tbody>
@@ -48,12 +43,17 @@
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
+import Example from '@/model/OAPI/Example'
 import { defineComponent, PropType } from 'vue'
+import JSONText from './JSONText.vue'
 
 export default defineComponent({
+    components: {
+        JSONText,
+    },
     props: {
         sidebar: {
-            type: Object as PropType<SideBar>,
+            type: Object as PropType<SideBar<Example>>,
             required: true,
         },
     },
