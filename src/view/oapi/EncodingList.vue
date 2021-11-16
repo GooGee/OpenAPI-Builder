@@ -1,5 +1,8 @@
 <template>
     <table class="table">
+        <caption class="caption-top">
+            <h2>Encoding</h2>
+        </caption>
         <thead>
             <tr>
                 <td class="w111">un</td>

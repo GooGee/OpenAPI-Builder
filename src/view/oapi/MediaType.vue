@@ -25,14 +25,9 @@
                     <JSONText :item="item.example" title="example"></JSONText>
                 </td>
             </tr>
-            <tr>
-                <td class="text-right">encoding</td>
-                <td>
-                    <EncodingList :manager="item.encodingManager"></EncodingList>
-                </td>
-            </tr>
         </tbody>
     </table>
+    <EncodingList :manager="item.encodingManager"></EncodingList>
 </template>
 
 <script lang="ts">
