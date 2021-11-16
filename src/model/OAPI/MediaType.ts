@@ -1,3 +1,4 @@
+import JSONText from '../Entity/JSONText'
 import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
@@ -12,6 +13,7 @@ export enum MediaTypeEnum {
 }
 
 export default class MediaType extends UniqueItem {
+    readonly example = new JSONText()
     readonly schema = new Reference(0, TargetType.schemas)
     readonly encodingManager = new EncodingManager()
     readonly exampleManager = new ReferenceManager(TargetType.examples)

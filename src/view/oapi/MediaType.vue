@@ -22,12 +22,7 @@
             <tr>
                 <td class="text-right">example</td>
                 <td>
-                    <textarea
-                        v-model="item.example"
-                        class="form-control"
-                        spellcheck="false"
-                        rows="3"
-                    ></textarea>
+                    <JSONText :item="item.example" title="example"></JSONText>
                 </td>
             </tr>
             <tr>
@@ -45,6 +40,7 @@ import MediaType from '@/model/OAPI/MediaType'
 import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import EncodingList from './EncodingList.vue'
+import JSONText from './JSONText.vue'
 import Reference from './Reference.vue'
 import ReferenceList from './ReferenceList.vue'
 
@@ -52,6 +48,7 @@ export default defineComponent({
     components: {
         DeleteButton,
         EncodingList,
+        JSONText,
         Reference,
         ReferenceList,
     },
