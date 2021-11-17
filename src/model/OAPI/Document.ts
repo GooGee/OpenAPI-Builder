@@ -24,28 +24,26 @@ export default class Document extends Item {
     readonly tagManager = new TagManager()
 
     getSchemaFieldList(schema: SchemaComplex) {
-        return this.getSchemaFieldxx(schema, new Set())
+        const set: Set<number> = new Set()
+        this.getReferenceList(schema, set)
+        return this.fieldManager.list.filter((item) => set.has(item.ui))
     }
 
-    private getSchemaFieldxx(
-        schema: SchemaComplex,
-        set: Set<SchemaComplex>,
-    ): SchemaField[] {
-        if (set.has(schema)) {
-            return []
-        }
-        set.add(schema)
+    private getReferenceList(schema: SchemaComplex, set: Set<number>) {
         if (schema.isTemplate) {
-            return []
+            return
         }
-        let list: SchemaField[] = this.fieldManager.findAll(schema.ui)
-        schema.referenceManager.list.forEach((item) => {
-            const found = this.component.schemaManager.find(item.ui)
-            if (found) {
-                list = list.concat(this.getSchemaFieldxx(found, set))
+        if (set.has(schema.ui)) {
+            return
+        }
+        set.add(schema.ui)
+
+        const uixx = new Set(schema.referenceManager.list.map((item) => item.ui))
+        this.component.schemaManager.list.forEach((item) => {
+            if (uixx.has(item.ui)) {
+                this.getReferenceList(item, set)
             }
         })
-        return list
     }
 
     importSchema(fieldxx: SchemaField[], ui: number) {
@@ -59,19 +57,20 @@ export default class Document extends Item {
 
     private removeNullReference() {
         this.component.schemaManager.list.forEach((schema) => {
-            if (schema.isComposition) {
-                const fieldxx = this.getSchemaFieldList(schema)
-                const notFoundxx: UniqueItem[] = []
-                schema.requiredManager.list.forEach((item) => {
-                    const found = fieldxx.find((field) => field.un === item.un)
-                    if (found === undefined) {
-                        notFoundxx.push(item)
-                    }
-                })
-                notFoundxx.forEach((item) => {
-                    schema.requiredManager.remove(item)
-                })
+            if (schema.isTemplate) {
+                return
             }
+            const fieldxx = this.getSchemaFieldList(schema)
+            const notFoundxx: UniqueItem[] = []
+            schema.requiredManager.list.forEach((item) => {
+                const found = fieldxx.find((field) => field.un === item.un)
+                if (found === undefined) {
+                    notFoundxx.push(item)
+                }
+            })
+            notFoundxx.forEach((item) => {
+                schema.requiredManager.remove(item)
+            })
         })
     }
 
