@@ -6,13 +6,14 @@ import { CompositionType } from './DataType'
 import Discriminator from './Discriminator'
 import { ReferenceManager, TargetType } from './Reference'
 import Schema from './Schema'
-import { SchemaFieldManager } from './SchemaField'
+import SchemaField, { SchemaFieldManager } from './SchemaField'
 
 export default class SchemaComplex extends Schema {
     compositionType: CompositionType = CompositionType.allOf
     isTemplate = false
     readonly discriminator = new Discriminator()
     readonly example = new JSONText()
+    readonly excludedManager = new ReferenceManager(TargetType.field)
     readonly referenceManager = new ReferenceManager(TargetType.schemas)
     readonly requiredManager = new ReferenceManager(TargetType.field)
     readonly text = new JSONText()
@@ -21,10 +22,13 @@ export default class SchemaComplex extends Schema {
         return this.isTemplate === false
     }
 
-    field2KV(finder: ReferenceFinder, fieldManager: SchemaFieldManager) {
-        const fieldxx = fieldManager.findAll(this.ui)
+    makeOAPI(
+        finder: ReferenceFinder,
+        fieldManager: SchemaFieldManager,
+        fieldxx: SchemaField[],
+    ): KeyValue {
         if (fieldxx.length === 0) {
-            return null
+            return {}
         }
 
         const result: KeyValue = {
@@ -48,6 +52,15 @@ export default class SchemaComplex extends Schema {
         }
 
         const fieldManager = finder.findManager(TargetType.field) as SchemaFieldManager
+        if (this.excludedManager.list.length) {
+            const excludedxx = new Set(this.excludedManager.list.map((item) => item.ui))
+            const fieldxx = finder
+                .getSchemaFieldList(this)
+                .filter((field) => excludedxx.has(field.ui) === false)
+            return this.makeOAPI(finder, fieldManager, fieldxx)
+        }
+
+        const fieldxx = fieldManager.findAll(this.ui)
         if (this.referenceManager.list.length) {
             const list = this.referenceManager.toOAPIArray(finder)
             const result: KeyValue = {
@@ -61,19 +74,13 @@ export default class SchemaComplex extends Schema {
                     .getTargetxx(finder)
                     .map((item) => item.un)
             }
-            const item = this.field2KV(finder, fieldManager)
-            if (item === null) {
-                return result
+            if (fieldxx.length) {
+                list.push(this.makeOAPI(finder, fieldManager, fieldxx))
             }
-            list.push(item)
             return result
         }
 
-        const item = this.field2KV(finder, fieldManager)
-        if (item === null) {
-            return {}
-        }
-        return item
+        return this.makeOAPI(finder, fieldManager, fieldxx)
     }
 }
 
