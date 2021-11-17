@@ -10,8 +10,8 @@ export default class InputModal extends Modal {
 
     ok() {
         if (this.callback) {
-            const error = this.callback()
-            if (error) {
+            const cancel = this.callback()
+            if (cancel) {
                 return
             }
         }
