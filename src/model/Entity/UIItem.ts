@@ -19,7 +19,7 @@ export default class UIItem extends Item {
     }
 }
 
-export class UIItemManager<T extends UIItem> extends ItemManager<T> {
+export class UIItemManager<T extends UIItem = UIItem> extends ItemManager<T> {
     protected nextUI = 1
 
     add(item: T) {
