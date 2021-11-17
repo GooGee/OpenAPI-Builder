@@ -46,7 +46,7 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
         const schema = sidebar.item!
-        const manager = schema.composition.requiredManager
+        const manager = schema.requiredManager
         function add(name: string) {
             const found = manager.findByUN(name)
             if (found) {

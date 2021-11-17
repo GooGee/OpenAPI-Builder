@@ -1,17 +1,22 @@
 import JSONText from '../Entity/JSONText'
 import KeyValue from '../Entity/KeyValue'
+import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import { TargetType } from './Reference'
+import { CompositionType } from './DataType'
+import Discriminator from './Discriminator'
+import { ReferenceManager, TargetType } from './Reference'
 import Schema from './Schema'
-import SchemaComposition from './SchemaComposition'
 import { SchemaFieldManager } from './SchemaField'
 
 export default class SchemaComplex extends Schema {
-    readonly example = new JSONText()
+    compositionType: CompositionType = CompositionType.allOf
     isTemplate = false
+    readonly discriminator = new Discriminator()
+    readonly example = new JSONText()
+    readonly referenceManager = new ReferenceManager(TargetType.schemas)
+    readonly requiredManager = new UniqueItemManager(UniqueItem)
     readonly text = new JSONText()
-    readonly composition = new SchemaComposition()
 
     get isComposition() {
         return this.isTemplate === false
@@ -44,15 +49,23 @@ export default class SchemaComplex extends Schema {
         }
 
         const fieldManager = finder.findManager(TargetType.field) as SchemaFieldManager
-        if (this.composition.referenceManager.list.length) {
-            const data = this.composition.toOAPI(finder)
+        if (this.referenceManager.list.length) {
+            const list = this.referenceManager.toOAPIArray(finder)
+            const result: KeyValue = {
+                [this.compositionType]: list,
+            }
+            if (this.discriminator.propertyName) {
+                result.discriminator = this.discriminator.toOAPI(finder)
+            }
+            if (this.requiredManager.list.length) {
+                result.required = this.requiredManager.list.map((item) => item.un)
+            }
             const item = this.field2KV(finder, fieldManager)
             if (item === null) {
-                return data
+                return result
             }
-            const list = data[this.composition.type] as KeyValue[]
             list.push(item)
-            return data
+            return result
         }
 
         const item = this.field2KV(finder, fieldManager)

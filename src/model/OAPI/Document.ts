@@ -39,7 +39,7 @@ export default class Document extends Item {
             return []
         }
         let list: SchemaField[] = this.fieldManager.findAll(schema.ui)
-        schema.composition.referenceManager.list.forEach((item) => {
+        schema.referenceManager.list.forEach((item) => {
             const found = this.component.schemaManager.find(item.ui)
             if (found) {
                 list = list.concat(this.getSchemaFieldxx(found, set))
@@ -62,14 +62,14 @@ export default class Document extends Item {
             if (schema.isComposition) {
                 const fieldxx = this.getSchemaFieldList(schema)
                 const notFoundxx: UniqueItem[] = []
-                schema.composition.requiredManager.list.forEach((item) => {
+                schema.requiredManager.list.forEach((item) => {
                     const found = fieldxx.find((field) => field.un === item.un)
                     if (found === undefined) {
                         notFoundxx.push(item)
                     }
                 })
                 notFoundxx.forEach((item) => {
-                    schema.composition.requiredManager.remove(item)
+                    schema.requiredManager.remove(item)
                 })
             }
         })

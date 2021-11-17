@@ -40,7 +40,6 @@
                         class="form-control"
                         rows="33"
                         spellcheck="false"
-                        readonly
                     ></textarea>
                 </td>
             </tr>

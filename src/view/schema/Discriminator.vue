@@ -66,7 +66,7 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
         function getDiscriminator() {
-            return sidebar.item!.composition.discriminator
+            return sidebar.item!.discriminator
         }
         const discriminator = ref(getDiscriminator())
         watch(sidebar.item!, () => (discriminator.value = getDiscriminator()))

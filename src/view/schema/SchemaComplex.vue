@@ -20,7 +20,7 @@
         </label>
 
         <select
-            v-model="sidebar.item.composition.type"
+            v-model="sidebar.item.compositionType"
             :disabled="sidebar.item.isTemplate"
             class="form-control inline wa"
         >
@@ -32,7 +32,7 @@
         <div>
             <ReferenceList
                 v-if="sidebar.item.isComposition"
-                :manager="sidebar.item.composition.referenceManager"
+                :manager="sidebar.item.referenceManager"
             ></ReferenceList>
         </div>
     </div>
@@ -70,7 +70,7 @@ export default defineComponent({
                 return false
             }
             return (
-                sidebar.item!.composition.referenceManager.list.length === 0 &&
+                sidebar.item!.referenceManager.list.length === 0 &&
                 sidebar.item!.text.text === '{}'
             )
         }
