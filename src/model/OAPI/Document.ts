@@ -1,5 +1,4 @@
 import Item from '../Entity/Item'
-import UniqueItem from '../Entity/UniqueItem'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import Component from './Component'
 import External from './External'
@@ -26,7 +25,7 @@ export default class Document extends Item {
     getSchemaFieldList(schema: SchemaComplex) {
         const set: Set<number> = new Set()
         this.getReferenceList(schema, set)
-        return this.fieldManager.list.filter((item) => set.has(item.ui))
+        return this.fieldManager.list.filter((item) => set.has(item.schemaUI))
     }
 
     private getReferenceList(schema: SchemaComplex, set: Set<number>) {
@@ -60,17 +59,20 @@ export default class Document extends Item {
             if (schema.isTemplate) {
                 return
             }
-            const fieldxx = this.getSchemaFieldList(schema)
-            const notFoundxx: UniqueItem[] = []
-            schema.requiredManager.list.forEach((item) => {
-                const found = fieldxx.find((field) => field.un === item.un)
-                if (found === undefined) {
-                    notFoundxx.push(item)
-                }
-            })
-            notFoundxx.forEach((item) => {
-                schema.requiredManager.remove(item)
-            })
+
+            if (schema.requiredManager.list.length === 0) {
+                return
+            }
+
+            if (schema.referenceManager.list.length === 0) {
+                schema.requiredManager.clear()
+                return
+            }
+
+            const uixx = new Set(this.getSchemaFieldList(schema).map((item) => item.ui))
+            schema.requiredManager.list
+                .filter((item) => uixx.has(item.ui) === false)
+                .forEach((item) => schema.requiredManager.remove(item))
         })
     }
 
