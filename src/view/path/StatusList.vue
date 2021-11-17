@@ -8,7 +8,7 @@
             <div class="btn-group">
                 <DeleteButton :manager="manager" :item="item"></DeleteButton>
                 <ChangeButton :manager="manager" :item="item"></ChangeButton>
-                <Reference :reference="item.response" type="responses"></Reference>
+                <Reference :reference="item.response"></Reference>
             </div>
         </div>
     </div>

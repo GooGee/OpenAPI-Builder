@@ -10,7 +10,7 @@
             <tr>
                 <td class="text-right">schema</td>
                 <td>
-                    <Reference :reference="item.schema" :withBlank="false"></Reference>
+                    <Reference :reference="item.schema"></Reference>
                 </td>
             </tr>
             <tr>

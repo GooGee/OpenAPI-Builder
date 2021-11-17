@@ -48,7 +48,7 @@
                 <td>
                     <Reference
                         :reference="item.requestBody"
-                        type="requestBodies"
+                        :withBlank="true"
                     ></Reference>
                 </td>
             </tr>

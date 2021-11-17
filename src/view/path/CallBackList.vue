@@ -3,7 +3,7 @@
         <div class="btn-group">
             <DeleteButton :manager="manager" :item="item"></DeleteButton>
             <ChangeButton :manager="manager" :item="item"></ChangeButton>
-            <Reference :reference="item.path" :withBlank="false"></Reference>
+            <Reference :reference="item.path"></Reference>
         </div>
     </div>
     <AddButton :manager="manager"></AddButton>

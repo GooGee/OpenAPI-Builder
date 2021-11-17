@@ -1,6 +1,6 @@
 <template>
     <span @click="select" class="btn btn-outline-primary">
-        {{ text ? text : reference.ui ? getUN() : '+' }}
+        {{ getUN() }}
     </span>
 </template>
 
@@ -17,28 +17,26 @@ export default defineComponent({
             type: Object as PropType<Reference>,
             required: true,
         },
-        text: {
-            type: String,
-            required: false,
-            default: '',
-        },
         withBlank: {
             type: Boolean,
             required: false,
-            default: true,
+            default: false,
         },
     },
     setup(props, context) {
         function getUN() {
+            if (props.reference.ui === 0) {
+                return '+'
+            }
+
             const found = ss.project.finder.find(
                 props.reference.ui,
                 props.reference.type,
             )
             if (found === undefined) {
                 return '??'
-            } else {
-                return found.un
             }
+            return found.un
         }
 
         function select() {

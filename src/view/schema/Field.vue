@@ -14,7 +14,6 @@
         <Reference
             v-if="schema.type === 'reference'"
             :reference="schema.reference"
-            :withBlank="false"
         ></Reference>
 
         <select
