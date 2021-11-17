@@ -77,6 +77,7 @@ export const routes: Array<RouteRecordRaw> = [
         children: [
             { path: '', redirect: '/schema/property' },
             { path: 'discriminator', component: () => import('@/view/schema/Discriminator.vue') },
+            { path: 'excluded', component: () => import('@/view/schema/ExcludedField.vue') },
             { path: 'import', component: () => import('@/view/schema/Import.vue') },
             { path: 'property', component: () => import('@/view/schema/Property.vue') },
             { path: 'required', component: () => import('@/view/schema/RequiredField.vue') },
