@@ -11,8 +11,8 @@
                     <span class="custom-control custom-switch inline">
                         <input
                             :id="'required' + item.ui"
-                            :checked="exist(item.un)"
-                            @click="add(item.un)"
+                            :checked="manager.has(item.ui)"
+                            @click="add(item.ui)"
                             type="checkbox"
                             class="custom-control-input"
                         />
@@ -40,32 +40,30 @@
 import SideBar from '@/model/Entity/SideBar'
 import SchemaComplex from '@/model/OAPI/SchemaComplex'
 import ss from '@/ss'
-import { defineComponent, inject } from 'vue'
+import { computed, defineComponent, inject } from 'vue'
 
 export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
-        const schema = sidebar.item!
-        const manager = schema.requiredManager
-        function add(name: string) {
-            const found = manager.findByUN(name)
+        const manager = computed(() => sidebar.item!.requiredManager)
+        function add(ui: number) {
+            const found = manager.value.find(ui)
             if (found) {
-                manager.remove(found)
+                manager.value.remove(found)
             } else {
-                const item = manager.make(name)
-                manager.add(item)
+                const item = manager.value.make(ui)
+                manager.value.add(item)
             }
         }
         function clear() {
             if (confirm('Are you sure?')) {
-                manager.clear()
+                manager.value.clear()
             }
         }
-        function exist(name: string) {
-            return manager.hasUN(name)
-        }
-        const fieldxx = ss.project.oapi.getSchemaFieldList(schema)
-        return { add, clear, exist, fieldxx, sidebar }
+        const fieldxx = computed(() =>
+            ss.project.oapi.getSchemaFieldList(sidebar.item!),
+        )
+        return { add, clear, fieldxx, manager, sidebar }
     },
 })
 </script>

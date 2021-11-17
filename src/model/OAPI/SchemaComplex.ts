@@ -1,6 +1,5 @@
 import JSONText from '../Entity/JSONText'
 import KeyValue from '../Entity/KeyValue'
-import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { CompositionType } from './DataType'
@@ -15,7 +14,7 @@ export default class SchemaComplex extends Schema {
     readonly discriminator = new Discriminator()
     readonly example = new JSONText()
     readonly referenceManager = new ReferenceManager(TargetType.schemas)
-    readonly requiredManager = new UniqueItemManager(UniqueItem)
+    readonly requiredManager = new ReferenceManager(TargetType.field)
     readonly text = new JSONText()
 
     get isComposition() {
@@ -58,7 +57,9 @@ export default class SchemaComplex extends Schema {
                 result.discriminator = this.discriminator.toOAPI(finder)
             }
             if (this.requiredManager.list.length) {
-                result.required = this.requiredManager.list.map((item) => item.un)
+                result.required = this.requiredManager
+                    .getTargetxx(finder)
+                    .map((item) => item.un)
             }
             const item = this.field2KV(finder, fieldManager)
             if (item === null) {
