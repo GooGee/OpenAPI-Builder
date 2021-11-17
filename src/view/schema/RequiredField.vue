@@ -61,7 +61,7 @@ export default defineComponent({
             }
         }
         const fieldxx = computed(() =>
-            ss.project.oapi.getSchemaFieldList(sidebar.item!),
+            ss.project.finder.getSchemaFieldList(sidebar.item!),
         )
         return { add, clear, fieldxx, manager, sidebar }
     },
