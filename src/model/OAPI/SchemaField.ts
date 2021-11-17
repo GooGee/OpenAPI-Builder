@@ -1,11 +1,12 @@
 import KeyValue from '../Entity/KeyValue'
+import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import DataType from './DataType'
 import Reference, { TargetType } from './Reference'
-import Schema from './Schema'
 
-export default class SchemaField extends Schema {
+export default class SchemaField extends UniqueItem {
+    description = ''
     format = ''
     isArray = false
     required = true
