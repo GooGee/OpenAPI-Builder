@@ -26,7 +26,7 @@ export default defineComponent({
             required: true,
         },
         list: {
-            type: Array,
+            type: Object as PropType<String[]>,
             required: true,
         },
         manager: {
