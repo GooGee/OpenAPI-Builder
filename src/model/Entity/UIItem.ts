@@ -6,12 +6,16 @@ export default class UIItem extends Item {
     @excludeOAPI
     protected _ui: number = 0
 
+    protected get allowSetUI() {
+        return false
+    }
+
     get ui() {
         return this._ui
     }
 
     set ui(ui: number) {
-        if (this._ui === 0) {
+        if (this._ui === 0 || this.allowSetUI) {
             this._ui = ui
             return
         }
