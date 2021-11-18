@@ -10,32 +10,22 @@
 
         <Operation v-if="operation" :item="operation">
             <div class="btn-group">
-                <DeleteButton
-                    @remove="update"
-                    :item="operation"
-                    :manager="manager"
-                ></DeleteButton>
+                <DeleteButton :item="operation" :manager="manager"></DeleteButton>
                 <span class="btn btn-outline-secondary"> {{ operation.un }} </span>
             </div>
         </Operation>
 
         <template v-else>
             <h2 class="inline mr11">{{ option }}</h2>
-            <AddButton
-                @added="update"
-                :manager="manager"
-                :value="option"
-                :noinput="true"
-            ></AddButton>
+            <AddButton :manager="manager" :value="option" :noinput="true"></AddButton>
         </template>
     </div>
 </template>
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
-import UniqueItem from '@/model/Entity/UniqueItem'
 import Path from '@/model/OAPI/Path'
-import { computed, defineComponent, inject, ref, watch } from 'vue'
+import { computed, defineComponent, inject, ref } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -50,6 +40,10 @@ export default defineComponent({
     },
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<Path>
+        const manager = computed(function () {
+            return sidebar.item!.operationManager
+        })
+
         const optionxx = [
             'get',
             'delete',
@@ -60,41 +54,17 @@ export default defineComponent({
             'put',
             'trace',
         ]
-        const selected = ref(optionxx[0])
-        const option = computed({
-            get() {
-                return selected.value
-            },
-            set(value: string) {
-                selected.value = value
-                update()
-            },
+        const option = ref(optionxx[0])
+
+        const operation = computed(function () {
+            return manager.value.findByUN(option.value) ?? null
         })
 
-        function getManager() {
-            return sidebar.item!.operationManager
-        }
-
-        const operation = ref<UniqueItem | null>(null)
-        function update() {
-            operation.value = getManager().findByUN(option.value) ?? null
-        }
-        update()
-
-        const manager = ref(getManager())
-        watch(
-            () => sidebar.item,
-            () => {
-                manager.value = getManager()
-                update()
-            },
-        )
         return {
             manager,
             operation,
             option,
             optionxx,
-            update,
         }
     },
 })

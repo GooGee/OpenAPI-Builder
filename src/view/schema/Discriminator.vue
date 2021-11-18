@@ -52,7 +52,7 @@
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
 import SchemaComplex from '@/model/OAPI/SchemaComplex'
-import { defineComponent, inject, ref, watch } from 'vue'
+import { computed, defineComponent, inject } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -65,11 +65,9 @@ export default defineComponent({
     },
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
-        function getDiscriminator() {
+        const discriminator = computed(function () {
             return sidebar.item!.discriminator
-        }
-        const discriminator = ref(getDiscriminator())
-        watch(sidebar.item!, () => (discriminator.value = getDiscriminator()))
+        })
         return { discriminator, sidebar }
     },
 })

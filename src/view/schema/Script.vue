@@ -26,10 +26,9 @@
 <script lang="ts">
 import emitter from '@/emitter'
 import { EventEnum } from '@/model/Entity/Event'
-import Script from '@/model/Entity/Script'
 import SideBar from '@/model/Entity/SideBar'
 import ss from '@/ss'
-import { defineComponent, inject, ref, watch } from 'vue'
+import { computed, defineComponent, inject, ref } from 'vue'
 import RunButton from '../button/RunButton.vue'
 import ColorPanel from '../part/ColorPanel.vue'
 
@@ -40,9 +39,8 @@ export default defineComponent({
     },
     setup(props, context) {
         const color = ref('')
-        let list = ref<Script[]>([])
-        function filter() {
-            list.value = ss.project.scriptManager.list.filter((item) => {
+        const list = computed(function () {
+            return ss.project.scriptManager.list.filter((item) => {
                 if (item.global) {
                     return false
                 }
@@ -51,9 +49,7 @@ export default defineComponent({
                 }
                 return item.color === color.value
             })
-        }
-        filter()
-        watch([color], filter)
+        })
 
         function run() {
             emitter.emit(EventEnum['sidebar-list-change'])

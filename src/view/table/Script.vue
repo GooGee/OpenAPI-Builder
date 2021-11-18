@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td>
-                    <EditButton :file="file" :item="item"></EditButton>
+                    <EditButton :file="file" :item="sidebar.item"></EditButton>
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
 import Script from '@/model/Entity/Script'
 import SideBar from '@/model/Entity/SideBar'
 import File from '@/model/Service/File'
-import { defineComponent, PropType, ref, watch } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import EditButton from '../button/EditButton.vue'
 import RunButton from '../button/RunButton.vue'
 import ColorPanel from '../part/ColorPanel.vue'
@@ -69,17 +69,10 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const file = ref('')
-        const item = ref<Script | null>(null)
-        watch(
-            () => props.sidebar.item,
-            () => {
-                file.value = File.getScriptPath(props.sidebar.item!.un + '.js')
-                item.value = props.sidebar.item
-            },
-            { immediate: true },
-        )
-        return { file, item }
+        const file = computed(function () {
+            return File.getScriptPath(props.sidebar.item!.un + '.js')
+        })
+        return { file }
     },
 })
 </script>
