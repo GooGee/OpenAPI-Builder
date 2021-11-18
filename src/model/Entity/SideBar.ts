@@ -21,6 +21,7 @@ export enum SideBarEnum {
     SecurityScheme = 'SecurityScheme',
     Script = 'Script',
     Server = 'Server',
+    ServerVariable = 'ServerVariable',
     Tag = 'Tag',
     Template = 'Template',
 }
@@ -75,6 +76,10 @@ export class SideBarManager {
         this.map.set(
             SideBarEnum.Server,
             new SideBar(SideBarEnum.Server, project.oapi.serverManager),
+        )
+        this.map.set(
+            SideBarEnum.ServerVariable,
+            new SideBar(SideBarEnum.ServerVariable, project.serverVariableManager),
         )
         this.map.set(
             SideBarEnum.Tag,

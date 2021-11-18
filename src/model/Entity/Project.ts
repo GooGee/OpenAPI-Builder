@@ -1,5 +1,6 @@
 import { exclude } from '../Decorator'
 import Document from '../OAPI/Document'
+import { ServerVariableManager } from '../OAPI/ServerVariable'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import Item from './Item'
 import { PresetManager } from './Preset'
@@ -13,6 +14,7 @@ export default class Project extends Item {
 
     readonly presetManager = new PresetManager()
     readonly scriptManager = new ScriptManager()
+    readonly serverVariableManager = new ServerVariableManager()
     readonly templateManager = new TemplateManager()
 
     readonly oapi = new Document()

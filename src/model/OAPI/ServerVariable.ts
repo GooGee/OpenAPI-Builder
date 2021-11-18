@@ -1,8 +1,9 @@
 import KeyValue from '../Entity/KeyValue'
+import SideBarItem from '../Entity/SideBarItem'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 
-export default class ServerVariable extends UniqueItem {
+export default class ServerVariable extends SideBarItem {
     default = ''
     description = ''
     readonly valueManager = new UniqueItemManager(UniqueItem)
