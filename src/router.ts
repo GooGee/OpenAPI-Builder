@@ -106,6 +106,11 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/view/ServerPage.vue'),
     },
     {
+        path: '/server-variable',
+        name: 'server-variable',
+        component: () => import('@/view/ServerVariablePage.vue'),
+    },
+    {
         path: '/tag',
         name: 'tag',
         component: () => import('@/view/TagPage.vue'),

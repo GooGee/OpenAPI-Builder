@@ -98,10 +98,28 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
-                <router-link to="/server" active-class="active" class="nav-link">
-                    server
-                </router-link>
+            <li class="nav-item dropdown">
+                <span class="nav-link dropdown-toggle pointer">server</span>
+                <ul class="dropdown-menu">
+                    <li>
+                        <router-link
+                            to="/server"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            server
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link
+                            to="/server-variable"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            variable
+                        </router-link>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item">
                 <router-link to="/tag" active-class="active" class="nav-link">
