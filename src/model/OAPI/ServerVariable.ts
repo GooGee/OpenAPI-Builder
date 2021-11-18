@@ -5,7 +5,6 @@ import UniqueItemManager from '../Entity/UniqueItemManager'
 
 export default class ServerVariable extends SideBarItem {
     default = ''
-    description = ''
     readonly valueManager = new UniqueItemManager(UniqueItem)
 
     toOAPI() {

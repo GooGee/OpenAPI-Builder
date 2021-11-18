@@ -2,11 +2,10 @@ import KeyValue from '../Entity/KeyValue'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import { ServerVariableManager } from './ServerVariable'
+import { ReferenceManager, TargetType } from './Reference'
 
 export default class Server extends SideBarItem {
-    description = ''
-    readonly variableManager = new ServerVariableManager()
+    readonly referenceManager = new ReferenceManager(TargetType.variable)
 
     get url() {
         return this.un
@@ -21,8 +20,8 @@ export default class Server extends SideBarItem {
             url: this.url,
             description: this.description,
         }
-        if (this.variableManager.list.length) {
-            result.variables = this.variableManager.toOAPI(finder)
+        if (this.referenceManager.list.length) {
+            result.variables = finder.findManager(TargetType.variable).toOAPI(finder)
         }
         return result
     }
@@ -31,5 +30,9 @@ export default class Server extends SideBarItem {
 export class ServerManager extends UniqueItemManager<Server> {
     constructor() {
         super(Server)
+    }
+
+    toOAPIArray(finder: ReferenceFinder) {
+        return this.list.map((item) => item.toOAPI(finder))
     }
 }

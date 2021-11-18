@@ -4,10 +4,10 @@ import Component from './Component'
 import External from './External'
 import Info from './Info'
 import { PathManager } from './Path'
-import SchemaComplex from './SchemaComplex'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
 import { SecurityRequirementManager } from './SecurityRequirement'
 import { ServerManager } from './Server'
+import { ServerVariableManager } from './ServerVariable'
 import { TagManager } from './Tag'
 
 const Version = '3.0.3'
@@ -20,6 +20,7 @@ export default class Document extends Item {
     readonly pathManager = new PathManager()
     readonly securityManager = new SecurityRequirementManager()
     readonly serverManager = new ServerManager()
+    readonly serverVariableManager = new ServerVariableManager()
     readonly tagManager = new TagManager()
 
     importSchema(fieldxx: SchemaField[], ui: number) {

@@ -79,7 +79,7 @@ export class SideBarManager {
         )
         this.map.set(
             SideBarEnum.ServerVariable,
-            new SideBar(SideBarEnum.ServerVariable, project.serverVariableManager),
+            new SideBar(SideBarEnum.ServerVariable, project.oapi.serverVariableManager),
         )
         this.map.set(
             SideBarEnum.Tag,

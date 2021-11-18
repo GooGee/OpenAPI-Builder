@@ -42,6 +42,9 @@ export default class ReferenceFinder {
             case TargetType.tag:
                 return this.project.oapi.tagManager
 
+            case TargetType.variable:
+                return this.project.oapi.serverVariableManager
+
             default:
                 break
         }

@@ -16,7 +16,7 @@
             @map="migrate"
         ></ImportMap>
     </div>
-    <span v-else class="mtb11">Only for object</span>
+    <span v-else class="mtb11">Only for composition</span>
 </template>
 
 <script lang="ts">

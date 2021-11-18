@@ -16,6 +16,7 @@ export enum TargetType {
     schemas = 'schemas',
     security = 'security',
     tag = 'tag',
+    variable = 'variable',
 }
 
 export default class Reference extends UIItem {

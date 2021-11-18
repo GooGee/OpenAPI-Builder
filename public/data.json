@@ -819,7 +819,6 @@
                         "schema": {
                             "un": "X-Rate-Limit",
                             "_ui": 0,
-                            "color": "",
                             "description": "",
                             "format": "int32",
                             "isArray": false,
@@ -846,7 +845,6 @@
                         "schema": {
                             "un": "X-Expires-After",
                             "_ui": 0,
-                            "color": "",
                             "description": "",
                             "format": "date-time",
                             "isArray": false,
@@ -882,7 +880,6 @@
                         "schema": {
                             "un": "id",
                             "_ui": 0,
-                            "color": "",
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -909,7 +906,6 @@
                         "schema": {
                             "un": "id-",
                             "_ui": 0,
-                            "color": "",
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -936,7 +932,6 @@
                         "schema": {
                             "un": "page",
                             "_ui": 0,
-                            "color": "",
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -963,7 +958,6 @@
                         "schema": {
                             "un": "page-",
                             "_ui": 0,
-                            "color": "",
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -1106,29 +1100,29 @@
                         "_ui": 1,
                         "color": "",
                         "description": "",
+                        "compositionType": "allOf",
+                        "isTemplate": false,
+                        "discriminator": {
+                            "propertyName": "",
+                            "manager": {
+                                "nextUI": 1,
+                                "list": []
+                            }
+                        },
                         "example": {
                             "value": {}
                         },
-                        "isTemplate": false,
+                        "excludedManager": {
+                            "list": []
+                        },
+                        "referenceManager": {
+                            "list": []
+                        },
+                        "requiredManager": {
+                            "list": []
+                        },
                         "text": {
                             "value": {}
-                        },
-                        "composition": {
-                            "discriminator": {
-                                "propertyName": "",
-                                "manager": {
-                                    "nextUI": 1,
-                                    "list": []
-                                }
-                            },
-                            "referenceManager": {
-                                "list": []
-                            },
-                            "requiredManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "type": "allOf"
                         }
                     },
                     {
@@ -1136,29 +1130,29 @@
                         "_ui": 2,
                         "color": "",
                         "description": "",
+                        "compositionType": "allOf",
+                        "isTemplate": false,
+                        "discriminator": {
+                            "propertyName": "",
+                            "manager": {
+                                "nextUI": 1,
+                                "list": []
+                            }
+                        },
                         "example": {
                             "value": {}
                         },
-                        "isTemplate": false,
+                        "excludedManager": {
+                            "list": []
+                        },
+                        "referenceManager": {
+                            "list": []
+                        },
+                        "requiredManager": {
+                            "list": []
+                        },
                         "text": {
                             "value": {}
-                        },
-                        "composition": {
-                            "discriminator": {
-                                "propertyName": "",
-                                "manager": {
-                                    "nextUI": 1,
-                                    "list": []
-                                }
-                            },
-                            "referenceManager": {
-                                "list": []
-                            },
-                            "requiredManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "type": "allOf"
                         }
                     }
                 ]
@@ -1178,7 +1172,6 @@
                 {
                     "un": "code",
                     "_ui": 1,
-                    "color": "",
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -1193,7 +1186,6 @@
                 {
                     "un": "message",
                     "_ui": 2,
-                    "color": "",
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -1208,7 +1200,6 @@
                 {
                     "un": "id",
                     "_ui": 3,
-                    "color": "",
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -1223,7 +1214,6 @@
                 {
                     "un": "email",
                     "_ui": 4,
-                    "color": "",
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -1238,7 +1228,6 @@
                 {
                     "un": "name",
                     "_ui": 5,
-                    "color": "",
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -1253,7 +1242,6 @@
                 {
                     "un": "password",
                     "_ui": 6,
-                    "color": "",
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -1297,27 +1285,36 @@
                     "_ui": 1,
                     "color": "",
                     "description": "",
-                    "variableManager": {
-                        "nextUI": 2,
+                    "referenceManager": {
                         "list": [
                             {
-                                "un": "version",
                                 "_ui": 1,
-                                "default": "v2",
-                                "description": "",
-                                "valueManager": {
-                                    "nextUI": 3,
-                                    "list": [
-                                        {
-                                            "un": "v1",
-                                            "_ui": 1
-                                        },
-                                        {
-                                            "un": "v2",
-                                            "_ui": 2
-                                        }
-                                    ]
-                                }
+                                "type": "variable"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "serverVariableManager": {
+            "nextUI": 2,
+            "list": [
+                {
+                    "un": "version",
+                    "_ui": 1,
+                    "color": "",
+                    "description": "",
+                    "default": "v2",
+                    "valueManager": {
+                        "nextUI": 3,
+                        "list": [
+                            {
+                                "un": "v1",
+                                "_ui": 1
+                            },
+                            {
+                                "un": "v2",
+                                "_ui": 2
                             }
                         ]
                     }
