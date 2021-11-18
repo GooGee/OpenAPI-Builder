@@ -1,53 +1,38 @@
 <template>
-    <select
-        v-model="option"
-        @change="add($event.target.value)"
-        class="form-control wa mtb11"
-    >
-        <option value="" disabled>----</option>
-        <option v-for="item in optionxx" :value="item.un" :key="item.ui">
-            {{ item.un }}
-        </option>
-    </select>
-
-    <div class="btn-group mtb11">
-        <span
-            v-for="item in manager.list"
-            :key="item.ui"
-            @click="current = item"
-            class="btn"
-            :class="
-                Object.is(item, current)
-                    ? 'btn-outline-primary'
-                    : 'btn-outline-secondary'
-            "
-        >
-            {{ item.un }}
-        </span>
+    <div class="mtb11">
+        <ButtonGroup
+            v-model:option="option"
+            :list="optionxx"
+            :manager="manager"
+        ></ButtonGroup>
     </div>
 
-    <MediaType v-if="current" :item="current">
+    <MediaType v-if="mt" :item="mt">
         <div class="btn-group">
-            <DeleteButton
-                :manager="manager"
-                :item="current"
-                @remove="remove"
-            ></DeleteButton>
-            <span class="btn btn-outline-secondary"> {{ current.un }} </span>
+            <DeleteButton :item="mt" :manager="manager"></DeleteButton>
+            <span class="btn btn-outline-secondary"> {{ mt.un }} </span>
         </div>
     </MediaType>
+
+    <template v-else>
+        <h2 class="inline mr11">{{ option }}</h2>
+        <AddButton :manager="manager" :value="option" :noinput="true"></AddButton>
+    </template>
 </template>
 
 <script lang="ts">
-import Toast from '@/model/Service/Toast'
 import { MediaTypeManager } from '@/model/OAPI/MediaType'
 import ss from '@/ss'
-import { defineComponent, PropType, ref, watch } from 'vue'
+import { computed, defineComponent, PropType, ref } from 'vue'
+import AddButton from '../button/AddButton.vue'
+import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import MediaType from './MediaType.vue'
 
 export default defineComponent({
     components: {
+        AddButton,
+        ButtonGroup,
         DeleteButton,
         MediaType,
     },
@@ -58,37 +43,21 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const current = ref(null)
-        const option = ref('')
-        const optionxx = ref<any>([])
+        let optionxx = ['*']
         const pp = ss.project.getPreset('MediaType')
         if (pp) {
-            optionxx.value = pp.propertyManager.list
+            optionxx = pp.propertyManager.list.map((item) => item.un)
         }
-        function add(un: string) {
-            try {
-                const item = props.manager.make(un)
-                props.manager.add(item)
-                option.value = ''
-            } catch (error) {
-                Toast.error(error.message)
-            }
-        }
-        function remove() {
-            current.value = null
-        }
-        watch(
-            () => props.manager,
-            () => {
-                current.value = null
-            },
-        )
+
+        const option = ref(optionxx[0])
+        const mt = computed(function () {
+            return props.manager.findByUN(option.value) ?? null
+        })
+
         return {
-            add,
-            current,
+            mt,
             option,
             optionxx,
-            remove,
         }
     },
 })
