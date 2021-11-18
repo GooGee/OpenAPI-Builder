@@ -1,26 +1,18 @@
 <template>
     <table class="table">
-        <caption class="caption-top">
-            <h2>Variable</h2>
-        </caption>
-        <thead>
-            <tr>
-                <th>
-                    <SortButton :manager="manager"></SortButton>
-                    un
-                </th>
-                <th>default / description</th>
-                <th>enum</th>
-            </tr>
-        </thead>
         <tbody>
-            <tr v-for="item in manager.list" :key="item.ui">
+            <tr>
+                <td class="text-right w111">description</td>
                 <td>
-                    <div class="btn-group">
-                        <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                        <ChangeButton :manager="manager" :item="item"></ChangeButton>
-                    </div>
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="item.description"
+                    />
                 </td>
+            </tr>
+            <tr>
+                <td class="text-right">default</td>
                 <td>
                     <input
                         type="text"
@@ -28,34 +20,20 @@
                         placeholder="default"
                         v-model="item.default"
                     />
-                    <br />
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="description"
-                        v-model="item.description"
-                    />
                 </td>
+            </tr>
+            <tr>
+                <td class="text-right">enum</td>
                 <td>
                     <EditList :manager="item.valueManager"></EditList>
                 </td>
             </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <td>
-                    <AddButton :manager="manager"></AddButton>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tfoot>
     </table>
 </template>
 
 <script lang="ts">
-import { ServerVariableManager } from '@/model/OAPI/ServerVariable'
+import ServerVariable from '@/model/OAPI/ServerVariable'
 import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
@@ -72,8 +50,8 @@ export default defineComponent({
         EditList,
     },
     props: {
-        manager: {
-            type: Object as PropType<ServerVariableManager>,
+        item: {
+            type: Object as PropType<ServerVariable>,
             required: true,
         },
     },

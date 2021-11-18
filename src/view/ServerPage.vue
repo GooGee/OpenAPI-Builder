@@ -11,7 +11,6 @@
                 placeholder="description"
                 v-model="sidebar.item.description"
             />
-            <ServerVariable :manager="sidebar.item.variableManager"></ServerVariable>
         </div>
     </div>
 </template>
@@ -20,12 +19,10 @@
 import { SideBarEnum } from '@/model/Entity/SideBar'
 import ss from '@/ss'
 import { defineComponent, reactive } from 'vue'
-import ServerVariable from './oapi/ServerVariable.vue'
 import SideBar from './part/SideBar.vue'
 
 export default defineComponent({
     components: {
-        ServerVariable,
         SideBar,
     },
     setup(props, context) {
