@@ -1,4 +1,5 @@
 import Project from '../Entity/Project'
+import UniqueItemManager from '../Entity/UniqueItemManager'
 import { TargetType } from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
 
@@ -10,7 +11,7 @@ export default class ReferenceFinder {
         return manager.find(ui)
     }
 
-    findManager(type: TargetType) {
+    findManager(type: TargetType): UniqueItemManager {
         switch (type) {
             case TargetType.examples:
                 return this.project.oapi.component.exampleManager
