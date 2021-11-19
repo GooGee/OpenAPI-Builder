@@ -37,6 +37,11 @@ export class UIItemManager<T extends UIItem = UIItem> extends ItemManager<T> {
         return this.list.find((item) => item.ui === ui)
     }
 
+    findAll(uixx: number[]) {
+        const set = new Set(uixx)
+        return this.list.filter((item) => set.has(item.ui))
+    }
+
     has(ui: number) {
         return this.find(ui) !== undefined
     }
