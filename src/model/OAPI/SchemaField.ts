@@ -67,7 +67,7 @@ export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
         super.add(item)
     }
 
-    findAll(ui: number) {
+    findAllField(ui: number) {
         return this.list.filter((field) => field.schemaUI === ui)
     }
 }

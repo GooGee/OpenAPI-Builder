@@ -60,7 +60,7 @@ export default class SchemaComplex extends Schema {
             return this.makeOAPI(finder, fieldManager, fieldxx)
         }
 
-        const fieldxx = fieldManager.findAll(this.ui)
+        const fieldxx = fieldManager.findAllField(this.ui)
         if (this.referenceManager.list.length) {
             const list = this.referenceManager.toOAPIArray(finder)
             const result: KeyValue = {

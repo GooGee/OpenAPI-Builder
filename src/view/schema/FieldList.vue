@@ -105,7 +105,7 @@ export default defineComponent({
         const typexx = ref<SchemaField[]>([])
 
         function update() {
-            fieldxx.value = manager.findAll(props.ui)
+            fieldxx.value = manager.findAllField(props.ui)
             namexx.value = ss.project
                 .getPreset('FieldName')!
                 .propertyManager.list.map((item) =>
