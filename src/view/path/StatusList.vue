@@ -1,38 +1,24 @@
 <template>
-    <div>
-        <div>
-            <SelectButton :list="codexx" :manager="manager"></SelectButton>
-        </div>
-
-        <div v-for="item in manager.list" :key="item.ui" class="mtb11">
-            <div class="btn-group">
-                <DeleteButton :manager="manager" :item="item"></DeleteButton>
-                <ChangeButton :manager="manager" :item="item"></ChangeButton>
-                <Reference :reference="item.response"></Reference>
-            </div>
-        </div>
-    </div>
+    <NameReferenceList :manager="manager">
+        <SelectButton :list="codexx" :manager="manager"></SelectButton>
+    </NameReferenceList>
 </template>
 
 <script lang="ts">
-import { StatusManager } from '@/model/OAPI/Status'
-import { defineComponent, PropType } from 'vue'
-import ChangeButton from '../button/ChangeButton.vue'
-import DeleteButton from '../button/DeleteButton.vue'
-import Reference from '../oapi/Reference.vue'
-import SelectButton from '../button/SelectButton.vue'
+import { NameReferenceManager } from '@/model/OAPI/NameReference'
 import ss from '@/ss'
+import { defineComponent, PropType } from 'vue'
+import SelectButton from '../button/SelectButton.vue'
+import NameReferenceList from '../oapi/NameReferenceList.vue'
 
 export default defineComponent({
     components: {
-        ChangeButton,
-        DeleteButton,
-        Reference,
+        NameReferenceList,
         SelectButton,
     },
     props: {
         manager: {
-            type: Object as PropType<StatusManager>,
+            type: Object as PropType<NameReferenceManager>,
             required: true,
         },
     },

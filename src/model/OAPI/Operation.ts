@@ -4,9 +4,9 @@ import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { CallBackManager } from './CallBack'
+import { NameReferenceManager } from './NameReference'
 import Path from './Path'
 import Reference, { ReferenceManager, TargetType } from './Reference'
-import { StatusManager } from './Status'
 
 export enum OperationType {
     get = 'get',
@@ -26,7 +26,7 @@ export default class Operation extends UniqueItem {
     readonly callbackManager = new CallBackManager()
     readonly parameterManager = new ReferenceManager(TargetType.parameters)
     readonly requestBody = new Reference(0, TargetType.requestBodies)
-    readonly statusManager = new StatusManager()
+    readonly statusManager = new NameReferenceManager(TargetType.responses)
     readonly tagManager = new ReferenceManager(TargetType.tag)
 
     constructor(name: string, path: Path) {
