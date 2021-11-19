@@ -5,7 +5,9 @@ import Newable from './Newable'
 import { UIItemManager } from './UIItem'
 import UniqueItem from './UniqueItem'
 
-export default class UniqueItemManager<T extends UniqueItem> extends UIItemManager<T> {
+export default class UniqueItemManager<
+    T extends UniqueItem = UniqueItem,
+> extends UIItemManager<T> {
     constructor(type: Newable<T>, readonly unique = true) {
         super(type)
     }
