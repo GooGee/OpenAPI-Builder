@@ -9,9 +9,11 @@ export default class SchemaField extends UniqueItem {
     description = ''
     format = ''
     isArray = false
+    readOnly = false
     required = true
     schemaUI = 0
     type: DataType = DataType.string
+    writeOnly = false
 
     readonly reference = new Reference(0, TargetType.schemas)
 

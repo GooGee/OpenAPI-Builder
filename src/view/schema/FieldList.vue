@@ -2,7 +2,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>required / un</th>
+                <th>required / readOnly / writeOnly / un</th>
                 <th>type</th>
             </tr>
         </thead>
@@ -18,6 +18,30 @@
                         />
                         <label
                             :for="'required' + item.ui"
+                            class="custom-control-label"
+                        ></label>
+                    </span>
+                    <span class="custom-control custom-switch inline">
+                        <input
+                            :id="'readOnly' + item.ui"
+                            v-model="item.readOnly"
+                            type="checkbox"
+                            class="custom-control-input"
+                        />
+                        <label
+                            :for="'readOnly' + item.ui"
+                            class="custom-control-label"
+                        ></label>
+                    </span>
+                    <span class="custom-control custom-switch inline">
+                        <input
+                            :id="'writeOnly' + item.ui"
+                            v-model="item.writeOnly"
+                            type="checkbox"
+                            class="custom-control-input"
+                        />
+                        <label
+                            :for="'writeOnly' + item.ui"
                             class="custom-control-label"
                         ></label>
                     </span>
