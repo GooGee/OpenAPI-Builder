@@ -1,7 +1,10 @@
 import UniqueItem from '../Entity/UniqueItem'
-import Reference, { ReferenceManager, TargetType } from './Reference'
+import UniqueItemManager from '../Entity/UniqueItemManager'
+import Reference, { TargetType } from './Reference'
 
-export default class SecurityRequirement extends Reference {
+export default class SecurityRequirement extends UniqueItem {
+    readonly reference = new Reference(0, TargetType.security)
+
     toOAPIofTarget<T extends UniqueItem>(target?: T) {
         if (target === undefined) {
             return {}
@@ -12,8 +15,8 @@ export default class SecurityRequirement extends Reference {
     }
 }
 
-export class SecurityRequirementManager extends ReferenceManager<SecurityRequirement> {
+export class SecurityRequirementManager extends UniqueItemManager<SecurityRequirement> {
     constructor() {
-        super(TargetType.security, SecurityRequirement)
+        super(SecurityRequirement)
     }
 }

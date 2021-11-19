@@ -1,5 +1,4 @@
 import KeyValue from '../Entity/KeyValue'
-import Newable from '../Entity/Newable'
 import UIItem, { UIItemManager } from '../Entity/UIItem'
 import UniqueItem from '../Entity/UniqueItem'
 import ReferenceFinder from '../Service/ReferenceFinder'
@@ -58,14 +57,12 @@ export default class Reference extends UIItem {
     }
 }
 
-export class ReferenceManager<
-    T extends Reference = Reference,
-> extends UIItemManager<T> {
-    constructor(readonly targetType: TargetType, type: Newable<T> = Reference as any) {
-        super(type)
+export class ReferenceManager extends UIItemManager<Reference> {
+    constructor(readonly targetType: TargetType) {
+        super(Reference)
     }
 
-    add(item: T) {
+    add(item: Reference) {
         this.throwIfFind(item.ui)
         this.list.push(item)
     }
