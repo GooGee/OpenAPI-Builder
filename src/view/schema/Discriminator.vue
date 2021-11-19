@@ -3,48 +3,15 @@
         <input
             type="text"
             class="form-control mt11"
-            v-model="discriminator.propertyName"
+            v-model="sidebar.item.discriminator.propertyName"
             placeholder="propertyName"
         />
-
-        <table class="table">
-            <caption class="caption-top">
-                <h4>mapping</h4>
-            </caption>
-            <thead>
-                <tr>
-                    <th class="w111">un</th>
-                    <th>schema path</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in discriminator.manager.list" :key="item.ui">
-                    <td>
-                        <div class="btn-group">
-                            <DeleteButton
-                                :manager="discriminator.manager"
-                                :item="item"
-                            ></DeleteButton>
-                            <ChangeButton
-                                :manager="discriminator.manager"
-                                :item="item"
-                            ></ChangeButton>
-                        </div>
-                    </td>
-                    <td>
-                        <input v-model="item.value" type="text" class="form-control" />
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>
-                        <AddButton :manager="discriminator.manager"></AddButton>
-                    </td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
+        <h4 class="mtb11">mapping</h4>
+        <NameReferenceList :manager="sidebar.item.discriminator.referenceManager">
+            <AddButton
+                :manager="sidebar.item.discriminator.referenceManager"
+            ></AddButton>
+        </NameReferenceList>
     </div>
     <span v-else class="mtb11">Only for composition</span>
 </template>
@@ -52,23 +19,18 @@
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
 import SchemaComplex from '@/model/OAPI/SchemaComplex'
-import { computed, defineComponent, inject } from 'vue'
+import { defineComponent, inject } from 'vue'
 import AddButton from '../button/AddButton.vue'
-import ChangeButton from '../button/ChangeButton.vue'
-import DeleteButton from '../button/DeleteButton.vue'
+import NameReferenceList from '../oapi/NameReferenceList.vue'
 
 export default defineComponent({
     components: {
         AddButton,
-        ChangeButton,
-        DeleteButton,
+        NameReferenceList,
     },
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
-        const discriminator = computed(function () {
-            return sidebar.item!.discriminator
-        })
-        return { discriminator, sidebar }
+        return { sidebar }
     },
 })
 </script>
