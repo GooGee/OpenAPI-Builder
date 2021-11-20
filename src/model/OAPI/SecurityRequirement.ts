@@ -1,22 +1,36 @@
-import UniqueItem from '../Entity/UniqueItem'
-import UniqueItemManager from '../Entity/UniqueItemManager'
-import Reference, { TargetType } from './Reference'
+import ReferenceFinder from '../Service/ReferenceFinder'
+import { ReferenceManager, TargetType } from './Reference'
+import SecurityScheme from './SecurityScheme'
 
-export default class SecurityRequirement extends UniqueItem {
-    readonly reference = new Reference(0, TargetType.security)
-
-    toOAPIofTarget<T extends UniqueItem>(target?: T) {
-        if (target === undefined) {
-            return {}
-        }
-        return {
-            [target.un]: [],
-        }
-    }
+interface OAPISecurityRequirement {
+    [key: string]: string[]
 }
 
-export class SecurityRequirementManager extends UniqueItemManager<SecurityRequirement> {
+export class SecurityRequirementManager extends ReferenceManager {
     constructor() {
-        super(SecurityRequirement)
+        super(TargetType.security)
+    }
+
+    toOAPIofTarget(target: SecurityScheme): OAPISecurityRequirement {
+        const set: Set<string> = new Set()
+        target.oAuthFlowManager.list.forEach((flow) => {
+            flow.scopeManager.list.forEach((scope) => set.add(scope.un))
+        })
+        return {
+            [target.un]: Array.from(set.values()),
+        }
+    }
+
+    toOAPI(finder: ReferenceFinder) {
+        const set = new Set(this.list.map((item) => item.ui))
+        const resultxx: OAPISecurityRequirement[] = []
+        const targetxx = finder.findManager(TargetType.security)
+            .list as SecurityScheme[]
+        targetxx.forEach((item) => {
+            if (set.has(item.ui)) {
+                resultxx.push(this.toOAPIofTarget(item))
+            }
+        })
+        return resultxx
     }
 }
