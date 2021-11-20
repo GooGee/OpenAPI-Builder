@@ -96,6 +96,15 @@
                             scheme
                         </router-link>
                     </li>
+                    <li>
+                        <router-link
+                            to="/security-scope"
+                            active-class="active"
+                            class="dropdown-item"
+                        >
+                            scope
+                        </router-link>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item dropdown">

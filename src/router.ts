@@ -101,6 +101,11 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/view/SecuritySchemePage.vue'),
     },
     {
+        path: '/security-scope',
+        name: 'security-scope',
+        component: () => import('@/view/SecurityScopePage.vue'),
+    },
+    {
         path: '/server',
         name: 'server',
         component: () => import('@/view/ServerPage.vue'),
