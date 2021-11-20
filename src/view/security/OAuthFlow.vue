@@ -32,39 +32,7 @@
             <tr>
                 <td class="text-right">scopes</td>
                 <td>
-                    <table class="table">
-                        <tbody>
-                            <tr v-for="scope in item.scopeManager.list" :key="scope.ui">
-                                <td>
-                                    <div class="btn-group">
-                                        <DeleteButton
-                                            :manager="item.scopeManager"
-                                            :item="scope"
-                                        ></DeleteButton>
-                                        <ChangeButton
-                                            :manager="item.scopeManager"
-                                            :item="scope"
-                                        ></ChangeButton>
-                                    </div>
-                                </td>
-                                <td>
-                                    <input
-                                        v-model="scope.value"
-                                        type="text"
-                                        class="form-control"
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    <AddButton :manager="item.scopeManager"></AddButton>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    <ReferenceList :manager="item.referenceManager"></ReferenceList>
                 </td>
             </tr>
         </tbody>
@@ -74,15 +42,11 @@
 <script lang="ts">
 import OAuthFlow from '@/model/OAPI/OAuthFlow'
 import { defineComponent, PropType } from 'vue'
-import AddButton from '../button/AddButton.vue'
-import ChangeButton from '../button/ChangeButton.vue'
-import DeleteButton from '../button/DeleteButton.vue'
+import ReferenceList from '../oapi/ReferenceList.vue'
 
 export default defineComponent({
     components: {
-        AddButton,
-        ChangeButton,
-        DeleteButton,
+        ReferenceList,
     },
     props: {
         item: {

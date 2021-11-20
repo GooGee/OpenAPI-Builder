@@ -11,10 +11,15 @@ export class SecurityRequirementManager extends ReferenceManager {
         super(TargetType.security)
     }
 
-    toOAPIofTarget(target: SecurityScheme): OAPISecurityRequirement {
+    toOAPIofTarget(
+        finder: ReferenceFinder,
+        target: SecurityScheme,
+    ): OAPISecurityRequirement {
         const set: Set<string> = new Set()
         target.oAuthFlowManager.list.forEach((flow) => {
-            flow.scopeManager.list.forEach((scope) => set.add(scope.un))
+            flow.referenceManager
+                .getTargetxx(finder)
+                .forEach((scope) => set.add(scope.un))
         })
         return {
             [target.un]: Array.from(set.values()),
@@ -28,7 +33,7 @@ export class SecurityRequirementManager extends ReferenceManager {
             .list as SecurityScheme[]
         targetxx.forEach((item) => {
             if (set.has(item.ui)) {
-                resultxx.push(this.toOAPIofTarget(item))
+                resultxx.push(this.toOAPIofTarget(finder, item))
             }
         })
         return resultxx

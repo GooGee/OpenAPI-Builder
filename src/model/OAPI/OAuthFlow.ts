@@ -1,8 +1,9 @@
-import KeyValue from '../Entity/KeyValue'
+import StringObject from '../Entity/StringObject'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import { ValueItemManager } from '../Entity/ValueItem'
 import ReferenceFinder from '../Service/ReferenceFinder'
+import { ReferenceManager, TargetType } from './Reference'
+import Scope from './Scope'
 
 enum OAuthFlowEnum {
     authorizationCode = 'authorizationCode',
@@ -11,16 +12,26 @@ enum OAuthFlowEnum {
     password = 'password',
 }
 
+interface OAPIOAuthFlow {
+    authorizationUrl?: string
+    refreshUrl: string
+    scopes: StringObject
+    tokenUrl?: string
+}
+
 export default class OAuthFlow extends UniqueItem {
     authorizationUrl = ''
     refreshUrl = ''
     tokenUrl = ''
-    readonly scopeManager = new ValueItemManager()
+    readonly referenceManager = new ReferenceManager(TargetType.scope)
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = {
+        const targetxx = this.referenceManager.getTargetxx(finder) as Scope[]
+        const scope: StringObject = {}
+        targetxx.forEach((item) => (scope[item.un] = item.description))
+        const result: OAPIOAuthFlow = {
             refreshUrl: this.refreshUrl,
-            scopes: this.scopeManager.toOAPI(finder),
+            scopes: scope,
         }
 
         if (this.un === OAuthFlowEnum.authorizationCode) {
