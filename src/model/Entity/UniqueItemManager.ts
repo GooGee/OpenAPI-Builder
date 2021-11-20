@@ -1,7 +1,7 @@
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { filter } from '../Service/Text'
-import KeyValue from './KeyValue'
 import Newable from './Newable'
+import ObjectMap from './ObjectMap'
 import { UIItemManager } from './UIItem'
 import UniqueItem from './UniqueItem'
 
@@ -20,10 +20,8 @@ export default class UniqueItemManager<
     }
 
     arrayToOAPI(list: T[], finder: ReferenceFinder) {
-        const map: KeyValue = {}
-        list.forEach((item) => {
-            map[item.un] = item.toOAPI(finder)
-        })
+        const map: ObjectMap<any> = {}
+        list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
         return map
     }
 

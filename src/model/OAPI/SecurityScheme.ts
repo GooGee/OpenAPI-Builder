@@ -1,8 +1,8 @@
-import KeyValue from '../Entity/KeyValue'
+import ObjectMap from '../Entity/ObjectMap'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import { OAuthFlowManager } from './OAuthFlow'
+import { OAPIOAuthFlow, OAuthFlowManager } from './OAuthFlow'
 import { Location } from './Parameter'
 
 export enum SecurityType {
@@ -10,6 +10,17 @@ export enum SecurityType {
     http = 'http',
     oauth2 = 'oauth2',
     openIdConnect = 'openIdConnect',
+}
+
+interface OAPISecurityScheme {
+    bearerFormat?: string
+    description: string
+    flows?: ObjectMap<OAPIOAuthFlow>
+    in?: string
+    name?: string
+    openIdConnectUrl?: string
+    scheme?: string
+    type: string
 }
 
 export default class SecurityScheme extends SideBarItem {
@@ -28,7 +39,7 @@ export default class SecurityScheme extends SideBarItem {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = {
+        const result: OAPISecurityScheme = {
             type: this.type,
             description: this.description,
         }

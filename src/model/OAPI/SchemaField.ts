@@ -1,9 +1,17 @@
-import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import DataType from './DataType'
-import Reference, { TargetType } from './Reference'
+import Reference, { OAPIReference, TargetType } from './Reference'
+
+export interface OAPISchemaField {
+    description?: string
+    format?: string
+    items?: OAPISchemaField | OAPIReference
+    readOnly?: boolean
+    type: string
+    writeOnly?: boolean
+}
 
 export default class SchemaField extends UniqueItem {
     description = ''
@@ -34,8 +42,10 @@ export default class SchemaField extends UniqueItem {
             return this.reference.toOAPI(finder)
         }
 
-        const result: KeyValue = {
+        const result: OAPISchemaField = {
+            readOnly: this.readOnly,
             type: this.type,
+            writeOnly: this.writeOnly,
         }
         if (this.format) {
             result.format = this.format
@@ -43,7 +53,7 @@ export default class SchemaField extends UniqueItem {
         return result
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinder): OAPISchemaField | OAPIReference {
         if (this.isArray) {
             return this.makeArray(finder)
         }

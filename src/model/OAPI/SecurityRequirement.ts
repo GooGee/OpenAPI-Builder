@@ -1,10 +1,9 @@
+import ObjectMap from '../Entity/ObjectMap'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { ReferenceManager, TargetType } from './Reference'
 import SecurityScheme from './SecurityScheme'
 
-interface OAPISecurityRequirement {
-    [key: string]: string[]
-}
+interface OAPISecurityRequirement extends ObjectMap<string[]> {}
 
 export class SecurityRequirementManager extends ReferenceManager {
     constructor() {
@@ -36,6 +35,6 @@ export class SecurityRequirementManager extends ReferenceManager {
                 resultxx.push(this.toOAPIofTarget(finder, item))
             }
         })
-        return resultxx
+        return resultxx as any
     }
 }

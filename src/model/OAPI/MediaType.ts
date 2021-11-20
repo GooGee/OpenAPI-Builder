@@ -1,15 +1,27 @@
 import JSONText from '../Entity/JSONText'
-import KeyValue from '../Entity/KeyValue'
+import ObjectMap from '../Entity/ObjectMap'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { EncodingManager } from './Encoding'
-import Reference, { ReferenceManager, TargetType } from './Reference'
+import Reference, {
+    OAPIReference,
+    OAPIReferenceMap,
+    ReferenceManager,
+    TargetType,
+} from './Reference'
 
 export enum MediaTypeEnum {
     form = 'multipart/form-data',
     json = 'application/json',
     xml = 'application/xml',
+}
+
+export interface OAPIMediaType {
+    encoding?: ObjectMap
+    example?: Object
+    examples?: OAPIReferenceMap
+    schema: OAPIReference
 }
 
 export default class MediaType extends UniqueItem {
@@ -19,7 +31,7 @@ export default class MediaType extends UniqueItem {
     readonly exampleManager = new ReferenceManager(TargetType.examples)
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = {
+        const result: OAPIMediaType = {
             schema: this.schema.toOAPI(finder),
         }
         if (this.exampleManager.list.length > 0) {
@@ -28,6 +40,10 @@ export default class MediaType extends UniqueItem {
         if (this.encodingManager.list.length > 0) {
             result.encoding = this.encodingManager.toOAPI(finder)
         }
+        if (this.example.text === '{}') {
+            return result
+        }
+        result.example = this.example.toOAPI()
         return result
     }
 }

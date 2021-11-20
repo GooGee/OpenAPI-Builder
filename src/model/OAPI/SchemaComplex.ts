@@ -1,12 +1,30 @@
 import JSONText from '../Entity/JSONText'
-import KeyValue from '../Entity/KeyValue'
+import ObjectMap from '../Entity/ObjectMap'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { CompositionType } from './DataType'
-import Discriminator from './Discriminator'
-import { ReferenceManager, TargetType } from './Reference'
+import Discriminator, { OAPIDiscriminator } from './Discriminator'
+import { OAPIReference, ReferenceManager, TargetType } from './Reference'
 import Schema from './Schema'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
+
+interface OAPISchema {
+    description: string
+    example?: Object
+    required?: string[]
+}
+
+type OAPIComposition = OAPISchema & {
+    [key in CompositionType]?: OAPIReference[]
+} & {
+    discriminator?: OAPIDiscriminator
+}
+
+interface OAPISchemaObject extends OAPISchema {
+    properties: ObjectMap
+    text?: Object
+    type: string
+}
 
 export default class SchemaComplex extends Schema {
     compositionType: CompositionType = CompositionType.allOf
@@ -26,13 +44,14 @@ export default class SchemaComplex extends Schema {
         finder: ReferenceFinder,
         fieldManager: SchemaFieldManager,
         fieldxx: SchemaField[],
-    ): KeyValue {
+    ) {
         if (fieldxx.length === 0) {
-            return {}
+            return {} as Object
         }
 
-        const result: KeyValue = {
+        const result: OAPISchemaObject = {
             type: 'object',
+            description: this.description,
             properties: fieldManager.arrayToOAPI(fieldxx, finder),
         }
         const list = fieldxx.filter((one) => one.required).map((one) => one.un)
@@ -63,7 +82,8 @@ export default class SchemaComplex extends Schema {
         const fieldxx = fieldManager.findAllField(this.ui)
         if (this.referenceManager.list.length) {
             const list = this.referenceManager.toOAPIArray(finder)
-            const result: KeyValue = {
+            const result: OAPIComposition = {
+                description: this.description,
                 [this.compositionType]: list,
             }
             if (this.discriminator.propertyName) {
@@ -75,7 +95,7 @@ export default class SchemaComplex extends Schema {
                     .map((item) => item.un)
             }
             if (fieldxx.length) {
-                list.push(this.makeOAPI(finder, fieldManager, fieldxx))
+                list.push(this.makeOAPI(finder, fieldManager, fieldxx) as any)
             }
             return result
         }
@@ -90,10 +110,8 @@ export class SchemaManager extends UniqueItemManager<SchemaComplex> {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        const map: KeyValue = {}
-        this.list.forEach((item) => {
-            map[item.un] = item.toOAPI(finder)
-        })
+        const map: ObjectMap<OAPISchema | Object> = {}
+        this.list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
         return map
     }
 }

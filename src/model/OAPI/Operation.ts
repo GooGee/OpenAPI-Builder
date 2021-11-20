@@ -1,12 +1,13 @@
 import { exclude } from '../Decorator'
-import KeyValue from '../Entity/KeyValue'
+import ObjectMap from '../Entity/ObjectMap'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { CallBackManager } from './CallBack'
 import { NameReferenceManager } from './NameReference'
 import Path from './Path'
-import Reference, { ReferenceManager, TargetType } from './Reference'
+import Reference, { OAPIReference, ReferenceManager, TargetType } from './Reference'
+import Response from './Response'
 
 export enum OperationType {
     get = 'get',
@@ -15,6 +16,18 @@ export enum OperationType {
     patch = 'patch',
     post = 'post',
     put = 'put',
+}
+
+interface OAPIOperation {
+    callbacks?: ObjectMap<Response>
+    deprecated: boolean
+    description: string
+    operationId: string
+    parameters?: OAPIReference[]
+    requestBody?: OAPIReference
+    responses: ObjectMap<Response>
+    summary: string
+    tags: string[]
 }
 
 export default class Operation extends UniqueItem {
@@ -47,10 +60,11 @@ export default class Operation extends UniqueItem {
             .split('}')
             .join('')
         const tags = this.tagManager.getTargetxx(finder).map((tag) => tag.un)
-        const result: KeyValue = {
+        const result: OAPIOperation = {
             operationId: id,
             summary: this.summary,
             description: this.description,
+            deprecated: this.deprecated,
             responses: this.statusManager.toOAPI(finder),
             tags,
         }

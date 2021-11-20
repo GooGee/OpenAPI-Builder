@@ -1,8 +1,17 @@
-import KeyValue from '../Entity/KeyValue'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import { ReferenceManager, TargetType } from './Reference'
+import { OAPIReferenceMap, ReferenceManager, TargetType } from './Reference'
+
+interface OAPIEncoding {
+    allowReserved: boolean
+    contentType: string
+    explode: boolean
+    headers: OAPIReferenceMap
+    style: string
+}
+
+interface OAPIEncodingMap {}
 
 export default class Encoding extends UniqueItem {
     allowReserved = false
@@ -12,7 +21,7 @@ export default class Encoding extends UniqueItem {
     style = ''
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = {
+        const result: OAPIEncoding = {
             allowReserved: this.allowReserved,
             contentType: this.contentType,
             explode: this.explode,

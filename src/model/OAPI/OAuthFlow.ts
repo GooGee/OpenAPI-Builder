@@ -12,7 +12,7 @@ enum OAuthFlowEnum {
     password = 'password',
 }
 
-interface OAPIOAuthFlow {
+export interface OAPIOAuthFlow {
     authorizationUrl?: string
     refreshUrl: string
     scopes: ObjectMap

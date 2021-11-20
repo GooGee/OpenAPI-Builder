@@ -1,8 +1,15 @@
-import KeyValue from '../Entity/KeyValue'
+import ObjectMap from '../Entity/ObjectMap'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import { ReferenceManager, TargetType } from './Reference'
+import { OAPIServerVariable } from './ServerVariable'
+
+interface OAPIServer {
+    description: string
+    url: string
+    variables?: ObjectMap<OAPIServerVariable>
+}
 
 export default class Server extends SideBarItem {
     readonly referenceManager = new ReferenceManager(TargetType.variable)
@@ -16,7 +23,7 @@ export default class Server extends SideBarItem {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = {
+        const result: OAPIServer = {
             url: this.url,
             description: this.description,
         }

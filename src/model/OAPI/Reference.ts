@@ -1,4 +1,4 @@
-import KeyValue from '../Entity/KeyValue'
+import ObjectMap from '../Entity/ObjectMap'
 import UIItem, { UIItemManager } from '../Entity/UIItem'
 import UniqueItem from '../Entity/UniqueItem'
 import ReferenceFinder from '../Service/ReferenceFinder'
@@ -18,6 +18,12 @@ export enum TargetType {
     tag = 'tag',
     variable = 'variable',
 }
+
+export interface OAPIReference {
+    $ref: string
+}
+
+export interface OAPIReferenceMap extends ObjectMap<OAPIReference> {}
 
 export default class Reference extends UIItem {
     constructor(ui: number, readonly type: TargetType) {
@@ -41,12 +47,12 @@ export default class Reference extends UIItem {
         return `#/components/${this.type}/${source.un}`
     }
 
-    toOAPI(finder: ReferenceFinder): KeyValue {
+    toOAPI(finder: ReferenceFinder): OAPIReference {
         const target = finder.find(this.ui, this.type)
         return this.toOAPIofTarget(target)
     }
 
-    toOAPIofTarget<T extends UniqueItem>(target?: T): KeyValue {
+    toOAPIofTarget<T extends UniqueItem>(target?: T): OAPIReference {
         if (target === undefined) {
             return {
                 $ref: '??',
@@ -85,7 +91,7 @@ export class ReferenceManager extends UIItemManager<Reference> {
 
     toOAPI(finder: ReferenceFinder) {
         const targetxx = this.getTargetxx(finder)
-        const map: KeyValue = {}
+        const map: OAPIReferenceMap = {}
         this.list.forEach((item) => {
             const found = targetxx.find((aa) => aa.ui === item.ui)
             if (found) {
@@ -99,10 +105,7 @@ export class ReferenceManager extends UIItemManager<Reference> {
         const targetxx = this.getTargetxx(finder)
         return this.list.map((item) => {
             const found = targetxx.find((aa) => aa.ui === item.ui)
-            if (found) {
-                return item.toOAPIofTarget(found)
-            }
-            return null
+            return item.toOAPIofTarget(found)
         })
     }
 }

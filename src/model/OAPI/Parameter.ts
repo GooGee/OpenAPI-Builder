@@ -1,8 +1,8 @@
-import KeyValue from '../Entity/KeyValue'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import SchemaField from './SchemaField'
+import { OAPIReference } from './Reference'
+import SchemaField, { OAPISchemaField } from './SchemaField'
 
 export enum Location {
     cookie = 'cookie',
@@ -11,9 +11,19 @@ export enum Location {
     query = 'query',
 }
 
+interface OAPIParameter {
+    allowEmptyValue: boolean
+    deprecated: boolean
+    description: string
+    example: string
+    in?: string
+    name?: string
+    required: boolean
+    schema: OAPISchemaField | OAPIReference
+}
+
 export default class Parameter extends SideBarItem {
     allowEmptyValue = false
-
     deprecated = false
     description = ''
     example = ''
@@ -29,9 +39,12 @@ export default class Parameter extends SideBarItem {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        const result: KeyValue = {
-            required: this.required,
+        const result: OAPIParameter = {
+            allowEmptyValue: this.allowEmptyValue,
+            deprecated: this.deprecated,
             description: this.description,
+            example: this.example,
+            required: this.required,
             schema: this.schema.toOAPI(finder),
         }
 

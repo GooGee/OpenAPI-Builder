@@ -1,7 +1,7 @@
 import Item from './Item'
 
 export default class JSONText extends Item {
-    value = {}
+    value: Object = {}
 
     get text() {
         return JSON.stringify(this.value, undefined, 4)
@@ -11,7 +11,7 @@ export default class JSONText extends Item {
         this.value = JSON.parse(text)
     }
 
-    toOAPI() {
+    toOAPI(): Object {
         return this.value
     }
 }
