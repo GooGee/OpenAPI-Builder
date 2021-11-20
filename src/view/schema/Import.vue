@@ -21,8 +21,8 @@
 
 <script lang="ts">
 import { ImportItemManager } from '@/model/Entity/ImportItem'
+import ObjectMap from '@/model/Entity/ObjectMap'
 import SideBar from '@/model/Entity/SideBar'
-import StringObject from '@/model/Entity/StringObject'
 import SchemaComplex from '@/model/OAPI/SchemaComplex'
 import Converter from '@/model/Service/Converter'
 import Toast from '@/model/Service/Toast'
@@ -40,7 +40,7 @@ export default defineComponent({
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
 
         const importing = ref(true)
-        const itemxx = ref<StringObject[]>([])
+        const itemxx = ref<ObjectMap[]>([])
         const valuexx = ref<string[]>([])
 
         const manager = new ImportItemManager()
@@ -55,7 +55,7 @@ export default defineComponent({
         }
         addKey()
 
-        function showMap(result: StringObject[]) {
+        function showMap(result: ObjectMap[]) {
             importing.value = false
             itemxx.value = result
             if (result.length) {

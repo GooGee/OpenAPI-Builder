@@ -1,4 +1,4 @@
-import StringObject from '../Entity/StringObject'
+import ObjectMap from '../Entity/ObjectMap'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
@@ -15,7 +15,7 @@ enum OAuthFlowEnum {
 interface OAPIOAuthFlow {
     authorizationUrl?: string
     refreshUrl: string
-    scopes: StringObject
+    scopes: ObjectMap
     tokenUrl?: string
 }
 
@@ -27,7 +27,7 @@ export default class OAuthFlow extends UniqueItem {
 
     toOAPI(finder: ReferenceFinder) {
         const targetxx = this.referenceManager.getTargetxx(finder) as Scope[]
-        const scope: StringObject = {}
+        const scope: ObjectMap = {}
         targetxx.forEach((item) => (scope[item.un] = item.description))
         const result: OAPIOAuthFlow = {
             refreshUrl: this.refreshUrl,

@@ -1,11 +1,11 @@
-import StringObject from '../Entity/StringObject'
+import ObjectMap from '../Entity/ObjectMap'
 
-export function migrate(data: StringObject[], keymap: Map<string, string>) {
+export function migrate(data: ObjectMap[], keymap: Map<string, string>) {
     // console.log(keymap)
-    const list: StringObject[] = []
+    const list: ObjectMap[] = []
     const keyxx = Array.from(keymap.keys())
     data.forEach((item) => {
-        const one = {} as StringObject
+        const one = {} as ObjectMap
         keyxx.forEach((key) => {
             const itemKey = keymap.get(key)
             if (itemKey) {
