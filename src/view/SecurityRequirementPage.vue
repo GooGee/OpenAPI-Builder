@@ -3,8 +3,18 @@
         <div class="col-3"></div>
 
         <div class="col-9">
-            <h2>Security Requirement</h2>
-            <ReferenceList :manager="manager"></ReferenceList>
+            <table class="table">
+                <caption class="caption-top">
+                    <h2>Security Requirement</h2>
+                </caption>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ReferenceList :manager="manager"></ReferenceList>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </template>
