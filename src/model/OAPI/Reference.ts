@@ -13,6 +13,7 @@ export enum TargetType {
     requestBodies = 'requestBodies',
     responses = 'responses',
     schemas = 'schemas',
+    scope = 'scope',
     security = 'security',
     tag = 'tag',
     variable = 'variable',

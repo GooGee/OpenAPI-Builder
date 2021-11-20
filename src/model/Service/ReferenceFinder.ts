@@ -37,6 +37,9 @@ export default class ReferenceFinder {
             case TargetType.schemas:
                 return this.project.oapi.component.schemaManager
 
+            case TargetType.scope:
+                return this.project.oapi.scopeManager
+
             case TargetType.security:
                 return this.project.oapi.component.securitySchemeManager
 

@@ -5,6 +5,7 @@ import External from './External'
 import Info from './Info'
 import { PathManager } from './Path'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
+import { ScopeManager } from './Scope'
 import { SecurityRequirementManager } from './SecurityRequirement'
 import { ServerManager } from './Server'
 import { ServerVariableManager } from './ServerVariable'
@@ -18,6 +19,7 @@ export default class Document extends Item {
     readonly fieldManager = new SchemaFieldManager(false)
     readonly info = new Info()
     readonly pathManager = new PathManager()
+    readonly scopeManager = new ScopeManager()
     readonly securityManager = new SecurityRequirementManager()
     readonly serverManager = new ServerManager()
     readonly serverVariableManager = new ServerVariableManager()
