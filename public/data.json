@@ -673,6 +673,54 @@
                 "global": false
             },
             {
+                "un": "make SecurityScope list",
+                "_ui": 71,
+                "color": "#00f",
+                "description": "e.g. list:user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('list:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScope create",
+                "_ui": 72,
+                "color": "#00f",
+                "description": "e.g. create:user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('create:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScope delete",
+                "_ui": 73,
+                "color": "#00f",
+                "description": "e.g. delete:user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('delete:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScope read",
+                "_ui": 74,
+                "color": "#00f",
+                "description": "e.g. read:user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('read:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScope write",
+                "_ui": 75,
+                "color": "#00f",
+                "description": "e.g. write:user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('write:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScheme",
+                "_ui": 76,
+                "color": "#00f",
+                "description": "e.g. user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const item = dd.generator.securityScheme.make(dd.schema.snakeCase)\n    dd.generator.securityScheme.add(item)\n}",
+                "global": false
+            },
+            {
                 "un": "make Example of RequestBody get many",
                 "_ui": 81,
                 "color": "#08f",
