@@ -5,7 +5,17 @@
         </div>
 
         <div v-if="sidebar.item" class="col-9">
-            <ServerVariable :item="sidebar.item"></ServerVariable>
+            <Enumer :item="sidebar.item">
+                <tr>
+                    <td class="text-right">default</td>
+                    <td>
+                        <input
+                            type="text"
+                            class="form-control"
+                            v-model="sidebar.item.default"
+                        />
+                    </td></tr
+            ></Enumer>
         </div>
     </div>
 </template>
@@ -14,12 +24,12 @@
 import { SideBarEnum } from '@/model/Entity/SideBar'
 import ss from '@/ss'
 import { defineComponent, reactive } from 'vue'
-import ServerVariable from './oapi/ServerVariable.vue'
+import Enumer from './oapi/Enumer.vue'
 import SideBar from './part/SideBar.vue'
 
 export default defineComponent({
     components: {
-        ServerVariable,
+        Enumer,
         SideBar,
     },
     setup(props, context) {

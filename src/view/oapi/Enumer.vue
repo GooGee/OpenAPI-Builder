@@ -11,17 +11,7 @@
                     />
                 </td>
             </tr>
-            <tr>
-                <td class="text-right">default</td>
-                <td>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="default"
-                        v-model="item.default"
-                    />
-                </td>
-            </tr>
+            <slot></slot>
             <tr>
                 <td class="text-right">enum</td>
                 <td>
