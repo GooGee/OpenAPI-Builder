@@ -33,6 +33,10 @@ export default class Generator {
         return this.project.oapi.component.schemaManager
     }
 
+    get scopeManager() {
+        return this.project.oapi.scopeManager
+    }
+
     get securityRequirement() {
         return this.project.oapi.securityManager
     }
