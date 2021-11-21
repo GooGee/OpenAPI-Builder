@@ -19,6 +19,11 @@ export const routes: Array<RouteRecordRaw> = [
         ],
     },
     {
+        path: '/enumer',
+        name: 'enumer',
+        component: () => import('@/view/EnumerPage.vue'),
+    },
+    {
         path: '/example',
         name: 'example',
         component: () => import('@/view/ExamplePage.vue'),
