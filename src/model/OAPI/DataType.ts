@@ -7,6 +7,7 @@ export enum CompositionType {
 
 enum DataType {
     boolean = 'boolean',
+    enumer = 'enumer',
     integer = 'integer',
     number = 'number',
     reference = 'reference',

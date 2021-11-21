@@ -20,13 +20,33 @@ export default class SchemaField extends UniqueItem {
     readOnly = false
     required = true
     schemaUI = 0
-    type: DataType = DataType.string
+    protected _type: DataType = DataType.string
     writeOnly = false
 
     readonly reference = new Reference(0, TargetType.schemas)
 
+    get isEnumer() {
+        return this.type === DataType.enumer
+    }
+
+    get isReference() {
+        return this.isEnumer || this.type === DataType.reference
+    }
+
+    get type() {
+        return this._type
+    }
+
+    set type(type: DataType) {
+        this._type = type
+        if (type === DataType.enumer) {
+            this.reference.type = TargetType.enumer
+        } else if (type === DataType.reference) {
+            this.reference.type = TargetType.schemas
+        }
+    }
+
     refer(ui: number) {
-        this.type = DataType.reference
         this.reference.ui = ui
     }
 

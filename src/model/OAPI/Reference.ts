@@ -27,7 +27,7 @@ export interface OAPIReference {
 export interface OAPIReferenceMap extends ObjectMap<OAPIReference> {}
 
 export default class Reference extends UIItem {
-    constructor(ui: number, readonly type: TargetType) {
+    constructor(ui: number, public type: TargetType) {
         super()
         this.ui = ui
     }

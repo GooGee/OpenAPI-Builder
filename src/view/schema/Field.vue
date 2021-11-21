@@ -12,7 +12,7 @@
         </select>
 
         <Reference
-            v-if="schema.type === 'reference'"
+            v-if="schema.isReference"
             :reference="schema.reference"
         ></Reference>
 
