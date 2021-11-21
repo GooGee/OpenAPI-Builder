@@ -1,3 +1,4 @@
+import { EnumerManager } from '../Entity/Enumer'
 import Item from '../Entity/Item'
 import ReferenceFinder from '../Service/ReferenceFinder'
 import Component from './Component'
@@ -15,6 +16,7 @@ const Version = '3.0.3'
 
 export default class Document extends Item {
     readonly component = new Component()
+    readonly enumerManager = new EnumerManager()
     readonly externalDocs = new External()
     readonly fieldManager = new SchemaFieldManager(false)
     readonly info = new Info()

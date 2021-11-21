@@ -13,6 +13,9 @@ export default class ReferenceFinder {
 
     findManager(type: TargetType): UniqueItemManager {
         switch (type) {
+            case TargetType.enumer:
+                return this.project.oapi.enumerManager
+
             case TargetType.examples:
                 return this.project.oapi.component.exampleManager
 

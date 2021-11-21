@@ -10,6 +10,7 @@ export default class SideBar<T extends SideBarItem = SideBarItem> {
 }
 
 export enum SideBarEnum {
+    Enumer = 'Enumer',
     Example = 'Example',
     Header = 'Header',
     Parameter = 'Parameter',
@@ -33,6 +34,10 @@ export class SideBarManager {
         this.map.set(
             SideBarEnum.Preset,
             new SideBar(SideBarEnum.Preset, project.presetManager),
+        )
+        this.map.set(
+            SideBarEnum.Enumer,
+            new SideBar(SideBarEnum.Enumer, project.oapi.enumerManager),
         )
         this.map.set(
             SideBarEnum.Example,

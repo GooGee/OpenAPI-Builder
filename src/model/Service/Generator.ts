@@ -5,6 +5,10 @@ import SchemaComplex from '../OAPI/SchemaComplex'
 export default class Generator {
     constructor(readonly project: Project) {}
 
+    get enumerManager() {
+        return this.project.oapi.enumerManager
+    }
+
     get exampleManager() {
         return this.project.oapi.component.exampleManager
     }
