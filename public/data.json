@@ -328,7 +328,7 @@
                 "description": "",
                 "version": 1,
                 "propertyManager": {
-                    "nextUI": 20,
+                    "nextUI": 18,
                     "list": [
                         {
                             "un": "title",
@@ -427,20 +427,8 @@
                             "value": "true"
                         },
                         {
-                            "un": "readOnly",
-                            "_ui": 17,
-                            "tag": "",
-                            "value": "true"
-                        },
-                        {
-                            "un": "writeOnly",
-                            "_ui": 18,
-                            "tag": "",
-                            "value": "true"
-                        },
-                        {
                             "un": "deprecated",
-                            "_ui": 19,
+                            "_ui": 17,
                             "tag": "",
                             "value": "true"
                         }
@@ -822,9 +810,11 @@
                             "description": "",
                             "format": "int32",
                             "isArray": false,
+                            "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
                             "type": "integer",
+                            "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
                                 "type": "schemas"
@@ -848,9 +838,11 @@
                             "description": "",
                             "format": "date-time",
                             "isArray": false,
+                            "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
                             "type": "string",
+                            "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
                                 "type": "schemas"
@@ -883,9 +875,11 @@
                             "description": "",
                             "format": "",
                             "isArray": false,
+                            "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
                             "type": "integer",
+                            "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
                                 "type": "schemas"
@@ -909,9 +903,11 @@
                             "description": "",
                             "format": "",
                             "isArray": false,
+                            "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
                             "type": "integer",
+                            "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
                                 "type": "schemas"
@@ -935,9 +931,11 @@
                             "description": "",
                             "format": "",
                             "isArray": false,
+                            "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
                             "type": "integer",
+                            "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
                                 "type": "schemas"
@@ -961,9 +959,11 @@
                             "description": "",
                             "format": "",
                             "isArray": false,
+                            "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
                             "type": "integer",
+                            "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
                                 "type": "schemas"
@@ -1104,7 +1104,7 @@
                         "isTemplate": false,
                         "discriminator": {
                             "propertyName": "",
-                            "manager": {
+                            "referenceManager": {
                                 "nextUI": 1,
                                 "list": []
                             }
@@ -1134,7 +1134,7 @@
                         "isTemplate": false,
                         "discriminator": {
                             "propertyName": "",
-                            "manager": {
+                            "referenceManager": {
                                 "nextUI": 1,
                                 "list": []
                             }
@@ -1175,9 +1175,11 @@
                     "description": "",
                     "format": "",
                     "isArray": false,
+                    "readOnly": false,
                     "required": true,
                     "schemaUI": 1,
                     "type": "integer",
+                    "writeOnly": false,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
@@ -1189,9 +1191,11 @@
                     "description": "",
                     "format": "",
                     "isArray": false,
+                    "readOnly": false,
                     "required": true,
                     "schemaUI": 1,
                     "type": "string",
+                    "writeOnly": false,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
@@ -1203,9 +1207,11 @@
                     "description": "",
                     "format": "",
                     "isArray": false,
-                    "required": false,
+                    "readOnly": true,
+                    "required": true,
                     "schemaUI": 2,
                     "type": "integer",
+                    "writeOnly": false,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
@@ -1217,9 +1223,11 @@
                     "description": "",
                     "format": "",
                     "isArray": false,
+                    "readOnly": false,
                     "required": true,
                     "schemaUI": 2,
                     "type": "string",
+                    "writeOnly": false,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
@@ -1231,9 +1239,11 @@
                     "description": "",
                     "format": "",
                     "isArray": false,
+                    "readOnly": false,
                     "required": true,
                     "schemaUI": 2,
                     "type": "string",
+                    "writeOnly": false,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
@@ -1245,9 +1255,11 @@
                     "description": "",
                     "format": "",
                     "isArray": false,
+                    "readOnly": false,
                     "required": true,
                     "schemaUI": 2,
                     "type": "string",
+                    "writeOnly": true,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
@@ -1271,6 +1283,10 @@
             "version": "0.1.0"
         },
         "pathManager": {
+            "nextUI": 1,
+            "list": []
+        },
+        "scopeManager": {
             "nextUI": 1,
             "list": []
         },
