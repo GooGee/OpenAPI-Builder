@@ -4,6 +4,7 @@ import UniqueItem from '../Entity/UniqueItem'
 import ReferenceFinder from '../Service/ReferenceFinder'
 
 export enum TargetType {
+    encoding = 'encoding',
     enumer = 'enumer',
     examples = 'examples',
     field = 'field',
