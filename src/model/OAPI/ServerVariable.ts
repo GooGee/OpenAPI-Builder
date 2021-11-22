@@ -1,4 +1,5 @@
-import Enumer from '../Entity/Enumer'
+import SideBarItem from '../Entity/SideBarItem'
+import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 
 export interface OAPIServerVariable {
@@ -7,14 +8,17 @@ export interface OAPIServerVariable {
     enum?: string[]
 }
 
-export default class ServerVariable extends Enumer {
+export default class ServerVariable extends SideBarItem {
+    default = ''
+    readonly valueManager = new UniqueItemManager(UniqueItem)
+
     toOAPI() {
         const result: OAPIServerVariable = {
             default: this.default,
             description: this.description,
         }
         if (this.valueManager.list.length) {
-            result.enum = this.valueManager.list.map((value) => value.un)
+            result.enum = this.valueManager.toUNArray()
         }
         return result
     }
