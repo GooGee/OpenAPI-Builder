@@ -63,4 +63,11 @@ export class OAuthFlowManager extends UniqueItemManager<OAuthFlow> {
     constructor() {
         super(OAuthFlow)
     }
+
+    addToAll(ui: number) {
+        if (this.list.length) {
+            const item = this.list[0].referenceManager.make(ui)
+            this.list.forEach((flow) => flow.referenceManager.add(item))
+        }
+    }
 }
