@@ -19,10 +19,17 @@ export default class UniqueItemManager<
         super.add(item)
     }
 
-    arrayToOAPI(list: T[], finder: ReferenceFinder) {
+    static arrayToOAPI<T extends UniqueItem = UniqueItem>(
+        list: T[],
+        finder: ReferenceFinder,
+    ) {
         const map: ObjectMap<any> = {}
         list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
         return map
+    }
+
+    arrayToOAPI(list: T[], finder: ReferenceFinder) {
+        return UniqueItemManager.arrayToOAPI(list, finder)
     }
 
     filter(keyword: string) {
