@@ -10,6 +10,7 @@ enum DataType {
     enumer = 'enumer',
     integer = 'integer',
     number = 'number',
+    object = 'object',
     reference = 'reference',
     string = 'string',
 }

@@ -30,8 +30,12 @@ export default class SchemaField extends UniqueItem {
         return this.type === DataType.enumer
     }
 
+    get isObject() {
+        return this.type === DataType.object
+    }
+
     get isReference() {
-        return this.isEnumer || this.type === DataType.reference
+        return this.isEnumer || this.isObject || this.type === DataType.reference
     }
 
     get type() {
@@ -42,6 +46,8 @@ export default class SchemaField extends UniqueItem {
         this._type = type
         if (type === DataType.enumer) {
             this.reference.type = TargetType.enumer
+        } else if (type === DataType.object) {
+            this.reference.type = TargetType.encoding
         } else if (type === DataType.reference) {
             this.reference.type = TargetType.schemas
         }
@@ -64,12 +70,16 @@ export default class SchemaField extends UniqueItem {
         }
 
         const result: OAPISchemaField = {
-            readOnly: this.readOnly,
             type: this.type,
-            writeOnly: this.writeOnly,
         }
         if (this.format) {
             result.format = this.format
+        }
+        if (this.readOnly) {
+            result.readOnly = this.readOnly
+        }
+        if (this.writeOnly) {
+            result.writeOnly = this.writeOnly
         }
         return result
     }
