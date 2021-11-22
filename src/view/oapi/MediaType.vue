@@ -27,14 +27,12 @@
             </tr>
         </tbody>
     </table>
-    <EncodingList :manager="item.encodingManager"></EncodingList>
 </template>
 
 <script lang="ts">
 import MediaType from '@/model/OAPI/MediaType'
 import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import EncodingList from './EncodingList.vue'
 import JSONText from './JSONText.vue'
 import Reference from './Reference.vue'
 import ReferenceList from './ReferenceList.vue'
@@ -42,7 +40,6 @@ import ReferenceList from './ReferenceList.vue'
 export default defineComponent({
     components: {
         DeleteButton,
-        EncodingList,
         JSONText,
         Reference,
         ReferenceList,
