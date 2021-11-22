@@ -11,8 +11,6 @@ interface OAPIEncoding {
     style: string
 }
 
-interface OAPIEncodingMap {}
-
 export default class Encoding extends UniqueItem {
     allowReserved = false
     contentType = ''

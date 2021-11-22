@@ -22,11 +22,16 @@
                     </div>
                 </td>
                 <td>
-                    <input
-                        v-model="item.contentType"
-                        type="text"
-                        class="form-control"
-                    />
+                    <select v-model="item.contentType" class="form-control">
+                        <option disabled value="">----</option>
+                        <option
+                            v-for="type in contentTypexx"
+                            :value="type.ui"
+                            :key="type.ui"
+                        >
+                            {{ type.un }}
+                        </option>
+                    </select>
                 </td>
                 <td>
                     <input v-model="item.style" type="text" class="form-control" />
@@ -77,6 +82,7 @@
 
 <script lang="ts">
 import { EncodingManager } from '@/model/OAPI/Encoding'
+import ss from '@/ss'
 import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -93,6 +99,15 @@ export default defineComponent({
             type: Object as PropType<EncodingManager>,
             required: true,
         },
+    },
+    setup(props, context) {
+        const contentTypexx = ss.project.getPreset('ContentType')?.propertyManager.list
+        if (contentTypexx === undefined) {
+            throw new Error('Preset ContentType not found')
+        }
+        return {
+            contentTypexx,
+        }
     },
 })
 </script>
