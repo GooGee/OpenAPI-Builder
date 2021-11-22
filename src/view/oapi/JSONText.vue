@@ -5,7 +5,7 @@
         v-model="item.text"
         class="form-control mt11"
         spellcheck="false"
-        rows="11"
+        rows="5"
         readonly
     ></textarea>
 </template>

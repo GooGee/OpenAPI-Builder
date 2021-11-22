@@ -1,11 +1,95 @@
 {
     "version": 2,
     "presetManager": {
-        "nextUI": 7,
+        "nextUI": 8,
         "list": [
             {
-                "un": "DataFormat",
+                "un": "ContentType",
                 "_ui": 1,
+                "color": "",
+                "description": "",
+                "version": 1,
+                "propertyManager": {
+                    "nextUI": 13,
+                    "list": [
+                        {
+                            "un": "application/javascript",
+                            "_ui": 1,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "application/json",
+                            "_ui": 2,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "application/octet-stream",
+                            "_ui": 3,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "application/pdf",
+                            "_ui": 4,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "application/xml",
+                            "_ui": 5,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "application/zip",
+                            "_ui": 6,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "image/*",
+                            "_ui": 7,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "text/css",
+                            "_ui": 8,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "text/csv",
+                            "_ui": 9,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "text/html",
+                            "_ui": 10,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "text/plain",
+                            "_ui": 11,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "text/xml",
+                            "_ui": 12,
+                            "tag": "",
+                            "value": ""
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "DataFormat",
+                "_ui": 2,
                 "color": "",
                 "description": "",
                 "version": 1,
@@ -71,7 +155,7 @@
             },
             {
                 "un": "FieldName",
-                "_ui": 2,
+                "_ui": 3,
                 "color": "",
                 "description": "commonly used names",
                 "version": 1,
@@ -215,7 +299,7 @@
             },
             {
                 "un": "HttpStatus",
-                "_ui": 3,
+                "_ui": 4,
                 "color": "",
                 "description": "",
                 "version": 1,
@@ -257,7 +341,7 @@
             },
             {
                 "un": "MediaType",
-                "_ui": 4,
+                "_ui": 5,
                 "color": "",
                 "description": "",
                 "version": 1,
@@ -299,7 +383,7 @@
             },
             {
                 "un": "RequestBodyExcludeField",
-                "_ui": 5,
+                "_ui": 6,
                 "color": "",
                 "description": "field names will be excluded in RequestBody",
                 "version": 1,
@@ -323,7 +407,7 @@
             },
             {
                 "un": "SchemaProperty",
-                "_ui": 6,
+                "_ui": 7,
                 "color": "",
                 "description": "",
                 "version": 1,
@@ -673,51 +757,59 @@
                 "global": false
             },
             {
-                "un": "make SecurityScope list",
+                "un": "make SecurityScheme",
                 "_ui": 71,
                 "color": "#00f",
+                "description": "e.g. user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const item = dd.generator.securityScheme.make(dd.schema.snakeCase)\n    dd.generator.securityScheme.add(item)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScheme oauth2 implicit",
+                "_ui": 72,
+                "color": "#00f",
+                "description": "e.g. user",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const item = dd.generator.securityScheme.make(dd.schema.snakeCase)\n    dd.generator.securityScheme.add(item)\n    item.type = 'oauth2'\n\n    const flow = item.oAuthFlowManager.make('implicit')\n    item.oAuthFlowManager.add(flow)\n}",
+                "global": false
+            },
+            {
+                "un": "make SecurityScope list",
+                "_ui": 75,
+                "color": "#00f",
                 "description": "e.g. list:user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('list:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('list:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n\n    const item = dd.generator.securityScheme.findByUN(dd.schema.snakeCase)\n    if (item) {\n        item.oAuthFlowManager.addToAll(scope.ui)\n    }\n}",
                 "global": false
             },
             {
                 "un": "make SecurityScope create",
-                "_ui": 72,
+                "_ui": 76,
                 "color": "#00f",
                 "description": "e.g. create:user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('create:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('create:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n\n    const item = dd.generator.securityScheme.findByUN(dd.schema.snakeCase)\n    if (item) {\n        item.oAuthFlowManager.addToAll(scope.ui)\n    }\n}",
                 "global": false
             },
             {
                 "un": "make SecurityScope delete",
-                "_ui": 73,
+                "_ui": 77,
                 "color": "#00f",
                 "description": "e.g. delete:user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('delete:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('delete:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n\n    const item = dd.generator.securityScheme.findByUN(dd.schema.snakeCase)\n    if (item) {\n        item.oAuthFlowManager.addToAll(scope.ui)\n    }\n}",
                 "global": false
             },
             {
                 "un": "make SecurityScope read",
-                "_ui": 74,
+                "_ui": 78,
                 "color": "#00f",
                 "description": "e.g. read:user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('read:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('read:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n\n    const item = dd.generator.securityScheme.findByUN(dd.schema.snakeCase)\n    if (item) {\n        item.oAuthFlowManager.addToAll(scope.ui)\n    }\n}",
                 "global": false
             },
             {
                 "un": "make SecurityScope write",
-                "_ui": 75,
+                "_ui": 79,
                 "color": "#00f",
                 "description": "e.g. write:user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('write:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n}",
-                "global": false
-            },
-            {
-                "un": "make SecurityScheme",
-                "_ui": 76,
-                "color": "#00f",
-                "description": "e.g. user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const item = dd.generator.securityScheme.make(dd.schema.snakeCase)\n    dd.generator.securityScheme.add(item)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const scope = dd.generator.scopeManager.make('write:' + dd.schema.snakeCase)\n    dd.generator.scopeManager.add(scope)\n\n    const item = dd.generator.securityScheme.findByUN(dd.schema.snakeCase)\n    if (item) {\n        item.oAuthFlowManager.addToAll(scope.ui)\n    }\n}",
                 "global": false
             },
             {
@@ -861,7 +953,7 @@
                             "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
-                            "type": "integer",
+                            "_type": "integer",
                             "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
@@ -889,7 +981,7 @@
                             "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
-                            "type": "string",
+                            "_type": "string",
                             "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
@@ -926,7 +1018,7 @@
                             "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
-                            "type": "integer",
+                            "_type": "integer",
                             "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
@@ -954,7 +1046,7 @@
                             "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
-                            "type": "integer",
+                            "_type": "integer",
                             "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
@@ -982,7 +1074,7 @@
                             "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
-                            "type": "integer",
+                            "_type": "integer",
                             "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
@@ -1010,7 +1102,7 @@
                             "readOnly": false,
                             "required": true,
                             "schemaUI": 0,
-                            "type": "integer",
+                            "_type": "integer",
                             "writeOnly": false,
                             "reference": {
                                 "_ui": 0,
@@ -1052,10 +1144,6 @@
                                         "_ui": 1,
                                         "type": "schemas"
                                     },
-                                    "encodingManager": {
-                                        "nextUI": 1,
-                                        "list": []
-                                    },
                                     "exampleManager": {
                                         "list": [
                                             {
@@ -1092,10 +1180,6 @@
                                         "_ui": 1,
                                         "type": "schemas"
                                     },
-                                    "encodingManager": {
-                                        "nextUI": 1,
-                                        "list": []
-                                    },
                                     "exampleManager": {
                                         "list": []
                                     }
@@ -1126,10 +1210,6 @@
                                     "schema": {
                                         "_ui": 1,
                                         "type": "schemas"
-                                    },
-                                    "encodingManager": {
-                                        "nextUI": 1,
-                                        "list": []
                                     },
                                     "exampleManager": {
                                         "list": []
@@ -1210,6 +1290,14 @@
                 "list": []
             }
         },
+        "encodingManager": {
+            "nextUI": 1,
+            "list": []
+        },
+        "enumerManager": {
+            "nextUI": 1,
+            "list": []
+        },
         "externalDocs": {
             "description": "",
             "url": ""
@@ -1226,7 +1314,7 @@
                     "readOnly": false,
                     "required": true,
                     "schemaUI": 1,
-                    "type": "integer",
+                    "_type": "integer",
                     "writeOnly": false,
                     "reference": {
                         "_ui": 0,
@@ -1242,7 +1330,7 @@
                     "readOnly": false,
                     "required": true,
                     "schemaUI": 1,
-                    "type": "string",
+                    "_type": "string",
                     "writeOnly": false,
                     "reference": {
                         "_ui": 0,
@@ -1258,7 +1346,7 @@
                     "readOnly": true,
                     "required": true,
                     "schemaUI": 2,
-                    "type": "integer",
+                    "_type": "integer",
                     "writeOnly": false,
                     "reference": {
                         "_ui": 0,
@@ -1274,7 +1362,7 @@
                     "readOnly": false,
                     "required": true,
                     "schemaUI": 2,
-                    "type": "string",
+                    "_type": "string",
                     "writeOnly": false,
                     "reference": {
                         "_ui": 0,
@@ -1290,7 +1378,7 @@
                     "readOnly": false,
                     "required": true,
                     "schemaUI": 2,
-                    "type": "string",
+                    "_type": "string",
                     "writeOnly": false,
                     "reference": {
                         "_ui": 0,
@@ -1306,7 +1394,7 @@
                     "readOnly": false,
                     "required": true,
                     "schemaUI": 2,
-                    "type": "string",
+                    "_type": "string",
                     "writeOnly": true,
                     "reference": {
                         "_ui": 0,
