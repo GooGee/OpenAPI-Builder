@@ -5,7 +5,7 @@
         </div>
 
         <div v-if="sidebar.item" class="col-9">
-            <Enumer :item="sidebar.item">
+            <Enumer :item="sidebar.item" :isServerVariable="true">
                 <tr>
                     <td class="text-right">default</td>
                     <td>
