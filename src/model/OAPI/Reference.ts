@@ -40,6 +40,10 @@ export default class Reference extends UIItem {
         this._ui = ui
     }
 
+    getTarget(finder: ReferenceFinder) {
+        return finder.find(this.ui, this.type)
+    }
+
     getText<T extends UniqueItem>(source: T) {
         if (this.type === 'paths') {
             const name = source.un.split('/').join('~1')
@@ -49,8 +53,7 @@ export default class Reference extends UIItem {
     }
 
     toOAPI(finder: ReferenceFinder): OAPIReference {
-        const target = finder.find(this.ui, this.type)
-        return this.toOAPIofTarget(target)
+        return this.toOAPIofTarget(this.getTarget(finder))
     }
 
     toOAPIofTarget<T extends UniqueItem>(target?: T): OAPIReference {
@@ -108,5 +111,9 @@ export class ReferenceManager extends UIItemManager<Reference> {
             const found = targetxx.find((aa) => aa.ui === item.ui)
             return item.toOAPIofTarget(found)
         })
+    }
+
+    toUNArray(finder: ReferenceFinder) {
+        return this.getTargetxx(finder).map((item) => item.un)
     }
 }
