@@ -90,9 +90,7 @@ export default class SchemaComplex extends Schema {
                 result.discriminator = this.discriminator.toOAPI(finder)
             }
             if (this.requiredManager.list.length) {
-                result.required = this.requiredManager
-                    .getTargetxx(finder)
-                    .map((item) => item.un)
+                result.required = this.requiredManager.toUNArray(finder)
             }
             if (fieldxx.length) {
                 list.push(this.makeOAPI(finder, fieldManager, fieldxx) as any)

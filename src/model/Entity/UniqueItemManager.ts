@@ -93,4 +93,8 @@ export default class UniqueItemManager<
     toOAPI(finder: ReferenceFinder) {
         return this.arrayToOAPI(this.list, finder)
     }
+
+    toUNArray() {
+        return this.list.map((item) => item.un)
+    }
 }
