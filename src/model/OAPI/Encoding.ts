@@ -7,8 +7,8 @@ interface OAPIEncoding {
     allowReserved: boolean
     contentType: string
     explode: boolean
-    headers: OAPIReferenceMap
-    style: string
+    headers?: OAPIReferenceMap
+    style?: string
 }
 
 export default class Encoding extends UniqueItem {
@@ -23,8 +23,12 @@ export default class Encoding extends UniqueItem {
             allowReserved: this.allowReserved,
             contentType: this.contentType,
             explode: this.explode,
-            headers: this.headerManager.toOAPI(finder),
-            style: this.style,
+        }
+        if (this.headerManager.list.length) {
+            result.headers = this.headerManager.toOAPI(finder)
+        }
+        if (this.style) {
+            result.style = this.style
         }
         return result
     }
