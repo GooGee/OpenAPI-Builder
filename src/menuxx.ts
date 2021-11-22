@@ -25,6 +25,7 @@ const menuxx = [
     ]),
     new Menu('tag', '/tag'),
     new Menu('preset', '', [
+        new Menu('encoding', '/encoding'),
         new Menu('enumer', '/enumer'),
         new Menu('property', '/preset'),
         new Menu('script', '/script'),

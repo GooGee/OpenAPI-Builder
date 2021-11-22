@@ -19,6 +19,11 @@ export const routes: Array<RouteRecordRaw> = [
         ],
     },
     {
+        path: '/encoding',
+        name: 'encoding',
+        component: () => import('@/view/EncodingPage.vue'),
+    },
+    {
         path: '/enumer',
         name: 'enumer',
         component: () => import('@/view/EnumerPage.vue'),
