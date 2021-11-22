@@ -1,3 +1,4 @@
+import Enumer from '../Entity/Enumer'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
@@ -50,14 +51,14 @@ export default class SchemaField extends UniqueItem {
         this.reference.ui = ui
     }
 
-    makeArray(finder: ReferenceFinder) {
-        return {
-            type: 'array',
-            items: this.makeData(finder),
-        }
-    }
-
     makeData(finder: ReferenceFinder) {
+        if (this.isEnumer) {
+            const target = this.reference.getTarget(finder) as Enumer
+            if (target === undefined) {
+                throw new Error(`Enumer ${this.reference.ui} not found`)
+            }
+            return target.toOAPI()
+        }
         if (this.type === DataType.reference) {
             return this.reference.toOAPI(finder)
         }
@@ -74,11 +75,14 @@ export default class SchemaField extends UniqueItem {
     }
 
     toOAPI(finder: ReferenceFinder): OAPISchemaField | OAPIReference {
+        const data = this.makeData(finder)
         if (this.isArray) {
-            return this.makeArray(finder)
+            return {
+                type: 'array',
+                items: data,
+            }
         }
-
-        return this.makeData(finder)
+        return data
     }
 }
 
