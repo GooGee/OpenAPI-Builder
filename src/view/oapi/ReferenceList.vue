@@ -44,14 +44,18 @@ const ReferenceList = defineComponent({
 
         function select() {
             const listModal = store.listModal
-            listModal.showList(source, 'Select a ', function add(tag) {
-                try {
-                    const one = props.manager.make(tag.ui)
-                    props.manager.add(one)
-                } catch (error) {
-                    Toast.error(error.message)
-                }
-            })
+            listModal.showList(
+                source,
+                'Select ' + props.manager.targetType,
+                function add(tag) {
+                    try {
+                        const one = props.manager.make(tag.ui)
+                        props.manager.add(one)
+                    } catch (error) {
+                        Toast.error(error.message)
+                    }
+                },
+            )
         }
         return { list, select }
     },
