@@ -11,17 +11,7 @@
                     />
                 </td>
             </tr>
-            <slot v-if="isServerVariable"></slot>
-            <tr v-else>
-                <td class="text-right">type</td>
-                <td>
-                    <select v-model="item.type" class="form-control wa">
-                        <option value="integer">integer</option>
-                        <option value="number">number</option>
-                        <option value="string">string</option>
-                    </select>
-                </td>
-            </tr>
+            <slot></slot>
             <tr>
                 <td class="text-right">enum</td>
                 <td>
@@ -53,11 +43,6 @@ export default defineComponent({
         item: {
             type: Object as PropType<ServerVariable>,
             required: true,
-        },
-        isServerVariable: {
-            type: Boolean,
-            required: false,
-            default: false,
         },
     },
 })
