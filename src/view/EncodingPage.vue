@@ -25,9 +25,10 @@
                                     :manager="manager"
                                     :item="item"
                                 ></DeleteButton>
-                                <span class="btn btn-outline-secondary">
-                                    {{ item.un }}
-                                </span>
+                                <ChangeButton
+                                    :manager="manager"
+                                    :item="item"
+                                ></ChangeButton>
                             </div>
                         </td>
                         <td>
@@ -101,12 +102,14 @@
 import ss from '@/ss'
 import { defineComponent, reactive } from 'vue'
 import AddButton from './button/AddButton.vue'
+import ChangeButton from './button/ChangeButton.vue'
 import DeleteButton from './button/DeleteButton.vue'
 import ReferenceList from './oapi/ReferenceList.vue'
 
 export default defineComponent({
     components: {
         AddButton,
+        ChangeButton,
         DeleteButton,
         ReferenceList,
     },
