@@ -721,7 +721,7 @@
                 "_ui": 61,
                 "color": "#0ff",
                 "description": "e.g. 'get /user'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('get')\n    path.operationManager.add(operation)\n\n    const status = operation.statusManager.make('200')\n    operation.statusManager.add(status)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_x')\n    if (response) {\n        status.response.ui = response.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('get')\n    path.operationManager.add(operation)\n\n    const status = operation.statusManager.make('200')\n    operation.statusManager.add(status)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_x')\n    if (response) {\n        status.reference.ui = response.ui\n    }\n}",
                 "global": false
             },
             {
@@ -729,7 +729,7 @@
                 "_ui": 62,
                 "color": "#0ff",
                 "description": "e.g. 'post /user'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('post')\n    path.operationManager.add(operation)\n    const request = dd.vendor.requestBodyManager.findByUN(dd.schema.un + '_post')\n    if (request) {\n        operation.requestBody.ui = request.ui\n    }\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_1')\n    if (response) {\n        ok.response.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('post')\n    path.operationManager.add(operation)\n    const request = dd.vendor.requestBodyManager.findByUN(dd.schema.un + '_post')\n    if (request) {\n        operation.requestBody.ui = request.ui\n    }\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_1')\n    if (response) {\n        ok.reference.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.reference.ui = 1\n}",
                 "global": false
             },
             {
@@ -737,7 +737,7 @@
                 "_ui": 65,
                 "color": "#0ff",
                 "description": "e.g. 'delete /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('delete')\n    path.operationManager.add(operation)\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    ok.response.ui = 1\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('delete')\n    path.operationManager.add(operation)\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    ok.reference.ui = 1\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.reference.ui = 1\n}",
                 "global": false
             },
             {
@@ -745,7 +745,7 @@
                 "_ui": 66,
                 "color": "#0ff",
                 "description": "e.g. 'get /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('get')\n    path.operationManager.add(operation)\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_1')\n    if (response) {\n        ok.response.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('404')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('get')\n    path.operationManager.add(operation)\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_1')\n    if (response) {\n        ok.reference.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('404')\n    operation.statusManager.add(error)\n    error.reference.ui = 1\n}",
                 "global": false
             },
             {
@@ -753,7 +753,7 @@
                 "_ui": 67,
                 "color": "#0ff",
                 "description": "e.g. 'patch /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('patch')\n    path.operationManager.add(operation)\n    const request = dd.vendor.requestBodyManager.findByUN(dd.schema.un + '_patch')\n    if (request) {\n        operation.requestBody.ui = request.ui\n    }\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_1')\n    if (response) {\n        ok.response.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.response.ui = 1\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const uri = '/' + dd.schema.snakeCase + '/{id}'\n    const path = dd.vendor.pathManager.findByUN(uri)\n    if (path === undefined) {\n        throw new Error(`Path ${uri} not found`)\n    }\n\n    const operation = path.operationManager.make('patch')\n    path.operationManager.add(operation)\n    const request = dd.vendor.requestBodyManager.findByUN(dd.schema.un + '_patch')\n    if (request) {\n        operation.requestBody.ui = request.ui\n    }\n\n    const ok = operation.statusManager.make('200')\n    operation.statusManager.add(ok)\n    const response = dd.vendor.responseManager.findByUN(dd.schema.un + '_get_1')\n    if (response) {\n        ok.reference.ui = response.ui\n    }\n\n    const error = operation.statusManager.make('403')\n    operation.statusManager.add(error)\n    error.reference.ui = 1\n}",
                 "global": false
             },
             {
