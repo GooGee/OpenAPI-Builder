@@ -48,7 +48,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'path',
         component: () => import('@/view/PathPage.vue'),
         children: [
-            { path: '', redirect: '/path/property' },
+            { path: '', redirect: '/path/operation' },
             { path: 'operation', component: () => import('@/view/path/OperationList.vue') },
             { path: 'parameter', component: () => import('@/view/path/Parameter.vue') },
             { path: 'property', component: () => import('@/view/path/Property.vue') },
@@ -64,7 +64,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'request',
         component: () => import('@/view/RequestPage.vue'),
         children: [
-            { path: '', redirect: '/request/property' },
+            { path: '', redirect: '/request/content' },
             { path: 'content', component: () => import('@/view/response/Content.vue') },
             { path: 'property', component: () => import('@/view/response/Property.vue') },
         ],
@@ -74,7 +74,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'response',
         component: () => import('@/view/ResponsePage.vue'),
         children: [
-            { path: '', redirect: '/response/property' },
+            { path: '', redirect: '/response/content' },
             { path: 'content', component: () => import('@/view/response/Content.vue') },
             { path: 'header', component: () => import('@/view/response/Header.vue') },
             { path: 'property', component: () => import('@/view/response/Property.vue') },
@@ -85,7 +85,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: 'schema',
         component: () => import('@/view/SchemaPage.vue'),
         children: [
-            { path: '', redirect: '/schema/property' },
+            { path: '', redirect: '/schema/structure' },
             { path: 'discriminator', component: () => import('@/view/schema/Discriminator.vue') },
             { path: 'excluded', component: () => import('@/view/schema/ExcludedField.vue') },
             { path: 'import', component: () => import('@/view/schema/Import.vue') },
