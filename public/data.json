@@ -7,7 +7,7 @@
                 "un": "ContentType",
                 "_ui": 1,
                 "color": "",
-                "description": "",
+                "description": "ContentType of Encodeing",
                 "version": 1,
                 "propertyManager": {
                     "nextUI": 13,
@@ -91,7 +91,7 @@
                 "un": "DataFormat",
                 "_ui": 2,
                 "color": "",
-                "description": "",
+                "description": "format of Schema field",
                 "version": 1,
                 "propertyManager": {
                     "nextUI": 10,
@@ -343,7 +343,7 @@
                 "un": "MediaType",
                 "_ui": 5,
                 "color": "",
-                "description": "",
+                "description": "MediaType of RequestBody / Response",
                 "version": 1,
                 "propertyManager": {
                     "nextUI": 6,
@@ -1291,8 +1291,20 @@
             }
         },
         "encodingManager": {
-            "nextUI": 1,
-            "list": []
+            "nextUI": 2,
+            "list": [
+                {
+                    "un": "image",
+                    "_ui": 1,
+                    "allowReserved": false,
+                    "contentType": "image/*",
+                    "explode": false,
+                    "headerManager": {
+                        "list": []
+                    },
+                    "style": ""
+                }
+            ]
         },
         "enumerManager": {
             "nextUI": 1,
