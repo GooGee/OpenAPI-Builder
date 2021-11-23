@@ -3,6 +3,7 @@ import ColorEnum from './Entity/ColorEnum'
 import Project from './Entity/Project'
 import Schema from './OAPI/Schema'
 import Factory from './Service/Factory'
+import Vendor from './Vendor'
 
 export default interface DataForScript {
     ColorEnum: ColorEnum
@@ -10,4 +11,5 @@ export default interface DataForScript {
     lodash: LoDashStatic
     project: Project
     schema?: Schema
+    vendor: Vendor
 }

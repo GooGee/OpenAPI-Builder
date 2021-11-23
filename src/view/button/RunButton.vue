@@ -32,7 +32,7 @@ export default defineComponent({
     },
     setup(props, context) {
         const dd = Timer.wait(() => {
-            Text.run(props.script.code, ss.project, props.schema)
+            Text.run(props.script.code, ss, props.schema)
             context.emit('run')
             Toast.success('OK! Run ' + props.script.un)
             dd.stopWaiting()
