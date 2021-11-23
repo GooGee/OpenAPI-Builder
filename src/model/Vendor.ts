@@ -50,4 +50,56 @@ export default class Vendor {
         this.sbManager.bind(this.project)
         this.emitter.emit(EventEnum.ready)
     }
+
+    get enumerManager() {
+        return this.project.oapi.enumerManager
+    }
+
+    get exampleManager() {
+        return this.project.oapi.component.exampleManager
+    }
+
+    get headerManager() {
+        return this.project.oapi.component.headerManager
+    }
+
+    get parameterManager() {
+        return this.project.oapi.component.parameterManager
+    }
+
+    get pathManager() {
+        return this.project.oapi.pathManager
+    }
+
+    get requestBodyManager() {
+        return this.project.oapi.component.requestBodyManager
+    }
+
+    get responseManager() {
+        return this.project.oapi.component.responseManager
+    }
+
+    get schemaManager() {
+        return this.project.oapi.component.schemaManager
+    }
+
+    get scopeManager() {
+        return this.project.oapi.scopeManager
+    }
+
+    get securityRequirement() {
+        return this.project.oapi.securityManager
+    }
+
+    get securityScheme() {
+        return this.project.oapi.component.securitySchemeManager
+    }
+
+    get serverManager() {
+        return this.project.oapi.serverManager
+    }
+
+    get tagManager() {
+        return this.project.oapi.tagManager
+    }
 }
