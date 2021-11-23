@@ -2,7 +2,7 @@ import lodash from 'lodash'
 import ColorEnum from '../Entity/ColorEnum'
 import Project from '../Entity/Project'
 import UniqueItem from '../Entity/UniqueItem'
-import Generator from './Generator'
+import Factory from './Factory'
 
 export function filter(keyword: string, list: Array<UniqueItem>) {
     const re = new RegExp(keyword, 'i')
@@ -10,10 +10,10 @@ export function filter(keyword: string, list: Array<UniqueItem>) {
 }
 
 function run(code: string, project: Project, schema?: UniqueItem) {
-    const generator = new Generator(project)
+    const factory = new Factory(project)
     const data = {
         ColorEnum,
-        generator,
+        factory,
         lodash,
         project,
         schema,

@@ -585,7 +585,7 @@
                 "_ui": 21,
                 "color": "#f0f",
                 "description": "Schema is used in Response get many",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_get_x')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_get_x')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n}",
                 "global": false
             },
             {
@@ -593,7 +593,7 @@
                 "_ui": 22,
                 "color": "#f0f",
                 "description": "Schema is used in Response post",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_post')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_post')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
                 "global": false
             },
             {
@@ -609,7 +609,7 @@
                 "_ui": 26,
                 "color": "#f0f",
                 "description": "Schema is used in Response get one",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_get_1')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_get_1')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
                 "global": false
             },
             {
@@ -617,7 +617,7 @@
                 "_ui": 27,
                 "color": "#f0f",
                 "description": "Schema is used in Response patch",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_patch')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.generator.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.generator.schemaManager.make(dd.schema.un + '_Response_patch')\n    dd.generator.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
                 "global": false
             },
             {
@@ -625,7 +625,7 @@
                 "_ui": 31,
                 "color": "#f80",
                 "description": "e.g. for 'get /user'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_get_x')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_get_x')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_get_x')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.factory.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_get_x')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -633,7 +633,7 @@
                 "_ui": 32,
                 "color": "#f80",
                 "description": "e.g. for 'post /user'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_post')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_post')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_post')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.factory.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_post')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -641,7 +641,7 @@
                 "_ui": 35,
                 "color": "#f80",
                 "description": "e.g. for 'delete /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_delete')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_delete')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_delete')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.factory.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_delete')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -649,7 +649,7 @@
                 "_ui": 36,
                 "color": "#f80",
                 "description": "e.g. for 'get /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_get_1')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_get_1')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_get_1')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.factory.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_get_1')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -657,7 +657,7 @@
                 "_ui": 37,
                 "color": "#f80",
                 "description": "e.g. for 'patch /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_patch')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.generator.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_patch')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const rb = dd.generator.requestBodyManager.make(dd.schema.un + '_patch')\n    dd.generator.requestBodyManager.add(rb)\n\n    const mt = dd.factory.makeMediaTypeJSON(rb.mediaTypeManager)\n    rb.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_RequestBody_patch')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -665,7 +665,7 @@
                 "_ui": 41,
                 "color": "#ff0",
                 "description": "e.g. for 'get /user'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_get_x')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_get_x')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_get_x')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.factory.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_get_x')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -673,7 +673,7 @@
                 "_ui": 42,
                 "color": "#ff0",
                 "description": "e.g. for 'post /user'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_post')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_post')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_post')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.factory.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_post')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -681,7 +681,7 @@
                 "_ui": 45,
                 "color": "#ff0",
                 "description": "e.g. for 'delete /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_delete')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_delete')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_delete')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.factory.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_delete')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -689,7 +689,7 @@
                 "_ui": 46,
                 "color": "#ff0",
                 "description": "e.g. for 'get /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_get_1')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_get_1')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_get_1')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.factory.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_get_1')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
@@ -697,7 +697,7 @@
                 "_ui": 47,
                 "color": "#ff0",
                 "description": "e.g. for 'patch /user/{id}'",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_patch')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.generator.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_patch')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const response = dd.generator.responseManager.make(dd.schema.un + '_patch')\n    dd.generator.responseManager.add(response)\n\n    const mt = dd.factory.makeMediaTypeJSON(response.mediaTypeManager)\n    response.mediaTypeManager.add(mt)\n\n    const schema = dd.generator.schemaManager.findByUN(dd.schema.un + '_Response_patch')\n    if (schema) {\n        mt.schema.ui = schema.ui\n    }\n}",
                 "global": false
             },
             {
