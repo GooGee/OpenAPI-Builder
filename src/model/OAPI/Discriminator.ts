@@ -13,7 +13,7 @@ export default class Discriminator extends Item {
     propertyName = ''
     readonly referenceManager = new NameReferenceManager(TargetType.schemas)
 
-    makeOAPI(finder: ReferenceFinder) {
+    private makeMapping(finder: ReferenceFinder) {
         const map: Map<number, NameReference> = new Map()
         this.referenceManager.list.map((item) => map.set(item.ui, item))
         const uixx = this.referenceManager.list.map((item) => item.ui)
@@ -28,7 +28,7 @@ export default class Discriminator extends Item {
     toOAPI(finder: ReferenceFinder) {
         const result: OAPIDiscriminator = {
             propertyName: this.propertyName,
-            mapping: this.makeOAPI(finder),
+            mapping: this.makeMapping(finder),
         }
         return result
     }
