@@ -758,18 +758,38 @@
             },
             {
                 "un": "make SecurityScheme",
-                "_ui": 71,
+                "_ui": 70,
                 "color": "#00f",
                 "description": "e.g. user",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const item = dd.vendor.securityScheme.make(dd.schema.snakeCase)\n    dd.vendor.securityScheme.add(item)\n}",
                 "global": false
             },
             {
-                "un": "make SecurityScheme oauth2 implicit",
+                "un": "make OAuthFlow authorizationCode",
+                "_ui": 71,
+                "color": "#00f",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const found = dd.vendor.securityScheme.findByUN(dd.schema.snakeCase)\n    if (found === undefined) {\n        throw new Error(`SecurityScheme ${dd.schema.snakeCase} not found`)\n    }\n    const flow = found.oAuthFlowManager.make('authorizationCode')\n    found.oAuthFlowManager.add(flow)\n}",
+                "global": false
+            },
+            {
+                "un": "make OAuthFlow clientCredentials",
                 "_ui": 72,
                 "color": "#00f",
-                "description": "e.g. user",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const item = dd.vendor.securityScheme.make(dd.schema.snakeCase)\n    dd.vendor.securityScheme.add(item)\n    item.type = 'oauth2'\n\n    const flow = item.oAuthFlowManager.make('implicit')\n    item.oAuthFlowManager.add(flow)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const found = dd.vendor.securityScheme.findByUN(dd.schema.snakeCase)\n    if (found === undefined) {\n        throw new Error(`SecurityScheme ${dd.schema.snakeCase} not found`)\n    }\n    const flow = found.oAuthFlowManager.make('clientCredentials')\n    found.oAuthFlowManager.add(flow)\n}",
+                "global": false
+            },
+            {
+                "un": "make OAuthFlow implicit",
+                "_ui": 73,
+                "color": "#00f",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const found = dd.vendor.securityScheme.findByUN(dd.schema.snakeCase)\n    if (found === undefined) {\n        throw new Error(`SecurityScheme ${dd.schema.snakeCase} not found`)\n    }\n    const flow = found.oAuthFlowManager.make('implicit')\n    found.oAuthFlowManager.add(flow)\n}",
+                "global": false
+            },
+            {
+                "un": "make OAuthFlow password",
+                "_ui": 74,
+                "color": "#00f",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const found = dd.vendor.securityScheme.findByUN(dd.schema.snakeCase)\n    if (found === undefined) {\n        throw new Error(`SecurityScheme ${dd.schema.snakeCase} not found`)\n    }\n    const flow = found.oAuthFlowManager.make('password')\n    found.oAuthFlowManager.add(flow)\n}",
                 "global": false
             },
             {
