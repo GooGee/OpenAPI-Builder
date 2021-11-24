@@ -64,4 +64,8 @@ export class UIItemManager<T extends UIItem = UIItem> extends ItemManager<T> {
             throw new Error(`${this.type.name} already exists!`)
         }
     }
+
+    toUIArray() {
+        return this.list.map((item) => item.ui)
+    }
 }
