@@ -68,4 +68,10 @@ export class UIItemManager<T extends UIItem = UIItem> extends ItemManager<T> {
     toUIArray() {
         return this.list.map((item) => item.ui)
     }
+
+    toUIMap() {
+        const map: Map<number, T> = new Map()
+        this.list.forEach((item) => map.set(item.ui, item))
+        return map
+    }
 }
