@@ -2,7 +2,7 @@ import ReferenceFinder from '../Service/ReferenceFinder'
 import { filter } from '../Service/Text'
 import Newable from './Newable'
 import ObjectMap from './ObjectMap'
-import { UIItemManager } from './UIItem'
+import UIItemManager from './UIItemManager'
 import UniqueItem from './UniqueItem'
 
 export default class UniqueItemManager<

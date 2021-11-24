@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import { UIItemManager } from '@/model/Entity/UIItem'
+import UIItemManager from '@/model/Entity/UIItemManager'
 import UniqueItem from '@/model/Entity/UniqueItem'
 import { defineComponent, PropType } from 'vue'
 

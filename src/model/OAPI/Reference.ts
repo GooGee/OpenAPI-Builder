@@ -1,5 +1,6 @@
 import ObjectMap from '../Entity/ObjectMap'
-import UIItem, { UIItemManager } from '../Entity/UIItem'
+import UIItem from '../Entity/UIItem'
+import UIItemManager from '../Entity/UIItemManager'
 import UniqueItem from '../Entity/UniqueItem'
 import ReferenceFinder from '../Service/ReferenceFinder'
 
