@@ -10,7 +10,7 @@ import KeyValue from './KeyValue'
 export default class Item {
     protected getDescriptor(name: string) {
         let descriptor = null
-        let item: KeyValue = (this as Record<string, any>) as KeyValue
+        let item: KeyValue = this as KeyValue
         while (item) {
             descriptor = Object.getOwnPropertyDescriptor(item, name)
             if (descriptor) {
@@ -27,9 +27,7 @@ export default class Item {
         // console.log(this.constructor.name, excludedxx, includedxx)
         const list = includedxx.concat(Object.getOwnPropertyNames(this))
         const set = new Set(list)
-        excludedxx.forEach(item => {
-            set.delete(item)
-        })
+        excludedxx.forEach((item) => set.delete(item))
         return Array.from(set.keys())
     }
 
@@ -39,15 +37,13 @@ export default class Item {
         // console.log(this.constructor.name, excludedxx, includedxx)
         const list = includedxx.concat(Object.getOwnPropertyNames(this))
         const set = new Set(list)
-        excludedxx.forEach(item => {
-            set.delete(item)
-        })
+        excludedxx.forEach((item) => set.delete(item))
         return Array.from(set.keys())
     }
 
     load(source: Item) {
-        this.getKeyList().forEach(name => {
-            this.loadProperty(name, (source as Record<string, any>) as KeyValue)
+        this.getKeyList().forEach((name) => {
+            this.loadProperty(name, source as KeyValue)
         })
     }
 
@@ -66,7 +62,7 @@ export default class Item {
                 return
             }
 
-            const me: KeyValue = (this as Record<string, any>) as KeyValue
+            const me: KeyValue = this as KeyValue
             if (me[name] instanceof Item) {
                 const item = me[name] as Item
                 item.load(source[name] as Item)
@@ -74,8 +70,6 @@ export default class Item {
                 const item = me[name] as ItemManager<Item>
                 item.load(source[name] as ItemManager<Item>)
             } else {
-                // TypeError: 0 is read-only
-                // Object.assign(me[name], source[name])
                 me[name] = source[name]
             }
         }
@@ -83,14 +77,14 @@ export default class Item {
 
     toJSON(): KeyValue {
         const result: KeyValue = {}
-        this.getKeyList().forEach(name => {
+        this.getKeyList().forEach((name) => {
             const item = this[name as keyof this]
             if (item instanceof Item) {
                 result[name] = item.toJSON()
             } else if (item instanceof ItemManager) {
                 result[name] = item.toJSON()
             } else {
-                result[name] = (item as Record<string, any>) as KeyValue
+                result[name] = item as KeyValue
             }
         })
         return result
@@ -98,14 +92,14 @@ export default class Item {
 
     toOAPI(...args: any[]): any {
         const result: KeyValue = {}
-        this.getOAPIKeyList().forEach(name => {
+        this.getOAPIKeyList().forEach((name) => {
             const item = this[name as keyof this]
             if (item instanceof Item) {
                 result[name] = item.toOAPI()
             } else if (item instanceof ItemManager) {
                 result[name] = item.toOAPI()
             } else {
-                result[name] = (item as Record<string, any>) as KeyValue
+                result[name] = item as KeyValue
             }
         })
         return result

@@ -101,7 +101,11 @@ export default class UniqueItemManager<
         return this.arrayToOAPI(this.list, finder)
     }
 
+    static toUNArray<T extends UniqueItem = UniqueItem>(list: T[]) {
+        return list.map((item) => item.un)
+    }
+
     toUNArray() {
-        return this.list.map((item) => item.un)
+        return UniqueItemManager.toUNArray(this.list)
     }
 }

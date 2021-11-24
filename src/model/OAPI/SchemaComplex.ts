@@ -8,19 +8,19 @@ import { OAPIReference, ReferenceManager, TargetType } from './Reference'
 import Schema from './Schema'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
 
-interface OAPISchema {
+export interface OAPISchema {
     description: string
     example?: Object
     required?: string[]
 }
 
-type OAPIComposition = OAPISchema & {
+export type OAPIComposition = OAPISchema & {
     [key in CompositionType]?: OAPIReference[]
 } & {
     discriminator?: OAPIDiscriminator
 }
 
-interface OAPISchemaObject extends OAPISchema {
+export interface OAPISchemaObject extends OAPISchema {
     properties: ObjectMap
     text?: Object
     type: string

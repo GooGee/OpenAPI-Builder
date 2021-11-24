@@ -5,7 +5,7 @@ import ReferenceFinder from '../Service/ReferenceFinder'
 import { ReferenceManager, TargetType } from './Reference'
 import { OAPIServerVariable } from './ServerVariable'
 
-interface OAPIServer {
+export interface OAPIServer {
     description: string
     url: string
     variables?: ObjectMap<OAPIServerVariable>
