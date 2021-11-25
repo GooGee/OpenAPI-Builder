@@ -5,12 +5,12 @@ import {
     getOAPIIncludedList,
 } from '../Decorator'
 import ItemManager from './ItemManager'
-import KeyValue from './KeyValue'
+import ObjectMap from './ObjectMap'
 
 export default class Item {
     protected getDescriptor(name: string) {
         let descriptor = null
-        let item: KeyValue = this as KeyValue
+        let item: ObjectMap = this as ObjectMap<any>
         while (item) {
             descriptor = Object.getOwnPropertyDescriptor(item, name)
             if (descriptor) {
@@ -41,17 +41,17 @@ export default class Item {
         return Array.from(set.keys())
     }
 
-    load(source: Item) {
-        this.getKeyList().forEach((name) => {
-            this.loadProperty(name, source as KeyValue)
-        })
+    load<T extends Item = Item>(source: T) {
+        this.getKeyList().forEach((name) => this.loadProperty(name, source))
     }
 
-    protected loadProperty(name: string, source: KeyValue) {
+    protected loadProperty<T extends Item = Item>(name: string, source: T) {
         // console.log('-- load Property ' + name)
-        if (source[name] === undefined) {
+        const data = source[name as keyof T] as any
+        if (data === undefined) {
             return
         }
+
         const descriptor = this.getDescriptor(name)
         if (descriptor) {
             if (descriptor.writable) {
@@ -62,44 +62,34 @@ export default class Item {
                 return
             }
 
-            const me: KeyValue = this as KeyValue
-            if (me[name] instanceof Item) {
-                const item = me[name] as Item
-                item.load(source[name] as Item)
-            } else if (me[name] instanceof ItemManager) {
-                const item = me[name] as ItemManager<Item>
-                item.load(source[name] as ItemManager<Item>)
+            const key = name as keyof this
+            const property = this[key]
+            if (property instanceof Item) {
+                property.load(data)
+            } else if (property instanceof ItemManager) {
+                property.load(data)
             } else {
-                me[name] = source[name]
+                this[key] = data
             }
         }
     }
 
-    toJSON(): KeyValue {
-        const result: KeyValue = {}
-        this.getKeyList().forEach((name) => {
-            const item = this[name as keyof this]
-            if (item instanceof Item) {
-                result[name] = item.toJSON()
-            } else if (item instanceof ItemManager) {
-                result[name] = item.toJSON()
-            } else {
-                result[name] = item as KeyValue
-            }
-        })
+    toJSON() {
+        const result: ObjectMap<any> = {}
+        this.getKeyList().forEach((name) => (result[name] = this[name as keyof this]))
         return result
     }
 
-    toOAPI(...args: any[]): any {
-        const result: KeyValue = {}
+    toOAPI(...args: any[]) {
+        const result: ObjectMap<any> = {}
         this.getOAPIKeyList().forEach((name) => {
-            const item = this[name as keyof this]
-            if (item instanceof Item) {
-                result[name] = item.toOAPI()
-            } else if (item instanceof ItemManager) {
-                result[name] = item.toOAPI()
+            const property = this[name as keyof this]
+            if (property instanceof Item) {
+                result[name] = property.toOAPI()
+            } else if (property instanceof ItemManager) {
+                // result[name] = property.toOAPI()
             } else {
-                result[name] = item as KeyValue
+                result[name] = property
             }
         })
         return result
