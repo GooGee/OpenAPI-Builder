@@ -25,16 +25,15 @@ export class SecurityRequirementManager extends ReferenceManager {
         }
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPIArray(finder: ReferenceFinder) {
         const set = new Set(this.list.map((item) => item.ui))
         const resultxx: OAPISecurityRequirement[] = []
-        const targetxx = finder.findManager(TargetType.security)
-            .list as SecurityScheme[]
+        const targetxx = finder.findManager(TargetType.security).list
         targetxx.forEach((item) => {
             if (set.has(item.ui)) {
-                resultxx.push(this.toOAPIofTarget(finder, item))
+                resultxx.push(this.toOAPIofTarget(finder, item as SecurityScheme))
             }
         })
-        return resultxx as any
+        return resultxx as any[]
     }
 }

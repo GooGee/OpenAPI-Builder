@@ -54,7 +54,7 @@ export default class Reference extends UIItem {
         return `#/components/${this.type}/${source.un}`
     }
 
-    toOAPI(finder: ReferenceFinder): OAPIReference {
+    toOAPI(finder: ReferenceFinder) {
         return this.toOAPIofTarget(this.getTarget(finder))
     }
 

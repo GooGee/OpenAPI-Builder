@@ -108,7 +108,7 @@ export class SchemaManager extends UniqueItemManager<SchemaComplex> {
     }
 
     toOAPI(finder: ReferenceFinder) {
-        const map: ObjectMap<OAPISchema | Object> = {}
+        const map: ObjectMap<Object> = {}
         this.list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
         return map
     }
