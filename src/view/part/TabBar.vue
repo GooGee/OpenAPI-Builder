@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { routes } from '@/router'
+import { routexx } from '@/router'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -24,7 +24,7 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const route = routes.find((one) => one.path === props.path)
+        const route = routexx.find((one) => one.path === props.path)
         const list =
             route?.children?.filter((route) => route.redirect === undefined) ?? []
         return {

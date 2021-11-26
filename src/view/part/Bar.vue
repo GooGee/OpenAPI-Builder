@@ -6,10 +6,19 @@
         <ul class="navbar-nav mr-auto">
             <template v-for="menu in menuxx">
                 <li
-                    v-if="menu.menuxx.length"
-                    :key="menu.path"
-                    class="nav-item dropdown"
+                    v-if="menu.menuxx.length === 1"
+                    :key="menu.menuxx[0].path"
+                    class="nav-item"
                 >
+                    <router-link
+                        :to="menu.menuxx[0].path"
+                        active-class="active"
+                        class="nav-link"
+                    >
+                        {{ menu.menuxx[0].title }}
+                    </router-link>
+                </li>
+                <li v-else :key="menu.title" class="nav-item dropdown">
                     <span class="nav-link dropdown-toggle pointer">
                         {{ menu.title }}
                     </span>
@@ -24,11 +33,6 @@
                             </router-link>
                         </li>
                     </ul>
-                </li>
-                <li v-else :key="menu.path" class="nav-item">
-                    <router-link :to="menu.path" active-class="active" class="nav-link">
-                        {{ menu.title }}
-                    </router-link>
                 </li>
             </template>
         </ul>
