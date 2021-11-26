@@ -1,10 +1,3 @@
-export enum CompositionType {
-    allOf = 'allOf',
-    anyOf = 'anyOf',
-    multipleOf = 'multipleOf',
-    oneOf = 'oneOf',
-}
-
 enum DataType {
     boolean = 'boolean',
     enumer = 'enumer',
@@ -14,8 +7,6 @@ enum DataType {
     reference = 'reference',
     string = 'string',
 }
-
-export const compositionTypeList = Object.values(CompositionType)
 
 export const dataTypeList = Object.values(DataType)
 

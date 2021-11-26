@@ -2,11 +2,19 @@ import JSONText from '../Entity/JSONText'
 import ObjectMap from '../Entity/ObjectMap'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import ReferenceFinder from '../Service/ReferenceFinder'
-import { CompositionType } from './DataType'
 import Discriminator, { OAPIDiscriminator } from './Discriminator'
 import { OAPIReference, ReferenceManager, TargetType } from './Reference'
 import Schema from './Schema'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
+
+export enum CompositionType {
+    allOf = 'allOf',
+    anyOf = 'anyOf',
+    multipleOf = 'multipleOf',
+    oneOf = 'oneOf',
+}
+
+export const compositionTypeList = Object.values(CompositionType)
 
 export interface OAPISchema {
     description: string

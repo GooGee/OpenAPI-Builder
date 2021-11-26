@@ -48,8 +48,7 @@
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
-import { compositionTypeList } from '@/model/OAPI/DataType'
-import SchemaComplex from '@/model/OAPI/SchemaComplex'
+import SchemaComplex, { compositionTypeList } from '@/model/OAPI/SchemaComplex'
 import ss from '@/ss'
 import { defineComponent, inject } from 'vue'
 import JSONText from '../oapi/JSONText.vue'
