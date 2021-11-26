@@ -17,6 +17,7 @@ export enum TargetType {
     responses = 'responses',
     schemas = 'schemas',
     scope = 'scope',
+    script = 'script',
     security = 'security',
     tag = 'tag',
     variable = 'variable',
