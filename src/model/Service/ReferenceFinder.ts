@@ -28,6 +28,24 @@ export default class ReferenceFinder {
             case TargetType.headers:
                 return this.project.oapi.component.headerManager
 
+            case TargetType.LayerMediaType:
+                return this.project.LayerMediaTypeManager
+
+            case TargetType.LayerOperation:
+                return this.project.LayerOperationManager
+
+            case TargetType.LayerPath:
+                return this.project.LayerPathManager
+
+            case TargetType.LayerRequestBody:
+                return this.project.LayerRequestBodyManager
+
+            case TargetType.LayerResponse:
+                return this.project.LayerResponseManager
+
+            case TargetType.LayerSchema:
+                return this.project.LayerSchemaManager
+
             case TargetType.parameters:
                 return this.project.oapi.component.parameterManager
 

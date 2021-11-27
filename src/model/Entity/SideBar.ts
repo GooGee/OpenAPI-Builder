@@ -13,6 +13,12 @@ export enum SideBarEnum {
     Enumer = 'Enumer',
     Example = 'Example',
     Header = 'Header',
+    LayerMediaType = 'LayerMediaType',
+    LayerOperation = 'LayerOperation',
+    LayerPath = 'LayerPath',
+    LayerRequestBody = 'LayerRequestBody',
+    LayerResponse = 'LayerResponse',
+    LayerSchema = 'LayerSchema',
     Parameter = 'Parameter',
     Path = 'Path',
     Preset = 'Preset',
@@ -46,6 +52,30 @@ export class SideBarManager {
         this.map.set(
             SideBarEnum.Header,
             new SideBar(SideBarEnum.Header, project.oapi.component.headerManager),
+        )
+        this.map.set(
+            SideBarEnum.LayerMediaType,
+            new SideBar(SideBarEnum.LayerMediaType, project.LayerMediaTypeManager),
+        )
+        this.map.set(
+            SideBarEnum.LayerOperation,
+            new SideBar(SideBarEnum.LayerOperation, project.LayerOperationManager),
+        )
+        this.map.set(
+            SideBarEnum.LayerPath,
+            new SideBar(SideBarEnum.LayerPath, project.LayerPathManager),
+        )
+        this.map.set(
+            SideBarEnum.LayerRequestBody,
+            new SideBar(SideBarEnum.LayerRequestBody, project.LayerRequestBodyManager),
+        )
+        this.map.set(
+            SideBarEnum.LayerResponse,
+            new SideBar(SideBarEnum.LayerResponse, project.LayerResponseManager),
+        )
+        this.map.set(
+            SideBarEnum.LayerSchema,
+            new SideBar(SideBarEnum.LayerSchema, project.LayerSchemaManager),
         )
         this.map.set(
             SideBarEnum.Parameter,
