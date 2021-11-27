@@ -72,4 +72,23 @@ const menuxx = [
     ]),
 ]
 
+function addLayer() {
+    const group = new MenuGroup('layer', [])
+    menuxx.push(group)
+
+    const component = () => import('@/view/LayerPage.vue')
+    const list = [
+        'LayerMediaType',
+        'LayerOperation',
+        'LayerPath',
+        'LayerRequestBody',
+        'LayerResponse',
+        'LayerSchema',
+    ]
+    list.forEach((item) => {
+        group.menuxx.push(new Menu(item, '/' + item, '', component))
+    })
+}
+addLayer()
+
 export default menuxx
