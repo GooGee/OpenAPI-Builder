@@ -8,6 +8,6 @@ export default class Layer extends SideBarItem {
     readonly script = new Reference(0, TargetType.script)
 
     getScript(finder: ReferenceFinder) {
-        return finder.find(this.script.ui, TargetType.script) as Script
+        return finder.find<Script>(this.script.ui, TargetType.script)
     }
 }

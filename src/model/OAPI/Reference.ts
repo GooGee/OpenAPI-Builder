@@ -49,8 +49,8 @@ export default class Reference extends UIItem {
         this._ui = ui
     }
 
-    getTarget(finder: ReferenceFinder) {
-        return finder.find(this.ui, this.type)
+    getTarget<T extends UniqueItem>(finder: ReferenceFinder) {
+        return finder.find<T>(this.ui, this.type)
     }
 
     getText<T extends UniqueItem>(source: T) {
