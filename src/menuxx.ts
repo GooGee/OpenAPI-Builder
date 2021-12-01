@@ -65,6 +65,9 @@ const menuxx = [
         new Menu('server', '/server', '', () => import('@/view/ServerPage.vue')),
         new Menu('variable', '/server-variable', '', () => import('@/view/ServerVariablePage.vue')),
     ]),
+    new MenuGroup('', [
+        new Menu('flow', '/flow', '', () => import('@/view/FlowPage.vue')),
+    ]),
     new MenuGroup('preset', [
         new Menu('property', '/preset', '', () => import('@/view/PresetPage.vue')),
         new Menu('script', '/script', '', () => import('@/view/ScriptPage.vue')),
