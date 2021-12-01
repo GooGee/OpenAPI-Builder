@@ -40,6 +40,7 @@ export default class SchemaComplex extends Schema {
     readonly discriminator = new Discriminator()
     readonly example = new JSONText()
     readonly excludedManager = new ReferenceManager(TargetType.field)
+    readonly flowManager = new ReferenceManager(TargetType.flow)
     readonly referenceManager = new ReferenceManager(TargetType.schemas)
     readonly requiredManager = new ReferenceManager(TargetType.field)
     readonly text = new JSONText()

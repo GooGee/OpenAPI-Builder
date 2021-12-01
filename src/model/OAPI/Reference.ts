@@ -9,6 +9,7 @@ export enum TargetType {
     enumer = 'enumer',
     examples = 'examples',
     field = 'field',
+    flow = 'flow',
     headers = 'headers',
     links = 'links',
     parameters = 'parameters',

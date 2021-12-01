@@ -26,6 +26,9 @@ export default class ReferenceFinder {
             case TargetType.field:
                 return this.project.oapi.fieldManager
 
+            case TargetType.flow:
+                return this.project.layerManager
+
             case TargetType.headers:
                 return this.project.oapi.component.headerManager
 
