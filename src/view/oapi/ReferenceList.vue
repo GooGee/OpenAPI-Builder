@@ -6,6 +6,7 @@
                 :item="manager.find(item.ui)"
             ></DeleteButton>
             <span class="btn btn-outline-secondary"> {{ item.un }} </span>
+            <slot></slot>
         </div>
     </div>
     <span @click="select" class="btn btn-outline-primary"> + </span>
@@ -32,8 +33,7 @@ const ReferenceList = defineComponent({
     },
     setup(props, context) {
         const list = ref<UniqueItem[]>([])
-        const source = ss.project.finder.findManager(props.manager.targetType)
-            .list as UniqueItem[]
+        const source = ss.project.finder.findManager(props.manager.targetType).list
         watch(() => props.manager.list.length, getList, { immediate: true })
 
         function getList() {
