@@ -1,5 +1,647 @@
 {
     "version": 2,
+    "layerManager": {
+        "nextUI": 8,
+        "list": [
+            {
+                "un": "/path +get",
+                "_ui": 1,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}",
+                "suffix": "",
+                "operationManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "get",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "",
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "/path +post",
+                "_ui": 2,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}",
+                "suffix": "",
+                "operationManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "post",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                "mtManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "application/json",
+                                            "_ui": 1,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 5,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "un": "400",
+                                        "_ui": 2,
+                                        "unPattern": "Response400",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "401",
+                                        "_ui": 3,
+                                        "unPattern": "Response401",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "403",
+                                        "_ui": 4,
+                                        "unPattern": "Response403",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "/path/{id} +delete",
+                "_ui": 3,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}/{id}",
+                "suffix": "_1",
+                "operationManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "delete",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "",
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 6,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "Response",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "400",
+                                        "_ui": 2,
+                                        "unPattern": "Response400",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "401",
+                                        "_ui": 3,
+                                        "unPattern": "Response401",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "403",
+                                        "_ui": 4,
+                                        "unPattern": "Response403",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "404",
+                                        "_ui": 5,
+                                        "unPattern": "Response404",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "/path/{id} +get",
+                "_ui": 4,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}/{id}",
+                "suffix": "_1",
+                "operationManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "get",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "",
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 3,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "un": "404",
+                                        "_ui": 2,
+                                        "unPattern": "Response404",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "/path/{id} +patch",
+                "_ui": 5,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}/{id}",
+                "suffix": "_1",
+                "operationManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "patch",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                "mtManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "application/json",
+                                            "_ui": 1,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 6,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "400",
+                                        "_ui": 2,
+                                        "unPattern": "Response400",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "401",
+                                        "_ui": 3,
+                                        "unPattern": "Response401",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "403",
+                                        "_ui": 4,
+                                        "unPattern": "Response403",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "404",
+                                        "_ui": 5,
+                                        "unPattern": "Response404",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "/path +get +post",
+                "_ui": 6,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}",
+                "suffix": "",
+                "operationManager": {
+                    "nextUI": 3,
+                    "list": [
+                        {
+                            "un": "get",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "",
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "un": "post",
+                            "_ui": 2,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                "mtManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "application/json",
+                                            "_ui": 1,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 5,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "un": "400",
+                                        "_ui": 2,
+                                        "unPattern": "Response400",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "401",
+                                        "_ui": 3,
+                                        "unPattern": "Response401",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "403",
+                                        "_ui": 4,
+                                        "unPattern": "Response403",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "un": "/path/{id} +delete +get +patch",
+                "_ui": 7,
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}/{id}",
+                "suffix": "_1",
+                "operationManager": {
+                    "nextUI": 4,
+                    "list": [
+                        {
+                            "un": "delete",
+                            "_ui": 1,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "",
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 6,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "Response",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "400",
+                                        "_ui": 2,
+                                        "unPattern": "Response400",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "401",
+                                        "_ui": 3,
+                                        "unPattern": "Response401",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "403",
+                                        "_ui": 4,
+                                        "unPattern": "Response403",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "404",
+                                        "_ui": 5,
+                                        "unPattern": "Response404",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "un": "get",
+                            "_ui": 2,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "",
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 3,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "un": "404",
+                                        "_ui": 2,
+                                        "unPattern": "Response404",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "un": "patch",
+                            "_ui": 3,
+                            "requestBody": {
+                                "un": "",
+                                "_ui": 0,
+                                "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                "mtManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "application/json",
+                                            "_ui": 1,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                        }
+                                    ]
+                                }
+                            },
+                            "statusManager": {
+                                "nextUI": 6,
+                                "list": [
+                                    {
+                                        "un": "200",
+                                        "_ui": 1,
+                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "400",
+                                        "_ui": 2,
+                                        "unPattern": "Response400",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "401",
+                                        "_ui": 3,
+                                        "unPattern": "Response401",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "403",
+                                        "_ui": 4,
+                                        "unPattern": "Response403",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    },
+                                    {
+                                        "un": "404",
+                                        "_ui": 5,
+                                        "unPattern": "Response404",
+                                        "mtManager": {
+                                            "nextUI": 1,
+                                            "list": []
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },
     "presetManager": {
         "nextUI": 8,
         "list": [
@@ -304,7 +946,7 @@
                 "description": "",
                 "version": 1,
                 "propertyManager": {
-                    "nextUI": 6,
+                    "nextUI": 9,
                     "list": [
                         {
                             "un": "200",
@@ -313,26 +955,44 @@
                             "value": ""
                         },
                         {
-                            "un": "401",
+                            "un": "301",
                             "_ui": 2,
                             "tag": "",
                             "value": ""
                         },
                         {
-                            "un": "403",
+                            "un": "302",
                             "_ui": 3,
                             "tag": "",
                             "value": ""
                         },
                         {
-                            "un": "404",
+                            "un": "400",
                             "_ui": 4,
                             "tag": "",
                             "value": ""
                         },
                         {
-                            "un": "422",
+                            "un": "401",
                             "_ui": 5,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "403",
+                            "_ui": 6,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "404",
+                            "_ui": 7,
+                            "tag": "",
+                            "value": ""
+                        },
+                        {
+                            "un": "405",
+                            "_ui": 8,
                             "tag": "",
                             "value": ""
                         }
@@ -949,7 +1609,7 @@
                         "value": {
                             "value": {
                                 "code": 0,
-                                "message": "message"
+                                "message": "ok"
                             }
                         }
                     }
@@ -1142,7 +1802,7 @@
                 "list": []
             },
             "responseManager": {
-                "nextUI": 4,
+                "nextUI": 7,
                 "list": [
                     {
                         "un": "Response",
@@ -1181,7 +1841,7 @@
                         }
                     },
                     {
-                        "un": "Response404",
+                        "un": "Response400",
                         "_ui": 2,
                         "color": "",
                         "description": "",
@@ -1198,7 +1858,10 @@
                                     "un": "application/json",
                                     "_ui": 1,
                                     "example": {
-                                        "value": {}
+                                        "value": {
+                                            "code": 400,
+                                            "message": "Bad Request"
+                                        }
                                     },
                                     "schema": {
                                         "_ui": 1,
@@ -1212,7 +1875,7 @@
                         }
                     },
                     {
-                        "un": "Response422",
+                        "un": "Response401",
                         "_ui": 3,
                         "color": "",
                         "description": "",
@@ -1229,7 +1892,112 @@
                                     "un": "application/json",
                                     "_ui": 1,
                                     "example": {
-                                        "value": {}
+                                        "value": {
+                                            "code": 401,
+                                            "message": "Unauthorized"
+                                        }
+                                    },
+                                    "schema": {
+                                        "_ui": 1,
+                                        "type": "schemas"
+                                    },
+                                    "exampleManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "un": "Response403",
+                        "_ui": 4,
+                        "color": "",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "un": "application/json",
+                                    "_ui": 1,
+                                    "example": {
+                                        "value": {
+                                            "code": 403,
+                                            "message": "Forbidden"
+                                        }
+                                    },
+                                    "schema": {
+                                        "_ui": 1,
+                                        "type": "schemas"
+                                    },
+                                    "exampleManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "un": "Response404",
+                        "_ui": 5,
+                        "color": "",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "un": "application/json",
+                                    "_ui": 1,
+                                    "example": {
+                                        "value": {
+                                            "code": 404,
+                                            "message": "Not Found"
+                                        }
+                                    },
+                                    "schema": {
+                                        "_ui": 1,
+                                        "type": "schemas"
+                                    },
+                                    "exampleManager": {
+                                        "list": []
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "un": "Response405",
+                        "_ui": 6,
+                        "color": "",
+                        "description": "",
+                        "headerManager": {
+                            "list": []
+                        },
+                        "linkManager": {
+                            "list": []
+                        },
+                        "mediaTypeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "un": "application/json",
+                                    "_ui": 1,
+                                    "example": {
+                                        "value": {
+                                            "code": 405,
+                                            "message": "Method Not Allowed"
+                                        }
                                     },
                                     "schema": {
                                         "_ui": 1,
@@ -1267,6 +2035,9 @@
                         "excludedManager": {
                             "list": []
                         },
+                        "flowManager": {
+                            "list": []
+                        },
                         "referenceManager": {
                             "list": []
                         },
@@ -1295,6 +2066,9 @@
                             "value": {}
                         },
                         "excludedManager": {
+                            "list": []
+                        },
+                        "flowManager": {
                             "list": []
                         },
                         "referenceManager": {
