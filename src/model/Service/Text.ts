@@ -23,7 +23,9 @@ function run(code: string, vendor: Vendor, schema?: UniqueItem) {
 }
 
 function runText(text: string, data: object): string {
-    return new Function(`"use strict";return (\`${text}\`);`)(data)
+    return new Function(...Object.keys(data), `return (\`${text}\`);`)(
+        ...Object.values(data),
+    )
 }
 
 const Text = {
