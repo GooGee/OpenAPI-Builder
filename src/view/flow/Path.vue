@@ -5,11 +5,15 @@
         </caption>
         <tbody>
             <tr>
+                <td class="text-right">unPattern</td>
+                <td>
+                    <input type="text" class="form-control" v-model="item.unPattern" />
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">suffix</td>
                 <td>
-                    <span @click="setSuffix(item)" class="btn btn-outline-primary mr11">
-                        {{ item.suffix === '' ? '+' : item.suffix }}
-                    </span>
+                    <input type="text" class="form-control" v-model="item.suffix" />
                 </td>
             </tr>
         </tbody>
@@ -38,19 +42,6 @@ export default defineComponent({
             type: Object as PropType<LayerPath>,
             required: true,
         },
-    },
-    setup(props, context) {
-        function setSuffix(item: LayerPath) {
-            const text = prompt('', item.suffix)
-            if (text === null) {
-                return
-            }
-            item.suffix = text
-        }
-
-        return {
-            setSuffix,
-        }
     },
 })
 </script>
