@@ -1,8 +1,8 @@
 <template>
     <div class="mtb11"></div>
-    <ReferenceList :manager="sidebar.item.flowManager">
-        <span @click="run" class="btn btn-outline-primary"> run </span>
-    </ReferenceList>
+    <span @click="run" class="btn btn-outline-primary mb11"> run </span>
+    <br />
+    <ReferenceList :manager="sidebar.item.flowManager"></ReferenceList>
 </template>
 
 <script lang="ts">
@@ -24,6 +24,7 @@ export default defineComponent({
         function run() {
             try {
                 RunFlow(sidebar.item!, ss)
+                Toast.success('ok')
             } catch (error) {
                 Toast.error(error.message)
             }
