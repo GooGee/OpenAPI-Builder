@@ -3,7 +3,7 @@ import UniqueItem from './UniqueItem'
 import UniqueItemManager from './UniqueItemManager'
 
 export default class LayerRequestBody extends UniqueItem {
-    unPattern = '${schema.un}_${operation.un}${path.suffix}'
+    unPattern = '${schema.un}_${operation.un + path.suffix}'
     readonly mtManager = new LayerMediaTypeManager()
 }
 

@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <td class="text-right">MediaType</td>
-                <td>unPattern</td>
+                <td>schema unPattern</td>
             </tr>
         </thead>
         <tbody>
