@@ -49,6 +49,7 @@ const menuxx = [
             new Menu('', '', '/schema/structure'),
             new Menu('', 'discriminator', '', () => import('@/view/schema/Discriminator.vue')),
             new Menu('', 'excluded', '', () => import('@/view/schema/ExcludedField.vue')),
+            new Menu('', 'flow', '', () => import('@/view/schema/Flow.vue')),
             new Menu('', 'import', '', () => import('@/view/schema/Import.vue')),
             new Menu('', 'property', '', () => import('@/view/schema/Property.vue')),
             new Menu('', 'required', '', () => import('@/view/schema/RequiredField.vue')),
@@ -65,10 +66,8 @@ const menuxx = [
         new Menu('server', '/server', '', () => import('@/view/ServerPage.vue')),
         new Menu('variable', '/server-variable', '', () => import('@/view/ServerVariablePage.vue')),
     ]),
-    new MenuGroup('', [
-        new Menu('flow', '/flow', '', () => import('@/view/FlowPage.vue')),
-    ]),
     new MenuGroup('preset', [
+        new Menu('flow', '/flow', '', () => import('@/view/FlowPage.vue')),
         new Menu('property', '/preset', '', () => import('@/view/PresetPage.vue')),
         new Menu('script', '/script', '', () => import('@/view/ScriptPage.vue')),
         // new Menu('template', '/template', '', () => import('@/view/TemplatePage.vue')),
