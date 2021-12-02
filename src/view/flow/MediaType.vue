@@ -1,11 +1,8 @@
 <template>
     <table class="table">
-        <caption class="caption-top">
-            MediaType
-        </caption>
         <thead>
             <tr>
-                <td class="text-right">un</td>
+                <td class="text-right">MediaType</td>
                 <td>unPattern</td>
             </tr>
         </thead>
