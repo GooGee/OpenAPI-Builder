@@ -2,6 +2,7 @@ import LayerMediaType from '../Entity/LayerMediaType'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
 import LayerResponse from '../Entity/LayerResponse'
+import UniqueItem from '../Entity/UniqueItem'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
@@ -9,29 +10,25 @@ import SchemaComplex, { SchemaManager } from '../OAPI/SchemaComplex'
 import Vendor from '../Vendor'
 import Text from './Text'
 
-interface Layer {
-    unPattern: string
-}
-
 export default function RunFlow(schema: SchemaComplex, vendor: Vendor) {
     const pathxx = schema.flowManager.getTargetxx(vendor.project.finder) as LayerPath[]
     pathxx.forEach((lp) => makePath(lp, schema, vendor))
 }
 
 function getUN(
+    pattern: string,
     schema: SchemaComplex,
-    layer: Layer,
     path: LayerPath,
     operation: LayerOperation,
 ) {
-    if (layer.unPattern === '') {
+    if (pattern === '') {
         return ''
     }
-    return Text.runText(layer.unPattern, { layer, operation, path, schema })
+    return Text.runText(pattern, { operation, path, schema })
 }
 
 function makePath(lp: LayerPath, schema: SchemaComplex, vendor: Vendor) {
-    const un = getUN(schema, lp, lp, {} as any)
+    const un = getUN(lp.unPattern, schema, lp, {} as any)
     let found = vendor.pathManager.findByUN(un)
     if (found === undefined) {
         found = vendor.pathManager.make(un)
@@ -56,7 +53,7 @@ function makeOperation(
         path.operationManager.add(found)
     }
 
-    const un = getUN(schema, lo.requestBody, lp, lo)
+    const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
     if (un) {
         makeRequestBody(un, lp, lo, found, schema, vendor)
     }
@@ -99,7 +96,7 @@ function makeResponse(
     schema: SchemaComplex,
     vendor: Vendor,
 ) {
-    const un = getUN(schema, lr, lp, lo)
+    const un = getUN(lr.unPattern, schema, lp, lo)
     let found = vendor.responseManager.findByUN(un)
     if (found === undefined) {
         found = vendor.responseManager.make(un)
@@ -123,6 +120,15 @@ function makeResponse(
     status.reference.ui = found.ui
 }
 
+function makeSchema(un: string, schemaManager: SchemaManager) {
+    let found = schemaManager.findByUN(un)
+    if (found === undefined) {
+        found = schemaManager.make(un)
+        schemaManager.add(found)
+    }
+    return found
+}
+
 function makeMediaType(
     list: LayerMediaType[],
     manager: MediaTypeManager,
@@ -138,15 +144,11 @@ function makeMediaType(
             manager.add(found)
         }
 
-        const un = getUN(schema, layer, path, operation)
+        const un = getUN(layer.unPattern, schema, path, operation)
         if (un === '') {
             return
         }
-        let sc = schemaManager.findByUN(un)
-        if (sc === undefined) {
-            sc = schemaManager.make(un)
-            schemaManager.add(sc)
-        }
+        const sc = makeSchema(un, schemaManager)
         found.schema.ui = sc.ui
     })
 }
