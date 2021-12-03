@@ -18,6 +18,10 @@ function run(code: string, vendor: Vendor, schema?: UniqueItem) {
         schema,
         vendor,
     }
+    return runFunction(code, data)
+}
+
+function runFunction(code: string, data: object) {
     const ff: Function = new Function(`"use strict";return (${code})`)()
     return ff(data)
 }
@@ -31,6 +35,7 @@ function runText(text: string, data: object): string {
 const Text = {
     filter,
     run,
+    runFunction,
     runText,
 }
 
