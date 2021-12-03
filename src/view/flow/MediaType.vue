@@ -22,20 +22,11 @@
         <tfoot>
             <tr>
                 <td class="text-right">
-                    <select
-                        v-model="selected"
-                        @change="make($event.target.value)"
-                        class="form-control"
-                    >
-                        <option value="" disabled>----</option>
-                        <option
-                            v-for="option in optionxx"
-                            :key="option"
-                            :value="option"
-                        >
-                            {{ option }}
-                        </option>
-                    </select>
+                    <SelectButton
+                        @select="select"
+                        :list="optionxx"
+                        :manager="manager"
+                    ></SelectButton>
                 </td>
                 <td></td>
             </tr>
@@ -44,44 +35,38 @@
 </template>
 
 <script lang="ts">
-import { LayerMediaTypeManager } from '@/model/Entity/LayerMediaType'
-import Toast from '@/model/Service/Toast'
+import LayerMediaType, { LayerMediaTypeManager } from '@/model/Entity/LayerMediaType'
 import ss from '@/ss'
 import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import SelectButton from '../button/SelectButton.vue'
 
 export default defineComponent({
     components: {
         DeleteButton,
+        SelectButton,
     },
     props: {
         manager: {
             type: Object as PropType<LayerMediaTypeManager>,
             required: true,
         },
+        isResponse: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
     },
     setup(props, context) {
-        let optionxx = ['*']
-        const pp = ss.project.getPreset('MediaType')
-        if (pp) {
-            optionxx = pp.propertyManager.toUNArray()
-        }
-
-        function make(text: string) {
-            // alert(text)
-            try {
-                const mt = props.manager.make(text)
-                props.manager.add(mt)
-            } catch (error) {
-                Toast.error(error.message)
+        const optionxx = ss.project.getPreset('MediaType')?.propertyManager.list ?? []
+        function select(old: LayerMediaType, item: LayerMediaType) {
+            if (props.isResponse) {
+                item.unPattern = '${schema.un}_Response_${operation.un + path.suffix}'
             }
         }
-
-        let selected = ''
         return {
-            make,
             optionxx,
-            selected,
+            select,
         }
     },
 })

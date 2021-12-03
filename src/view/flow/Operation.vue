@@ -50,7 +50,10 @@
             <tr>
                 <td class="text-right"></td>
                 <td>
-                    <MediaType :manager="operation.requestBody.mtManager"></MediaType>
+                    <MediaType
+                        :isResponse="false"
+                        :manager="operation.requestBody.mtManager"
+                    ></MediaType>
                 </td>
             </tr>
         </tbody>
