@@ -6,6 +6,8 @@
 </template>
 
 <script lang="ts">
+import emitter from '@/emitter'
+import { EventEnum } from '@/model/Entity/Event'
 import SideBar from '@/model/Entity/SideBar'
 import SchemaComplex from '@/model/OAPI/SchemaComplex'
 import RunFlow from '@/model/Service/RunFlow'
@@ -24,6 +26,7 @@ export default defineComponent({
         function run() {
             try {
                 RunFlow(sidebar.item!, ss)
+                emitter.emit(EventEnum['sidebar-list-change'])
                 Toast.success('ok')
             } catch (error) {
                 Toast.error(error)
