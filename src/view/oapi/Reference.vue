@@ -29,10 +29,7 @@ export default defineComponent({
                 return '+'
             }
 
-            const found = ss.project.finder.find(
-                props.reference.ui,
-                props.reference.type,
-            )
+            const found = ss.project.finder.find(props.reference)
             if (found === undefined) {
                 return '??'
             }

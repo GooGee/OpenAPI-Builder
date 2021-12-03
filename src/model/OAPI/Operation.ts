@@ -85,7 +85,7 @@ export default class Operation extends UniqueItem {
             return result
         }
 
-        const request = finder.find(this.requestBody.ui, this.requestBody.type)
+        const request = finder.find(this.requestBody)
         if (request) {
             result.requestBody = this.requestBody.toOAPIofTarget(request)
         }

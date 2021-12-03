@@ -1,13 +1,17 @@
 import Project from '../Entity/Project'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import { TargetType } from '../OAPI/Reference'
+import Reference, { TargetType } from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
 
 export default class ReferenceFinder {
     constructor(readonly project: Project) {}
 
-    find<T extends UniqueItem>(ui: number, type: TargetType) {
+    find<T extends UniqueItem>(reference: Reference) {
+        return this.findByUI<T>(reference.ui, reference.type)
+    }
+
+    findByUI<T extends UniqueItem>(ui: number, type: TargetType) {
         const manager = this.findManager(type)
         return manager.find(ui) as T
     }
