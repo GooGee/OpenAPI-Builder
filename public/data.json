@@ -38,7 +38,7 @@
                                                 {
                                                     "un": "application/json",
                                                     "_ui": 1,
-                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
                                                 }
                                             ]
                                         }
@@ -90,7 +90,7 @@
                                                 {
                                                     "un": "application/json",
                                                     "_ui": 1,
-                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
                                                 }
                                             ]
                                         }
@@ -239,7 +239,7 @@
                                                 {
                                                     "un": "application/json",
                                                     "_ui": 1,
-                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
                                                 }
                                             ]
                                         }
@@ -295,8 +295,14 @@
                                         "_ui": 1,
                                         "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                         "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
@@ -376,7 +382,7 @@
                                                 {
                                                     "un": "application/json",
                                                     "_ui": 1,
-                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
                                                 }
                                             ]
                                         }
@@ -415,7 +421,7 @@
                                                 {
                                                     "un": "application/json",
                                                     "_ui": 1,
-                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
                                                 }
                                             ]
                                         }
@@ -551,7 +557,7 @@
                                                 {
                                                     "un": "application/json",
                                                     "_ui": 1,
-                                                    "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
                                                 }
                                             ]
                                         }
@@ -594,8 +600,14 @@
                                         "_ui": 1,
                                         "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                         "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
+                                            "nextUI": 2,
+                                            "list": [
+                                                {
+                                                    "un": "application/json",
+                                                    "_ui": 1,
+                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                }
+                                            ]
                                         }
                                     },
                                     {
