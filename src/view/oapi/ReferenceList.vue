@@ -52,7 +52,7 @@ const ReferenceList = defineComponent({
                         const one = props.manager.make(tag.ui)
                         props.manager.add(one)
                     } catch (error) {
-                        Toast.error(error.message)
+                        Toast.error(error)
                     }
                 },
             )

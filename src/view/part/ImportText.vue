@@ -36,7 +36,7 @@ export default defineComponent({
                 const result = JSON.parse(text.value)
                 context.emit('parse', result)
             } catch (error) {
-                Toast.error(error.message)
+                Toast.error(error)
             }
         }
         return { parse, text }

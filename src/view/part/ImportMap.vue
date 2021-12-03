@@ -58,7 +58,7 @@ export default defineComponent({
                     }
                 })
             } catch (error) {
-                Toast.error(error.message)
+                Toast.error(error)
                 return
             }
 

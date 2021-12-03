@@ -38,7 +38,7 @@ export default defineComponent({
                 selected.value = 0
                 context.emit('select', found, item)
             } catch (error) {
-                Toast.error(error.message)
+                Toast.error(error)
             }
         }
         return {

@@ -26,7 +26,7 @@ export default defineComponent({
                 RunFlow(sidebar.item!, ss)
                 Toast.success('ok')
             } catch (error) {
-                Toast.error(error.message)
+                Toast.error(error)
             }
         }
         return { run, sidebar }

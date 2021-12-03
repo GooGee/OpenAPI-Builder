@@ -69,7 +69,7 @@ export default defineComponent({
                 ss.project.oapi.importSchema({ list } as any, sidebar.item!.ui)
                 Toast.success('OK')
             } catch (error) {
-                Toast.error(error.message)
+                Toast.error(error)
             }
         }
 

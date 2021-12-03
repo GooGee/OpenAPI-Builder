@@ -4,7 +4,8 @@ const notyf = new Notyf({
     ripple: false,
 })
 
-function error(message: string) {
+function error(error: any) {
+    const message = error?.message ?? error
     notyf.error({
         dismissible: true,
         duration: 0,

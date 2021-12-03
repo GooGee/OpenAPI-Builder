@@ -40,7 +40,7 @@ export default defineComponent({
                     props.item.text = store.inputModal.text
                     return false
                 } catch (error) {
-                    Toast.error(error.message)
+                    Toast.error(error)
                     return true
                 }
             })
