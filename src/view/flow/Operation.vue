@@ -50,12 +50,7 @@
             <tr>
                 <td class="text-right"></td>
                 <td>
-                    <MediaType
-                        v-if="operation"
-                        :manager="operation.requestBody.mtManager"
-                        :operation="operation"
-                        :path="path"
-                    ></MediaType>
+                    <MediaType :manager="operation.requestBody.mtManager"></MediaType>
                 </td>
             </tr>
         </tbody>

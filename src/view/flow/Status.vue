@@ -7,6 +7,7 @@
             <tr>
                 <td class="text-right w111">status</td>
                 <td>unPattern</td>
+                <td>MediaType</td>
             </tr>
         </thead>
         <tbody>
@@ -25,11 +26,9 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" v-model="item.unPattern" />
-                    <MediaType
-                        :manager="item.mtManager"
-                        :operation="operation"
-                        :path="path"
-                    ></MediaType>
+                </td>
+                <td>
+                    <MediaType :manager="item.mtManager"></MediaType>
                 </td>
             </tr>
         </tbody>
@@ -41,6 +40,7 @@
                         :manager="operation.statusManager"
                     ></SelectButton>
                 </td>
+                <td></td>
                 <td></td>
             </tr>
         </tfoot>

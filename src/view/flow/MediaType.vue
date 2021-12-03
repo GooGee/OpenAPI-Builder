@@ -45,11 +45,9 @@
 
 <script lang="ts">
 import { LayerMediaTypeManager } from '@/model/Entity/LayerMediaType'
-import LayerOperation from '@/model/Entity/LayerOperation'
-import LayerPath from '@/model/Entity/LayerPath'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
-import { computed, defineComponent, PropType, ref } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
 
 export default defineComponent({
@@ -61,14 +59,6 @@ export default defineComponent({
             type: Object as PropType<LayerMediaTypeManager>,
             required: true,
         },
-        operation: {
-            type: Object as PropType<LayerOperation>,
-            required: true,
-        },
-        path: {
-            type: Object as PropType<LayerPath>,
-            required: true,
-        },
     },
     setup(props, context) {
         let optionxx = ['*']
@@ -76,11 +66,6 @@ export default defineComponent({
         if (pp) {
             optionxx = pp.propertyManager.toUNArray()
         }
-
-        const option = ref(optionxx[0])
-        const mt = computed(function () {
-            return props.manager.findByUN(option.value) ?? null
-        })
 
         function make(text: string) {
             // alert(text)
@@ -95,8 +80,6 @@ export default defineComponent({
         let selected = ''
         return {
             make,
-            mt,
-            option,
             optionxx,
             selected,
         }
