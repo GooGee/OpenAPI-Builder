@@ -5,6 +5,12 @@
         </caption>
         <tbody>
             <tr>
+                <td class="text-right">description</td>
+                <td>
+                    <input type="text" class="form-control" v-model="item.description" />
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">unPattern</td>
                 <td>
                     <input type="text" class="form-control" v-model="item.unPattern" />
