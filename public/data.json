@@ -1597,11 +1597,11 @@
                 "global": false
             },
             {
-                "un": "make Schema of RequestBody get many",
+                "un": "make Schema of RequestBody get",
                 "_ui": 11,
                 "color": "#f00",
-                "description": "Schema is used in RequestBody get many",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_get')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "description": "Schema is used in RequestBody get",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
                 "global": false
             },
             {
@@ -1609,7 +1609,7 @@
                 "_ui": 12,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody post",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_post')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n}",
                 "global": false
             },
             {
@@ -1617,7 +1617,7 @@
                 "_ui": 15,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody delete",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_delete')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
                 "global": false
             },
             {
@@ -1625,7 +1625,7 @@
                 "_ui": 16,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody get one",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_get_1')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n}",
                 "global": false
             },
             {
@@ -1633,15 +1633,15 @@
                 "_ui": 17,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody patch",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_patch')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n}",
                 "global": false
             },
             {
-                "un": "make Schema of Response get many",
+                "un": "make Schema of Response get",
                 "_ui": 21,
                 "color": "#f0f",
-                "description": "Schema is used in Response get many",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_Response_get')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n}",
+                "description": "Schema is used in Response get",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n}",
                 "global": false
             },
             {
@@ -1649,7 +1649,7 @@
                 "_ui": 22,
                 "color": "#f0f",
                 "description": "Schema is used in Response post",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_Response_post')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
                 "global": false
             },
             {
@@ -1657,7 +1657,7 @@
                 "_ui": 25,
                 "color": "#f0f",
                 "description": "Schema is used in Response delete",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_Response_delete')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n}",
                 "global": false
             },
             {
@@ -1665,7 +1665,7 @@
                 "_ui": 26,
                 "color": "#f0f",
                 "description": "Schema is used in Response get one",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_Response_get_1')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
                 "global": false
             },
             {
@@ -1673,7 +1673,7 @@
                 "_ui": 27,
                 "color": "#f0f",
                 "description": "Schema is used in Response patch",
-                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.schema.un + '_Response_patch')\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
+                "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n}",
                 "global": false
             },
             {
