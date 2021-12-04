@@ -47,13 +47,16 @@
                     />
                 </td>
             </tr>
-            <tr>
-                <td class="text-right"></td>
+            <tr v-if="operation.requestBody.unPattern">
+                <td class="text-right">schema</td>
                 <td>
-                    <MediaType
-                        :isResponse="false"
-                        :manager="operation.requestBody.mtManager"
-                    ></MediaType>
+                    <Schema :schema="operation.requestBody.schema"></Schema>
+                </td>
+            </tr>
+            <tr v-if="operation.requestBody.unPattern">
+                <td class="text-right">MediaType</td>
+                <td>
+                    <MediaType :manager="operation.requestBody.mtManager"></MediaType>
                 </td>
             </tr>
         </tbody>
@@ -69,6 +72,7 @@ import AddButton from '../button/AddButton.vue'
 import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import MediaType from './MediaType.vue'
+import Schema from './Schema.vue'
 import Status from './Status.vue'
 
 export default defineComponent({
@@ -77,6 +81,7 @@ export default defineComponent({
         ButtonGroup,
         DeleteButton,
         MediaType,
+        Schema,
         Status,
     },
     props: {
