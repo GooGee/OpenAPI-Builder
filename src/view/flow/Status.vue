@@ -26,6 +26,8 @@
                 </td>
                 <td>
                     <input type="text" class="form-control" v-model="item.unPattern" />
+                    <div class="text-secondary mtb11">schema</div>
+                    <Schema :schema="item.schema"></Schema>
                 </td>
                 <td>
                     <MediaType :manager="item.mtManager"></MediaType>
@@ -36,6 +38,7 @@
             <tr>
                 <td class="text-right">
                     <SelectButton
+                        @select="select"
                         :list="codexx"
                         :manager="operation.statusManager"
                     ></SelectButton>
@@ -50,6 +53,7 @@
 <script lang="ts">
 import LayerOperation from '@/model/Entity/LayerOperation'
 import LayerPath from '@/model/Entity/LayerPath'
+import LayerResponse from '@/model/Entity/LayerResponse'
 import ss from '@/ss'
 import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
@@ -57,6 +61,7 @@ import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import SelectButton from '../button/SelectButton.vue'
 import MediaType from './MediaType.vue'
+import Schema from './Schema.vue'
 
 export default defineComponent({
     components: {
@@ -64,6 +69,7 @@ export default defineComponent({
         ChangeButton,
         DeleteButton,
         MediaType,
+        Schema,
         SelectButton,
     },
     props: {
@@ -77,8 +83,13 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        function select(old: LayerResponse, item: LayerResponse) {
+            item.schema.unPattern =
+                '${schema.un}_Response_${operation.un + path.suffix}'
+        }
         return {
             codexx: ss.project.getPreset('HttpStatus')!.propertyManager.list,
+            select,
         }
     },
 })
