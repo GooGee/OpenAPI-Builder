@@ -23,6 +23,15 @@
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -37,10 +46,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 21,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -71,10 +88,18 @@
                                     "list": [
                                         {
                                             "un": "application/json",
-                                            "_ui": 1,
-                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                            "_ui": 1
                                         }
                                     ]
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 12,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -89,10 +114,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 22,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -102,6 +135,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -111,6 +153,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -120,6 +171,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -148,6 +208,15 @@
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -160,6 +229,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -169,6 +247,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -178,6 +265,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -187,6 +283,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -196,6 +301,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -224,6 +338,15 @@
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -238,10 +361,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 26,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -251,6 +382,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -281,10 +421,18 @@
                                     "list": [
                                         {
                                             "un": "application/json",
-                                            "_ui": 1,
-                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                            "_ui": 1
                                         }
                                     ]
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 17,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -299,10 +447,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 27,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -312,6 +468,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -321,6 +486,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -330,6 +504,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -339,6 +522,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -367,6 +559,15 @@
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -381,10 +582,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -402,10 +611,18 @@
                                     "list": [
                                         {
                                             "un": "application/json",
-                                            "_ui": 1,
-                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                            "_ui": 1
                                         }
                                     ]
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -420,10 +637,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -433,6 +658,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -442,6 +676,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -451,6 +694,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -479,6 +731,15 @@
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -491,6 +752,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -500,6 +770,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -509,6 +788,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -518,6 +806,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -527,6 +824,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -542,6 +848,15 @@
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -556,10 +871,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -569,6 +892,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
@@ -586,10 +918,18 @@
                                     "list": [
                                         {
                                             "un": "application/json",
-                                            "_ui": 1,
-                                            "unPattern": "${schema.un}_${operation.un + path.suffix}"
+                                            "_ui": 1
                                         }
                                     ]
+                                },
+                                "schema": {
+                                    "un": "",
+                                    "_ui": 0,
+                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "script": {
+                                        "_ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
                             "statusManager": {
@@ -604,10 +944,18 @@
                                             "list": [
                                                 {
                                                     "un": "application/json",
-                                                    "_ui": 1,
-                                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}"
+                                                    "_ui": 1
                                                 }
                                             ]
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -617,6 +965,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -626,6 +983,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -635,6 +1001,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     },
                                     {
@@ -644,6 +1019,15 @@
                                         "mtManager": {
                                             "nextUI": 1,
                                             "list": []
+                                        },
+                                        "schema": {
+                                            "un": "",
+                                            "_ui": 0,
+                                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                            "script": {
+                                                "_ui": 0,
+                                                "type": "script"
+                                            }
                                         }
                                     }
                                 ]
