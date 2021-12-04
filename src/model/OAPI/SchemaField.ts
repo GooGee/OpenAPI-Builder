@@ -54,6 +54,7 @@ export default class SchemaField extends UniqueItem {
     }
 
     refer(ui: number) {
+        this.type = DataType.reference
         this.reference.ui = ui
     }
 
