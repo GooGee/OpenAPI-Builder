@@ -2,11 +2,12 @@ import LayerMediaType from '../Entity/LayerMediaType'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
 import LayerResponse from '../Entity/LayerResponse'
-import UniqueItem from '../Entity/UniqueItem'
+import LayerSchema from '../Entity/LayerSchema'
+import Script from '../Entity/Script'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
-import SchemaComplex, { SchemaManager } from '../OAPI/SchemaComplex'
+import SchemaComplex from '../OAPI/SchemaComplex'
 import Vendor from '../Vendor'
 import Text from './Text'
 
@@ -78,14 +79,10 @@ function makeRequestBody(
     }
     operation.requestBody.ui = found.ui
 
-    makeMediaType(
-        lo.requestBody.mtManager.list,
-        found.mediaTypeManager,
-        schema,
-        lp,
-        lo,
-        vendor.schemaManager,
-    )
+    const mtSchema = makeSchema(schema, lo.requestBody.schema, lp, lo, vendor)
+    if (mtSchema) {
+        makeMediaType(lo.requestBody.mtManager.list, found.mediaTypeManager, mtSchema)
+    }
 }
 
 function makeResponse(
@@ -103,14 +100,10 @@ function makeResponse(
         vendor.responseManager.add(found)
     }
 
-    makeMediaType(
-        lr.mtManager.list,
-        found.mediaTypeManager,
-        schema,
-        lp,
-        lo,
-        vendor.schemaManager,
-    )
+    const mtSchema = makeSchema(schema, lr.schema, lp, lo, vendor)
+    if (mtSchema) {
+        makeMediaType(lr.mtManager.list, found.mediaTypeManager, mtSchema)
+    }
 
     let status = operation.statusManager.findByUN(lr.un)
     if (status === undefined) {
@@ -120,22 +113,28 @@ function makeResponse(
     status.reference.ui = found.ui
 }
 
-function makeSchema(un: string, schemaManager: SchemaManager) {
-    let found = schemaManager.findByUN(un)
-    if (found === undefined) {
-        found = schemaManager.make(un)
-        schemaManager.add(found)
+function makeSchema(
+    schema: SchemaComplex,
+    layer: LayerSchema,
+    lp: LayerPath,
+    lo: LayerOperation,
+    vendor: Vendor,
+) {
+    if (layer.script.ui === 0) {
+        return null
     }
-    return found
+    const found = vendor.project.finder.find<Script>(layer.script)
+    if (found === undefined) {
+        return null
+    }
+    const un = getUN(layer.unPattern, schema, lp, lo)
+    return Text.run(found.code, vendor, schema, un) as SchemaComplex
 }
 
 function makeMediaType(
     list: LayerMediaType[],
     manager: MediaTypeManager,
     schema: SchemaComplex,
-    path: LayerPath,
-    operation: LayerOperation,
-    schemaManager: SchemaManager,
 ) {
     list.forEach((layer) => {
         let found = manager.findByUN(layer.un)
@@ -144,11 +143,6 @@ function makeMediaType(
             manager.add(found)
         }
 
-        const un = getUN(layer.unPattern, schema, path, operation)
-        if (un === '') {
-            return
-        }
-        const sc = makeSchema(un, schemaManager)
-        found.schema.ui = sc.ui
+        found.schema.ui = schema.ui
     })
 }
