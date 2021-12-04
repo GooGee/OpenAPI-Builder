@@ -9,13 +9,14 @@ export function filter(keyword: string, list: Array<UniqueItem>) {
     return list.filter((item) => item.un.search(re) > -1)
 }
 
-function run(code: string, vendor: Vendor, schema?: UniqueItem) {
+function run(code: string, vendor: Vendor, schema?: UniqueItem, un?: string) {
     const data = {
         ColorEnum,
         factory: new Factory(vendor.project),
         lodash,
         project: vendor.project,
         schema,
+        un,
         vendor,
     }
     return runFunction(code, data)
