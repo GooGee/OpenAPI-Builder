@@ -93,6 +93,15 @@ function makeResponse(
     schema: SchemaComplex,
     vendor: Vendor,
 ) {
+    if (lr.useExisted) {
+        const found = vendor.project.finder.find(lr.reference)
+        if (found) {
+            const status = makeStatus(lr, operation)
+            status.reference.ui = found.ui
+        }
+        return
+    }
+
     const un = getUN(lr.unPattern, schema, lp, lo)
     let found = vendor.responseManager.findByUN(un)
     if (found === undefined) {
@@ -105,12 +114,17 @@ function makeResponse(
         makeMediaType(lr.mtManager.list, found.mediaTypeManager, mtSchema)
     }
 
+    const status = makeStatus(lr, operation)
+    status.reference.ui = found.ui
+}
+
+function makeStatus(lr: LayerResponse, operation: Operation) {
     let status = operation.statusManager.findByUN(lr.un)
     if (status === undefined) {
         status = operation.statusManager.make(lr.un)
         operation.statusManager.add(status)
     }
-    status.reference.ui = found.ui
+    return status
 }
 
 function makeSchema(
