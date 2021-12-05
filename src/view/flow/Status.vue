@@ -25,12 +25,43 @@
                     </div>
                 </td>
                 <td>
-                    <input type="text" class="form-control" v-model="item.unPattern" />
-                    <div class="text-secondary mtb11">schema</div>
-                    <Schema :schema="item.schema"></Schema>
+                    <div>
+                        <label class="mr11">
+                            <input
+                                v-model="item.useExisted"
+                                :value="true"
+                                type="radio"
+                            />
+                            existed
+                        </label>
+                        <label>
+                            <input
+                                v-model="item.useExisted"
+                                :value="false"
+                                type="radio"
+                            />
+                            new
+                        </label>
+                    </div>
+                    <Reference
+                        v-if="item.useExisted"
+                        :reference="item.reference"
+                    ></Reference>
+                    <div v-else>
+                        <input
+                            type="text"
+                            class="form-control"
+                            v-model="item.unPattern"
+                        />
+                        <div class="text-secondary mtb11">schema</div>
+                        <Schema :schema="item.schema"></Schema>
+                    </div>
                 </td>
                 <td>
-                    <MediaType :manager="item.mtManager"></MediaType>
+                    <MediaType
+                        v-if="item.useExisted === false"
+                        :manager="item.mtManager"
+                    ></MediaType>
                 </td>
             </tr>
         </tbody>
@@ -60,6 +91,7 @@ import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import SelectButton from '../button/SelectButton.vue'
+import Reference from '../oapi/Reference.vue'
 import MediaType from './MediaType.vue'
 import Schema from './Schema.vue'
 
@@ -69,6 +101,7 @@ export default defineComponent({
         ChangeButton,
         DeleteButton,
         MediaType,
+        Reference,
         Schema,
         SelectButton,
     },
