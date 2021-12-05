@@ -30,17 +30,8 @@ const menuxx = [
     ]),
     new MenuGroup('request', [
         new Menu('example', '/example', '', () => import('@/view/ExamplePage.vue')),
-        new Menu('request body', '/request', '', () => import('@/view/RequestPage.vue'), [
-            new Menu('', '', '/request/content'),
-            new Menu('', 'content', '', () => import('@/view/response/Content.vue')),
-            new Menu('', 'property', '', () => import('@/view/response/Property.vue')),
-        ]),
-        new Menu('response', '/response', '', () => import('@/view/ResponsePage.vue'), [
-            new Menu('', '', '/response/content'),
-            new Menu('', 'content', '', () => import('@/view/response/Content.vue')),
-            new Menu('', 'header', '', () => import('@/view/response/Header.vue')),
-            new Menu('', 'property', '', () => import('@/view/response/Property.vue')),
-        ]),
+        new Menu('request body', '/request', '', () => import('@/view/RequestPage.vue')),
+        new Menu('response', '/response', '', () => import('@/view/ResponsePage.vue')),
     ]),
     new MenuGroup('schema', [
         new Menu('encoding', '/encoding', '', () => import('@/view/EncodingPage.vue')),
