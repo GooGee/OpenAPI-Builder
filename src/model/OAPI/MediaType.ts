@@ -1,3 +1,4 @@
+import JSONText from '../Entity/JSONText'
 import ObjectMap from '../Entity/ObjectMap'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
@@ -24,6 +25,7 @@ export interface OAPIMediaType {
 }
 
 export default class MediaType extends UniqueItem {
+    readonly example = new JSONText()
     readonly schema = new Reference(0, TargetType.schemas)
     readonly exampleManager = new ReferenceManager(TargetType.examples)
 
@@ -55,6 +57,10 @@ export default class MediaType extends UniqueItem {
         if (this.exampleManager.list.length > 0) {
             result.examples = this.exampleManager.toOAPI(finder)
         }
+        if (this.example.text === '{}') {
+            return result
+        }
+        result.example = this.example.toOAPI()
         return result
     }
 }

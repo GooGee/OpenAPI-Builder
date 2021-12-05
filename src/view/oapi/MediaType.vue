@@ -19,6 +19,12 @@
                     <ReferenceList :manager="item.exampleManager"></ReferenceList>
                 </td>
             </tr>
+            <tr>
+                <td class="text-right">example</td>
+                <td>
+                    <JSONText :item="item.example" title="example"></JSONText>
+                </td>
+            </tr>
         </tbody>
     </table>
 </template>
@@ -27,12 +33,14 @@
 import MediaType from '@/model/OAPI/MediaType'
 import { defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import JSONText from './JSONText.vue'
 import Reference from './Reference.vue'
 import ReferenceList from './ReferenceList.vue'
 
 export default defineComponent({
     components: {
         DeleteButton,
+        JSONText,
         Reference,
         ReferenceList,
     },
