@@ -1,16 +1,13 @@
+import Reference, { TargetType } from '../OAPI/Reference'
 import { LayerMediaTypeManager } from './LayerMediaType'
 import LayerSchema from './LayerSchema'
 import UniqueItem from './UniqueItem'
-import UniqueItemManager from './UniqueItemManager'
 
 export default class LayerRequestBody extends UniqueItem {
     unPattern = '${schema.un}_${operation.un + path.suffix}'
-    readonly mtManager = new LayerMediaTypeManager()
-    readonly schema = new LayerSchema('')
-}
+    useExisted = false
 
-export class LayerRequestBodyManager extends UniqueItemManager<LayerRequestBody> {
-    constructor() {
-        super(LayerRequestBody)
-    }
+    readonly mtManager = new LayerMediaTypeManager()
+    readonly reference = new Reference(0, TargetType.requestBodies)
+    readonly schema = new LayerSchema('')
 }
