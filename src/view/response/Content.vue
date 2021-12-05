@@ -1,19 +1,32 @@
 <template>
-    <MediaTypeList :manager="sidebar.item.mediaTypeManager"></MediaTypeList>
+    <table class="table">
+        <caption class="caption-top">
+            <h2>Content</h2>
+        </caption>
+        <tbody>
+            <tr>
+                <td>
+                    <MediaTypeList :manager="manager"></MediaTypeList>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 <script lang="ts">
-import SideBar from '@/model/Entity/SideBar'
-import { defineComponent, inject } from 'vue'
+import { MediaTypeManager } from '@/model/OAPI/MediaType'
+import { defineComponent, PropType } from 'vue'
 import MediaTypeList from '../oapi/MediaTypeList.vue'
 
 export default defineComponent({
     components: {
         MediaTypeList,
     },
-    setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar
-        return { sidebar }
+    props: {
+        manager: {
+            type: Object as PropType<MediaTypeManager>,
+            required: true,
+        },
     },
 })
 </script>

@@ -7,17 +7,17 @@
                     <input
                         type="text"
                         class="form-control"
-                        v-model="sidebar.item.description"
+                        v-model="item.description"
                     />
                 </td>
             </tr>
-            <tr v-if="isRequestBody">
+            <tr v-if="item.headerManager === undefined">
                 <td class="text-right">required</td>
                 <td>
                     <span class="custom-control custom-switch">
                         <input
                             id="required"
-                            v-model="sidebar.item.required"
+                            v-model="item.required"
                             type="checkbox"
                             class="custom-control-input"
                         />
@@ -30,18 +30,15 @@
 </template>
 
 <script lang="ts">
-import SideBar from '@/model/Entity/SideBar'
-import { defineComponent, inject } from 'vue'
-import { useRouter } from 'vue-router'
+import SideBarItem from '@/model/Entity/SideBarItem'
+import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
-    setup(props, context) {
-        const router = useRouter()
-        const sidebar = inject('sidebar') as SideBar
-        return {
-            sidebar,
-            isRequestBody: router.currentRoute.value.path === '/request/property',
-        }
+    props: {
+        item: {
+            type: Object as PropType<SideBarItem>,
+            required: true,
+        },
     },
 })
 </script>

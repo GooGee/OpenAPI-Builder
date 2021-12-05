@@ -1,21 +1,32 @@
 <template>
-    <div class="mt11">
-        <ReferenceList :manager="sidebar.item.headerManager"></ReferenceList>
-    </div>
+    <table class="table">
+        <caption class="caption-top">
+            <h2>Header</h2>
+        </caption>
+        <tbody>
+            <tr>
+                <td>
+                    <ReferenceList :manager="manager"></ReferenceList>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </template>
 
 <script lang="ts">
-import SideBar from '@/model/Entity/SideBar'
-import { defineComponent, inject } from 'vue'
+import { ReferenceManager } from '@/model/OAPI/Reference'
+import { defineComponent, PropType } from 'vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
 
 export default defineComponent({
     components: {
         ReferenceList,
     },
-    setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar
-        return { sidebar }
+    props: {
+        manager: {
+            type: Object as PropType<ReferenceManager>,
+            required: true,
+        },
     },
 })
 </script>

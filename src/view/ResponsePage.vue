@@ -5,8 +5,9 @@
         </div>
 
         <div v-if="sidebar.item" class="col-9">
-            <TabBar path="/response" class="mt11"></TabBar>
-            <router-view></router-view>
+            <Property :item="sidebar.item"></Property>
+            <Header :manager="sidebar.item.headerManager"></Header>
+            <Content :manager="sidebar.item.mediaTypeManager"></Content>
         </div>
     </div>
 </template>
@@ -14,18 +15,21 @@
 <script lang="ts">
 import { SideBarEnum } from '@/model/Entity/SideBar'
 import ss from '@/ss'
-import { defineComponent, provide, reactive } from 'vue'
+import { defineComponent,  reactive } from 'vue'
 import SideBar from './part/SideBar.vue'
-import TabBar from './part/TabBar.vue'
+import Content from './response/Content.vue'
+import Header from './response/Header.vue'
+import Property from './response/Property.vue'
 
 export default defineComponent({
     components: {
+        Content,
+        Header,
+        Property,
         SideBar,
-        TabBar,
     },
     setup(props, context) {
         const sidebar = reactive(ss.sbManager.get(SideBarEnum.Response))
-        provide('sidebar', sidebar)
         return { sidebar }
     },
 })
