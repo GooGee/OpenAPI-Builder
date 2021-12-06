@@ -3,18 +3,18 @@
         <caption class="caption-top">
             <h2>Operation</h2>
         </caption>
-        <tbody>
+        <thead>
             <tr>
-                <td>
+                <th colspan="2">
                     <ButtonGroup
                         v-model:option="option"
                         :list="optionxx"
                         :manager="path.operationManager"
                     ></ButtonGroup>
-                </td>
+                </th>
             </tr>
             <tr>
-                <td>
+                <th colspan="2">
                     <h2 class="inline mr11">{{ option }}</h2>
                     <AddButton
                         v-if="operation === null"
@@ -27,6 +27,20 @@
                         :item="operation"
                         :manager="path.operationManager"
                     ></DeleteButton>
+                </th>
+            </tr>
+        </thead>
+        <tbody v-if="operation">
+            <tr>
+                <td class="text-right w111">parameter</td>
+                <td>
+                    <LayerList :manager="operation.parameterManager"></LayerList>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">tag</td>
+                <td>
+                    <LayerList :manager="operation.tagManager"></LayerList>
                 </td>
             </tr>
         </tbody>
@@ -71,6 +85,7 @@ import { computed, defineComponent, PropType, ref } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import LayerList from './LayerList.vue'
 import MediaType from './MediaType.vue'
 import Schema from './Schema.vue'
 import Status from './Status.vue'
@@ -80,6 +95,7 @@ export default defineComponent({
         AddButton,
         ButtonGroup,
         DeleteButton,
+        LayerList,
         MediaType,
         Schema,
         Status,
