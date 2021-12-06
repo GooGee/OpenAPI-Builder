@@ -1,3 +1,4 @@
+import Layer from '../Entity/Layer'
 import LayerMediaType from '../Entity/LayerMediaType'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
@@ -7,6 +8,7 @@ import Script from '../Entity/Script'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
+import { ReferenceManager } from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
 import Vendor from '../Vendor'
 import Text from './Text'
@@ -28,6 +30,35 @@ function getUN(
     return Text.runText(pattern, { operation, path, schema })
 }
 
+function makeLayer(
+    layer: Layer,
+    manager: ReferenceManager,
+    schema: SchemaComplex,
+    path: LayerPath,
+    operation: LayerOperation,
+    vendor: Vendor,
+) {
+    if (layer.useExisted) {
+        if (manager.has(layer.reference.ui)) {
+            return
+        }
+        manager.add(manager.make(layer.reference.ui))
+        return
+    }
+
+    const un = getUN(layer.unPattern, schema, path, operation)
+    const im = vendor.project.finder.findManager(layer.reference.type)
+    let found = im.findByUN(un)
+    if (found === undefined) {
+        found = im.make(un)
+        im.add(found)
+    }
+    if (manager.has(found.ui)) {
+        return
+    }
+    manager.add(manager.make(found.ui))
+}
+
 function makePath(lp: LayerPath, schema: SchemaComplex, vendor: Vendor) {
     const un = getUN(lp.unPattern, schema, lp, {} as any)
     let found = vendor.pathManager.findByUN(un)
@@ -35,9 +66,14 @@ function makePath(lp: LayerPath, schema: SchemaComplex, vendor: Vendor) {
         found = vendor.pathManager.make(un)
         vendor.pathManager.add(found)
     }
+    const path = found!
 
     lp.operationManager.list.forEach((lo) =>
-        makeOperation(lp, lo, found!, schema, vendor),
+        makeOperation(lp, lo, path, schema, vendor),
+    )
+
+    lp.parameterManager.list.forEach((layer) =>
+        makeLayer(layer, path.parameterManager, schema, lp, {} as any, vendor),
     )
 }
 
@@ -53,14 +89,23 @@ function makeOperation(
         found = path.operationManager.make(lo.un)
         path.operationManager.add(found)
     }
+    const operation = found!
+
+    lo.parameterManager.list.forEach((layer) =>
+        makeLayer(layer, operation.parameterManager, schema, lp, lo, vendor),
+    )
 
     const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
     if (un) {
-        makeRequestBody(un, lp, lo, found, schema, vendor)
+        makeRequestBody(un, lp, lo, operation, schema, vendor)
     }
 
     lo.statusManager.list.forEach((lr) =>
-        makeResponse(lp, lo, lr, found!, schema, vendor),
+        makeResponse(lp, lo, lr, operation, schema, vendor),
+    )
+
+    lo.tagManager.list.forEach((layer) =>
+        makeLayer(layer, operation.tagManager, schema, lp, lo, vendor),
     )
 }
 
