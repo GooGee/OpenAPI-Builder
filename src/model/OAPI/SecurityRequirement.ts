@@ -3,7 +3,7 @@ import ReferenceFinder from '../Service/ReferenceFinder'
 import { ReferenceManager, TargetType } from './Reference'
 import SecurityScheme from './SecurityScheme'
 
-interface OAPISecurityRequirement extends ObjectMap<string[]> {}
+export interface OAPISecurityRequirement extends ObjectMap<string[]> {}
 
 export class SecurityRequirementManager extends ReferenceManager {
     constructor() {

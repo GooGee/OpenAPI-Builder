@@ -8,6 +8,7 @@ import { NameReferenceManager } from './NameReference'
 import Path from './Path'
 import Reference, { OAPIReference, ReferenceManager, TargetType } from './Reference'
 import Response from './Response'
+import { OAPISecurityRequirement, SecurityRequirementManager } from './SecurityRequirement'
 
 export enum OperationType {
     get = 'get',
@@ -26,6 +27,7 @@ interface OAPIOperation {
     parameters?: OAPIReference[]
     requestBody?: OAPIReference
     responses: ObjectMap<Response>
+    security: OAPISecurityRequirement[]
     summary: string
     tags: string[]
 }
@@ -39,6 +41,7 @@ export default class Operation extends UniqueItem {
     readonly callbackManager = new CallBackManager()
     readonly parameterManager = new ReferenceManager(TargetType.parameters)
     readonly requestBody = new Reference(0, TargetType.requestBodies)
+    readonly securityManager = new SecurityRequirementManager()
     readonly statusManager = new NameReferenceManager(TargetType.responses)
     readonly tagManager = new ReferenceManager(TargetType.tag)
 
@@ -65,6 +68,7 @@ export default class Operation extends UniqueItem {
             summary: this.summary,
             description: this.description,
             deprecated: this.deprecated,
+            security: this.securityManager.toOAPIArray(finder),
             responses: this.statusManager.toOAPI(finder),
             tags,
         }

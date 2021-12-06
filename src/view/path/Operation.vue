@@ -65,6 +65,12 @@
                 </td>
             </tr>
             <tr>
+                <td class="text-right">security</td>
+                <td>
+                    <ReferenceList :manager="item.securityManager"></ReferenceList>
+                </td>
+            </tr>
+            <tr>
                 <td class="text-right">tags</td>
                 <td>
                     <ReferenceList :manager="item.tagManager"></ReferenceList>
