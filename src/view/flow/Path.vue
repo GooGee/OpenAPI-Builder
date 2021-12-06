@@ -5,9 +5,13 @@
         </caption>
         <tbody>
             <tr>
-                <td class="text-right">description</td>
+                <td class="text-right w111">description</td>
                 <td>
-                    <input type="text" class="form-control" v-model="item.description" />
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model="item.description"
+                    />
                 </td>
             </tr>
             <tr>
@@ -22,6 +26,12 @@
                     <input type="text" class="form-control" v-model="item.suffix" />
                 </td>
             </tr>
+            <tr>
+                <td class="text-right">parameter</td>
+                <td>
+                    <LayerList :manager="item.parameterManager"></LayerList>
+                </td>
+            </tr>
         </tbody>
     </table>
 
@@ -34,6 +44,7 @@ import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
+import LayerList from './LayerList.vue'
 import Operation from './Operation.vue'
 
 export default defineComponent({
@@ -41,6 +52,7 @@ export default defineComponent({
         AddButton,
         ChangeButton,
         DeleteButton,
+        LayerList,
         Operation,
     },
     props: {
