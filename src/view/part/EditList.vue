@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <AddButton v-if="canAdd" :manager="manager"></AddButton>
+        <AddButton v-if="canAdd" :value="value" :manager="manager"></AddButton>
     </div>
 </template>
 
@@ -44,6 +44,11 @@ export default defineComponent({
             type: Boolean,
             required: false,
             default: true,
+        },
+        value: {
+            type: String,
+            required: false,
+            default: 'name',
         },
     },
 })

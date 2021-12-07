@@ -40,7 +40,7 @@
             <tr>
                 <td class="text-right">tag</td>
                 <td>
-                    <EditList :manager="operation.tagManager"></EditList>
+                    <EditList :manager="operation.tagManager" value="${schema.un}"></EditList>
                 </td>
             </tr>
         </tbody>
