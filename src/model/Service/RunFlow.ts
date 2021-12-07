@@ -38,7 +38,7 @@ function makeLayer<T extends UniqueItem = UniqueItem>(
     operation: LayerOperation,
     vendor: Vendor,
 ) {
-    const un = getUN(layer.unPattern, schema, path, operation)
+    const un = getUN(layer.un, schema, path, operation)
     const im = vendor.project.finder.findManager(layer.type)
     let found = im.findByUN(un)
     if (found === undefined) {

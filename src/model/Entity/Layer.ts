@@ -3,8 +3,6 @@ import UniqueItem from './UniqueItem'
 import UniqueItemManager from './UniqueItemManager'
 
 export default class Layer extends UniqueItem {
-    unPattern = '${schema.un}'
-
     constructor(name: string, readonly type: TargetType) {
         super(name)
     }
