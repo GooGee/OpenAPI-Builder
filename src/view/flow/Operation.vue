@@ -52,6 +52,8 @@
     <RequestBody v-if="operation" :item="operation.requestBody"></RequestBody>
 
     <Status v-if="operation" :operation="operation" :path="path"></Status>
+
+    <Security v-if="operation" :item="operation.security"></Security>
 </template>
 
 <script lang="ts">
@@ -64,6 +66,7 @@ import EditList from '../part/EditList.vue'
 import MediaType from './MediaType.vue'
 import RequestBody from './RequestBody.vue'
 import Schema from './Schema.vue'
+import Security from './Security.vue'
 import Status from './Status.vue'
 
 export default defineComponent({
@@ -75,6 +78,7 @@ export default defineComponent({
         MediaType,
         RequestBody,
         Schema,
+        Security,
         Status,
     },
     props: {
