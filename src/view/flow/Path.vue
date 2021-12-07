@@ -29,7 +29,7 @@
             <tr>
                 <td class="text-right">parameter</td>
                 <td>
-                    <LayerList :manager="item.parameterManager"></LayerList>
+                    <EditList :manager="item.parameterManager"></EditList>
                 </td>
             </tr>
         </tbody>
@@ -44,7 +44,7 @@ import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import LayerList from './LayerList.vue'
+import EditList from '../part/EditList.vue'
 import Operation from './Operation.vue'
 
 export default defineComponent({
@@ -52,7 +52,7 @@ export default defineComponent({
         AddButton,
         ChangeButton,
         DeleteButton,
-        LayerList,
+        EditList,
         Operation,
     },
     props: {

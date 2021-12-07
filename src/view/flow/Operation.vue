@@ -34,13 +34,13 @@
             <tr>
                 <td class="text-right w111">parameter</td>
                 <td>
-                    <LayerList :manager="operation.parameterManager"></LayerList>
+                    <EditList :manager="operation.parameterManager"></EditList>
                 </td>
             </tr>
             <tr>
                 <td class="text-right">tag</td>
                 <td>
-                    <LayerList :manager="operation.tagManager"></LayerList>
+                    <EditList :manager="operation.tagManager"></EditList>
                 </td>
             </tr>
         </tbody>
@@ -85,7 +85,7 @@ import { computed, defineComponent, PropType, ref } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import LayerList from './LayerList.vue'
+import EditList from '../part/EditList.vue'
 import MediaType from './MediaType.vue'
 import Schema from './Schema.vue'
 import Status from './Status.vue'
@@ -95,7 +95,7 @@ export default defineComponent({
         AddButton,
         ButtonGroup,
         DeleteButton,
-        LayerList,
+        EditList,
         MediaType,
         Schema,
         Status,
