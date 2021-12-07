@@ -5,6 +5,7 @@ import LayerPath from '../Entity/LayerPath'
 import LayerResponse from '../Entity/LayerResponse'
 import LayerSchema from '../Entity/LayerSchema'
 import Script from '../Entity/Script'
+import UniqueItem from '../Entity/UniqueItem'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
@@ -30,9 +31,8 @@ function getUN(
     return Text.runText(pattern, { operation, path, schema })
 }
 
-function makeLayer(
+function makeLayer<T extends UniqueItem = UniqueItem>(
     layer: Layer,
-    manager: ReferenceManager,
     schema: SchemaComplex,
     path: LayerPath,
     operation: LayerOperation,
@@ -45,10 +45,14 @@ function makeLayer(
         found = im.make(un)
         im.add(found)
     }
-    if (manager.has(found.ui)) {
+    return found as T
+}
+
+function makeReference(ui: number, manager: ReferenceManager) {
+    if (manager.has(ui)) {
         return
     }
-    manager.add(manager.make(found.ui))
+    manager.add(manager.make(ui))
 }
 
 function makePath(lp: LayerPath, schema: SchemaComplex, vendor: Vendor) {
@@ -64,9 +68,10 @@ function makePath(lp: LayerPath, schema: SchemaComplex, vendor: Vendor) {
         makeOperation(lp, lo, path, schema, vendor),
     )
 
-    lp.parameterManager.list.forEach((layer) =>
-        makeLayer(layer, path.parameterManager, schema, lp, {} as any, vendor),
-    )
+    lp.parameterManager.list.forEach((layer) => {
+        const item = makeLayer(layer, schema, lp, {} as any, vendor)
+        makeReference(item.ui, path.parameterManager)
+    })
 }
 
 function makeOperation(
@@ -83,9 +88,10 @@ function makeOperation(
     }
     const operation = found!
 
-    lo.parameterManager.list.forEach((layer) =>
-        makeLayer(layer, operation.parameterManager, schema, lp, lo, vendor),
-    )
+    lo.parameterManager.list.forEach((layer) => {
+        const item = makeLayer(layer, schema, lp, lo, vendor)
+        makeReference(item.ui, operation.parameterManager)
+    })
 
     const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
     if (un) {
@@ -96,9 +102,10 @@ function makeOperation(
         makeResponse(lp, lo, lr, operation, schema, vendor),
     )
 
-    lo.tagManager.list.forEach((layer) =>
-        makeLayer(layer, operation.tagManager, schema, lp, lo, vendor),
-    )
+    lo.tagManager.list.forEach((layer) => {
+        const item = makeLayer(layer, schema, lp, lo, vendor)
+        makeReference(item.ui, operation.tagManager)
+    })
 }
 
 function makeRequestBody(
