@@ -1,16 +1,12 @@
-import Reference, { TargetType } from '../OAPI/Reference'
+import { TargetType } from '../OAPI/Reference'
 import UniqueItem from './UniqueItem'
 import UniqueItemManager from './UniqueItemManager'
 
 export default class Layer extends UniqueItem {
-    useExisted = false
     unPattern = '${schema.un}'
 
-    readonly reference
-
-    constructor(name: string, targetType: TargetType) {
+    constructor(name: string, readonly type: TargetType) {
         super(name)
-        this.reference = new Reference(0, targetType)
     }
 }
 

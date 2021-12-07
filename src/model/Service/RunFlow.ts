@@ -38,16 +38,8 @@ function makeLayer(
     operation: LayerOperation,
     vendor: Vendor,
 ) {
-    if (layer.useExisted) {
-        if (manager.has(layer.reference.ui)) {
-            return
-        }
-        manager.add(manager.make(layer.reference.ui))
-        return
-    }
-
     const un = getUN(layer.unPattern, schema, path, operation)
-    const im = vendor.project.finder.findManager(layer.reference.type)
+    const im = vendor.project.finder.findManager(layer.type)
     let found = im.findByUN(un)
     if (found === undefined) {
         found = im.make(un)
