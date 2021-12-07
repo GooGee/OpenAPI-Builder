@@ -16,6 +16,10 @@
                         {
                             "un": "get",
                             "_ui": 1,
+                            "parameterManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
                             "requestBody": {
                                 "un": "",
                                 "_ui": 0,
@@ -37,6 +41,25 @@
                                         "_ui": 0,
                                         "type": "script"
                                     }
+                                }
+                            },
+                            "security": {
+                                "un": "${schema.un}",
+                                "_ui": 0,
+                                "type": "security",
+                                "oAuthFlowManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "scopeManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "list:${schema.un}",
+                                            "_ui": 1,
+                                            "type": "scope"
+                                        }
+                                    ]
                                 }
                             },
                             "statusManager": {
@@ -71,9 +94,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "tagManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "${schema.un}",
+                                        "_ui": 1,
+                                        "type": "tag"
+                                    }
+                                ]
                             }
                         }
                     ]
+                },
+                "parameterManager": {
+                    "nextUI": 1,
+                    "list": []
                 }
             },
             {
@@ -89,6 +126,10 @@
                         {
                             "un": "post",
                             "_ui": 1,
+                            "parameterManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
                             "requestBody": {
                                 "un": "",
                                 "_ui": 0,
@@ -115,6 +156,25 @@
                                         "_ui": 12,
                                         "type": "script"
                                     }
+                                }
+                            },
+                            "security": {
+                                "un": "${schema.un}",
+                                "_ui": 0,
+                                "type": "security",
+                                "oAuthFlowManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "scopeManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "create:${schema.un}",
+                                            "_ui": 1,
+                                            "type": "scope"
+                                        }
+                                    ]
                                 }
                             },
                             "statusManager": {
@@ -218,9 +278,23 @@
                                         }
                                     }
                                 ]
+                            },
+                            "tagManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "${schema.un}",
+                                        "_ui": 1,
+                                        "type": "tag"
+                                    }
+                                ]
                             }
                         }
                     ]
+                },
+                "parameterManager": {
+                    "nextUI": 1,
+                    "list": []
                 }
             },
             {
@@ -236,6 +310,10 @@
                         {
                             "un": "delete",
                             "_ui": 1,
+                            "parameterManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
                             "requestBody": {
                                 "un": "",
                                 "_ui": 0,
@@ -257,6 +335,25 @@
                                         "_ui": 0,
                                         "type": "script"
                                     }
+                                }
+                            },
+                            "security": {
+                                "un": "${schema.un}",
+                                "_ui": 0,
+                                "type": "security",
+                                "oAuthFlowManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "scopeManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "delete:${schema.un}",
+                                            "_ui": 1,
+                                            "type": "scope"
+                                        }
+                                    ]
                                 }
                             },
                             "statusManager": {
@@ -378,7 +475,27 @@
                                         }
                                     }
                                 ]
+                            },
+                            "tagManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "${schema.un}",
+                                        "_ui": 1,
+                                        "type": "tag"
+                                    }
+                                ]
                             }
+                        }
+                    ]
+                },
+                "parameterManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "id",
+                            "_ui": 1,
+                            "type": "parameters"
                         }
                     ]
                 }
@@ -396,6 +513,10 @@
                         {
                             "un": "get",
                             "_ui": 1,
+                            "parameterManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
                             "requestBody": {
                                 "un": "",
                                 "_ui": 0,
@@ -417,6 +538,25 @@
                                         "_ui": 0,
                                         "type": "script"
                                     }
+                                }
+                            },
+                            "security": {
+                                "un": "${schema.un}",
+                                "_ui": 0,
+                                "type": "security",
+                                "oAuthFlowManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "scopeManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "read:${schema.un}",
+                                            "_ui": 1,
+                                            "type": "scope"
+                                        }
+                                    ]
                                 }
                             },
                             "statusManager": {
@@ -474,7 +614,27 @@
                                         }
                                     }
                                 ]
+                            },
+                            "tagManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "${schema.un}",
+                                        "_ui": 1,
+                                        "type": "tag"
+                                    }
+                                ]
                             }
+                        }
+                    ]
+                },
+                "parameterManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "id",
+                            "_ui": 1,
+                            "type": "parameters"
                         }
                     ]
                 }
@@ -492,6 +652,10 @@
                         {
                             "un": "patch",
                             "_ui": 1,
+                            "parameterManager": {
+                                "nextUI": 1,
+                                "list": []
+                            },
                             "requestBody": {
                                 "un": "",
                                 "_ui": 0,
@@ -518,6 +682,25 @@
                                         "_ui": 17,
                                         "type": "script"
                                     }
+                                }
+                            },
+                            "security": {
+                                "un": "${schema.un}",
+                                "_ui": 0,
+                                "type": "security",
+                                "oAuthFlowManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "scopeManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "un": "write:${schema.un}",
+                                            "_ui": 1,
+                                            "type": "scope"
+                                        }
+                                    ]
                                 }
                             },
                             "statusManager": {
@@ -644,7 +827,27 @@
                                         }
                                     }
                                 ]
+                            },
+                            "tagManager": {
+                                "nextUI": 2,
+                                "list": [
+                                    {
+                                        "un": "${schema.un}",
+                                        "_ui": 1,
+                                        "type": "tag"
+                                    }
+                                ]
                             }
+                        }
+                    ]
+                },
+                "parameterManager": {
+                    "nextUI": 2,
+                    "list": [
+                        {
+                            "un": "id",
+                            "_ui": 1,
+                            "type": "parameters"
                         }
                     ]
                 }
