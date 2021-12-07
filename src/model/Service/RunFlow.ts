@@ -9,8 +9,9 @@ import UniqueItem from '../Entity/UniqueItem'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
-import { ReferenceManager } from '../OAPI/Reference'
+import { ReferenceManager, TargetType } from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
+import SecurityScheme, { SecurityType } from '../OAPI/SecurityScheme'
 import Vendor from '../Vendor'
 import Text from './Text'
 
@@ -91,6 +92,27 @@ function makeOperation(
     lo.parameterManager.list.forEach((layer) => {
         const item = makeLayer(layer, schema, lp, lo, vendor)
         makeReference(item.ui, operation.parameterManager)
+    })
+
+    const scopexx = lo.security.scopeManager.list.map((layer) =>
+        makeLayer(layer, schema, lp, lo, vendor),
+    )
+
+    const security = makeLayer<SecurityScheme>(lo.security, schema, lp, lo, vendor)
+    makeReference(security.ui, operation.securityManager)
+    if (scopexx.length) {
+        security.type = SecurityType.oauth2
+    }
+    lo.security.oAuthFlowManager.list.forEach((flow) => {
+        let found = security.oAuthFlowManager.findByUN(flow.un)
+        if (found === undefined) {
+            found = security.oAuthFlowManager.make(flow.un)
+            security.oAuthFlowManager.add(found)
+        }
+        found.authorizationUrl = flow.authorizationUrl
+        found.refreshUrl = flow.refreshUrl
+        found.tokenUrl = flow.tokenUrl
+        scopexx.forEach((item) => makeReference(item.ui, found!.referenceManager))
     })
 
     const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
