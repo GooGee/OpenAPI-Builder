@@ -40,41 +40,16 @@
             <tr>
                 <td class="text-right">tag</td>
                 <td>
-                    <EditList :manager="operation.tagManager" value="${schema.un}"></EditList>
+                    <EditList
+                        :manager="operation.tagManager"
+                        value="${schema.un}"
+                    ></EditList>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <table v-if="operation" class="table">
-        <caption class="caption-top">
-            <h2>RequestBody</h2>
-        </caption>
-        <tbody>
-            <tr>
-                <td class="text-right w111">unPattern</td>
-                <td>
-                    <input
-                        type="text"
-                        class="form-control"
-                        v-model="operation.requestBody.unPattern"
-                    />
-                </td>
-            </tr>
-            <tr v-if="operation.requestBody.unPattern">
-                <td class="text-right">schema</td>
-                <td>
-                    <Schema :schema="operation.requestBody.schema"></Schema>
-                </td>
-            </tr>
-            <tr v-if="operation.requestBody.unPattern">
-                <td class="text-right">MediaType</td>
-                <td>
-                    <MediaType :manager="operation.requestBody.mtManager"></MediaType>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <RequestBody v-if="operation" :item="operation.requestBody"></RequestBody>
 
     <Status v-if="operation" :operation="operation" :path="path"></Status>
 </template>
@@ -87,6 +62,7 @@ import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
 import EditList from '../part/EditList.vue'
 import MediaType from './MediaType.vue'
+import RequestBody from './RequestBody.vue'
 import Schema from './Schema.vue'
 import Status from './Status.vue'
 
@@ -97,6 +73,7 @@ export default defineComponent({
         DeleteButton,
         EditList,
         MediaType,
+        RequestBody,
         Schema,
         Status,
     },
