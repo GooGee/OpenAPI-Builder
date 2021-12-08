@@ -25,6 +25,20 @@ export default class OAuthFlow extends UniqueItem {
     tokenUrl = ''
     readonly referenceManager = new ReferenceManager(TargetType.scope)
 
+    get hasAuthorization() {
+        return (
+            this.un === OAuthFlowEnum.implicit ||
+            this.un === OAuthFlowEnum.authorizationCode
+        )
+    }
+
+    get hasToken() {
+        if (this.un === OAuthFlowEnum.implicit) {
+            return false
+        }
+        return true
+    }
+
     toOAPI(finder: ReferenceFinder) {
         const targetxx = this.referenceManager.getTargetxx(finder) as Scope[]
         const scope: ObjectMap = {}
@@ -34,27 +48,12 @@ export default class OAuthFlow extends UniqueItem {
             scopes: scope,
         }
 
-        if (this.un === OAuthFlowEnum.authorizationCode) {
+        if (this.hasAuthorization) {
             result.authorizationUrl = this.authorizationUrl
+        }
+        if (this.hasToken) {
             result.tokenUrl = this.tokenUrl
-            return result
         }
-
-        if (this.un === OAuthFlowEnum.clientCredentials) {
-            result.tokenUrl = this.tokenUrl
-            return result
-        }
-
-        if (this.un === OAuthFlowEnum.implicit) {
-            result.authorizationUrl = this.authorizationUrl
-            return result
-        }
-
-        if (this.un === OAuthFlowEnum.password) {
-            result.tokenUrl = this.tokenUrl
-            return result
-        }
-
         return result
     }
 }
