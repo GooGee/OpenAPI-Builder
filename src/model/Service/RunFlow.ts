@@ -94,10 +94,37 @@ function makeOperation(
         makeReference(item.ui, operation.parameterManager)
     })
 
+    const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
+    if (un) {
+        makeRequestBody(un, lp, lo, operation, schema, vendor)
+    }
+
+    lo.statusManager.list.forEach((lr) =>
+        makeResponse(lp, lo, lr, operation, schema, vendor),
+    )
+
     const scopexx = lo.security.scopeManager.list.map((layer) =>
         makeLayer(layer, schema, lp, lo, vendor),
     )
 
+    if (lo.security.un) {
+        makeSecurity(lp, lo, operation, scopexx, schema, vendor)
+    }
+
+    lo.tagManager.list.forEach((layer) => {
+        const item = makeLayer(layer, schema, lp, lo, vendor)
+        makeReference(item.ui, operation.tagManager)
+    })
+}
+
+function makeSecurity(
+    lp: LayerPath,
+    lo: LayerOperation,
+    operation: Operation,
+    scopexx: UniqueItem[],
+    schema: SchemaComplex,
+    vendor: Vendor,
+) {
     const security = makeLayer<SecurityScheme>(lo.security, schema, lp, lo, vendor)
     makeReference(security.ui, operation.securityManager)
     if (scopexx.length) {
@@ -113,20 +140,6 @@ function makeOperation(
         found.refreshUrl = flow.refreshUrl
         found.tokenUrl = flow.tokenUrl
         scopexx.forEach((item) => makeReference(item.ui, found!.referenceManager))
-    })
-
-    const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
-    if (un) {
-        makeRequestBody(un, lp, lo, operation, schema, vendor)
-    }
-
-    lo.statusManager.list.forEach((lr) =>
-        makeResponse(lp, lo, lr, operation, schema, vendor),
-    )
-
-    lo.tagManager.list.forEach((layer) => {
-        const item = makeLayer(layer, schema, lp, lo, vendor)
-        makeReference(item.ui, operation.tagManager)
     })
 }
 
