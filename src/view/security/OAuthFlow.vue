@@ -2,12 +2,12 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right w111">un</td>
+                <td class="text-right w222">un</td>
                 <td>
                     <slot></slot>
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.hasAuthorization">
                 <td class="text-right">authorizationUrl</td>
                 <td>
                     <input
@@ -23,7 +23,7 @@
                     <input v-model="item.refreshUrl" type="text" class="form-control" />
                 </td>
             </tr>
-            <tr>
+            <tr v-if="item.hasToken">
                 <td class="text-right">tokenUrl</td>
                 <td>
                     <input v-model="item.tokenUrl" type="text" class="form-control" />

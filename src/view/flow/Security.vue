@@ -5,7 +5,7 @@
         </caption>
         <thead>
             <tr>
-                <td class="text-right w111">un</td>
+                <td class="text-right w222">un</td>
                 <td>
                     <input v-model="item.un" type="text" class="form-control" />
                 </td>
@@ -37,7 +37,7 @@
             </tr>
         </thead>
         <tbody v-if="flow">
-            <tr>
+            <tr v-if="flow.hasAuthorization">
                 <td class="text-right">authorizationUrl</td>
                 <td>
                     <input
@@ -53,7 +53,7 @@
                     <input v-model="flow.refreshUrl" type="text" class="form-control" />
                 </td>
             </tr>
-            <tr>
+            <tr v-if="flow.hasToken">
                 <td class="text-right">tokenUrl</td>
                 <td>
                     <input v-model="flow.tokenUrl" type="text" class="form-control" />
