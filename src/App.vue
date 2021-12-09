@@ -3,6 +3,7 @@
     <div class="container-fluid" style="margin-top: 55px">
         <router-view></router-view>
     </div>
+    <div class="mtb11"></div>
     <InputModal></InputModal>
     <ListModal></ListModal>
 </template>
