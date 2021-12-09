@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "layerManager": {
+    "flowManager": {
         "nextUI": 6,
         "list": [
             {

@@ -12,7 +12,7 @@ const Version = 2
 export default class Project extends Item {
     version = Version
 
-    readonly layerManager = new LayerPathManager()
+    readonly flowManager = new LayerPathManager()
     readonly presetManager = new PresetManager()
     readonly scriptManager = new ScriptManager()
     readonly templateManager = new TemplateManager()

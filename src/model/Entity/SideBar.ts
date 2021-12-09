@@ -46,7 +46,7 @@ export class SideBarManager {
         )
         this.map.set(
             SideBarEnum.Flow,
-            new SideBar(SideBarEnum.Flow, project.layerManager),
+            new SideBar(SideBarEnum.Flow, project.flowManager),
         )
         this.map.set(
             SideBarEnum.Header,
