@@ -58,7 +58,7 @@ const menuxx = [
         new Menu('variable', '/server-variable', '', () => import('@/view/ServerVariablePage.vue')),
     ]),
     new MenuGroup('preset', [
-        new Menu('flow', '/flow', '', () => import('@/view/FlowPage.vue')),
+        new Menu('layer', '/layer', '', () => import('@/view/LayerPage.vue')),
         new Menu('property', '/preset', '', () => import('@/view/PresetPage.vue')),
         new Menu('script', '/script', '', () => import('@/view/ScriptPage.vue')),
         // new Menu('template', '/template', '', () => import('@/view/TemplatePage.vue')),

@@ -14,7 +14,7 @@
 import { SideBarEnum } from '@/model/Entity/SideBar'
 import ss from '@/ss'
 import { defineComponent, reactive } from 'vue'
-import Path from './flow/Path.vue'
+import Path from './layer/Path.vue'
 import SideBar from './part/SideBar.vue'
 
 export default defineComponent({
