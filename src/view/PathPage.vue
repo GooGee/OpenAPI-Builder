@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-3">
-            <SideBar :sidebar="sidebar"></SideBar>
+            <SideBar :sidebar="sidebar" value="/"></SideBar>
         </div>
 
         <div v-if="sidebar.item" class="col-9">

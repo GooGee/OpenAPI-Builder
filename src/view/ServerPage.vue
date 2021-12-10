@@ -44,7 +44,10 @@
                 <tfoot>
                     <tr>
                         <td>
-                            <AddButton :manager="sidebar.manager"></AddButton>
+                            <AddButton
+                                :manager="sidebar.manager"
+                                value="http://"
+                            ></AddButton>
                         </td>
                         <td></td>
                         <td></td>

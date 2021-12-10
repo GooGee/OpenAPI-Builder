@@ -2,7 +2,11 @@
     <div>
         <div class="text-center mtb11">
             <h2 class="inline mr11">{{ sidebar.title }}</h2>
-            <AddButton :manager="sidebar.manager" @added="select"></AddButton>
+            <AddButton
+                :manager="sidebar.manager"
+                :value="value"
+                @added="select"
+            ></AddButton>
         </div>
 
         <input
@@ -41,6 +45,11 @@ export default defineComponent({
         SideBarItem,
     },
     props: {
+        value: {
+            type: String,
+            required: false,
+            default: 'name',
+        },
         sidebar: {
             type: Object as PropType<SideBar>,
             required: true,

@@ -40,7 +40,7 @@
                 <tfoot>
                     <tr>
                         <td>
-                            <AddButton :manager="manager"></AddButton>
+                            <AddButton :manager="manager" value="read:user"></AddButton>
                         </td>
                         <td></td>
                     </tr>
