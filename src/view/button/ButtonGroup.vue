@@ -26,7 +26,7 @@ export default defineComponent({
             required: true,
         },
         list: {
-            type: Object as PropType<String[]>,
+            type: Object as PropType<string[]>,
             required: true,
         },
         manager: {

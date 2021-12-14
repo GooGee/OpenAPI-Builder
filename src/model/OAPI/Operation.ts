@@ -8,7 +8,10 @@ import { NameReferenceManager } from './NameReference'
 import Path from './Path'
 import Reference, { OAPIReference, ReferenceManager, TargetType } from './Reference'
 import Response from './Response'
-import { OAPISecurityRequirement, SecurityRequirementManager } from './SecurityRequirement'
+import {
+    OAPISecurityRequirement,
+    SecurityRequirementManager,
+} from './SecurityRequirement'
 
 export enum OperationType {
     get = 'get',

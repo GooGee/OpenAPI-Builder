@@ -16,7 +16,7 @@ export default class ItemManager<T extends Item> extends Manager<T> {
 
     loadList(list: T[]) {
         // console.log('-- load ItemManager')
-        list.forEach(item => {
+        list.forEach((item) => {
             const iii = this.make()
             iii.load(item)
             this.list.push(iii)
@@ -34,6 +34,6 @@ export default class ItemManager<T extends Item> extends Manager<T> {
     }
 
     toOAPIArray(...args: any[]): any[] {
-        return this.list.map(item => item.toOAPI())
+        return this.list.map((item) => item.toOAPI())
     }
 }

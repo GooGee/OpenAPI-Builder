@@ -28,7 +28,7 @@ export interface OAPIReference {
     $ref: string
 }
 
-export interface OAPIReferenceMap extends ObjectMap<OAPIReference> {}
+export type OAPIReferenceMap = ObjectMap<OAPIReference>
 
 export default class Reference extends UIItem {
     constructor(ui: number, public type: TargetType) {

@@ -23,7 +23,6 @@
     </table>
 </template>
 
-
 <script lang="ts">
 import Toast from '@/model/Service/Toast'
 import { defineComponent, ref } from 'vue'

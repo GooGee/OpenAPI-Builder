@@ -31,7 +31,11 @@ function getList(constructor: Function, map: Map<Function, string[]>) {
     return list
 }
 
-function setMap(constructor: Function, propertyKey: string, map: Map<Function, string[]>) {
+function setMap(
+    constructor: Function,
+    propertyKey: string,
+    map: Map<Function, string[]>,
+) {
     let list = map.get(constructor)
     if (list === undefined) {
         list = makeList(constructor, map)
@@ -48,9 +52,11 @@ export const include = (target: Record<string, any>, propertyKey: string) => {
     setMap(target.constructor, propertyKey, includedMap)
 }
 
-export const getExcludedList = (constructor: Function) => getList(constructor, excludedMap)
+export const getExcludedList = (constructor: Function) =>
+    getList(constructor, excludedMap)
 
-export const getIncludedList = (constructor: Function) => getList(constructor, includedMap)
+export const getIncludedList = (constructor: Function) =>
+    getList(constructor, includedMap)
 
 export const excludeOAPI = (target: Record<string, any>, propertyKey: string) => {
     setMap(target.constructor, propertyKey, excludedOAPIMap)
@@ -60,6 +66,8 @@ export const includeOAPI = (target: Record<string, any>, propertyKey: string) =>
     setMap(target.constructor, propertyKey, includedOAPIMap)
 }
 
-export const getOAPIExcludedList = (constructor: Function) => getList(constructor, excludedOAPIMap)
+export const getOAPIExcludedList = (constructor: Function) =>
+    getList(constructor, excludedOAPIMap)
 
-export const getOAPIIncludedList = (constructor: Function) => getList(constructor, includedOAPIMap)
+export const getOAPIIncludedList = (constructor: Function) =>
+    getList(constructor, includedOAPIMap)

@@ -10,7 +10,7 @@ export default class HandlerManager {
     readonly map = new Map<ActionEnum, Map<string, Handler>>()
 
     constructor() {
-        Object.values(ActionEnum).forEach(key => {
+        Object.values(ActionEnum).forEach((key) => {
             this.make(key)
         })
     }

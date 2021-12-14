@@ -15,7 +15,7 @@
 <script lang="ts">
 import { SideBarEnum } from '@/model/Entity/SideBar'
 import ss from '@/ss'
-import { defineComponent,  reactive } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import SideBar from './part/SideBar.vue'
 import Content from './response/Content.vue'
 import Header from './response/Header.vue'

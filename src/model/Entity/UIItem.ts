@@ -3,7 +3,7 @@ import Item from './Item'
 
 export default class UIItem extends Item {
     @excludeOAPI
-    protected _ui: number = 0
+    protected _ui = 0
 
     protected get allowSetUI() {
         return false
