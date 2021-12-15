@@ -19,7 +19,7 @@ describe('UIItem', function () {
 
     it('toJSON', function () {
         const item = new UIItem()
-        item.load(data as any)
+        item.ui = data._ui
         expect(item.toJSON()).toHaveProperty('_ui', data._ui)
     })
 })
