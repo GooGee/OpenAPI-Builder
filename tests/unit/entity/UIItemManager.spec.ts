@@ -71,14 +71,4 @@ describe('UIItemManager', function () {
         expect(list.length).toBe(1)
         expect(list).toContain(item.ui)
     })
-
-    it('toUIMap', function () {
-        const manager = new UIItemManager(UIItem)
-        const item = manager.make()
-        manager.add(item)
-
-        const map = manager.toUIMap()
-        expect(map.has(item.ui)).toBe(true)
-        expect(map.get(item.ui)).toEqual(item)
-    })
 })
