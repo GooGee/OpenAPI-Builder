@@ -3,9 +3,17 @@ import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import Reference, { TargetType } from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
+import SchemaFieldFinder from './SchemaFieldFinder'
 
 export default class ReferenceFinder {
-    constructor(readonly project: Project) {}
+    readonly schemaFieldFinder
+
+    constructor(readonly project: Project) {
+        this.schemaFieldFinder = new SchemaFieldFinder(
+            project.oapi.fieldManager,
+            project.oapi.component.schemaManager,
+        )
+    }
 
     find<T extends UniqueItem>(reference: Reference) {
         return this.findByUI<T>(reference.ui, reference.type)
@@ -73,27 +81,6 @@ export default class ReferenceFinder {
     }
 
     getSchemaFieldList(schema: SchemaComplex) {
-        const set: Set<number> = new Set()
-        this.getReferenceList(schema, set)
-        return this.project.oapi.fieldManager.list.filter((item) =>
-            set.has(item.schemaUI),
-        )
-    }
-
-    private getReferenceList(schema: SchemaComplex, set: Set<number>) {
-        if (schema.isTemplate) {
-            return
-        }
-        if (set.has(schema.ui)) {
-            return
-        }
-        set.add(schema.ui)
-
-        const uixx = new Set(schema.referenceManager.list.map((item) => item.ui))
-        this.project.oapi.component.schemaManager.list.forEach((item) => {
-            if (uixx.has(item.ui)) {
-                this.getReferenceList(item, set)
-            }
-        })
+        return this.schemaFieldFinder.getFieldList(schema)
     }
 }
