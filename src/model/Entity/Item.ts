@@ -21,21 +21,21 @@ export default class Item {
         return descriptor
     }
 
-    protected getKeyList() {
+    getKeyList() {
         const excludedxx = getExcludedList(this.constructor)
         const includedxx = getIncludedList(this.constructor)
         // console.log(this.constructor.name, excludedxx, includedxx)
-        const list = includedxx.concat(Object.getOwnPropertyNames(this))
+        const list = includedxx.concat(Object.keys(this))
         const set = new Set(list)
         excludedxx.forEach((item) => set.delete(item))
         return Array.from(set.keys())
     }
 
-    protected getOAPIKeyList() {
+    getOAPIKeyList() {
         const excludedxx = getOAPIExcludedList(this.constructor)
         const includedxx = getOAPIIncludedList(this.constructor)
         // console.log(this.constructor.name, excludedxx, includedxx)
-        const list = includedxx.concat(Object.getOwnPropertyNames(this))
+        const list = includedxx.concat(Object.keys(this))
         const set = new Set(list)
         excludedxx.forEach((item) => set.delete(item))
         return Array.from(set.keys())
