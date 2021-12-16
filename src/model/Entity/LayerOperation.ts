@@ -1,4 +1,4 @@
-import { TargetType } from '../OAPI/Reference'
+import TargetType from '../OAPI/TargetType'
 import { LayerManager } from './Layer'
 import LayerRequestBody from './LayerRequestBody'
 import { LayerResponseManager } from './LayerResponse'

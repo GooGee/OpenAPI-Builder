@@ -1,4 +1,5 @@
-import Reference, { TargetType } from '../OAPI/Reference'
+import Reference from '../OAPI/Reference'
+import TargetType from '../OAPI/TargetType'
 import UniqueItem from './UniqueItem'
 
 export default class LayerSchema extends UniqueItem {

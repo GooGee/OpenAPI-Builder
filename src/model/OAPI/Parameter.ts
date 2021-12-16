@@ -1,7 +1,7 @@
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import { OAPIReference } from './Reference'
+import { OAPIReference } from './ReferenceInterface'
 import SchemaField, { OAPISchemaField } from './SchemaField'
 
 export enum Location {
@@ -38,7 +38,7 @@ export default class Parameter extends SideBarItem {
         this.location = location
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPIParameter = {
             allowEmptyValue: this.allowEmptyValue,
             deprecated: this.deprecated,

@@ -1,5 +1,5 @@
 import { OAuthFlowManager } from '../OAPI/OAuthFlow'
-import { TargetType } from '../OAPI/Reference'
+import TargetType from '../OAPI/TargetType'
 import Layer, { LayerManager } from './Layer'
 
 export default class LayerSecurityScheme extends Layer {

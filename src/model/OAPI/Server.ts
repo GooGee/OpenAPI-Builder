@@ -1,9 +1,10 @@
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import { ReferenceManager, TargetType } from './Reference'
+import { ReferenceManager } from './Reference'
 import { OAPIServerVariable } from './ServerVariable'
+import TargetType from './TargetType'
 
 export interface OAPIServer {
     description: string
@@ -22,7 +23,7 @@ export default class Server extends SideBarItem {
         this.un = name
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPIServer = {
             url: this.url,
             description: this.description,
@@ -39,7 +40,7 @@ export class ServerManager extends UniqueItemManager<Server> {
         super(Server)
     }
 
-    toOAPIArray(finder: ReferenceFinder) {
+    toOAPIArray(finder: ReferenceFinderInterface) {
         return this.list.map((item) => item.toOAPI(finder))
     }
 }

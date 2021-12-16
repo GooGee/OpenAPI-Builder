@@ -1,9 +1,11 @@
 import Enumer from '../Entity/Enumer'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import DataType from './DataType'
-import Reference, { OAPIReference, TargetType } from './Reference'
+import Reference from './Reference'
+import { OAPIReference } from './ReferenceInterface'
+import TargetType from './TargetType'
 
 export interface OAPISchemaField {
     description?: string
@@ -58,7 +60,7 @@ export default class SchemaField extends UniqueItem {
         this.reference.ui = ui
     }
 
-    makeData(finder: ReferenceFinder) {
+    makeData(finder: ReferenceFinderInterface) {
         if (this.isEnumer) {
             const target = this.reference.getTarget(finder) as Enumer
             if (target === undefined) {
@@ -85,7 +87,7 @@ export default class SchemaField extends UniqueItem {
         return result
     }
 
-    toOAPI(finder: ReferenceFinder): OAPISchemaField | OAPIReference {
+    toOAPI(finder: ReferenceFinderInterface): OAPISchemaField | OAPIReference {
         const data = this.makeData(finder)
         if (this.isArray) {
             return {

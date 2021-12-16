@@ -1,7 +1,8 @@
 import { EnumerManager } from '../Entity/Enumer'
 import Item from '../Entity/Item'
-import ReferenceFinder from '../Service/ReferenceFinder'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import Component from './Component'
+import DocumentInterface from './DocumentInterface'
 import { EncodingManager } from './Encoding'
 import External from './External'
 import Info from './Info'
@@ -15,7 +16,7 @@ import { TagManager } from './Tag'
 
 const Version = '3.0.3'
 
-export default class Document extends Item {
+export default class Document extends Item implements DocumentInterface {
     readonly component = new Component()
     readonly encodingManager = new EncodingManager()
     readonly enumerManager = new EnumerManager()
@@ -38,7 +39,7 @@ export default class Document extends Item {
         })
     }
 
-    private removeNullReference(finder: ReferenceFinder) {
+    private removeNullReference(finder: ReferenceFinderInterface) {
         this.component.schemaManager.list.forEach((schema) => {
             if (schema.isTemplate) {
                 return
@@ -62,7 +63,7 @@ export default class Document extends Item {
         })
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         this.removeNullReference(finder)
         return {
             openapi: Version,

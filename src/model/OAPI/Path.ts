@@ -1,8 +1,10 @@
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import { OperationManager } from './Operation'
-import { OAPIReference, ReferenceManager, TargetType } from './Reference'
+import { ReferenceManager } from './Reference'
+import { OAPIReference } from './ReferenceInterface'
+import TargetType from './TargetType'
 
 interface OAPIPath {
     description?: string
@@ -16,7 +18,7 @@ export default class Path extends SideBarItem {
     readonly operationManager = new OperationManager(this)
     readonly parameterManager = new ReferenceManager(TargetType.parameters)
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPIPath = this.operationManager.toOAPI(finder) as any
         if (this.parameterManager.list.length) {
             result.parameters = this.parameterManager.toOAPIArray(finder)

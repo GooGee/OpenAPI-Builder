@@ -1,11 +1,13 @@
 import JSONText from '../Entity/JSONText'
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import Discriminator, { OAPIDiscriminator } from './Discriminator'
-import { OAPIReference, ReferenceManager, TargetType } from './Reference'
+import { ReferenceManager } from './Reference'
+import { OAPIReference } from './ReferenceInterface'
 import Schema from './Schema'
 import SchemaField, { SchemaFieldManager } from './SchemaField'
+import TargetType from './TargetType'
 
 export enum CompositionType {
     allOf = 'allOf',
@@ -50,7 +52,7 @@ export default class SchemaComplex extends Schema {
     }
 
     makeOAPI(
-        finder: ReferenceFinder,
+        finder: ReferenceFinderInterface,
         fieldManager: SchemaFieldManager,
         fieldxx: SchemaField[],
     ) {
@@ -74,17 +76,19 @@ export default class SchemaComplex extends Schema {
         return result
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         if (this.isTemplate) {
             return this.text.toOAPI()
         }
 
-        const fieldManager = finder.findManager(TargetType.field) as SchemaFieldManager
+        const fieldManager = finder.findManager(
+            TargetType.field,
+        ) as any as SchemaFieldManager
         if (this.excludedManager.list.length) {
             const excludedxx = new Set(this.excludedManager.list.map((item) => item.ui))
             const fieldxx = finder
                 .getSchemaFieldList(this)
-                .filter((field) => excludedxx.has(field.ui) === false)
+                .filter((field) => excludedxx.has(field.ui) === false) as SchemaField[]
             return this.makeOAPI(finder, fieldManager, fieldxx)
         }
 
@@ -116,7 +120,7 @@ export class SchemaManager extends UniqueItemManager<SchemaComplex> {
         super(SchemaComplex)
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const map: ObjectMap<Object> = {}
         this.list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
         return map

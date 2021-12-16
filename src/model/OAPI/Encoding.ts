@@ -1,7 +1,8 @@
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import { OAPIReferenceMap, ReferenceManager, TargetType } from './Reference'
+import { OAPIReferenceMap, ReferenceManager } from './Reference'
+import TargetType from './TargetType'
 
 interface OAPIEncoding {
     allowReserved: boolean
@@ -18,7 +19,7 @@ export default class Encoding extends UniqueItem {
     readonly headerManager = new ReferenceManager(TargetType.headers)
     style = ''
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPIEncoding = {
             allowReserved: this.allowReserved,
             contentType: this.contentType,

@@ -1,15 +1,13 @@
 import JSONText from '../Entity/JSONText'
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import Reference, {
-    OAPIReference,
-    OAPIReferenceMap,
-    ReferenceManager,
-    TargetType,
-} from './Reference'
+import Reference, { OAPIReferenceMap, ReferenceManager } from './Reference'
+import { OAPIReference } from './ReferenceInterface'
 import SchemaComplex from './SchemaComplex'
+import SchemaField from './SchemaField'
+import TargetType from './TargetType'
 
 export enum MediaTypeEnum {
     form = 'multipart/form-data',
@@ -29,8 +27,8 @@ export default class MediaType extends UniqueItem {
     readonly schema = new Reference(0, TargetType.schemas)
     readonly exampleManager = new ReferenceManager(TargetType.examples)
 
-    getEncodingList(finder: ReferenceFinder, schema: SchemaComplex) {
-        const fieldxx = finder.getSchemaFieldList(schema)
+    getEncodingList(finder: ReferenceFinderInterface, schema: SchemaComplex) {
+        const fieldxx = finder.getSchemaFieldList(schema) as SchemaField[]
         if (fieldxx.length === 0) {
             return []
         }
@@ -45,7 +43,7 @@ export default class MediaType extends UniqueItem {
             .list.filter((item) => uixx.has(item.ui))
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const schema = this.schema.getTarget(finder)
         const result: OAPIMediaType = {
             schema: this.schema.toOAPIofTarget(schema),

@@ -1,7 +1,7 @@
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import { MediaTypeManager, OAPIMediaType } from './MediaType'
 
 interface OAPIRequestBody {
@@ -15,7 +15,7 @@ export default class RequestBody extends SideBarItem {
     description = ''
     readonly mediaTypeManager = new MediaTypeManager()
 
-    toOAPI(finder: ReferenceFinder): OAPIRequestBody {
+    toOAPI(finder: ReferenceFinderInterface): OAPIRequestBody {
         return {
             content: this.mediaTypeManager.toOAPI(finder),
             description: this.description,

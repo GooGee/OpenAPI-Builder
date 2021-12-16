@@ -1,6 +1,7 @@
 import Item from '../Entity/Item'
-import ReferenceFinder from '../Service/ReferenceFinder'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import { CallBackManager } from './CallBack'
+import ComponentInterface from './ComponentInterface'
 import { ExampleManager } from './Example'
 import { LinkManager } from './Link'
 import { ParameterManager, Location } from './Parameter'
@@ -9,7 +10,7 @@ import { ResponseManager } from './Response'
 import { SchemaManager } from './SchemaComplex'
 import { SecuritySchemeManager } from './SecurityScheme'
 
-export default class Component extends Item {
+export default class Component extends Item implements ComponentInterface {
     readonly callbackManager = new CallBackManager()
     readonly exampleManager = new ExampleManager()
     readonly headerManager = new ParameterManager(Location.header)
@@ -20,7 +21,7 @@ export default class Component extends Item {
     readonly schemaManager = new SchemaManager()
     readonly securitySchemeManager = new SecuritySchemeManager()
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         return {
             callbacks: this.callbackManager.toOAPI(finder),
             examples: this.exampleManager.toOAPI(finder),

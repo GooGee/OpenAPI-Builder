@@ -1,4 +1,5 @@
-import Reference, { TargetType } from '../OAPI/Reference'
+import Reference from '../OAPI/Reference'
+import TargetType from '../OAPI/TargetType'
 import { LayerMediaTypeManager } from './LayerMediaType'
 import LayerSchema from './LayerSchema'
 import UniqueItem from './UniqueItem'

@@ -1,7 +1,8 @@
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import Reference, { TargetType } from './Reference'
+import Reference from './Reference'
+import TargetType from './TargetType'
 
 export default class NameReference extends UniqueItem {
     readonly reference
@@ -15,7 +16,7 @@ export default class NameReference extends UniqueItem {
         return true
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         return this.reference.toOAPI(finder)
     }
 }

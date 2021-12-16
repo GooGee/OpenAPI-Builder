@@ -1,9 +1,10 @@
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import { MediaTypeManager, OAPIMediaType } from './MediaType'
-import { OAPIReferenceMap, ReferenceManager, TargetType } from './Reference'
+import { OAPIReferenceMap, ReferenceManager } from './Reference'
+import TargetType from './TargetType'
 
 interface OAPIResponse {
     content: ObjectMap<OAPIMediaType>
@@ -17,7 +18,7 @@ export default class Response extends SideBarItem {
     readonly linkManager = new ReferenceManager(TargetType.links)
     readonly mediaTypeManager = new MediaTypeManager()
 
-    toOAPI(finder: ReferenceFinder): OAPIResponse {
+    toOAPI(finder: ReferenceFinderInterface): OAPIResponse {
         return {
             content: this.mediaTypeManager.toOAPI(finder),
             description: this.description,

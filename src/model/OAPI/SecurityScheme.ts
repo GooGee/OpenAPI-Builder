@@ -1,7 +1,7 @@
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import SideBarItem from '../Entity/SideBarItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import { OAPIOAuthFlow, OAuthFlowManager } from './OAuthFlow'
 import { Location } from './Parameter'
 
@@ -38,7 +38,7 @@ export default class SecurityScheme extends SideBarItem {
         this.location = location
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPISecurityScheme = {
             type: this.type,
             description: this.description,

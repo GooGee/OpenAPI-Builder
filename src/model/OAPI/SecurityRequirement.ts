@@ -1,7 +1,8 @@
 import ObjectMap from '../Entity/ObjectMap'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import { ReferenceManager, TargetType } from './Reference'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
+import { ReferenceManager } from './Reference'
 import SecurityScheme from './SecurityScheme'
+import TargetType from './TargetType'
 
 export type OAPISecurityRequirement = ObjectMap<string[]>
 
@@ -11,7 +12,7 @@ export class SecurityRequirementManager extends ReferenceManager {
     }
 
     toOAPIofTarget(
-        finder: ReferenceFinder,
+        finder: ReferenceFinderInterface,
         target: SecurityScheme,
     ): OAPISecurityRequirement {
         const set: Set<string> = new Set()
@@ -25,7 +26,7 @@ export class SecurityRequirementManager extends ReferenceManager {
         }
     }
 
-    toOAPIArray(finder: ReferenceFinder) {
+    toOAPIArray(finder: ReferenceFinderInterface) {
         const set = new Set(this.list.map((item) => item.ui))
         const resultxx: OAPISecurityRequirement[] = []
         const targetxx = finder.findManager(TargetType.security).list

@@ -1,4 +1,4 @@
-import { TargetType } from '../OAPI/Reference'
+import TargetType from '../OAPI/TargetType'
 import UniqueItem from './UniqueItem'
 import UniqueItemManager from './UniqueItemManager'
 

@@ -1,8 +1,8 @@
 import Item from '../Entity/Item'
 import ObjectMap from '../Entity/ObjectMap'
-import ReferenceFinder from '../Service/ReferenceFinder'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import NameReference, { NameReferenceManager } from './NameReference'
-import { TargetType } from './Reference'
+import TargetType from './TargetType'
 
 export interface OAPIDiscriminator {
     propertyName: string
@@ -13,7 +13,7 @@ export default class Discriminator extends Item {
     propertyName = ''
     readonly referenceManager = new NameReferenceManager(TargetType.schemas)
 
-    private makeMapping(finder: ReferenceFinder) {
+    private makeMapping(finder: ReferenceFinderInterface) {
         const map: Map<number, NameReference> = new Map()
         this.referenceManager.list.map((item) => map.set(item.ui, item))
         const uixx = this.referenceManager.list.map((item) => item.ui)
@@ -25,7 +25,7 @@ export default class Discriminator extends Item {
         return result
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPIDiscriminator = {
             propertyName: this.propertyName,
             mapping: this.makeMapping(finder),

@@ -1,9 +1,10 @@
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import { ReferenceManager, TargetType } from './Reference'
+import { ReferenceManager } from './Reference'
 import Scope from './Scope'
+import TargetType from './TargetType'
 
 enum OAuthFlowEnum {
     authorizationCode = 'authorizationCode',
@@ -39,7 +40,7 @@ export default class OAuthFlow extends UniqueItem {
         return true
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const targetxx = this.referenceManager.getTargetxx(finder) as Scope[]
         const scope: ObjectMap = {}
         targetxx.forEach((item) => (scope[item.un] = item.description))

@@ -1,17 +1,19 @@
 import { exclude } from '../Decorator'
 import ObjectMap from '../Entity/ObjectMap'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
-import ReferenceFinder from '../Service/ReferenceFinder'
 import { CallBackManager } from './CallBack'
 import { NameReferenceManager } from './NameReference'
 import Path from './Path'
-import Reference, { OAPIReference, ReferenceManager, TargetType } from './Reference'
+import Reference, { ReferenceManager } from './Reference'
+import { OAPIReference } from './ReferenceInterface'
 import Response from './Response'
 import {
     OAPISecurityRequirement,
     SecurityRequirementManager,
 } from './SecurityRequirement'
+import TargetType from './TargetType'
 
 export enum OperationType {
     get = 'get',
@@ -57,7 +59,7 @@ export default class Operation extends UniqueItem {
         return this.un
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         const id = [this.type]
             .concat(this.path.un.split('/'))
             .join('_')
