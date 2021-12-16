@@ -46,13 +46,13 @@ export default defineComponent({
             ss.create()
         }
         function exportJSON() {
-            const text = JSON.stringify(ss.project.toOAPI())
+            const text = JSON.stringify(ss.project.oapi.toOAPI(ss.finder))
             ss.worker.edit('OpenAPI.json', text, (response) => {
                 Toast.show(response.message, response.status)
             })
         }
         function toJSON() {
-            store.inputModal.text = JSON.stringify(ss.project.toOAPI())
+            store.inputModal.text = JSON.stringify(ss.project.oapi.toOAPI(ss.finder))
             store.inputModal.show('OpenAPI JSON', () => false)
         }
         return {

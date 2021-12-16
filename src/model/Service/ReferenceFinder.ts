@@ -1,30 +1,32 @@
-import Project from '../Entity/Project'
-import UniqueItem from '../Entity/UniqueItem'
-import UniqueItemManager from '../Entity/UniqueItemManager'
-import Reference, { TargetType } from '../OAPI/Reference'
+import ProjectInterface from '../Entity/ProjectInterface'
+import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
+import UniqueItemInterface from '../Entity/UniqueItemInterface'
+import UniqueItemManagerInterface from '../Entity/UniqueItemManagerInterface'
+import Reference from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
+import TargetType from '../OAPI/TargetType'
 import SchemaFieldFinder from './SchemaFieldFinder'
 
-export default class ReferenceFinder {
+export default class ReferenceFinder implements ReferenceFinderInterface {
     readonly schemaFieldFinder
 
-    constructor(readonly project: Project) {
+    constructor(readonly project: ProjectInterface) {
         this.schemaFieldFinder = new SchemaFieldFinder(
             project.oapi.fieldManager,
             project.oapi.component.schemaManager,
         )
     }
 
-    find<T extends UniqueItem>(reference: Reference) {
+    find<T extends UniqueItemInterface>(reference: Reference) {
         return this.findByUI<T>(reference.ui, reference.type)
     }
 
-    findByUI<T extends UniqueItem>(ui: number, type: TargetType) {
+    findByUI<T extends UniqueItemInterface>(ui: number, type: TargetType) {
         const manager = this.findManager(type)
-        return manager.find(ui) as T
+        return manager.find(ui) as T | undefined
     }
 
-    findManager(type: TargetType): UniqueItemManager {
+    private getManager(type: TargetType) {
         switch (type) {
             case TargetType.encoding:
                 return this.project.oapi.encodingManager
@@ -78,6 +80,10 @@ export default class ReferenceFinder {
                 break
         }
         throw new Error('Unknown TargetType: ' + type)
+    }
+
+    findManager(type: TargetType): UniqueItemManagerInterface {
+        return this.getManager(type) as any as UniqueItemManagerInterface
     }
 
     getSchemaFieldList(schema: SchemaComplex) {

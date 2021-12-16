@@ -1,14 +1,14 @@
 import { filter } from '../Service/Text'
 import Modal from './Modal'
-import UniqueItem from './UniqueItem'
+import UniqueItemInterface from './UniqueItemInterface'
 
 interface CallBack {
-    (item: UniqueItem): void
+    (item: UniqueItemInterface): void
 }
 
 export default class ListModal extends Modal {
     keyword = ''
-    source: Array<UniqueItem> = []
+    source: Array<UniqueItemInterface> = []
     withBlank = false
 
     get list() {
@@ -19,21 +19,21 @@ export default class ListModal extends Modal {
         return this.source
     }
 
-    select(item: UniqueItem) {
+    select(item: UniqueItemInterface) {
         if (this.callback) {
             this.callback(item)
         }
         this.hide()
     }
 
-    showList(list: Array<UniqueItem>, title: string, callback: CallBack) {
+    showList(list: Array<UniqueItemInterface>, title: string, callback: CallBack) {
         this.source = list
         this.keyword = ''
         this.withBlank = false
         super.show(title, callback)
     }
 
-    showWithBlank(list: Array<UniqueItem>, title: string, callback: CallBack) {
+    showWithBlank(list: Array<UniqueItemInterface>, title: string, callback: CallBack) {
         this.showList(list, title, callback)
         this.withBlank = true
     }
