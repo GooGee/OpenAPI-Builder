@@ -1,7 +1,9 @@
 import ItemManager from './ItemManager'
-import UIItem from './UIItem'
+import UIItemInterface from './UIItemInterface'
 
-export default class UIItemManager<T extends UIItem = UIItem> extends ItemManager<T> {
+export default class UIItemManager<
+    T extends UIItemInterface = UIItemInterface,
+> extends ItemManager<T> {
     protected nextUI = 1
 
     add(item: T) {
