@@ -1,8 +1,8 @@
-import Item from './Item'
+import ItemInterface from './ItemInterface'
 import Manager from './Manager'
 import Newable from './Newable'
 
-export default class ItemManager<T extends Item> extends Manager<T> {
+export default class ItemManager<T extends ItemInterface> extends Manager<T> {
     protected readonly type: Newable<T>
 
     constructor(type: Newable<T>) {
