@@ -1,6 +1,6 @@
 import lodash from 'lodash'
 import { exclude, excludeOAPI, include } from '../Decorator'
-import ReferenceFinder from '../Service/ReferenceFinder'
+import ReferenceFinderInterface from './ReferenceFinderInterface'
 import UIItem from './UIItem'
 
 export default class UniqueItem extends UIItem {
@@ -38,7 +38,7 @@ export default class UniqueItem extends UIItem {
         this._un = name
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         return super.toOAPI(finder)
     }
 }
