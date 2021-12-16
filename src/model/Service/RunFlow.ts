@@ -9,14 +9,14 @@ import UniqueItem from '../Entity/UniqueItem'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
-import { ReferenceManager, TargetType } from '../OAPI/Reference'
+import { ReferenceManager } from '../OAPI/Reference'
 import SchemaComplex from '../OAPI/SchemaComplex'
 import SecurityScheme, { SecurityType } from '../OAPI/SecurityScheme'
 import Vendor from '../Vendor'
 import Text from './Text'
 
 export default function RunFlow(schema: SchemaComplex, vendor: Vendor) {
-    const pathxx = schema.flowManager.getTargetxx(vendor.project.finder) as LayerPath[]
+    const pathxx = schema.flowManager.getTargetxx(vendor.finder) as LayerPath[]
     pathxx.forEach((lp) => makePath(lp, schema, vendor))
 }
 
@@ -40,7 +40,7 @@ function makeLayer<T extends UniqueItem = UniqueItem>(
     vendor: Vendor,
 ) {
     const un = getUN(layer.un, schema, path, operation)
-    const im = vendor.project.finder.findManager(layer.type)
+    const im = vendor.finder.findManager(layer.type)
     let found = im.findByUN(un)
     if (found === undefined) {
         found = im.make(un)
@@ -173,7 +173,7 @@ function makeResponse(
     vendor: Vendor,
 ) {
     if (lr.useExisted) {
-        const found = vendor.project.finder.find(lr.reference)
+        const found = vendor.finder.find(lr.reference)
         if (found) {
             const status = makeStatus(lr, operation)
             status.reference.ui = found.ui
@@ -216,7 +216,7 @@ function makeSchema(
     if (layer.script.ui === 0) {
         return null
     }
-    const found = vendor.project.finder.find<Script>(layer.script)
+    const found = vendor.finder.find<Script>(layer.script)
     if (found === undefined) {
         return null
     }

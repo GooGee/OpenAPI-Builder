@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import Reference from '@/model/OAPI/Reference'
 import ss from '@/ss'
 import store from '@/store'
@@ -29,7 +29,7 @@ export default defineComponent({
                 return '+'
             }
 
-            const found = ss.project.finder.find(props.reference)
+            const found = ss.finder.find(props.reference)
             if (found === undefined) {
                 return '??'
             }
@@ -37,9 +37,9 @@ export default defineComponent({
         }
 
         function select() {
-            const list = ss.project.finder.findManager(props.reference.type).list
+            const list = ss.finder.findManager(props.reference.type).list
             const title = 'Select ' + props.reference.type
-            function callback(item: UniqueItem | null) {
+            function callback(item: UniqueItemInterface | null) {
                 if (item === null) {
                     props.reference.ui = 0
                 } else {

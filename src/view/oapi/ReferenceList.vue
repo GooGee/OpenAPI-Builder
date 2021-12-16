@@ -33,7 +33,7 @@ const ReferenceList = defineComponent({
     },
     setup(props, context) {
         const list = ref<UniqueItem[]>([])
-        const source = ss.project.finder.findManager(props.manager.targetType).list
+        const source = ss.finder.findManager(props.manager.targetType).list
         watch(() => props.manager.list.length, getList, { immediate: true })
 
         function getList() {

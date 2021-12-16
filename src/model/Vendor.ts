@@ -2,6 +2,7 @@ import JavaWorker from './Bridge/ToJava/JavaWorker'
 import { EmitterType, EventEnum } from './Entity/Event'
 import Project from './Entity/Project'
 import { SideBarManager } from './Entity/SideBar'
+import ReferenceFinder from './Service/ReferenceFinder'
 
 export default class Vendor {
     private _data: Project
@@ -57,6 +58,10 @@ export default class Vendor {
 
     get exampleManager() {
         return this.project.oapi.component.exampleManager
+    }
+
+    get finder() {
+        return new ReferenceFinder(this.project)
     }
 
     get headerManager() {

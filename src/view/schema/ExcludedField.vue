@@ -23,7 +23,7 @@ export default defineComponent({
         const sidebar = inject('sidebar') as SideBar<SchemaComplex>
         const manager = computed(() => sidebar.item!.excludedManager)
         const fieldxx = computed(() =>
-            ss.project.finder.getSchemaFieldList(sidebar.item!),
+            ss.finder.getSchemaFieldList(sidebar.item!),
         )
         return { fieldxx, manager, sidebar }
     },
