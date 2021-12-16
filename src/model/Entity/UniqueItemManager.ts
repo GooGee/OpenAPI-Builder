@@ -1,12 +1,12 @@
-import ReferenceFinder from '../Service/ReferenceFinder'
 import { filter } from '../Service/Text'
 import Newable from './Newable'
 import ObjectMap from './ObjectMap'
+import ReferenceFinderInterface from './ReferenceFinderInterface'
 import UIItemManager from './UIItemManager'
-import UniqueItem from './UniqueItem'
+import UniqueItemInterface from './UniqueItemInterface'
 
 export default class UniqueItemManager<
-    T extends UniqueItem = UniqueItem,
+    T extends UniqueItemInterface = UniqueItemInterface,
 > extends UIItemManager<T> {
     constructor(type: Newable<T>, readonly unique = true) {
         super(type)
@@ -19,16 +19,16 @@ export default class UniqueItemManager<
         super.add(item)
     }
 
-    static arrayToOAPI<T extends UniqueItem = UniqueItem>(
+    static arrayToOAPI<T extends UniqueItemInterface = UniqueItemInterface>(
         list: T[],
-        finder: ReferenceFinder,
+        finder: ReferenceFinderInterface,
     ) {
         const map: ObjectMap<any> = {}
         list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
         return map
     }
 
-    arrayToOAPI(list: T[], finder: ReferenceFinder) {
+    arrayToOAPI(list: T[], finder: ReferenceFinderInterface) {
         return UniqueItemManager.arrayToOAPI(list, finder)
     }
 
@@ -97,7 +97,7 @@ export default class UniqueItemManager<
         }
     }
 
-    toOAPI(finder: ReferenceFinder) {
+    toOAPI(finder: ReferenceFinderInterface) {
         return this.arrayToOAPI(this.list, finder)
     }
 
