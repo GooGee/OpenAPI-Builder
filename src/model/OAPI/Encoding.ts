@@ -5,9 +5,9 @@ import { OAPIReferenceMap, ReferenceManager } from './Reference'
 import TargetType from './TargetType'
 
 interface OAPIEncoding {
-    allowReserved: boolean
+    allowReserved?: boolean
     contentType: string
-    explode: boolean
+    explode?: boolean
     headers?: OAPIReferenceMap
     style?: string
 }
@@ -21,12 +21,16 @@ export default class Encoding extends UniqueItem {
 
     toOAPI(finder: ReferenceFinderInterface) {
         const result: OAPIEncoding = {
-            allowReserved: this.allowReserved,
             contentType: this.contentType,
-            explode: this.explode,
         }
         if (this.headerManager.list.length) {
             result.headers = this.headerManager.toOAPI(finder)
+        }
+        if (this.allowReserved) {
+            result.allowReserved = this.allowReserved
+        }
+        if (this.explode) {
+            result.explode = this.explode
         }
         if (this.style) {
             result.style = this.style
