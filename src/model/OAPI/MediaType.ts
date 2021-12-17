@@ -27,20 +27,31 @@ export default class MediaType extends UniqueItem {
     readonly schema = new Reference(0, TargetType.schemas)
     readonly exampleManager = new ReferenceManager(TargetType.examples)
 
-    getEncodingList(finder: ReferenceFinderInterface, schema: SchemaComplex) {
+    makeEncoding(finder: ReferenceFinderInterface, schema: SchemaComplex) {
         const fieldxx = finder.getSchemaFieldList(schema) as SchemaField[]
         if (fieldxx.length === 0) {
             return []
         }
-        const uixx = new Set()
+        const uiMap: Map<number, SchemaField> = new Map()
         fieldxx.forEach((field) => {
             if (field.isObject) {
-                uixx.add(field.reference.ui)
+                uiMap.set(field.reference.ui, field)
             }
         })
-        return finder
-            .findManager(TargetType.encoding)
-            .list.filter((item) => uixx.has(item.ui))
+
+        let found = false
+        const map: ObjectMap<any> = {}
+        finder.findManager(TargetType.encoding).list.forEach((item) => {
+            const field = uiMap.get(item.ui)
+            if (field) {
+                found = true
+                map[field.un] = item.toOAPI(finder)
+            }
+        })
+        if (found) {
+            return map
+        }
+        return undefined
     }
 
     toOAPI(finder: ReferenceFinderInterface) {
@@ -48,10 +59,7 @@ export default class MediaType extends UniqueItem {
         const result: OAPIMediaType = {
             schema: this.schema.toOAPIofTarget(schema),
         }
-        const encodingxx = this.getEncodingList(finder, schema as SchemaComplex)
-        if (encodingxx.length > 0) {
-            result.encoding = UniqueItemManager.arrayToOAPI(encodingxx, finder)
-        }
+        result.encoding = this.makeEncoding(finder, schema as SchemaComplex)
         if (this.exampleManager.list.length > 0) {
             result.examples = this.exampleManager.toOAPI(finder)
         }
