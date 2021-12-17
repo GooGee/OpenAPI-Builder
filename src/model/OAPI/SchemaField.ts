@@ -68,6 +68,9 @@ export default class SchemaField extends UniqueItem {
             }
             return target.toOAPI()
         }
+        if (this.isObject) {
+            return {} as any
+        }
         if (this.type === DataType.reference) {
             return this.reference.toOAPI(finder)
         }
@@ -104,17 +107,30 @@ export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
         super(SchemaField, unique)
     }
 
-    add(item: SchemaField) {
+    changeUN(item: SchemaField, un: string) {
+        if (item.un === un) {
+            return
+        }
+
+        const found = this.list.find(
+            (field) => field.schemaUI === item.schemaUI && field.un === un,
+        )
+        if (found) {
+            throw new Error(`Field ${un} already exists!`)
+        }
+        item.un = un
+    }
+
+    findAllField(ui: number) {
+        return this.list.filter((field) => field.schemaUI === ui)
+    }
+
+    throwIfNotUnique(item: SchemaField) {
         const found = this.list.find(
             (field) => field.schemaUI === item.schemaUI && field.un === item.un,
         )
         if (found) {
             throw new Error(`Field ${item.un} already exists!`)
         }
-        super.add(item)
-    }
-
-    findAllField(ui: number) {
-        return this.list.filter((field) => field.schemaUI === ui)
     }
 }
