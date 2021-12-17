@@ -2029,7 +2029,7 @@
             "url": ""
         },
         "fieldManager": {
-            "nextUI": 7,
+            "nextUI": 8,
             "list": [
                 {
                     "un": "code",
@@ -2122,6 +2122,22 @@
                     "schemaUI": 2,
                     "_type": "string",
                     "writeOnly": true,
+                    "reference": {
+                        "_ui": 0,
+                        "type": "schemas"
+                    }
+                },
+                {
+                    "un": "avatar",
+                    "_ui": 7,
+                    "description": "",
+                    "format": "",
+                    "isArray": false,
+                    "readOnly": false,
+                    "required": true,
+                    "schemaUI": 2,
+                    "_type": "string",
+                    "writeOnly": false,
                     "reference": {
                         "_ui": 0,
                         "type": "schemas"
