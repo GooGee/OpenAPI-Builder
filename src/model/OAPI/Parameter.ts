@@ -15,7 +15,7 @@ interface OAPIParameter {
     allowEmptyValue: boolean
     deprecated: boolean
     description: string
-    example: string
+    example?: string
     in?: string
     name?: string
     required: boolean
@@ -43,9 +43,11 @@ export default class Parameter extends SideBarItem {
             allowEmptyValue: this.allowEmptyValue,
             deprecated: this.deprecated,
             description: this.description,
-            example: this.example,
             required: this.required,
             schema: this.schema.toOAPI(finder),
+        }
+        if (this.example) {
+            result.example = this.example
         }
 
         if (this.location === Location.header) {
