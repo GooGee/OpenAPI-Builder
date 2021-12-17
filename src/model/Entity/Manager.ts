@@ -1,4 +1,6 @@
-export default class Manager<T> {
+import ManagerInterface from './ManagerInterface'
+
+export default class Manager<T> implements ManagerInterface<T> {
     readonly list: Array<T> = []
 
     add(item: T) {

@@ -1,8 +1,12 @@
 import ItemInterface from './ItemInterface'
+import ItemManagerInterface from './ItemManagerInterface'
 import Manager from './Manager'
 import Newable from './Newable'
 
-export default class ItemManager<T extends ItemInterface> extends Manager<T> {
+export default class ItemManager<T extends ItemInterface>
+    extends Manager<T>
+    implements ItemManagerInterface<T>
+{
     protected readonly type: Newable<T>
 
     constructor(type: Newable<T>) {
@@ -10,17 +14,19 @@ export default class ItemManager<T extends ItemInterface> extends Manager<T> {
         this.type = type
     }
 
-    load(manager: ItemManager<T>) {
+    load(manager: ItemManagerInterface<T>) {
         this.loadList(manager.list)
     }
 
     loadList(list: T[]) {
         // console.log('-- load ItemManager')
-        list.forEach((item) => {
-            const iii = this.make()
-            iii.load(item)
-            this.list.push(iii)
-        })
+        list.forEach((item) => this.loadItem(item))
+    }
+
+    protected loadItem(item: T) {
+        const iii = this.make()
+        iii.load(item)
+        this.list.push(iii)
     }
 
     make(...args: any[]) {
