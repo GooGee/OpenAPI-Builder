@@ -11,7 +11,11 @@
             </option>
         </select>
 
-        <Reference v-if="schema.isReference" :reference="schema.reference"></Reference>
+        <Reference
+            v-if="schema.isReference"
+            :reference="schema.reference"
+            :with-blank="true"
+        ></Reference>
 
         <select
             v-if="list.includes(schema.type)"
