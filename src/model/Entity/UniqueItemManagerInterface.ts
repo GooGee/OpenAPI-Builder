@@ -15,7 +15,6 @@ export default interface UniqueItemManagerInterface<
     findOrMake(name: string): T
     hasSame(ui: number, un: string): boolean
     hasUN(name: string): boolean
-    load(manager: UniqueItemManagerInterface<T>): void
     make(name: string): T
     sort(asc?: boolean): void
     throwIfFindUN(name: string): void

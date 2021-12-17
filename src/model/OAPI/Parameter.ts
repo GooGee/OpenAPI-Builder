@@ -68,8 +68,8 @@ export class ParameterManager extends UniqueItemManager<Parameter> {
         this.location = location
     }
 
-    make(name: string, location: Location = this.location) {
-        const item = new Parameter(name, location)
+    make(name: string) {
+        const item = new Parameter(name, this.location)
         return item
     }
 }

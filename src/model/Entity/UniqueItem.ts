@@ -2,8 +2,9 @@ import lodash from 'lodash'
 import { exclude, excludeOAPI, include } from '../Decorator'
 import ReferenceFinderInterface from './ReferenceFinderInterface'
 import UIItem from './UIItem'
+import UniqueItemInterface from './UniqueItemInterface'
 
-export default class UniqueItem extends UIItem {
+export default class UniqueItem extends UIItem implements UniqueItemInterface {
     @exclude
     @excludeOAPI
     protected _un: string // unique name

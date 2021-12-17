@@ -4,10 +4,14 @@ import ObjectMap from './ObjectMap'
 import ReferenceFinderInterface from './ReferenceFinderInterface'
 import UIItemManager from './UIItemManager'
 import UniqueItemInterface from './UniqueItemInterface'
+import UniqueItemManagerInterface from './UniqueItemManagerInterface'
 
 export default class UniqueItemManager<
-    T extends UniqueItemInterface = UniqueItemInterface,
-> extends UIItemManager<T> {
+        T extends UniqueItemInterface = UniqueItemInterface,
+    >
+    extends UIItemManager<T>
+    implements UniqueItemManagerInterface
+{
     constructor(type: Newable<T>, readonly unique = true) {
         super(type)
     }
@@ -67,17 +71,8 @@ export default class UniqueItemManager<
         return this.findByUN(name) !== undefined
     }
 
-    load(manager: UniqueItemManager<T>) {
-        manager.list.forEach((item) => {
-            const ii = this.make(item.un)
-            ii.load(item)
-            if (ii.ui === 0) {
-                this.add(ii)
-            } else {
-                this.list.push(ii)
-            }
-        })
-        this.nextUI = manager.nextUI ?? this.nextUI
+    protected loadItem(item: UniqueItemInterface) {
+        return this.make(item.un)
     }
 
     make(name: string) {
@@ -108,7 +103,7 @@ export default class UniqueItemManager<
 
     toJSON() {
         return {
-            nextUI: this.nextUI,
+            nextUI: this._nextUI,
             list: this.list,
         }
     }
