@@ -7,7 +7,9 @@ export default class Manager<T> {
 
     remove(item: T) {
         const index = this.list.indexOf(item)
-        this.list.splice(index, 1)
+        if (index >= 0) {
+            this.list.splice(index, 1)
+        }
     }
 
     clear() {

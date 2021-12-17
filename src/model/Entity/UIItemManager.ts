@@ -39,6 +39,13 @@ export default class UIItemManager<
         this.nextUI = manager.nextUI ?? this.nextUI
     }
 
+    remove(item: T) {
+        const index = this.list.findIndex((one) => one.ui === item.ui)
+        if (index >= 0) {
+            this.list.splice(index, 1)
+        }
+    }
+
     throwIfFind(ui: number) {
         if (this.find(ui)) {
             throw new Error(`${this.type.name} already exists!`)
