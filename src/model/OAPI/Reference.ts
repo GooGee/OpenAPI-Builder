@@ -60,12 +60,12 @@ export default class Reference extends UIItem implements ReferenceInterface {
     }
 }
 
-export class ReferenceManager extends UIItemManager<Reference> {
+export class ReferenceManager extends UIItemManager<ReferenceInterface> {
     constructor(readonly targetType: TargetType) {
         super(Reference)
     }
 
-    add(item: Reference) {
+    add(item: ReferenceInterface) {
         this.throwIfFind(item.ui)
         this.list.push(item)
     }
@@ -78,6 +78,10 @@ export class ReferenceManager extends UIItemManager<Reference> {
         const manager = finder.findManager(this.targetType)
         const set = new Set(this.list.map((item) => item.ui))
         return manager.list.filter((target) => set.has(target.ui))
+    }
+
+    protected loadItem(item: ReferenceInterface) {
+        return this.make(item.ui)
     }
 
     make(ui: number) {
