@@ -31,7 +31,7 @@ export default defineComponent({
 
             const found = ss.finder.find(props.reference)
             if (found === undefined) {
-                return '??'
+                return '?'
             }
             return found.un
         }

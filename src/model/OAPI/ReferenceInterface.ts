@@ -13,7 +13,8 @@ export default interface ReferenceInterface extends UIItemInterface {
     getTarget<T extends UniqueItemInterface>(
         finder: ReferenceFinderInterface,
     ): T | undefined
-    getText<T extends UniqueItemInterface>(source: T): string
+    getText(finder: ReferenceFinderInterface): string
+    getTextOfTarget<T extends UniqueItemInterface>(source: T): string
     toOAPI(finder: ReferenceFinderInterface): OAPIReference
     toOAPIofTarget<T extends UniqueItemInterface>(target?: T): OAPIReference
 }

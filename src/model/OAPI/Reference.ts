@@ -28,7 +28,15 @@ export default class Reference extends UIItem implements ReferenceInterface {
         return finder.find<T>(this)
     }
 
-    getText<T extends UniqueItemInterface>(source: T) {
+    getText(finder: ReferenceFinderInterface) {
+        const found = this.getTarget(finder)
+        if (found === undefined) {
+            return '?'
+        }
+        return this.getTextOfTarget(found)
+    }
+
+    getTextOfTarget<T extends UniqueItemInterface>(source: T) {
         if (this.type === 'paths') {
             const name = source.un.split('/').join('~1')
             return `#/${this.type}/${name}`
@@ -43,11 +51,11 @@ export default class Reference extends UIItem implements ReferenceInterface {
     toOAPIofTarget<T extends UniqueItemInterface>(target?: T): OAPIReference {
         if (target === undefined) {
             return {
-                $ref: '??',
+                $ref: '?',
             }
         }
         return {
-            $ref: this.getText(target),
+            $ref: this.getTextOfTarget(target),
         }
     }
 }

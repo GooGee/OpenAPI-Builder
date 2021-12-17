@@ -20,7 +20,7 @@ export default class Discriminator extends Item {
         const list = finder.findManager(this.referenceManager.targetType).findAll(uixx)
         const result: ObjectMap = {}
         list.forEach((item) => {
-            result[item.un] = map.get(item.ui)?.reference.getText(item) ?? '??'
+            result[item.un] = map.get(item.ui)?.reference.getTextOfTarget(item) ?? '?'
         })
         return result
     }
