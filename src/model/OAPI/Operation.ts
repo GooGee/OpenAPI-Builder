@@ -86,11 +86,7 @@ export default class Operation extends UniqueItem {
             result.callbacks = this.callbackManager.toOAPI(finder)
         }
 
-        if (
-            this.requestBody.ui === 0 ||
-            this.type === OperationType.get ||
-            this.type === OperationType.delete
-        ) {
+        if (this.requestBody.ui === 0) {
             return result
         }
 
