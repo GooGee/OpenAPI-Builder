@@ -46,7 +46,11 @@
                         ></label>
                     </span>
                     <div class="btn-group">
-                        <DeleteButton :manager="manager" :item="item"></DeleteButton>
+                        <DeleteButton
+                            @remove="update"
+                            :manager="manager"
+                            :item="item"
+                        ></DeleteButton>
                         <ChangeButton :manager="manager" :item="item"></ChangeButton>
                     </div>
                 </td>
