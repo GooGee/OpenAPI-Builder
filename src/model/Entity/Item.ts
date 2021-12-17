@@ -4,12 +4,12 @@ import {
     getOAPIExcludedList,
     getOAPIIncludedList,
 } from '../Decorator'
-import ItemManager from './ItemManager'
+import ItemInterface from './ItemInterface'
 import ObjectMap from './ObjectMap'
 
-export default class Item {
+export default class Item implements ItemInterface {
     protected getDescriptor(name: string) {
-        let descriptor = null
+        let descriptor = undefined
         let item: ObjectMap = this as ObjectMap<any>
         while (item) {
             descriptor = Object.getOwnPropertyDescriptor(item, name)
@@ -41,11 +41,14 @@ export default class Item {
         return Array.from(set.keys())
     }
 
-    load<T extends Item = Item>(source: T) {
+    load<T extends ItemInterface = ItemInterface>(source: T) {
         this.getKeyList().forEach((name) => this.loadProperty(name, source))
     }
 
-    protected loadProperty<T extends Item = Item>(name: string, source: T) {
+    protected loadProperty<T extends ItemInterface = ItemInterface>(
+        name: string,
+        source: T,
+    ) {
         // console.log('-- load Property ' + name)
         const data = source[name as keyof T] as any
         if (data === undefined) {
@@ -53,24 +56,24 @@ export default class Item {
         }
 
         const descriptor = this.getDescriptor(name)
-        if (descriptor) {
-            if (descriptor.writable) {
-                // ok
-            } else if (descriptor.get && descriptor.set) {
-                // ok
-            } else {
-                return
-            }
+        if (descriptor === undefined) {
+            return
+        }
 
-            const key = name as keyof this
-            const property = this[key]
-            if (property instanceof Item) {
-                property.load(data)
-            } else if (property instanceof ItemManager) {
-                property.load(data)
-            } else {
-                this[key] = data
-            }
+        if (descriptor.writable) {
+            // ok
+        } else if (descriptor.get && descriptor.set) {
+            // ok
+        } else {
+            return
+        }
+
+        const key = name as keyof this
+        const property = this[key] as any
+        if (property.load instanceof Function) {
+            property.load(data)
+        } else {
+            this[key] = data
         }
     }
 
@@ -86,8 +89,6 @@ export default class Item {
             const property = this[name as keyof this]
             if (property instanceof Item) {
                 result[name] = property.toOAPI()
-            } else if (property instanceof ItemManager) {
-                // result[name] = property.toOAPI()
             } else {
                 result[name] = property
             }
