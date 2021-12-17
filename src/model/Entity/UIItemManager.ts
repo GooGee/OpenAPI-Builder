@@ -1,16 +1,22 @@
 import ItemManager from './ItemManager'
 import UIItemInterface from './UIItemInterface'
+import UIItemManagerInterface from './UIItemManagerInterface'
 
-export default class UIItemManager<
-    T extends UIItemInterface = UIItemInterface,
-> extends ItemManager<T> {
-    protected nextUI = 1
+export default class UIItemManager<T extends UIItemInterface = UIItemInterface>
+    extends ItemManager<T>
+    implements UIItemManagerInterface
+{
+    protected _nextUI = 1
+
+    get nextUI() {
+        return this._nextUI
+    }
 
     add(item: T) {
         this.throwIfFind(item.ui)
         super.add(item)
-        item.ui = this.nextUI
-        this.nextUI += 1
+        item.ui = this._nextUI
+        this._nextUI += 1
     }
 
     find(ui: number) {
@@ -26,9 +32,9 @@ export default class UIItemManager<
         return this.find(ui) !== undefined
     }
 
-    load(manager: UIItemManager<T>) {
+    load(manager: UIItemManagerInterface<T>) {
         manager.list.forEach((item) => {
-            const ii = this.make()
+            const ii = this.loadItem(item)
             ii.load(item)
             if (ii.ui === 0) {
                 this.add(ii)
@@ -36,7 +42,11 @@ export default class UIItemManager<
                 this.list.push(ii)
             }
         })
-        this.nextUI = manager.nextUI ?? this.nextUI
+        this._nextUI = manager.nextUI ?? this._nextUI
+    }
+
+    protected loadItem(item: T) {
+        return this.make()
     }
 
     remove(item: T) {

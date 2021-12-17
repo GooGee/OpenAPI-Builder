@@ -1,7 +1,9 @@
-import { excludeOAPI } from '../Decorator'
+import { exclude, excludeOAPI, include } from '../Decorator'
 import Item from './Item'
+import UIItemInterface from './UIItemInterface'
 
-export default class UIItem extends Item {
+export default class UIItem extends Item implements UIItemInterface {
+    @exclude
     @excludeOAPI
     protected _ui = 0
 
@@ -9,6 +11,7 @@ export default class UIItem extends Item {
         return false
     }
 
+    @include
     get ui() {
         return this._ui
     }
