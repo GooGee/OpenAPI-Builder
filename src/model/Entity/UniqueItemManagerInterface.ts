@@ -9,6 +9,7 @@ export default interface UniqueItemManagerInterface<
     readonly unique: boolean
     add(item: T): void
     arrayToOAPI(list: T[], finder: ReferenceFinderInterface): ObjectMap<any>
+    changeUN(item: T, un: string): void
     filter(keyword: string): UniqueItemInterface[]
     findByUN(name: string): T | undefined
     findOrMake(name: string): T
@@ -17,7 +18,7 @@ export default interface UniqueItemManagerInterface<
     load(manager: UniqueItemManagerInterface<T>): void
     make(name: string): T
     sort(asc?: boolean): void
-    throwIfFindUN(name: string): void
+    throwIfNotUnique(item: T): void
     toJSON(): {
         nextUI: number
         list: T[]

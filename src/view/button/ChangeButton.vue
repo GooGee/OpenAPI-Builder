@@ -1,5 +1,5 @@
 <template>
-    <span @click="change" class="btn btn-outline-primary"> {{ text ?? item.un }} </span>
+    <span @click="change" class="btn btn-outline-primary">{{ text ?? item.un }}</span>
 </template>
 
 <script lang="ts">
@@ -31,11 +31,12 @@ export default defineComponent({
             if (text === null) {
                 return
             }
-            if (props.manager.hasUN(text)) {
-                Toast.error(text + ' already exists')
+            try {
+                props.manager.changeUN(props.item, text)
+            } catch (error) {
+                Toast.error(error)
                 return
             }
-            props.item.un = text
             context.emit('changed', text)
         }
         return { change }

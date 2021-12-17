@@ -13,9 +13,7 @@ export default class UniqueItemManager<
     }
 
     add(item: T) {
-        if (this.unique) {
-            this.throwIfFindUN(item.un)
-        }
+        this.throwIfNotUnique(item)
         super.add(item)
     }
 
@@ -30,6 +28,15 @@ export default class UniqueItemManager<
 
     arrayToOAPI(list: T[], finder: ReferenceFinderInterface) {
         return UniqueItemManager.arrayToOAPI(list, finder)
+    }
+
+    changeUN(item: T, un: string) {
+        if (item.un === un) {
+            return
+        }
+
+        this.throwIfNotUnique(item)
+        item.un = un
     }
 
     filter(keyword: string) {
@@ -84,9 +91,12 @@ export default class UniqueItemManager<
         }
     }
 
-    throwIfFindUN(name: string) {
-        if (this.findByUN(name)) {
-            throw new Error(`${this.type.name} ${name} already exists!`)
+    throwIfNotUnique(item: T) {
+        if (this.unique === false) {
+            return
+        }
+        if (this.findByUN(item.un)) {
+            throw new Error(`${this.type.name} ${item.un} already exists!`)
         }
     }
 
