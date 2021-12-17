@@ -2,7 +2,6 @@ import lodash from 'lodash'
 import ColorEnum from '../Entity/ColorEnum'
 import UniqueItemInterface from '../Entity/UniqueItemInterface'
 import Vendor from '../Vendor'
-import Factory from './Factory'
 
 export function filter(keyword: string, list: Array<UniqueItemInterface>) {
     const re = new RegExp(keyword, 'i')
@@ -12,7 +11,7 @@ export function filter(keyword: string, list: Array<UniqueItemInterface>) {
 function run(code: string, vendor: Vendor, schema?: UniqueItemInterface, un?: string) {
     const data = {
         ColorEnum,
-        factory: new Factory(vendor.project),
+        factory: vendor.factory,
         lodash,
         project: vendor.project,
         schema,

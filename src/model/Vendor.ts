@@ -2,6 +2,7 @@ import JavaWorker from './Bridge/ToJava/JavaWorker'
 import { EmitterType, EventEnum } from './Entity/Event'
 import Project from './Entity/Project'
 import { SideBarManager } from './Entity/SideBar'
+import Factory from './Service/Factory'
 import ReferenceFinder from './Service/ReferenceFinder'
 
 export default class Vendor {
@@ -52,12 +53,20 @@ export default class Vendor {
         this.emitter.emit(EventEnum.ready)
     }
 
+    get encodingManager() {
+        return this.project.oapi.encodingManager
+    }
+
     get enumerManager() {
         return this.project.oapi.enumerManager
     }
 
     get exampleManager() {
         return this.project.oapi.component.exampleManager
+    }
+
+    get factory() {
+        return new Factory(this.project)
     }
 
     get finder() {
