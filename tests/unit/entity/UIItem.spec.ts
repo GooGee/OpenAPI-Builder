@@ -2,13 +2,13 @@ import UIItem from '@/model/Entity/UIItem'
 
 describe('UIItem', function () {
     const data = {
-        _ui: 1,
+        ui: 1,
     }
 
     it('load', function () {
         const item = new UIItem()
         item.load(data as any)
-        expect(item.ui).toBe(data._ui)
+        expect(item.ui).toBe(data.ui)
     })
 
     it('throw', function () {
@@ -19,7 +19,7 @@ describe('UIItem', function () {
 
     it('toJSON', function () {
         const item = new UIItem()
-        item.ui = data._ui
-        expect(item.toJSON()).toHaveProperty('_ui', data._ui)
+        item.ui = data.ui
+        expect(item.toJSON()).toHaveProperty('ui', data.ui)
     })
 })
