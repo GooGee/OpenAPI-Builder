@@ -4,8 +4,8 @@
         "nextUI": 6,
         "list": [
             {
+                "ui": 1,
                 "un": "/path +get",
-                "_ui": 1,
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}",
@@ -14,15 +14,15 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "get",
-                            "_ui": 1,
                             "parameterManager": {
                                 "nextUI": 1,
                                 "list": []
                             },
                             "requestBody": {
+                                "ui": 0,
                                 "un": "",
-                                "_ui": 0,
                                 "unPattern": "",
                                 "useExisted": false,
                                 "mtManager": {
@@ -30,22 +30,22 @@
                                     "list": []
                                 },
                                 "reference": {
-                                    "_ui": 0,
+                                    "ui": 0,
                                     "type": "requestBodies"
                                 },
                                 "schema": {
+                                    "ui": 0,
                                     "un": "",
-                                    "_ui": 0,
                                     "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                     "script": {
-                                        "_ui": 0,
+                                        "ui": 0,
                                         "type": "script"
                                     }
                                 }
                             },
                             "security": {
+                                "ui": 0,
                                 "un": "${schema.un}",
-                                "_ui": 0,
                                 "type": "security",
                                 "oAuthFlowManager": {
                                     "nextUI": 1,
@@ -55,8 +55,8 @@
                                     "nextUI": 2,
                                     "list": [
                                         {
+                                            "ui": 1,
                                             "un": "list:${schema.un}",
-                                            "_ui": 1,
                                             "type": "scope"
                                         }
                                     ]
@@ -66,29 +66,29 @@
                                 "nextUI": 2,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "200",
-                                        "_ui": 1,
                                         "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                         "useExisted": false,
                                         "mtManager": {
                                             "nextUI": 2,
                                             "list": [
                                                 {
-                                                    "un": "application/json",
-                                                    "_ui": 1
+                                                    "ui": 1,
+                                                    "un": "application/json"
                                                 }
                                             ]
                                         },
                                         "reference": {
-                                            "_ui": 0,
+                                            "ui": 0,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
                                             "script": {
-                                                "_ui": 21,
+                                                "ui": 21,
                                                 "type": "script"
                                             }
                                         }
@@ -99,8 +99,8 @@
                                 "nextUI": 2,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "${schema.un}",
-                                        "_ui": 1,
                                         "type": "tag"
                                     }
                                 ]
@@ -114,8 +114,8 @@
                 }
             },
             {
+                "ui": 2,
                 "un": "/path +post",
-                "_ui": 2,
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}",
@@ -124,43 +124,43 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "post",
-                            "_ui": 1,
                             "parameterManager": {
                                 "nextUI": 1,
                                 "list": []
                             },
                             "requestBody": {
+                                "ui": 0,
                                 "un": "",
-                                "_ui": 0,
                                 "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                 "useExisted": false,
                                 "mtManager": {
                                     "nextUI": 2,
                                     "list": [
                                         {
-                                            "un": "application/json",
-                                            "_ui": 1
+                                            "ui": 1,
+                                            "un": "application/json"
                                         }
                                     ]
                                 },
                                 "reference": {
-                                    "_ui": 0,
+                                    "ui": 0,
                                     "type": "requestBodies"
                                 },
                                 "schema": {
+                                    "ui": 0,
                                     "un": "",
-                                    "_ui": 0,
                                     "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                     "script": {
-                                        "_ui": 12,
+                                        "ui": 12,
                                         "type": "script"
                                     }
                                 }
                             },
                             "security": {
+                                "ui": 0,
                                 "un": "${schema.un}",
-                                "_ui": 0,
                                 "type": "security",
                                 "oAuthFlowManager": {
                                     "nextUI": 1,
@@ -170,8 +170,8 @@
                                     "nextUI": 2,
                                     "list": [
                                         {
+                                            "ui": 1,
                                             "un": "create:${schema.un}",
-                                            "_ui": 1,
                                             "type": "scope"
                                         }
                                     ]
@@ -181,36 +181,36 @@
                                 "nextUI": 5,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "200",
-                                        "_ui": 1,
                                         "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                         "useExisted": false,
                                         "mtManager": {
                                             "nextUI": 2,
                                             "list": [
                                                 {
-                                                    "un": "application/json",
-                                                    "_ui": 1
+                                                    "ui": 1,
+                                                    "un": "application/json"
                                                 }
                                             ]
                                         },
                                         "reference": {
-                                            "_ui": 0,
+                                            "ui": 0,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
                                             "script": {
-                                                "_ui": 22,
+                                                "ui": 22,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 2,
                                         "un": "400",
-                                        "_ui": 2,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -218,22 +218,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 2,
+                                            "ui": 2,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 3,
                                         "un": "401",
-                                        "_ui": 3,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -241,22 +241,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 3,
+                                            "ui": 3,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 4,
                                         "un": "403",
-                                        "_ui": 4,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -264,15 +264,15 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 4,
+                                            "ui": 4,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
@@ -283,8 +283,8 @@
                                 "nextUI": 2,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "${schema.un}",
-                                        "_ui": 1,
                                         "type": "tag"
                                     }
                                 ]
@@ -298,8 +298,8 @@
                 }
             },
             {
+                "ui": 3,
                 "un": "/path/{id} +delete",
-                "_ui": 3,
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
@@ -308,15 +308,15 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "delete",
-                            "_ui": 1,
                             "parameterManager": {
                                 "nextUI": 1,
                                 "list": []
                             },
                             "requestBody": {
+                                "ui": 0,
                                 "un": "",
-                                "_ui": 0,
                                 "unPattern": "",
                                 "useExisted": false,
                                 "mtManager": {
@@ -324,22 +324,22 @@
                                     "list": []
                                 },
                                 "reference": {
-                                    "_ui": 0,
+                                    "ui": 0,
                                     "type": "requestBodies"
                                 },
                                 "schema": {
+                                    "ui": 0,
                                     "un": "",
-                                    "_ui": 0,
                                     "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                     "script": {
-                                        "_ui": 0,
+                                        "ui": 0,
                                         "type": "script"
                                     }
                                 }
                             },
                             "security": {
+                                "ui": 0,
                                 "un": "${schema.un}",
-                                "_ui": 0,
                                 "type": "security",
                                 "oAuthFlowManager": {
                                     "nextUI": 1,
@@ -349,8 +349,8 @@
                                     "nextUI": 2,
                                     "list": [
                                         {
+                                            "ui": 1,
                                             "un": "delete:${schema.un}",
-                                            "_ui": 1,
                                             "type": "scope"
                                         }
                                     ]
@@ -360,8 +360,8 @@
                                 "nextUI": 6,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "200",
-                                        "_ui": 1,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -369,22 +369,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 1,
+                                            "ui": 1,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 2,
                                         "un": "400",
-                                        "_ui": 2,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -392,22 +392,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 2,
+                                            "ui": 2,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 3,
                                         "un": "401",
-                                        "_ui": 3,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -415,22 +415,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 3,
+                                            "ui": 3,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 4,
                                         "un": "403",
-                                        "_ui": 4,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -438,22 +438,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 4,
+                                            "ui": 4,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 5,
                                         "un": "404",
-                                        "_ui": 5,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -461,15 +461,15 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 5,
+                                            "ui": 5,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
@@ -480,8 +480,8 @@
                                 "nextUI": 2,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "${schema.un}",
-                                        "_ui": 1,
                                         "type": "tag"
                                     }
                                 ]
@@ -493,16 +493,16 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "id",
-                            "_ui": 1,
                             "type": "parameters"
                         }
                     ]
                 }
             },
             {
+                "ui": 4,
                 "un": "/path/{id} +get",
-                "_ui": 4,
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
@@ -511,15 +511,15 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "get",
-                            "_ui": 1,
                             "parameterManager": {
                                 "nextUI": 1,
                                 "list": []
                             },
                             "requestBody": {
+                                "ui": 0,
                                 "un": "",
-                                "_ui": 0,
                                 "unPattern": "",
                                 "useExisted": false,
                                 "mtManager": {
@@ -527,22 +527,22 @@
                                     "list": []
                                 },
                                 "reference": {
-                                    "_ui": 0,
+                                    "ui": 0,
                                     "type": "requestBodies"
                                 },
                                 "schema": {
+                                    "ui": 0,
                                     "un": "",
-                                    "_ui": 0,
                                     "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                     "script": {
-                                        "_ui": 0,
+                                        "ui": 0,
                                         "type": "script"
                                     }
                                 }
                             },
                             "security": {
+                                "ui": 0,
                                 "un": "${schema.un}",
-                                "_ui": 0,
                                 "type": "security",
                                 "oAuthFlowManager": {
                                     "nextUI": 1,
@@ -552,8 +552,8 @@
                                     "nextUI": 2,
                                     "list": [
                                         {
+                                            "ui": 1,
                                             "un": "read:${schema.un}",
-                                            "_ui": 1,
                                             "type": "scope"
                                         }
                                     ]
@@ -563,36 +563,36 @@
                                 "nextUI": 3,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "200",
-                                        "_ui": 1,
                                         "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                         "useExisted": false,
                                         "mtManager": {
                                             "nextUI": 2,
                                             "list": [
                                                 {
-                                                    "un": "application/json",
-                                                    "_ui": 1
+                                                    "ui": 1,
+                                                    "un": "application/json"
                                                 }
                                             ]
                                         },
                                         "reference": {
-                                            "_ui": 0,
+                                            "ui": 0,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
                                             "script": {
-                                                "_ui": 26,
+                                                "ui": 26,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 2,
                                         "un": "404",
-                                        "_ui": 2,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -600,15 +600,15 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 5,
+                                            "ui": 5,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
@@ -619,8 +619,8 @@
                                 "nextUI": 2,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "${schema.un}",
-                                        "_ui": 1,
                                         "type": "tag"
                                     }
                                 ]
@@ -632,16 +632,16 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "id",
-                            "_ui": 1,
                             "type": "parameters"
                         }
                     ]
                 }
             },
             {
+                "ui": 5,
                 "un": "/path/{id} +patch",
-                "_ui": 5,
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
@@ -650,43 +650,43 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "patch",
-                            "_ui": 1,
                             "parameterManager": {
                                 "nextUI": 1,
                                 "list": []
                             },
                             "requestBody": {
+                                "ui": 0,
                                 "un": "",
-                                "_ui": 0,
                                 "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                 "useExisted": false,
                                 "mtManager": {
                                     "nextUI": 2,
                                     "list": [
                                         {
-                                            "un": "application/json",
-                                            "_ui": 1
+                                            "ui": 1,
+                                            "un": "application/json"
                                         }
                                     ]
                                 },
                                 "reference": {
-                                    "_ui": 0,
+                                    "ui": 0,
                                     "type": "requestBodies"
                                 },
                                 "schema": {
+                                    "ui": 0,
                                     "un": "",
-                                    "_ui": 0,
                                     "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                     "script": {
-                                        "_ui": 17,
+                                        "ui": 17,
                                         "type": "script"
                                     }
                                 }
                             },
                             "security": {
+                                "ui": 0,
                                 "un": "${schema.un}",
-                                "_ui": 0,
                                 "type": "security",
                                 "oAuthFlowManager": {
                                     "nextUI": 1,
@@ -696,8 +696,8 @@
                                     "nextUI": 2,
                                     "list": [
                                         {
+                                            "ui": 1,
                                             "un": "write:${schema.un}",
-                                            "_ui": 1,
                                             "type": "scope"
                                         }
                                     ]
@@ -707,36 +707,36 @@
                                 "nextUI": 6,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "200",
-                                        "_ui": 1,
                                         "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                         "useExisted": false,
                                         "mtManager": {
                                             "nextUI": 2,
                                             "list": [
                                                 {
-                                                    "un": "application/json",
-                                                    "_ui": 1
+                                                    "ui": 1,
+                                                    "un": "application/json"
                                                 }
                                             ]
                                         },
                                         "reference": {
-                                            "_ui": 0,
+                                            "ui": 0,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
                                             "script": {
-                                                "_ui": 27,
+                                                "ui": 27,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 2,
                                         "un": "400",
-                                        "_ui": 2,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -744,22 +744,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 2,
+                                            "ui": 2,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 3,
                                         "un": "401",
-                                        "_ui": 3,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -767,22 +767,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 3,
+                                            "ui": 3,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 4,
                                         "un": "403",
-                                        "_ui": 4,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -790,22 +790,22 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 4,
+                                            "ui": 4,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
                                     },
                                     {
+                                        "ui": 5,
                                         "un": "404",
-                                        "_ui": 5,
                                         "unPattern": "",
                                         "useExisted": true,
                                         "mtManager": {
@@ -813,15 +813,15 @@
                                             "list": []
                                         },
                                         "reference": {
-                                            "_ui": 5,
+                                            "ui": 5,
                                             "type": "responses"
                                         },
                                         "schema": {
+                                            "ui": 0,
                                             "un": "",
-                                            "_ui": 0,
                                             "unPattern": "",
                                             "script": {
-                                                "_ui": 0,
+                                                "ui": 0,
                                                 "type": "script"
                                             }
                                         }
@@ -832,8 +832,8 @@
                                 "nextUI": 2,
                                 "list": [
                                     {
+                                        "ui": 1,
                                         "un": "${schema.un}",
-                                        "_ui": 1,
                                         "type": "tag"
                                     }
                                 ]
@@ -845,8 +845,8 @@
                     "nextUI": 2,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "id",
-                            "_ui": 1,
                             "type": "parameters"
                         }
                     ]
@@ -858,8 +858,8 @@
         "nextUI": 8,
         "list": [
             {
+                "ui": 1,
                 "un": "ContentType",
-                "_ui": 1,
                 "color": "",
                 "description": "ContentType of Encodeing",
                 "version": 1,
@@ -867,74 +867,74 @@
                     "nextUI": 13,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "application/javascript",
-                            "_ui": 1,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "application/json",
-                            "_ui": 2,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 3,
                             "un": "application/octet-stream",
-                            "_ui": 3,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 4,
                             "un": "application/pdf",
-                            "_ui": 4,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 5,
                             "un": "application/xml",
-                            "_ui": 5,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 6,
                             "un": "application/zip",
-                            "_ui": 6,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 7,
                             "un": "image/*",
-                            "_ui": 7,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 8,
                             "un": "text/css",
-                            "_ui": 8,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 9,
                             "un": "text/csv",
-                            "_ui": 9,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 10,
                             "un": "text/html",
-                            "_ui": 10,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 11,
                             "un": "text/plain",
-                            "_ui": 11,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 12,
                             "un": "text/xml",
-                            "_ui": 12,
                             "tag": "",
                             "value": ""
                         }
@@ -942,8 +942,8 @@
                 }
             },
             {
+                "ui": 2,
                 "un": "DataFormat",
-                "_ui": 2,
                 "color": "",
                 "description": "format of Schema field",
                 "version": 1,
@@ -951,56 +951,56 @@
                     "nextUI": 10,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "int32",
-                            "_ui": 1,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "int64",
-                            "_ui": 2,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 3,
                             "un": "float",
-                            "_ui": 3,
                             "tag": "number",
                             "value": ""
                         },
                         {
+                            "ui": 4,
                             "un": "double",
-                            "_ui": 4,
                             "tag": "number",
                             "value": ""
                         },
                         {
+                            "ui": 5,
                             "un": "byte",
-                            "_ui": 5,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 6,
                             "un": "binary",
-                            "_ui": 6,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 7,
                             "un": "date",
-                            "_ui": 7,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 8,
                             "un": "date-time",
-                            "_ui": 8,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 9,
                             "un": "password",
-                            "_ui": 9,
                             "tag": "string",
                             "value": ""
                         }
@@ -1008,8 +1008,8 @@
                 }
             },
             {
+                "ui": 3,
                 "un": "FieldName",
-                "_ui": 3,
                 "color": "",
                 "description": "commonly used names",
                 "version": 1,
@@ -1017,134 +1017,134 @@
                     "nextUI": 23,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "id",
-                            "_ui": 1,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "content",
-                            "_ui": 2,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 3,
                             "un": "date",
-                            "_ui": 3,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 4,
                             "un": "datetime",
-                            "_ui": 4,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 5,
                             "un": "email",
-                            "_ui": 5,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 6,
                             "un": "image",
-                            "_ui": 6,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 7,
                             "un": "link",
-                            "_ui": 7,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 8,
                             "un": "message",
-                            "_ui": 8,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 9,
                             "un": "name",
-                            "_ui": 9,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 10,
                             "un": "parent_id",
-                            "_ui": 10,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 11,
                             "un": "password",
-                            "_ui": 11,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 12,
                             "un": "phone",
-                            "_ui": 12,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 13,
                             "un": "sort",
-                            "_ui": 13,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 14,
                             "un": "status",
-                            "_ui": 14,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 15,
                             "un": "text",
-                            "_ui": 15,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 16,
                             "un": "time",
-                            "_ui": 16,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 17,
                             "un": "title",
-                            "_ui": 17,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 18,
                             "un": "type",
-                            "_ui": 18,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 19,
                             "un": "uri",
-                            "_ui": 19,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 20,
                             "un": "url",
-                            "_ui": 20,
                             "tag": "string",
                             "value": ""
                         },
                         {
+                            "ui": 21,
                             "un": "user_id",
-                            "_ui": 21,
                             "tag": "integer",
                             "value": ""
                         },
                         {
+                            "ui": 22,
                             "un": "uuid",
-                            "_ui": 22,
                             "tag": "string",
                             "value": ""
                         }
@@ -1152,8 +1152,8 @@
                 }
             },
             {
+                "ui": 4,
                 "un": "HttpStatus",
-                "_ui": 4,
                 "color": "",
                 "description": "",
                 "version": 1,
@@ -1161,50 +1161,50 @@
                     "nextUI": 9,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "200",
-                            "_ui": 1,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "301",
-                            "_ui": 2,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 3,
                             "un": "302",
-                            "_ui": 3,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 4,
                             "un": "400",
-                            "_ui": 4,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 5,
                             "un": "401",
-                            "_ui": 5,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 6,
                             "un": "403",
-                            "_ui": 6,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 7,
                             "un": "404",
-                            "_ui": 7,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 8,
                             "un": "405",
-                            "_ui": 8,
                             "tag": "",
                             "value": ""
                         }
@@ -1212,8 +1212,8 @@
                 }
             },
             {
+                "ui": 5,
                 "un": "MediaType",
-                "_ui": 5,
                 "color": "",
                 "description": "MediaType of RequestBody / Response",
                 "version": 1,
@@ -1221,32 +1221,32 @@
                     "nextUI": 6,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "application/json",
-                            "_ui": 1,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "application/xml",
-                            "_ui": 2,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 3,
                             "un": "multipart/form-data",
-                            "_ui": 3,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 4,
                             "un": "text/plain",
-                            "_ui": 4,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 5,
                             "un": "*/*",
-                            "_ui": 5,
                             "tag": "",
                             "value": ""
                         }
@@ -1254,8 +1254,8 @@
                 }
             },
             {
+                "ui": 6,
                 "un": "RequestBodyExcludeField",
-                "_ui": 6,
                 "color": "",
                 "description": "field names will be excluded in RequestBody",
                 "version": 1,
@@ -1263,14 +1263,14 @@
                     "nextUI": 3,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "id",
-                            "_ui": 1,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "user_id",
-                            "_ui": 2,
                             "tag": "",
                             "value": ""
                         }
@@ -1278,8 +1278,8 @@
                 }
             },
             {
+                "ui": 7,
                 "un": "SchemaProperty",
-                "_ui": 7,
                 "color": "",
                 "description": "",
                 "version": 1,
@@ -1287,104 +1287,104 @@
                     "nextUI": 18,
                     "list": [
                         {
+                            "ui": 1,
                             "un": "title",
-                            "_ui": 1,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 2,
                             "un": "maximum",
-                            "_ui": 2,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 3,
                             "un": "exclusiveMaximum",
-                            "_ui": 3,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 4,
                             "un": "minimum",
-                            "_ui": 4,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 5,
                             "un": "exclusiveMinimum",
-                            "_ui": 5,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 6,
                             "un": "maxLength",
-                            "_ui": 6,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 7,
                             "un": "minLength",
-                            "_ui": 7,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 8,
                             "un": "pattern",
-                            "_ui": 8,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 9,
                             "un": "maxItems",
-                            "_ui": 9,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 10,
                             "un": "minItems",
-                            "_ui": 10,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 11,
                             "un": "uniqueItems",
-                            "_ui": 11,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 12,
                             "un": "maxProperties",
-                            "_ui": 12,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 13,
                             "un": "minProperties",
-                            "_ui": 13,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 14,
                             "un": "enum",
-                            "_ui": 14,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 15,
                             "un": "not",
-                            "_ui": 15,
                             "tag": "",
                             "value": ""
                         },
                         {
+                            "ui": 16,
                             "un": "nullable",
-                            "_ui": 16,
                             "tag": "",
                             "value": "true"
                         },
                         {
+                            "ui": 17,
                             "un": "deprecated",
-                            "_ui": 17,
                             "tag": "",
                             "value": "true"
                         }
@@ -1397,104 +1397,104 @@
         "nextUI": 100,
         "list": [
             {
+                "ui": 1,
                 "un": "make Tag",
-                "_ui": 1,
                 "color": "",
                 "description": "e.g. User",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    /**\n     * @param ui {number}\n     * @param uri {string}\n     */\n    function addTag(ui, uri) {\n        const path = dd.vendor.pathManager.findByUN(uri)\n        if (path === undefined) {\n            return\n        }\n\n        path.operationManager.list.forEach(item => {\n            if (item.tagManager.find(ui)) {\n                return\n            }\n            const one = item.tagManager.make(ui)\n            item.tagManager.add(one)\n        })\n    }\n\n    const tag = dd.vendor.tagManager.findOrMake(dd.schema.un)\n    addTag(tag.ui, '/' + dd.schema.snakeCase)\n    addTag(tag.ui, '/' + dd.schema.snakeCase + '/{id}')\n}",
                 "global": false
             },
             {
+                "ui": 2,
                 "un": "make Parameter",
-                "_ui": 2,
                 "color": "",
                 "description": "e.g. user_id",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const parameter = dd.vendor.parameterManager.make(dd.schema.snakeCase + '_id')\n    dd.vendor.parameterManager.add(parameter)\n}",
                 "global": false
             },
             {
+                "ui": 11,
                 "un": "make Schema of RequestBody get",
-                "_ui": 11,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody get",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 12,
                 "un": "make Schema of RequestBody post",
-                "_ui": 12,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody post",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 15,
                 "un": "make Schema of RequestBody delete",
-                "_ui": 15,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody delete",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 16,
                 "un": "make Schema of RequestBody get one",
-                "_ui": 16,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody get one",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 17,
                 "un": "make Schema of RequestBody patch",
-                "_ui": 17,
                 "color": "#f00",
                 "description": "Schema is used in RequestBody patch",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 21,
                 "un": "make Schema of Response get",
-                "_ui": 21,
                 "color": "#f0f",
                 "description": "Schema is used in Response get",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 22,
                 "un": "make Schema of Response post",
-                "_ui": 22,
                 "color": "#f0f",
                 "description": "Schema is used in Response post",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 25,
                 "un": "make Schema of Response delete",
-                "_ui": 25,
                 "color": "#f0f",
                 "description": "Schema is used in Response delete",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 26,
                 "un": "make Schema of Response get one",
-                "_ui": 26,
                 "color": "#f0f",
                 "description": "Schema is used in Response get one",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 27,
                 "un": "make Schema of Response patch",
-                "_ui": 27,
                 "color": "#f0f",
                 "description": "Schema is used in Response patch",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n\n    return schema\n}",
                 "global": false
             },
             {
+                "ui": 99,
                 "un": "log",
-                "_ui": 99,
                 "color": "",
                 "description": "",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n    console.log(JSON.stringify(data.project))\n}",
@@ -1516,8 +1516,8 @@
                 "nextUI": 2,
                 "list": [
                     {
+                        "ui": 1,
                         "un": "Response",
-                        "_ui": 1,
                         "color": "",
                         "description": "",
                         "externalValue": "",
@@ -1535,8 +1535,8 @@
                 "nextUI": 3,
                 "list": [
                     {
+                        "ui": 1,
                         "un": "X-Rate-Limit",
-                        "_ui": 1,
                         "color": "",
                         "description": "",
                         "allowEmptyValue": false,
@@ -1545,8 +1545,8 @@
                         "name": "",
                         "required": true,
                         "schema": {
+                            "ui": 0,
                             "un": "X-Rate-Limit",
-                            "_ui": 0,
                             "description": "",
                             "format": "int32",
                             "isArray": false,
@@ -1556,15 +1556,15 @@
                             "_type": "integer",
                             "writeOnly": false,
                             "reference": {
-                                "_ui": 0,
+                                "ui": 0,
                                 "type": "schemas"
                             }
                         },
                         "location": "header"
                     },
                     {
+                        "ui": 2,
                         "un": "X-Expires-After",
-                        "_ui": 2,
                         "color": "",
                         "description": "",
                         "allowEmptyValue": false,
@@ -1573,8 +1573,8 @@
                         "name": "",
                         "required": true,
                         "schema": {
+                            "ui": 0,
                             "un": "X-Expires-After",
-                            "_ui": 0,
                             "description": "",
                             "format": "date-time",
                             "isArray": false,
@@ -1584,7 +1584,7 @@
                             "_type": "string",
                             "writeOnly": false,
                             "reference": {
-                                "_ui": 0,
+                                "ui": 0,
                                 "type": "schemas"
                             }
                         },
@@ -1600,8 +1600,8 @@
                 "nextUI": 5,
                 "list": [
                     {
+                        "ui": 1,
                         "un": "id",
-                        "_ui": 1,
                         "color": "",
                         "description": "",
                         "allowEmptyValue": false,
@@ -1610,8 +1610,8 @@
                         "name": "id",
                         "required": true,
                         "schema": {
+                            "ui": 0,
                             "un": "id",
-                            "_ui": 0,
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -1621,15 +1621,15 @@
                             "_type": "integer",
                             "writeOnly": false,
                             "reference": {
-                                "_ui": 0,
+                                "ui": 0,
                                 "type": "schemas"
                             }
                         },
                         "location": "path"
                     },
                     {
+                        "ui": 2,
                         "un": "id-",
-                        "_ui": 2,
                         "color": "",
                         "description": "",
                         "allowEmptyValue": false,
@@ -1638,8 +1638,8 @@
                         "name": "id",
                         "required": true,
                         "schema": {
+                            "ui": 0,
                             "un": "id-",
-                            "_ui": 0,
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -1649,15 +1649,15 @@
                             "_type": "integer",
                             "writeOnly": false,
                             "reference": {
-                                "_ui": 0,
+                                "ui": 0,
                                 "type": "schemas"
                             }
                         },
                         "location": "query"
                     },
                     {
+                        "ui": 3,
                         "un": "page",
-                        "_ui": 3,
                         "color": "",
                         "description": "",
                         "allowEmptyValue": false,
@@ -1666,8 +1666,8 @@
                         "name": "page",
                         "required": true,
                         "schema": {
+                            "ui": 0,
                             "un": "page",
-                            "_ui": 0,
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -1677,15 +1677,15 @@
                             "_type": "integer",
                             "writeOnly": false,
                             "reference": {
-                                "_ui": 0,
+                                "ui": 0,
                                 "type": "schemas"
                             }
                         },
                         "location": "path"
                     },
                     {
+                        "ui": 4,
                         "un": "page-",
-                        "_ui": 4,
                         "color": "",
                         "description": "",
                         "allowEmptyValue": false,
@@ -1694,8 +1694,8 @@
                         "name": "page",
                         "required": true,
                         "schema": {
+                            "ui": 0,
                             "un": "page-",
-                            "_ui": 0,
                             "description": "",
                             "format": "",
                             "isArray": false,
@@ -1705,7 +1705,7 @@
                             "_type": "integer",
                             "writeOnly": false,
                             "reference": {
-                                "_ui": 0,
+                                "ui": 0,
                                 "type": "schemas"
                             }
                         },
@@ -1721,8 +1721,8 @@
                 "nextUI": 7,
                 "list": [
                     {
+                        "ui": 1,
                         "un": "Response",
-                        "_ui": 1,
                         "color": "",
                         "description": "",
                         "headerManager": {
@@ -1735,19 +1735,19 @@
                             "nextUI": 2,
                             "list": [
                                 {
+                                    "ui": 1,
                                     "un": "application/json",
-                                    "_ui": 1,
                                     "example": {
                                         "value": {}
                                     },
                                     "schema": {
-                                        "_ui": 1,
+                                        "ui": 1,
                                         "type": "schemas"
                                     },
                                     "exampleManager": {
                                         "list": [
                                             {
-                                                "_ui": 1,
+                                                "ui": 1,
                                                 "type": "examples"
                                             }
                                         ]
@@ -1757,8 +1757,8 @@
                         }
                     },
                     {
+                        "ui": 2,
                         "un": "Response400",
-                        "_ui": 2,
                         "color": "",
                         "description": "",
                         "headerManager": {
@@ -1771,8 +1771,8 @@
                             "nextUI": 2,
                             "list": [
                                 {
+                                    "ui": 1,
                                     "un": "application/json",
-                                    "_ui": 1,
                                     "example": {
                                         "value": {
                                             "code": 400,
@@ -1780,7 +1780,7 @@
                                         }
                                     },
                                     "schema": {
-                                        "_ui": 1,
+                                        "ui": 1,
                                         "type": "schemas"
                                     },
                                     "exampleManager": {
@@ -1791,8 +1791,8 @@
                         }
                     },
                     {
+                        "ui": 3,
                         "un": "Response401",
-                        "_ui": 3,
                         "color": "",
                         "description": "",
                         "headerManager": {
@@ -1805,8 +1805,8 @@
                             "nextUI": 2,
                             "list": [
                                 {
+                                    "ui": 1,
                                     "un": "application/json",
-                                    "_ui": 1,
                                     "example": {
                                         "value": {
                                             "code": 401,
@@ -1814,7 +1814,7 @@
                                         }
                                     },
                                     "schema": {
-                                        "_ui": 1,
+                                        "ui": 1,
                                         "type": "schemas"
                                     },
                                     "exampleManager": {
@@ -1825,8 +1825,8 @@
                         }
                     },
                     {
+                        "ui": 4,
                         "un": "Response403",
-                        "_ui": 4,
                         "color": "",
                         "description": "",
                         "headerManager": {
@@ -1839,8 +1839,8 @@
                             "nextUI": 2,
                             "list": [
                                 {
+                                    "ui": 1,
                                     "un": "application/json",
-                                    "_ui": 1,
                                     "example": {
                                         "value": {
                                             "code": 403,
@@ -1848,7 +1848,7 @@
                                         }
                                     },
                                     "schema": {
-                                        "_ui": 1,
+                                        "ui": 1,
                                         "type": "schemas"
                                     },
                                     "exampleManager": {
@@ -1859,8 +1859,8 @@
                         }
                     },
                     {
+                        "ui": 5,
                         "un": "Response404",
-                        "_ui": 5,
                         "color": "",
                         "description": "",
                         "headerManager": {
@@ -1873,8 +1873,8 @@
                             "nextUI": 2,
                             "list": [
                                 {
+                                    "ui": 1,
                                     "un": "application/json",
-                                    "_ui": 1,
                                     "example": {
                                         "value": {
                                             "code": 404,
@@ -1882,7 +1882,7 @@
                                         }
                                     },
                                     "schema": {
-                                        "_ui": 1,
+                                        "ui": 1,
                                         "type": "schemas"
                                     },
                                     "exampleManager": {
@@ -1893,8 +1893,8 @@
                         }
                     },
                     {
+                        "ui": 6,
                         "un": "Response405",
-                        "_ui": 6,
                         "color": "",
                         "description": "",
                         "headerManager": {
@@ -1907,8 +1907,8 @@
                             "nextUI": 2,
                             "list": [
                                 {
+                                    "ui": 1,
                                     "un": "application/json",
-                                    "_ui": 1,
                                     "example": {
                                         "value": {
                                             "code": 405,
@@ -1916,7 +1916,7 @@
                                         }
                                     },
                                     "schema": {
-                                        "_ui": 1,
+                                        "ui": 1,
                                         "type": "schemas"
                                     },
                                     "exampleManager": {
@@ -1932,8 +1932,8 @@
                 "nextUI": 3,
                 "list": [
                     {
+                        "ui": 1,
                         "un": "Response",
-                        "_ui": 1,
                         "color": "",
                         "description": "",
                         "compositionType": "allOf",
@@ -1965,8 +1965,8 @@
                         }
                     },
                     {
+                        "ui": 2,
                         "un": "User",
-                        "_ui": 2,
                         "color": "",
                         "description": "",
                         "compositionType": "allOf",
@@ -2008,8 +2008,8 @@
             "nextUI": 2,
             "list": [
                 {
+                    "ui": 1,
                     "un": "image",
-                    "_ui": 1,
                     "allowReserved": false,
                     "contentType": "image/*",
                     "explode": false,
@@ -2032,8 +2032,8 @@
             "nextUI": 8,
             "list": [
                 {
+                    "ui": 1,
                     "un": "code",
-                    "_ui": 1,
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -2043,13 +2043,13 @@
                     "_type": "integer",
                     "writeOnly": false,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 },
                 {
+                    "ui": 2,
                     "un": "message",
-                    "_ui": 2,
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -2059,13 +2059,13 @@
                     "_type": "string",
                     "writeOnly": false,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 },
                 {
+                    "ui": 3,
                     "un": "id",
-                    "_ui": 3,
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -2075,13 +2075,13 @@
                     "_type": "integer",
                     "writeOnly": false,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 },
                 {
+                    "ui": 4,
                     "un": "email",
-                    "_ui": 4,
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -2091,13 +2091,13 @@
                     "_type": "string",
                     "writeOnly": false,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 },
                 {
+                    "ui": 5,
                     "un": "name",
-                    "_ui": 5,
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -2107,13 +2107,13 @@
                     "_type": "string",
                     "writeOnly": false,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 },
                 {
+                    "ui": 6,
                     "un": "password",
-                    "_ui": 6,
                     "description": "",
                     "format": "password",
                     "isArray": false,
@@ -2123,13 +2123,13 @@
                     "_type": "string",
                     "writeOnly": true,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 },
                 {
+                    "ui": 7,
                     "un": "avatar",
-                    "_ui": 7,
                     "description": "",
                     "format": "",
                     "isArray": false,
@@ -2139,7 +2139,7 @@
                     "_type": "string",
                     "writeOnly": false,
                     "reference": {
-                        "_ui": 0,
+                        "ui": 0,
                         "type": "schemas"
                     }
                 }
@@ -2175,14 +2175,14 @@
             "nextUI": 2,
             "list": [
                 {
+                    "ui": 1,
                     "un": "http://localhost/{version}",
-                    "_ui": 1,
                     "color": "",
                     "description": "",
                     "referenceManager": {
                         "list": [
                             {
-                                "_ui": 1,
+                                "ui": 1,
                                 "type": "variable"
                             }
                         ]
@@ -2194,8 +2194,8 @@
             "nextUI": 2,
             "list": [
                 {
+                    "ui": 1,
                     "un": "version",
-                    "_ui": 1,
                     "color": "",
                     "description": "",
                     "default": "v2",
@@ -2203,12 +2203,12 @@
                         "nextUI": 3,
                         "list": [
                             {
-                                "un": "v1",
-                                "_ui": 1
+                                "ui": 1,
+                                "un": "v1"
                             },
                             {
-                                "un": "v2",
-                                "_ui": 2
+                                "ui": 2,
+                                "un": "v2"
                             }
                         ]
                     }
@@ -2219,8 +2219,8 @@
             "nextUI": 2,
             "list": [
                 {
+                    "ui": 1,
                     "un": "User",
-                    "_ui": 1,
                     "color": "",
                     "description": ""
                 }
