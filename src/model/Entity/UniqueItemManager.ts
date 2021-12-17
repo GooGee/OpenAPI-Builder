@@ -35,7 +35,9 @@ export default class UniqueItemManager<
             return
         }
 
-        this.throwIfNotUnique(item)
+        if (this.unique) {
+            this.throwIfFindUN(un)
+        }
         item.un = un
     }
 
@@ -91,13 +93,17 @@ export default class UniqueItemManager<
         }
     }
 
+    throwIfFindUN(name: string) {
+        if (this.findByUN(name)) {
+            throw new Error(`${this.type.name} ${name} already exists!`)
+        }
+    }
+
     throwIfNotUnique(item: T) {
         if (this.unique === false) {
             return
         }
-        if (this.findByUN(item.un)) {
-            throw new Error(`${this.type.name} ${item.un} already exists!`)
-        }
+        this.throwIfFindUN(item.un)
     }
 
     toJSON() {

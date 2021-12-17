@@ -18,6 +18,7 @@ export default interface UniqueItemManagerInterface<
     load(manager: UniqueItemManagerInterface<T>): void
     make(name: string): T
     sort(asc?: boolean): void
+    throwIfFindUN(name: string): void
     throwIfNotUnique(item: T): void
     toJSON(): {
         nextUI: number
