@@ -33,7 +33,6 @@ export default defineComponent({
                     return
                 }
                 const item = props.manager.make(found.un)
-                item.load(found)
                 props.manager.add(item)
                 selected.value = 0
                 context.emit('select', found, item)
