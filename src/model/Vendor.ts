@@ -69,6 +69,10 @@ export default class Vendor {
         return new Factory(this.project)
     }
 
+    get fieldManager() {
+        return this.project.oapi.fieldManager
+    }
+
     get finder() {
         return new ReferenceFinder(this.project)
     }
@@ -105,12 +109,16 @@ export default class Vendor {
         return this.project.oapi.securityManager
     }
 
-    get securityScheme() {
+    get securitySchemeManager() {
         return this.project.oapi.component.securitySchemeManager
     }
 
     get serverManager() {
         return this.project.oapi.serverManager
+    }
+
+    get serverVariableManager() {
+        return this.project.oapi.serverVariableManager
     }
 
     get tagManager() {
