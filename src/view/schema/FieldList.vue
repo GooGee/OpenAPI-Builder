@@ -63,14 +63,14 @@
             <tr>
                 <td>
                     <SelectButton
-                        @select="update"
+                        @select="select"
                         :list="namexx"
                         :manager="manager"
                     ></SelectButton>
                 </td>
                 <td>
                     <SelectButton
-                        @select="update"
+                        @select="select"
                         :list="typexx"
                         :manager="manager"
                     ></SelectButton>
@@ -130,10 +130,17 @@ export default defineComponent({
             }
         }
 
+        function select(source: SchemaField, item: SchemaField) {
+            item.type = source.type
+            item.schemaUI = source.schemaUI
+            update()
+        }
+
         return {
             fieldxx,
             manager,
             namexx,
+            select,
             typexx,
             update,
         }
