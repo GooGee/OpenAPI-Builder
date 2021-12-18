@@ -51,7 +51,7 @@ export default class SchemaComplex extends Schema {
         return this.isTemplate === false
     }
 
-    makeOAPI(
+    protected makeOAPI(
         finder: ReferenceFinderInterface,
         fieldManager: SchemaFieldManager,
         fieldxx: SchemaField[],
@@ -118,11 +118,5 @@ export default class SchemaComplex extends Schema {
 export class SchemaManager extends UniqueItemManager<SchemaComplex> {
     constructor() {
         super(SchemaComplex)
-    }
-
-    toOAPI(finder: ReferenceFinderInterface) {
-        const map: ObjectMap<Object> = {}
-        this.list.forEach((item) => (map[item.un] = item.toOAPI(finder)))
-        return map
     }
 }
