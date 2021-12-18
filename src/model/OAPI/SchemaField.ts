@@ -1,4 +1,3 @@
-import Enumer from '../Entity/Enumer'
 import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
@@ -62,7 +61,7 @@ export default class SchemaField extends UniqueItem {
 
     makeData(finder: ReferenceFinderInterface) {
         if (this.isEnumer) {
-            const target = this.reference.getTarget(finder) as Enumer
+            const target = this.reference.getTarget(finder)
             if (target === undefined) {
                 throw new Error(`Enumer ${this.reference.ui} not found`)
             }

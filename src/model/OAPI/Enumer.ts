@@ -1,6 +1,6 @@
-import SideBarItem from './SideBarItem'
-import UniqueItem from './UniqueItem'
-import UniqueItemManager from './UniqueItemManager'
+import SideBarItem from '../Entity/SideBarItem'
+import UniqueItem from '../Entity/UniqueItem'
+import UniqueItemManager from '../Entity/UniqueItemManager'
 
 export default class Enumer extends SideBarItem {
     default = ''

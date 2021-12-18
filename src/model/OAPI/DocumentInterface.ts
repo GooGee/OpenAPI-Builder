@@ -1,6 +1,6 @@
-import { EnumerManager } from '../Entity/Enumer'
 import ComponentInterface from './ComponentInterface'
 import { EncodingManager } from './Encoding'
+import { EnumerManager } from './Enumer'
 import External from './External'
 import Info from './Info'
 import { PathManager } from './Path'
