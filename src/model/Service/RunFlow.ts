@@ -10,19 +10,19 @@ import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
 import { ReferenceManager } from '../OAPI/Reference'
-import SchemaComplex from '../OAPI/SchemaComplex'
+import Schema from '../OAPI/Schema'
 import SecurityScheme, { SecurityType } from '../OAPI/SecurityScheme'
 import Vendor from '../Vendor'
 import Text from './Text'
 
-export default function RunFlow(schema: SchemaComplex, vendor: Vendor) {
+export default function RunFlow(schema: Schema, vendor: Vendor) {
     const pathxx = schema.flowManager.getTargetxx(vendor.finder) as LayerPath[]
     pathxx.forEach((lp) => makePath(lp, schema, vendor))
 }
 
 function getUN(
     pattern: string,
-    schema: SchemaComplex,
+    schema: Schema,
     path: LayerPath,
     operation: LayerOperation,
 ) {
@@ -34,7 +34,7 @@ function getUN(
 
 function makeLayer<T extends UniqueItem = UniqueItem>(
     layer: Layer,
-    schema: SchemaComplex,
+    schema: Schema,
     path: LayerPath,
     operation: LayerOperation,
     vendor: Vendor,
@@ -56,7 +56,7 @@ function makeReference(ui: number, manager: ReferenceManager) {
     manager.add(manager.make(ui))
 }
 
-function makePath(lp: LayerPath, schema: SchemaComplex, vendor: Vendor) {
+function makePath(lp: LayerPath, schema: Schema, vendor: Vendor) {
     const un = getUN(lp.unPattern, schema, lp, {} as any)
     let found = vendor.pathManager.findByUN(un)
     if (found === undefined) {
@@ -79,7 +79,7 @@ function makeOperation(
     lp: LayerPath,
     lo: LayerOperation,
     path: Path,
-    schema: SchemaComplex,
+    schema: Schema,
     vendor: Vendor,
 ) {
     let found = path.operationManager.findByUN(lo.un)
@@ -122,7 +122,7 @@ function makeSecurity(
     lo: LayerOperation,
     operation: Operation,
     scopexx: UniqueItem[],
-    schema: SchemaComplex,
+    schema: Schema,
     vendor: Vendor,
 ) {
     const security = makeLayer<SecurityScheme>(lo.security, schema, lp, lo, vendor)
@@ -148,7 +148,7 @@ function makeRequestBody(
     lp: LayerPath,
     lo: LayerOperation,
     operation: Operation,
-    schema: SchemaComplex,
+    schema: Schema,
     vendor: Vendor,
 ) {
     let found = vendor.requestBodyManager.findByUN(un)
@@ -169,7 +169,7 @@ function makeResponse(
     lo: LayerOperation,
     lr: LayerResponse,
     operation: Operation,
-    schema: SchemaComplex,
+    schema: Schema,
     vendor: Vendor,
 ) {
     if (lr.useExisted) {
@@ -207,7 +207,7 @@ function makeStatus(lr: LayerResponse, operation: Operation) {
 }
 
 function makeSchema(
-    schema: SchemaComplex,
+    schema: Schema,
     layer: LayerSchema,
     lp: LayerPath,
     lo: LayerOperation,
@@ -221,13 +221,13 @@ function makeSchema(
         return null
     }
     const un = getUN(layer.unPattern, schema, lp, lo)
-    return Text.run(found.code, vendor, schema, un) as SchemaComplex
+    return Text.run(found.code, vendor, schema, un) as Schema
 }
 
 function makeMediaType(
     list: LayerMediaType[],
     manager: MediaTypeManager,
-    schema: SchemaComplex,
+    schema: Schema,
 ) {
     list.forEach((layer) => {
         let found = manager.findByUN(layer.un)

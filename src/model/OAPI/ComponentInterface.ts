@@ -4,7 +4,7 @@ import { LinkManager } from './Link'
 import { ParameterManager } from './Parameter'
 import { RequestBodyManager } from './RequestBody'
 import { ResponseManager } from './Response'
-import { SchemaManager } from './SchemaComplex'
+import { SchemaManager } from './Schema'
 import { SecuritySchemeManager } from './SecurityScheme'
 
 export default interface ComponentInterface {

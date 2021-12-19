@@ -23,7 +23,7 @@
 import { ImportItemManager } from '@/model/Entity/ImportItem'
 import ObjectMap from '@/model/Entity/ObjectMap'
 import SideBar from '@/model/Entity/SideBar'
-import SchemaComplex from '@/model/OAPI/SchemaComplex'
+import Schema from '@/model/OAPI/Schema'
 import Converter from '@/model/Service/Converter'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
@@ -37,7 +37,7 @@ export default defineComponent({
         ImportText,
     },
     setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar<SchemaComplex>
+        const sidebar = inject('sidebar') as SideBar<Schema>
 
         const importing = ref(true)
         const itemxx = ref<ObjectMap[]>([])

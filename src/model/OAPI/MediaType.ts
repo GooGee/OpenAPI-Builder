@@ -5,7 +5,7 @@ import UniqueItem from '../Entity/UniqueItem'
 import UniqueItemManager from '../Entity/UniqueItemManager'
 import Reference, { OAPIReferenceMap, ReferenceManager } from './Reference'
 import { OAPIReference } from './ReferenceInterface'
-import SchemaComplex from './SchemaComplex'
+import Schema from './Schema'
 import SchemaField from './SchemaField'
 import TargetType from './TargetType'
 
@@ -27,7 +27,7 @@ export default class MediaType extends UniqueItem {
     readonly schema = new Reference(0, TargetType.schemas)
     readonly exampleManager = new ReferenceManager(TargetType.examples)
 
-    makeEncoding(finder: ReferenceFinderInterface, schema: SchemaComplex) {
+    makeEncoding(finder: ReferenceFinderInterface, schema: Schema) {
         const fieldxx = finder.getSchemaFieldList(schema) as SchemaField[]
         if (fieldxx.length === 0) {
             return []
@@ -59,7 +59,7 @@ export default class MediaType extends UniqueItem {
         const result: OAPIMediaType = {
             schema: this.schema.toOAPIofTarget(schema),
         }
-        result.encoding = this.makeEncoding(finder, schema as SchemaComplex)
+        result.encoding = this.makeEncoding(finder, schema as Schema)
         if (this.exampleManager.list.length > 0) {
             result.examples = this.exampleManager.toOAPI(finder)
         }

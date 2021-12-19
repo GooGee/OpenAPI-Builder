@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
-import SchemaComplex from '@/model/OAPI/SchemaComplex'
+import Schema from '@/model/OAPI/Schema'
 import { defineComponent, inject } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import NameReferenceList from '../oapi/NameReferenceList.vue'
@@ -29,7 +29,7 @@ export default defineComponent({
         NameReferenceList,
     },
     setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar<SchemaComplex>
+        const sidebar = inject('sidebar') as SideBar<Schema>
         return { sidebar }
     },
 })

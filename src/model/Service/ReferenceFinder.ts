@@ -3,7 +3,7 @@ import ReferenceFinderInterface from '../Entity/ReferenceFinderInterface'
 import UniqueItemInterface from '../Entity/UniqueItemInterface'
 import UniqueItemManagerInterface from '../Entity/UniqueItemManagerInterface'
 import Reference from '../OAPI/Reference'
-import SchemaComplex from '../OAPI/SchemaComplex'
+import Schema from '../OAPI/Schema'
 import TargetType from '../OAPI/TargetType'
 import SchemaFieldFinder from './SchemaFieldFinder'
 
@@ -86,7 +86,7 @@ export default class ReferenceFinder implements ReferenceFinderInterface {
         return this.getManager(type) as any as UniqueItemManagerInterface
     }
 
-    getSchemaFieldList(schema: SchemaComplex) {
+    getSchemaFieldList(schema: Schema) {
         return this.schemaFieldFinder.getFieldList(schema)
     }
 }

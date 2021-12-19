@@ -9,7 +9,7 @@
 import emitter from '@/emitter'
 import { EventEnum } from '@/model/Entity/Event'
 import SideBar from '@/model/Entity/SideBar'
-import SchemaComplex from '@/model/OAPI/SchemaComplex'
+import Schema from '@/model/OAPI/Schema'
 import RunFlow from '@/model/Service/RunFlow'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
@@ -21,7 +21,7 @@ export default defineComponent({
         ReferenceList,
     },
     setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar<SchemaComplex>
+        const sidebar = inject('sidebar') as SideBar<Schema>
 
         function run() {
             try {

@@ -7,7 +7,7 @@ import { LinkManager } from './Link'
 import { ParameterManager, Location } from './Parameter'
 import { RequestBodyManager } from './RequestBody'
 import { ResponseManager } from './Response'
-import { SchemaManager } from './SchemaComplex'
+import { SchemaManager } from './Schema'
 import { SecuritySchemeManager } from './SecurityScheme'
 
 export default class Component extends Item implements ComponentInterface {

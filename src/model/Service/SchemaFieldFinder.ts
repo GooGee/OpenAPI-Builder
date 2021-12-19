@@ -1,4 +1,4 @@
-import SchemaComplex, { SchemaManager } from '../OAPI/SchemaComplex'
+import Schema, { SchemaManager } from '../OAPI/Schema'
 import { SchemaFieldManager } from '../OAPI/SchemaField'
 
 export default class SchemaFieldFinder {
@@ -7,13 +7,13 @@ export default class SchemaFieldFinder {
         readonly schemaManager: SchemaManager,
     ) {}
 
-    getFieldList(schema: SchemaComplex) {
+    getFieldList(schema: Schema) {
         const set: Set<number> = new Set()
         this.getReferenceList(schema, set)
         return this.fieldManager.list.filter((item) => set.has(item.schemaUI))
     }
 
-    private getReferenceList(schema: SchemaComplex, set: Set<number>) {
+    private getReferenceList(schema: Schema, set: Set<number>) {
         if (schema.isTemplate) {
             return
         }

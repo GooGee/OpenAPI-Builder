@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
-import SchemaComplex, { compositionTypeList } from '@/model/OAPI/SchemaComplex'
+import Schema, { compositionTypeList } from '@/model/OAPI/Schema'
 import ss from '@/ss'
 import { defineComponent, inject } from 'vue'
 import JSONText from '../oapi/JSONText.vue'
@@ -62,7 +62,7 @@ export default defineComponent({
         ReferenceList,
     },
     setup(props, context) {
-        const sidebar = inject('sidebar') as SideBar<SchemaComplex>
+        const sidebar = inject('sidebar') as SideBar<Schema>
         const manager = ss.project.oapi.fieldManager
         function empty() {
             if (manager.list.find((aa) => aa.schemaUI === sidebar.item!.ui)) {
