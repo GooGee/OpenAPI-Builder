@@ -32,7 +32,6 @@ export type OAPIComposition = OAPISchema & {
 
 export interface OAPISchemaObject extends OAPISchema {
     properties: ObjectMap
-    text?: Object
     type: string
 }
 
