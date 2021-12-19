@@ -11,5 +11,5 @@ export default interface UIItemManagerInterface<
     has(ui: number): boolean
     load(manager: UIItemManagerInterface<T>): void
     throwIfFind(ui: number): void
-    get uixx(): number[]
+    uixx: number[]
 }
