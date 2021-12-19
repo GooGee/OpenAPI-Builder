@@ -62,7 +62,7 @@ export default class UIItemManager<T extends UIItemInterface = UIItemInterface>
         }
     }
 
-    toUIArray() {
+    get uixx() {
         return this.list.map((item) => item.ui)
     }
 }

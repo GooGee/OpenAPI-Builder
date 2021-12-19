@@ -62,12 +62,12 @@ describe('UIItemManager', function () {
         expect(json.list[0]).toEqual(item)
     })
 
-    it('toUIArray', function () {
+    it('uixx', function () {
         const manager = new UIItemManager(UIItem)
         const item = manager.make()
         manager.add(item)
 
-        const list = manager.toUIArray()
+        const list = manager.uixx
         expect(list.length).toBe(1)
         expect(list).toContain(item.ui)
     })
