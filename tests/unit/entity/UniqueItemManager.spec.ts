@@ -78,7 +78,7 @@ describe('UniqueItemManager', function () {
         expect(json).toHaveProperty(item.un, item.toOAPI(ss.finder))
     })
 
-    it('toUNArray', function () {
+    it('unxx', function () {
         const manager = new UniqueItemManager(UniqueItem)
         const item = manager.make(data.un)
         manager.add(item)

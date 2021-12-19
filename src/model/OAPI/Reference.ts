@@ -80,6 +80,10 @@ export class ReferenceManager extends UIItemManager<ReferenceInterface> {
         return manager.list.filter((target) => set.has(target.ui))
     }
 
+    getUNxx(finder: ReferenceFinderInterface) {
+        return this.getTargetxx(finder).map((item) => item.un)
+    }
+
     protected loadItem(item: ReferenceInterface) {
         return this.make(item.ui)
     }
@@ -107,9 +111,5 @@ export class ReferenceManager extends UIItemManager<ReferenceInterface> {
             const found = targetxx.find((aa) => aa.ui === item.ui)
             return item.toOAPIofTarget(found)
         })
-    }
-
-    toUNArray(finder: ReferenceFinderInterface) {
-        return this.getTargetxx(finder).map((item) => item.un)
     }
 }

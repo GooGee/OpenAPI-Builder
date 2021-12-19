@@ -67,7 +67,7 @@ export default class Operation extends UniqueItem {
             .join('')
             .split('}')
             .join('')
-        const tags = this.tagManager.toUNArray(finder)
+        const tags = this.tagManager.getUNxx(finder)
         const result: OAPIOperation = {
             operationId: id,
             summary: this.summary,

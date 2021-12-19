@@ -103,7 +103,7 @@ export default class Schema extends SideBarItem {
                 result.discriminator = this.discriminator.toOAPI(finder)
             }
             if (this.requiredManager.list.length) {
-                result.required = this.requiredManager.toUNArray(finder)
+                result.required = this.requiredManager.getUNxx(finder)
             }
             if (fieldxx.length) {
                 list.push(this.makeOAPI(finder, fieldManager, fieldxx) as any)
