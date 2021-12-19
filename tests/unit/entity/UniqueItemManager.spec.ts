@@ -83,7 +83,7 @@ describe('UniqueItemManager', function () {
         const item = manager.make(data.un)
         manager.add(item)
 
-        const list = manager.toUNArray()
+        const list = manager.unxx
         expect(list.length).toBe(1)
         expect(list[0]).toEqual(item.un)
     })

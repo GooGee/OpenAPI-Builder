@@ -10,7 +10,7 @@ export default class Enumer extends SideBarItem {
         return {
             type: 'string',
             description: this.description,
-            enum: this.valueManager.toUNArray(),
+            enum: this.valueManager.unxx,
         }
     }
 }

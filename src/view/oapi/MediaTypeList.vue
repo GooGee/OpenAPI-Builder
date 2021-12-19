@@ -46,7 +46,7 @@ export default defineComponent({
         let optionxx = ['*']
         const pp = ss.project.getPreset('MediaType')
         if (pp) {
-            optionxx = pp.propertyManager.toUNArray()
+            optionxx = pp.propertyManager.unxx
         }
 
         const option = ref(optionxx[0])

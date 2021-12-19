@@ -18,7 +18,7 @@ export default class ServerVariable extends SideBarItem {
             description: this.description,
         }
         if (this.valueManager.list.length) {
-            result.enum = this.valueManager.toUNArray()
+            result.enum = this.valueManager.unxx
         }
         return result
     }

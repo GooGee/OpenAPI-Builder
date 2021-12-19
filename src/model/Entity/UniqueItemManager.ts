@@ -112,7 +112,7 @@ export default class UniqueItemManager<
         return this.arrayToOAPI(this.list, finder)
     }
 
-    toUNArray() {
+    get unxx() {
         return this.list.map((item) => item.un)
     }
 }

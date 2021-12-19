@@ -24,5 +24,5 @@ export default interface UniqueItemManagerInterface<
         list: T[]
     }
     toOAPI(finder: ReferenceFinderInterface): ObjectMap<any>
-    toUNArray(): string[]
+    get unxx(): string[]
 }
