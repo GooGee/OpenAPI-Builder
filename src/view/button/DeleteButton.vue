@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import UniqueItemManagerInterface from '@/model/Entity/UniqueItemManagerInterface'
 import { defineComponent, PropType } from 'vue'
 
@@ -14,7 +14,7 @@ export default defineComponent({
             required: true,
         },
         item: {
-            type: Object as PropType<UniqueItem>,
+            type: Object as PropType<UniqueItemInterface>,
             required: true,
         },
     },

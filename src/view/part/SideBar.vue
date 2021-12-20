@@ -34,7 +34,7 @@ import emitter from '@/emitter'
 import { EventEnum } from '@/model/Entity/Event'
 import SideBar from '@/model/Entity/SideBar'
 import SideBarItemData from '@/model/Entity/SideBarItem'
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import { defineComponent, PropType, ref, watch } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import SideBarItem from './SideBarItem.vue'
@@ -66,7 +66,7 @@ export default defineComponent({
             }
         }
 
-        const list = ref<UniqueItem[]>([])
+        const list = ref<UniqueItemInterface[]>([])
         emitter.on(EventEnum['sidebar-list-change'], update)
         watch(() => props.sidebar.keyword, update, { immediate: true })
 

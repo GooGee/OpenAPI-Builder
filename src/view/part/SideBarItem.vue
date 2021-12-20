@@ -23,7 +23,7 @@
 <script lang="ts">
 import emitter from '@/emitter'
 import { EventEnum } from '@/model/Entity/Event'
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import UniqueItemManagerInterface from '@/model/Entity/UniqueItemManagerInterface'
 import { defineComponent, PropType } from 'vue'
 import ChangeButton from '../button/ChangeButton.vue'
@@ -36,7 +36,7 @@ export default defineComponent({
     },
     props: {
         item: {
-            type: Object as PropType<UniqueItem>,
+            type: Object as PropType<UniqueItemInterface>,
             required: true,
         },
         manager: {

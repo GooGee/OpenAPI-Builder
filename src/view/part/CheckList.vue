@@ -37,13 +37,13 @@
 
 <script lang="ts">
 import UIItemManager from '@/model/Entity/UIItemManager'
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
     props: {
         fieldxx: {
-            type: Object as PropType<UniqueItem>,
+            type: Object as PropType<UniqueItemInterface>,
             required: true,
         },
         manager: {

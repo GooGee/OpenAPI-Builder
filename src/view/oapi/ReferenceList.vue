@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import { ReferenceManager } from '@/model/OAPI/Reference'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
@@ -32,7 +32,7 @@ const ReferenceList = defineComponent({
         },
     },
     setup(props, context) {
-        const list = ref<UniqueItem[]>([])
+        const list = ref<UniqueItemInterface[]>([])
         const source = ss.finder.findManager(props.manager.targetType).list
         watch(() => props.manager.list.length, getList, { immediate: true })
 

@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import UniqueItem from '@/model/Entity/UniqueItem'
+import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import UniqueItemManagerInterface from '@/model/Entity/UniqueItemManagerInterface'
 import Toast from '@/model/Service/Toast'
 import { defineComponent, PropType, ref } from 'vue'
@@ -16,7 +16,7 @@ import { defineComponent, PropType, ref } from 'vue'
 export default defineComponent({
     props: {
         list: {
-            type: Object as PropType<UniqueItem[]>,
+            type: Object as PropType<UniqueItemInterface[]>,
             required: true,
         },
         manager: {
