@@ -1377,8 +1377,8 @@
                 "color": "",
                 "description": "e.g. User",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    /**\n     * @param ui {number}\n     * @param uri {string}\n     */\n    function addTag(ui, uri) {\n        const path = dd.vendor.pathManager.findByUN(uri)\n        if (path === undefined) {\n            return\n        }\n\n        path.operationManager.list.forEach(item => {\n            if (item.tagManager.find(ui)) {\n                return\n            }\n            const one = item.tagManager.make(ui)\n            item.tagManager.add(one)\n        })\n    }\n\n    const tag = dd.vendor.tagManager.findOrMake(dd.schema.un)\n    addTag(tag.ui, '/' + dd.schema.snakeCase)\n    addTag(tag.ui, '/' + dd.schema.snakeCase + '/{id}')\n}",
-                "global": false,
-                "requireLayer": false
+                "requireLayer": false,
+                "requireSchema": true
             },
             {
                 "ui": 2,
@@ -1386,8 +1386,8 @@
                 "color": "",
                 "description": "e.g. user_id",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const parameter = dd.vendor.parameterManager.make(dd.schema.snakeCase + '_id')\n    dd.vendor.parameterManager.add(parameter)\n}",
-                "global": false,
-                "requireLayer": false
+                "requireLayer": false,
+                "requireSchema": true
             },
             {
                 "ui": 11,
@@ -1395,8 +1395,8 @@
                 "color": "#f00",
                 "description": "Schema is used in RequestBody get",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 12,
@@ -1404,8 +1404,8 @@
                 "color": "#f00",
                 "description": "Schema is used in RequestBody post",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 15,
@@ -1413,8 +1413,8 @@
                 "color": "#f00",
                 "description": "Schema is used in RequestBody delete",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 16,
@@ -1422,8 +1422,8 @@
                 "color": "#f00",
                 "description": "Schema is used in RequestBody get one",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 17,
@@ -1431,8 +1431,8 @@
                 "color": "#f00",
                 "description": "Schema is used in RequestBody patch",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.red\n    schema.compositionType = 'allOf'\n\n    const source = schema.referenceManager.make(dd.schema.ui)\n    schema.referenceManager.add(source)\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 21,
@@ -1440,8 +1440,8 @@
                 "color": "#f0f",
                 "description": "Schema is used in Response get",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n    field.isArray = true\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 22,
@@ -1449,8 +1449,8 @@
                 "color": "#f0f",
                 "description": "Schema is used in Response post",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 25,
@@ -1458,8 +1458,8 @@
                 "color": "#f0f",
                 "description": "Schema is used in Response delete",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 26,
@@ -1467,8 +1467,8 @@
                 "color": "#f0f",
                 "description": "Schema is used in Response get one",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 27,
@@ -1476,8 +1476,8 @@
                 "color": "#f0f",
                 "description": "Schema is used in Response patch",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n\n    const schema = dd.vendor.schemaManager.make(dd.un)\n    dd.vendor.schemaManager.add(schema)\n    schema.color = dd.ColorEnum.magenta\n\n    const reference = schema.referenceManager.make(1)\n    schema.referenceManager.add(reference)\n\n    const field = dd.factory.makeSchemaField('data', schema)\n    field.refer(dd.schema.ui)\n\n    return schema\n}",
-                "global": false,
-                "requireLayer": true
+                "requireLayer": true,
+                "requireSchema": true
             },
             {
                 "ui": 99,
@@ -1485,8 +1485,8 @@
                 "color": "",
                 "description": "",
                 "code": "function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n    console.log(JSON.stringify(data.project))\n}",
-                "global": true,
-                "requireLayer": false
+                "requireLayer": false,
+                "requireSchema": false
             }
         ]
     },

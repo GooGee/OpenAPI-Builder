@@ -5,8 +5,8 @@ export default class Script extends SideBarItem {
     code =
         'function run(data) {\n    /** @type {DataForScript} */\n    const dd = data\n}'
     description = ''
-    global = false
     requireLayer = false
+    requireSchema = false
 }
 
 export class ScriptManager extends UniqueItemManager<Script> {

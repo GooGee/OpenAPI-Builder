@@ -14,21 +14,18 @@
                 <td>
                     <span class="custom-control custom-switch">
                         <input
-                            id="global"
-                            v-model="sidebar.item.global"
+                            id="requireSchema"
+                            v-model="sidebar.item.requireSchema"
                             type="checkbox"
                             class="custom-control-input"
                         />
-                        <label for="global" class="custom-control-label">global</label>
+                        <label for="requireSchema" class="custom-control-label">
+                            requireSchema
+                        </label>
                     </span>
                 </td>
             </tr>
-            <tr v-if="sidebar.item.global">
-                <td>
-                    <RunButton :script="sidebar.item"></RunButton>
-                </td>
-            </tr>
-            <tr v-else>
+            <tr v-if="sidebar.item.requireSchema">
                 <td>
                     <span class="custom-control custom-switch">
                         <input
@@ -41,6 +38,11 @@
                             requireLayer
                         </label>
                     </span>
+                </td>
+            </tr>
+            <tr v-else>
+                <td>
+                    <RunButton :script="sidebar.item"></RunButton>
                 </td>
             </tr>
             <tr>
