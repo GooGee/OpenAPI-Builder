@@ -21,7 +21,12 @@
                             class="custom-control-label"
                         ></label>
                     </span>
-                    {{ item.un }}
+                    <span
+                        @click="$emit('select', item)"
+                        class="btn btn-outline-primary"
+                    >
+                        {{ item.un }}
+                    </span>
                 </td>
             </tr>
         </tbody>
@@ -70,7 +75,10 @@ export default defineComponent({
                 props.manager.clear()
             }
         }
-        return { add, clear }
+        return {
+            add,
+            clear,
+        }
     },
 })
 </script>
