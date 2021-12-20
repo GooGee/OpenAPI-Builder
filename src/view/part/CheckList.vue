@@ -36,18 +36,18 @@
 </template>
 
 <script lang="ts">
-import UIItemManager from '@/model/Entity/UIItemManager'
+import UIItemManagerInterface from '@/model/Entity/UIItemManagerInterface'
 import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
     props: {
         fieldxx: {
-            type: Object as PropType<UniqueItemInterface>,
+            type: Object as PropType<UniqueItemInterface[]>,
             required: true,
         },
         manager: {
-            type: Object as PropType<UIItemManager>,
+            type: Object as PropType<UIItemManagerInterface>,
             required: true,
         },
         title: {
