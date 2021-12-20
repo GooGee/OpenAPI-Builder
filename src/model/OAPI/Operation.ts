@@ -15,6 +15,17 @@ import {
 } from './SecurityRequirement'
 import TargetType from './TargetType'
 
+export const optionxx = [
+    'get',
+    'delete',
+    'head',
+    'options',
+    'patch',
+    'post',
+    'put',
+    'trace',
+]
+
 export enum OperationType {
     get = 'get',
     delete = 'delete',

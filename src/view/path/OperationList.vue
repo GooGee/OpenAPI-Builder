@@ -24,6 +24,7 @@
 
 <script lang="ts">
 import SideBar from '@/model/Entity/SideBar'
+import { optionxx } from '@/model/OAPI/Operation'
 import Path from '@/model/OAPI/Path'
 import { computed, defineComponent, inject, ref } from 'vue'
 import AddButton from '../button/AddButton.vue'
@@ -44,16 +45,6 @@ export default defineComponent({
             return sidebar.item!.operationManager
         })
 
-        const optionxx = [
-            'get',
-            'delete',
-            'head',
-            'options',
-            'patch',
-            'post',
-            'put',
-            'trace',
-        ]
         const option = ref(optionxx[0])
 
         const operation = computed(function () {
