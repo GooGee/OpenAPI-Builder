@@ -17,7 +17,7 @@ export class SecurityRequirementManager extends ReferenceManager {
     ): OAPISecurityRequirement {
         const set: Set<string> = new Set()
         target.oAuthFlowManager.list.forEach((flow) => {
-            flow.referenceManager
+            flow.scopeManager
                 .getTargetxx(finder)
                 .forEach((scope) => set.add(scope.un))
         })

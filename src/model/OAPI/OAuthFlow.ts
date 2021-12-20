@@ -24,7 +24,7 @@ export default class OAuthFlow extends UniqueItem {
     authorizationUrl = ''
     refreshUrl = ''
     tokenUrl = ''
-    readonly referenceManager = new ReferenceManager(TargetType.scope)
+    readonly scopeManager = new ReferenceManager(TargetType.scope)
 
     get hasAuthorization() {
         return (
@@ -41,7 +41,7 @@ export default class OAuthFlow extends UniqueItem {
     }
 
     toOAPI(finder: ReferenceFinderInterface) {
-        const targetxx = this.referenceManager.getTargetxx(finder) as Scope[]
+        const targetxx = this.scopeManager.getTargetxx(finder) as Scope[]
         const scope: ObjectMap = {}
         targetxx.forEach((item) => (scope[item.un] = item.description))
         const result: OAPIOAuthFlow = {
@@ -66,8 +66,8 @@ export class OAuthFlowManager extends UniqueItemManager<OAuthFlow> {
 
     addToAll(ui: number) {
         if (this.list.length) {
-            const item = this.list[0].referenceManager.make(ui)
-            this.list.forEach((flow) => flow.referenceManager.add(item))
+            const item = this.list[0].scopeManager.make(ui)
+            this.list.forEach((flow) => flow.scopeManager.add(item))
         }
     }
 }

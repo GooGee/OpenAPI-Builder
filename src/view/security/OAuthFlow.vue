@@ -32,7 +32,7 @@
             <tr>
                 <td class="text-right">scopes</td>
                 <td>
-                    <ReferenceList :manager="item.referenceManager"></ReferenceList>
+                    <ReferenceList :manager="item.scopeManager"></ReferenceList>
                 </td>
             </tr>
         </tbody>
