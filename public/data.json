@@ -10,129 +10,61 @@
                 "description": "",
                 "unPattern": "/${schema.snakeCase}",
                 "suffix": "",
-                "operationManager": {
-                    "nextUI": 2,
-                    "list": [
-                        {
-                            "ui": 1,
-                            "un": "get",
-                            "parameterManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "requestBody": {
+                "operation": {
+                    "ui": 1,
+                    "un": "get",
+                    "parameterManager": {
+                        "nextUI": 1,
+                        "list": []
+                    },
+                    "requestBody": {
+                        "ui": 0,
+                        "un": "",
+                        "unPattern": "",
+                        "useExisted": false,
+                        "mtManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "reference": {
+                            "ui": 0,
+                            "type": "requestBodies"
+                        },
+                        "schema": {
+                            "ui": 0,
+                            "un": "",
+                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "script": {
                                 "ui": 0,
-                                "un": "",
-                                "unPattern": "",
-                                "useExisted": false,
-                                "mtManager": {
-                                    "nextUI": 1,
-                                    "list": []
-                                },
-                                "reference": {
-                                    "ui": 0,
-                                    "type": "requestBodies"
-                                },
-                                "schema": {
-                                    "ui": 0,
-                                    "un": "",
-                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
-                                    "script": {
-                                        "ui": 0,
-                                        "type": "script"
-                                    }
-                                }
-                            },
-                            "security": {
-                                "ui": 0,
-                                "un": "${schema.un}",
-                                "type": "security",
-                                "oAuthFlowManager": {
-                                    "nextUI": 1,
-                                    "list": []
-                                },
-                                "scopeManager": {
-                                    "nextUI": 2,
-                                    "list": [
-                                        {
-                                            "ui": 1,
-                                            "un": "list:${schema.un}",
-                                            "type": "scope"
-                                        }
-                                    ]
-                                }
-                            },
-                            "statusManager": {
-                                "nextUI": 2,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "200",
-                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
-                                        "useExisted": false,
-                                        "mtManager": {
-                                            "nextUI": 2,
-                                            "list": [
-                                                {
-                                                    "ui": 1,
-                                                    "un": "application/json"
-                                                }
-                                            ]
-                                        },
-                                        "reference": {
-                                            "ui": 0,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
-                                            "script": {
-                                                "ui": 21,
-                                                "type": "script"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
-                            "tagManager": {
-                                "nextUI": 2,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "${schema.un}",
-                                        "type": "tag"
-                                    }
-                                ]
+                                "type": "script"
                             }
                         }
-                    ]
-                },
-                "parameterManager": {
-                    "nextUI": 1,
-                    "list": []
-                }
-            },
-            {
-                "ui": 2,
-                "un": "/path +post",
-                "color": "",
-                "description": "",
-                "unPattern": "/${schema.snakeCase}",
-                "suffix": "",
-                "operationManager": {
-                    "nextUI": 2,
-                    "list": [
-                        {
-                            "ui": 1,
-                            "un": "post",
-                            "parameterManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "requestBody": {
-                                "ui": 0,
-                                "un": "",
+                    },
+                    "security": {
+                        "ui": 0,
+                        "un": "${schema.un}",
+                        "type": "security",
+                        "oAuthFlowManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "scopeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "list:${schema.un}",
+                                    "type": "scope"
+                                }
+                            ]
+                        }
+                    },
+                    "statusManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "200",
                                 "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                 "useExisted": false,
                                 "mtManager": {
@@ -146,151 +78,209 @@
                                 },
                                 "reference": {
                                     "ui": 0,
-                                    "type": "requestBodies"
+                                    "type": "responses"
                                 },
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
                                     "script": {
-                                        "ui": 12,
+                                        "ui": 21,
                                         "type": "script"
                                     }
                                 }
-                            },
-                            "security": {
-                                "ui": 0,
+                            }
+                        ]
+                    },
+                    "tagManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "ui": 1,
                                 "un": "${schema.un}",
-                                "type": "security",
-                                "oAuthFlowManager": {
-                                    "nextUI": 1,
-                                    "list": []
-                                },
-                                "scopeManager": {
+                                "type": "tag"
+                            }
+                        ]
+                    }
+                },
+                "parameterManager": {
+                    "nextUI": 1,
+                    "list": []
+                }
+            },
+            {
+                "ui": 2,
+                "un": "/path +post",
+                "color": "",
+                "description": "",
+                "unPattern": "/${schema.snakeCase}",
+                "suffix": "",
+                "operation": {
+                    "ui": 1,
+                    "un": "post",
+                    "parameterManager": {
+                        "nextUI": 1,
+                        "list": []
+                    },
+                    "requestBody": {
+                        "ui": 0,
+                        "un": "",
+                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                        "useExisted": false,
+                        "mtManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "application/json"
+                                }
+                            ]
+                        },
+                        "reference": {
+                            "ui": 0,
+                            "type": "requestBodies"
+                        },
+                        "schema": {
+                            "ui": 0,
+                            "un": "",
+                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "script": {
+                                "ui": 12,
+                                "type": "script"
+                            }
+                        }
+                    },
+                    "security": {
+                        "ui": 0,
+                        "un": "${schema.un}",
+                        "type": "security",
+                        "oAuthFlowManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "scopeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "create:${schema.un}",
+                                    "type": "scope"
+                                }
+                            ]
+                        }
+                    },
+                    "statusManager": {
+                        "nextUI": 5,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "200",
+                                "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                "useExisted": false,
+                                "mtManager": {
                                     "nextUI": 2,
                                     "list": [
                                         {
                                             "ui": 1,
-                                            "un": "create:${schema.un}",
-                                            "type": "scope"
+                                            "un": "application/json"
                                         }
                                     ]
+                                },
+                                "reference": {
+                                    "ui": 0,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                    "script": {
+                                        "ui": 22,
+                                        "type": "script"
+                                    }
                                 }
                             },
-                            "statusManager": {
-                                "nextUI": 5,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "200",
-                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
-                                        "useExisted": false,
-                                        "mtManager": {
-                                            "nextUI": 2,
-                                            "list": [
-                                                {
-                                                    "ui": 1,
-                                                    "un": "application/json"
-                                                }
-                                            ]
-                                        },
-                                        "reference": {
-                                            "ui": 0,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
-                                            "script": {
-                                                "ui": 22,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 2,
-                                        "un": "400",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 2,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 3,
-                                        "un": "401",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 3,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 4,
-                                        "un": "403",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 4,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
+                            {
+                                "ui": 2,
+                                "un": "400",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 2,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
                                     }
-                                ]
+                                }
                             },
-                            "tagManager": {
-                                "nextUI": 2,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "${schema.un}",
-                                        "type": "tag"
+                            {
+                                "ui": 3,
+                                "un": "401",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 3,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
                                     }
-                                ]
+                                }
+                            },
+                            {
+                                "ui": 4,
+                                "un": "403",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 4,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
+                                    }
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    },
+                    "tagManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "${schema.un}",
+                                "type": "tag"
+                            }
+                        ]
+                    }
                 },
                 "parameterManager": {
                     "nextUI": 1,
@@ -304,190 +294,185 @@
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
                 "suffix": "_1",
-                "operationManager": {
-                    "nextUI": 2,
-                    "list": [
-                        {
-                            "ui": 1,
-                            "un": "delete",
-                            "parameterManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "requestBody": {
+                "operation": {
+                    "ui": 1,
+                    "un": "delete",
+                    "parameterManager": {
+                        "nextUI": 1,
+                        "list": []
+                    },
+                    "requestBody": {
+                        "ui": 0,
+                        "un": "",
+                        "unPattern": "",
+                        "useExisted": false,
+                        "mtManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "reference": {
+                            "ui": 0,
+                            "type": "requestBodies"
+                        },
+                        "schema": {
+                            "ui": 0,
+                            "un": "",
+                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "script": {
                                 "ui": 0,
-                                "un": "",
+                                "type": "script"
+                            }
+                        }
+                    },
+                    "security": {
+                        "ui": 0,
+                        "un": "${schema.un}",
+                        "type": "security",
+                        "oAuthFlowManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "scopeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "delete:${schema.un}",
+                                    "type": "scope"
+                                }
+                            ]
+                        }
+                    },
+                    "statusManager": {
+                        "nextUI": 6,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "200",
                                 "unPattern": "",
-                                "useExisted": false,
+                                "useExisted": true,
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
                                 },
                                 "reference": {
-                                    "ui": 0,
-                                    "type": "requestBodies"
+                                    "ui": 1,
+                                    "type": "responses"
                                 },
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
                                     }
                                 }
                             },
-                            "security": {
-                                "ui": 0,
-                                "un": "${schema.un}",
-                                "type": "security",
-                                "oAuthFlowManager": {
+                            {
+                                "ui": 2,
+                                "un": "400",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
                                     "nextUI": 1,
                                     "list": []
                                 },
-                                "scopeManager": {
-                                    "nextUI": 2,
-                                    "list": [
-                                        {
-                                            "ui": 1,
-                                            "un": "delete:${schema.un}",
-                                            "type": "scope"
-                                        }
-                                    ]
+                                "reference": {
+                                    "ui": 2,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
-                            "statusManager": {
-                                "nextUI": 6,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "200",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 1,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 2,
-                                        "un": "400",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 2,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 3,
-                                        "un": "401",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 3,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 4,
-                                        "un": "403",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 4,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 5,
-                                        "un": "404",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 5,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
+                            {
+                                "ui": 3,
+                                "un": "401",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 3,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
                                     }
-                                ]
+                                }
                             },
-                            "tagManager": {
-                                "nextUI": 2,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "${schema.un}",
-                                        "type": "tag"
+                            {
+                                "ui": 4,
+                                "un": "403",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 4,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
                                     }
-                                ]
+                                }
+                            },
+                            {
+                                "ui": 5,
+                                "un": "404",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 5,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
+                                    }
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    },
+                    "tagManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "${schema.un}",
+                                "type": "tag"
+                            }
+                        ]
+                    }
                 },
                 "parameterManager": {
                     "nextUI": 2,
@@ -507,126 +492,121 @@
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
                 "suffix": "_1",
-                "operationManager": {
-                    "nextUI": 2,
-                    "list": [
-                        {
-                            "ui": 1,
-                            "un": "get",
-                            "parameterManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "requestBody": {
+                "operation": {
+                    "ui": 1,
+                    "un": "get",
+                    "parameterManager": {
+                        "nextUI": 1,
+                        "list": []
+                    },
+                    "requestBody": {
+                        "ui": 0,
+                        "un": "",
+                        "unPattern": "",
+                        "useExisted": false,
+                        "mtManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "reference": {
+                            "ui": 0,
+                            "type": "requestBodies"
+                        },
+                        "schema": {
+                            "ui": 0,
+                            "un": "",
+                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "script": {
                                 "ui": 0,
-                                "un": "",
-                                "unPattern": "",
+                                "type": "script"
+                            }
+                        }
+                    },
+                    "security": {
+                        "ui": 0,
+                        "un": "${schema.un}",
+                        "type": "security",
+                        "oAuthFlowManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "scopeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "read:${schema.un}",
+                                    "type": "scope"
+                                }
+                            ]
+                        }
+                    },
+                    "statusManager": {
+                        "nextUI": 3,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "200",
+                                "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                 "useExisted": false,
+                                "mtManager": {
+                                    "nextUI": 2,
+                                    "list": [
+                                        {
+                                            "ui": 1,
+                                            "un": "application/json"
+                                        }
+                                    ]
+                                },
+                                "reference": {
+                                    "ui": 0,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                    "script": {
+                                        "ui": 26,
+                                        "type": "script"
+                                    }
+                                }
+                            },
+                            {
+                                "ui": 2,
+                                "un": "404",
+                                "unPattern": "",
+                                "useExisted": true,
                                 "mtManager": {
                                     "nextUI": 1,
                                     "list": []
                                 },
                                 "reference": {
-                                    "ui": 0,
-                                    "type": "requestBodies"
+                                    "ui": 5,
+                                    "type": "responses"
                                 },
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
                                     }
                                 }
-                            },
-                            "security": {
-                                "ui": 0,
-                                "un": "${schema.un}",
-                                "type": "security",
-                                "oAuthFlowManager": {
-                                    "nextUI": 1,
-                                    "list": []
-                                },
-                                "scopeManager": {
-                                    "nextUI": 2,
-                                    "list": [
-                                        {
-                                            "ui": 1,
-                                            "un": "read:${schema.un}",
-                                            "type": "scope"
-                                        }
-                                    ]
-                                }
-                            },
-                            "statusManager": {
-                                "nextUI": 3,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "200",
-                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
-                                        "useExisted": false,
-                                        "mtManager": {
-                                            "nextUI": 2,
-                                            "list": [
-                                                {
-                                                    "ui": 1,
-                                                    "un": "application/json"
-                                                }
-                                            ]
-                                        },
-                                        "reference": {
-                                            "ui": 0,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
-                                            "script": {
-                                                "ui": 26,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 2,
-                                        "un": "404",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 5,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    }
-                                ]
-                            },
-                            "tagManager": {
-                                "nextUI": 2,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "${schema.un}",
-                                        "type": "tag"
-                                    }
-                                ]
                             }
-                        }
-                    ]
+                        ]
+                    },
+                    "tagManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "${schema.un}",
+                                "type": "tag"
+                            }
+                        ]
+                    }
                 },
                 "parameterManager": {
                     "nextUI": 2,
@@ -646,19 +626,66 @@
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
                 "suffix": "_1",
-                "operationManager": {
-                    "nextUI": 2,
-                    "list": [
-                        {
-                            "ui": 1,
-                            "un": "patch",
-                            "parameterManager": {
-                                "nextUI": 1,
-                                "list": []
-                            },
-                            "requestBody": {
-                                "ui": 0,
-                                "un": "",
+                "operation": {
+                    "ui": 1,
+                    "un": "patch",
+                    "parameterManager": {
+                        "nextUI": 1,
+                        "list": []
+                    },
+                    "requestBody": {
+                        "ui": 0,
+                        "un": "",
+                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                        "useExisted": false,
+                        "mtManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "application/json"
+                                }
+                            ]
+                        },
+                        "reference": {
+                            "ui": 0,
+                            "type": "requestBodies"
+                        },
+                        "schema": {
+                            "ui": 0,
+                            "un": "",
+                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "script": {
+                                "ui": 17,
+                                "type": "script"
+                            }
+                        }
+                    },
+                    "security": {
+                        "ui": 0,
+                        "un": "${schema.un}",
+                        "type": "security",
+                        "oAuthFlowManager": {
+                            "nextUI": 1,
+                            "list": []
+                        },
+                        "scopeManager": {
+                            "nextUI": 2,
+                            "list": [
+                                {
+                                    "ui": 1,
+                                    "un": "write:${schema.un}",
+                                    "type": "scope"
+                                }
+                            ]
+                        }
+                    },
+                    "statusManager": {
+                        "nextUI": 6,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "200",
                                 "unPattern": "${schema.un}_${operation.un + path.suffix}",
                                 "useExisted": false,
                                 "mtManager": {
@@ -672,174 +699,122 @@
                                 },
                                 "reference": {
                                     "ui": 0,
-                                    "type": "requestBodies"
+                                    "type": "responses"
                                 },
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
                                     "script": {
-                                        "ui": 17,
+                                        "ui": 27,
                                         "type": "script"
                                     }
                                 }
                             },
-                            "security": {
-                                "ui": 0,
-                                "un": "${schema.un}",
-                                "type": "security",
-                                "oAuthFlowManager": {
+                            {
+                                "ui": 2,
+                                "un": "400",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
                                     "nextUI": 1,
                                     "list": []
                                 },
-                                "scopeManager": {
-                                    "nextUI": 2,
-                                    "list": [
-                                        {
-                                            "ui": 1,
-                                            "un": "write:${schema.un}",
-                                            "type": "scope"
-                                        }
-                                    ]
+                                "reference": {
+                                    "ui": 2,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
+                                    }
                                 }
                             },
-                            "statusManager": {
-                                "nextUI": 6,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "200",
-                                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
-                                        "useExisted": false,
-                                        "mtManager": {
-                                            "nextUI": 2,
-                                            "list": [
-                                                {
-                                                    "ui": 1,
-                                                    "un": "application/json"
-                                                }
-                                            ]
-                                        },
-                                        "reference": {
-                                            "ui": 0,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
-                                            "script": {
-                                                "ui": 27,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 2,
-                                        "un": "400",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 2,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 3,
-                                        "un": "401",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 3,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 4,
-                                        "un": "403",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 4,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "ui": 5,
-                                        "un": "404",
-                                        "unPattern": "",
-                                        "useExisted": true,
-                                        "mtManager": {
-                                            "nextUI": 1,
-                                            "list": []
-                                        },
-                                        "reference": {
-                                            "ui": 5,
-                                            "type": "responses"
-                                        },
-                                        "schema": {
-                                            "ui": 0,
-                                            "un": "",
-                                            "unPattern": "",
-                                            "script": {
-                                                "ui": 0,
-                                                "type": "script"
-                                            }
-                                        }
+                            {
+                                "ui": 3,
+                                "un": "401",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 3,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
                                     }
-                                ]
+                                }
                             },
-                            "tagManager": {
-                                "nextUI": 2,
-                                "list": [
-                                    {
-                                        "ui": 1,
-                                        "un": "${schema.un}",
-                                        "type": "tag"
+                            {
+                                "ui": 4,
+                                "un": "403",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 4,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
                                     }
-                                ]
+                                }
+                            },
+                            {
+                                "ui": 5,
+                                "un": "404",
+                                "unPattern": "",
+                                "useExisted": true,
+                                "mtManager": {
+                                    "nextUI": 1,
+                                    "list": []
+                                },
+                                "reference": {
+                                    "ui": 5,
+                                    "type": "responses"
+                                },
+                                "schema": {
+                                    "ui": 0,
+                                    "un": "",
+                                    "unPattern": "",
+                                    "script": {
+                                        "ui": 0,
+                                        "type": "script"
+                                    }
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    },
+                    "tagManager": {
+                        "nextUI": 2,
+                        "list": [
+                            {
+                                "ui": 1,
+                                "un": "${schema.un}",
+                                "type": "tag"
+                            }
+                        ]
+                    }
                 },
                 "parameterManager": {
                     "nextUI": 2,
