@@ -1,12 +1,15 @@
 import Project from './Project'
 import SideBarItem from './SideBarItem'
-import UniqueItemManager from './UniqueItemManager'
+import UniqueItemManagerInterface from './UniqueItemManagerInterface'
 
 export default class SideBar<T extends SideBarItem = SideBarItem> {
     item: T | null = null
     keyword = ''
 
-    constructor(readonly title: string, readonly manager: UniqueItemManager<T>) {}
+    constructor(
+        readonly title: string,
+        readonly manager: UniqueItemManagerInterface<T>,
+    ) {}
 }
 
 export enum SideBarEnum {

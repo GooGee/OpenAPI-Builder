@@ -24,7 +24,7 @@
 import emitter from '@/emitter'
 import { EventEnum } from '@/model/Entity/Event'
 import UniqueItem from '@/model/Entity/UniqueItem'
-import UniqueItemManager from '@/model/Entity/UniqueItemManager'
+import UniqueItemManagerInterface from '@/model/Entity/UniqueItemManagerInterface'
 import { defineComponent, PropType } from 'vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -40,7 +40,7 @@ export default defineComponent({
             required: true,
         },
         manager: {
-            type: Object as PropType<UniqueItemManager<UniqueItem>>,
+            type: Object as PropType<UniqueItemManagerInterface>,
             required: true,
         },
     },

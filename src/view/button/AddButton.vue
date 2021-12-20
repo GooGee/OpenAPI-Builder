@@ -3,15 +3,14 @@
 </template>
 
 <script lang="ts">
-import UniqueItem from '@/model/Entity/UniqueItem'
-import UniqueItemManager from '@/model/Entity/UniqueItemManager'
+import UniqueItemManagerInterface from '@/model/Entity/UniqueItemManagerInterface'
 import Toast from '@/model/Service/Toast'
 import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
     props: {
         manager: {
-            type: Object as PropType<UniqueItemManager<UniqueItem>>,
+            type: Object as PropType<UniqueItemManagerInterface>,
             required: true,
         },
         value: {

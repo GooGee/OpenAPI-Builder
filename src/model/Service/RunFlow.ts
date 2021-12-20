@@ -5,7 +5,7 @@ import LayerPath from '../Entity/LayerPath'
 import LayerResponse from '../Entity/LayerResponse'
 import LayerSchema from '../Entity/LayerSchema'
 import Script from '../Entity/Script'
-import UniqueItem from '../Entity/UniqueItem'
+import UniqueItemInterface from '../Entity/UniqueItemInterface'
 import { MediaTypeManager } from '../OAPI/MediaType'
 import Operation from '../OAPI/Operation'
 import Path from '../OAPI/Path'
@@ -32,7 +32,7 @@ function getUN(
     return Text.runText(pattern, { operation, path, schema })
 }
 
-function makeLayer<T extends UniqueItem = UniqueItem>(
+function makeLayer<T extends UniqueItemInterface = UniqueItemInterface>(
     layer: Layer,
     schema: Schema,
     path: LayerPath,
@@ -121,7 +121,7 @@ function makeSecurity(
     lp: LayerPath,
     lo: LayerOperation,
     operation: Operation,
-    scopexx: UniqueItem[],
+    scopexx: UniqueItemInterface[],
     schema: Schema,
     vendor: Vendor,
 ) {
@@ -139,7 +139,7 @@ function makeSecurity(
         found.authorizationUrl = flow.authorizationUrl
         found.refreshUrl = flow.refreshUrl
         found.tokenUrl = flow.tokenUrl
-        scopexx.forEach((item) => makeReference(item.ui, found!.referenceManager))
+        scopexx.forEach((item) => makeReference(item.ui, found!.scopeManager))
     })
 }
 

@@ -1,6 +1,5 @@
 import Project from '../Entity/Project'
-import UniqueItem from '../Entity/UniqueItem'
-import UniqueItemManager from '../Entity/UniqueItemManager'
+import UniqueItemManagerInterface from '../Entity/UniqueItemManagerInterface'
 
 const MinVersion = 1
 
@@ -37,8 +36,8 @@ export default class Load {
     }
 
     private static addIfNotExist(
-        manager: UniqueItemManager<UniqueItem>,
-        preset: UniqueItemManager<UniqueItem>,
+        manager: UniqueItemManagerInterface,
+        preset: UniqueItemManagerInterface,
     ) {
         preset.list.forEach((data) => {
             if (manager.findByUN(data.un) === undefined) {
