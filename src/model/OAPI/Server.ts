@@ -13,7 +13,7 @@ export interface OAPIServer {
 }
 
 export default class Server extends SideBarItem {
-    readonly referenceManager = new ReferenceManager(TargetType.variable)
+    readonly variableManager = new ReferenceManager(TargetType.variable)
 
     get url() {
         return this.un
@@ -28,7 +28,7 @@ export default class Server extends SideBarItem {
             url: this.url,
             description: this.description,
         }
-        if (this.referenceManager.list.length) {
+        if (this.variableManager.list.length) {
             result.variables = finder.findManager(TargetType.variable).toOAPI(finder)
         }
         return result

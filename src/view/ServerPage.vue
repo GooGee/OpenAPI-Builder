@@ -36,7 +36,7 @@
                         </td>
                         <td>
                             <ReferenceList
-                                :manager="item.referenceManager"
+                                :manager="item.variableManager"
                             ></ReferenceList>
                         </td>
                     </tr>
