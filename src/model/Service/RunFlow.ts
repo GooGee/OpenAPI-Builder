@@ -57,7 +57,7 @@ function makeReference(ui: number, manager: ReferenceManager) {
 }
 
 function makePath(lp: LayerPath, schema: Schema, vendor: Vendor) {
-    const un = getUN(lp.unPattern, schema, lp, {} as any)
+    const un = getUN(lp.unPattern, schema, lp, lp.operation)
     let found = vendor.pathManager.findByUN(un)
     if (found === undefined) {
         found = vendor.pathManager.make(un)
@@ -71,7 +71,7 @@ function makePath(lp: LayerPath, schema: Schema, vendor: Vendor) {
     makeOperation(lp, lp.operation, path, schema, vendor)
 
     lp.parameterManager.list.forEach((layer) => {
-        const item = makeLayer(layer, schema, lp, {} as any, vendor)
+        const item = makeLayer(layer, schema, lp, lp.operation, vendor)
         makeReference(item.ui, path.parameterManager)
     })
 }
