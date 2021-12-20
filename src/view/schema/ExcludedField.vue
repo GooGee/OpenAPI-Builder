@@ -1,8 +1,8 @@
 <template>
     <CheckList
         v-if="sidebar.item.isComposition"
-        :fieldxx="fieldxx"
         :manager="manager"
+        :optionxx="fieldxx"
         title="excluded"
     ></CheckList>
     <span v-else class="mtb11">Only for composition</span>

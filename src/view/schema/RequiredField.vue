@@ -1,8 +1,8 @@
 <template>
     <CheckList
         v-if="sidebar.item.isComposition"
-        :fieldxx="fieldxx"
         :manager="manager"
+        :optionxx="fieldxx"
         title="required"
     ></CheckList>
     <span v-else class="mtb11">Only for composition</span>
@@ -22,9 +22,7 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<Schema>
         const manager = computed(() => sidebar.item!.requiredManager)
-        const fieldxx = computed(() =>
-            ss.finder.getSchemaFieldList(sidebar.item!),
-        )
+        const fieldxx = computed(() => ss.finder.getSchemaFieldList(sidebar.item!))
         return { fieldxx, manager, sidebar }
     },
 })

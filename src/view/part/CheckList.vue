@@ -6,7 +6,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in fieldxx" :key="item.ui">
+            <tr v-for="item in optionxx" :key="item.ui">
                 <td>
                     <span class="custom-control custom-switch inline">
                         <input
@@ -42,12 +42,12 @@ import { defineComponent, PropType } from 'vue'
 
 export default defineComponent({
     props: {
-        fieldxx: {
-            type: Object as PropType<UniqueItemInterface[]>,
-            required: true,
-        },
         manager: {
             type: Object as PropType<UIItemManagerInterface>,
+            required: true,
+        },
+        optionxx: {
+            type: Object as PropType<UniqueItemInterface[]>,
             required: true,
         },
         title: {
