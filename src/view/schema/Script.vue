@@ -41,7 +41,7 @@ export default defineComponent({
         const color = ref('')
         const list = computed(function () {
             return ss.project.scriptManager.list.filter((item) => {
-                if (item.global) {
+                if (item.global || item.requireLayer) {
                     return false
                 }
                 if (color.value === '') {

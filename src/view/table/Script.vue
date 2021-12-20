@@ -28,6 +28,21 @@
                     <RunButton :script="sidebar.item"></RunButton>
                 </td>
             </tr>
+            <tr v-else>
+                <td>
+                    <span class="custom-control custom-switch">
+                        <input
+                            id="requireLayer"
+                            v-model="sidebar.item.requireLayer"
+                            type="checkbox"
+                            class="custom-control-input"
+                        />
+                        <label for="requireLayer" class="custom-control-label">
+                            requireLayer
+                        </label>
+                    </span>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <EditButton :file="file" :item="sidebar.item"></EditButton>
