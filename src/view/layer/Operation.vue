@@ -1,47 +1,25 @@
 <template>
     <table class="table">
         <caption class="caption-top">
-            <h2>Operation</h2>
+            <h2 class="inline mr11">Operation</h2>
+            <select v-model="path.operation.un" class="form-control inline wa">
+                <option v-for="item in optionxx" :key="item" :value="item">
+                    {{ item }}
+                </option>
+            </select>
         </caption>
-        <thead>
-            <tr>
-                <th colspan="2">
-                    <ButtonGroup
-                        v-model:option="option"
-                        :list="optionxx"
-                        :manager="path.operationManager"
-                    ></ButtonGroup>
-                </th>
-            </tr>
-            <tr>
-                <th colspan="2">
-                    <h2 class="inline mr11">{{ option }}</h2>
-                    <AddButton
-                        v-if="operation === null"
-                        :manager="path.operationManager"
-                        :value="option"
-                        :noinput="true"
-                    ></AddButton>
-                    <DeleteButton
-                        v-else
-                        :item="operation"
-                        :manager="path.operationManager"
-                    ></DeleteButton>
-                </th>
-            </tr>
-        </thead>
-        <tbody v-if="operation">
+        <tbody>
             <tr>
                 <td class="text-right w111">parameter</td>
                 <td>
-                    <EditList :manager="operation.parameterManager"></EditList>
+                    <EditList :manager="path.operation.parameterManager"></EditList>
                 </td>
             </tr>
             <tr>
                 <td class="text-right">tag</td>
                 <td>
                     <EditList
-                        :manager="operation.tagManager"
+                        :manager="path.operation.tagManager"
                         value="${schema.un}"
                     ></EditList>
                 </td>
@@ -49,16 +27,17 @@
         </tbody>
     </table>
 
-    <RequestBody v-if="operation" :item="operation.requestBody"></RequestBody>
+    <RequestBody :item="path.operation.requestBody"></RequestBody>
 
-    <Status v-if="operation" :operation="operation" :path="path"></Status>
+    <Status :operation="path.operation" :path="path"></Status>
 
-    <Security v-if="operation" :item="operation.security"></Security>
+    <Security :item="path.operation.security"></Security>
 </template>
 
 <script lang="ts">
 import LayerPath from '@/model/Entity/LayerPath'
-import { computed, defineComponent, PropType, ref } from 'vue'
+import { optionxx } from '@/model/OAPI/Operation'
+import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
 import ButtonGroup from '../button/ButtonGroup.vue'
 import DeleteButton from '../button/DeleteButton.vue'
@@ -88,25 +67,7 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        const optionxx = [
-            'get',
-            'delete',
-            'head',
-            'options',
-            'patch',
-            'post',
-            'put',
-            'trace',
-        ]
-        const option = ref(optionxx[0])
-
-        const operation = computed(function () {
-            return props.path.operationManager.findByUN(option.value) ?? null
-        })
-
         return {
-            operation,
-            option,
             optionxx,
         }
     },

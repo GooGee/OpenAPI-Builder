@@ -65,9 +65,10 @@ function makePath(lp: LayerPath, schema: Schema, vendor: Vendor) {
     }
     const path = found!
 
-    lp.operationManager.list.forEach((lo) =>
-        makeOperation(lp, lo, path, schema, vendor),
-    )
+    // lp.operationManager.list.forEach((lo) =>
+    //     makeOperation(lp, lo, path, schema, vendor),
+    // )
+    makeOperation(lp, lp.operation, path, schema, vendor)
 
     lp.parameterManager.list.forEach((layer) => {
         const item = makeLayer(layer, schema, lp, {} as any, vendor)
