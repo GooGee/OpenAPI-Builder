@@ -5,7 +5,7 @@
         @select="select"
         :manager="sidebar.item!.flowManager"
         :optionxx="optionxx"
-        title="flow"
+        title="include"
     ></CheckList>
     <Path v-if="selected" :path="selected" :schema="sidebar.item!"></Path>
 </template>
