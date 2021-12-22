@@ -11,6 +11,7 @@ describe('NameReference', function () {
     it('toOAPI', function () {
         const item = new NameReference('cat', TargetType.schemas)
         item.reference.ui = schema.ui
+
         const json = item.toOAPI(ss.finder)
         expect(json).toHaveProperty('$ref', item.reference.getText(ss.finder))
     })
