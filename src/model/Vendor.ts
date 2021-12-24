@@ -53,6 +53,10 @@ export default class Vendor {
         this.emitter.emit(EventEnum.ready)
     }
 
+    get callbackManager() {
+        return this.project.oapi.component.callbackManager
+    }
+
     get encodingManager() {
         return this.project.oapi.encodingManager
     }
