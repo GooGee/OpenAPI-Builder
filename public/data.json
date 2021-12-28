@@ -5,7 +5,7 @@
         "list": [
             {
                 "ui": 1,
-                "un": "/path +get",
+                "un": "get /path",
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}",
@@ -110,7 +110,7 @@
             },
             {
                 "ui": 2,
-                "un": "/path +post",
+                "un": "post /path",
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}",
@@ -289,7 +289,7 @@
             },
             {
                 "ui": 3,
-                "un": "/path/{id} +delete",
+                "un": "delete /path/{id}",
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
@@ -487,7 +487,7 @@
             },
             {
                 "ui": 4,
-                "un": "/path/{id} +get",
+                "un": "get /path/{id}",
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
@@ -621,7 +621,7 @@
             },
             {
                 "ui": 5,
-                "un": "/path/{id} +patch",
+                "un": "patch /path/{id}",
                 "color": "",
                 "description": "",
                 "unPattern": "/${schema.snakeCase}/{id}",
