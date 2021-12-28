@@ -13,6 +13,7 @@
                 "operation": {
                     "ui": 1,
                     "un": "get",
+                    "withRequestBody": false,
                     "parameterManager": {
                         "nextUI": 1,
                         "list": []
@@ -118,6 +119,7 @@
                 "operation": {
                     "ui": 1,
                     "un": "post",
+                    "withRequestBody": true,
                     "parameterManager": {
                         "nextUI": 1,
                         "list": []
@@ -297,6 +299,7 @@
                 "operation": {
                     "ui": 1,
                     "un": "delete",
+                    "withRequestBody": false,
                     "parameterManager": {
                         "nextUI": 1,
                         "list": []
@@ -495,6 +498,7 @@
                 "operation": {
                     "ui": 1,
                     "un": "get",
+                    "withRequestBody": false,
                     "parameterManager": {
                         "nextUI": 1,
                         "list": []
@@ -629,6 +633,7 @@
                 "operation": {
                     "ui": 1,
                     "un": "patch",
+                    "withRequestBody": true,
                     "parameterManager": {
                         "nextUI": 1,
                         "list": []
