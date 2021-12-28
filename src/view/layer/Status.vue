@@ -46,17 +46,32 @@
                         v-if="item.useExisted"
                         :reference="item.reference"
                     ></Reference>
-                    <div v-else>
-                        <input
-                            type="text"
-                            class="form-control"
-                            v-model="item.unPattern"
-                        />
-                        <div class="text-secondary mtb11">schema</div>
-                        <Schema :schema="item.schema"></Schema>
-                        <div class="text-secondary mtb11">MediaType</div>
-                        <MediaType :manager="item.mtManager"></MediaType>
-                    </div>
+                    <table v-else class="table">
+                        <tbody>
+                            <tr>
+                                <td class="text-right w111">unPattern</td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        v-model="item.unPattern"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">schema</td>
+                                <td>
+                                    <Schema :schema="item.schema"></Schema>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">MediaType</td>
+                                <td>
+                                    <MediaType :manager="item.mtManager"></MediaType>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </td>
             </tr>
         </tbody>

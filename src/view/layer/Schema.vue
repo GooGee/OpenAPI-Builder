@@ -2,7 +2,7 @@
     <table class="table">
         <tbody>
             <tr>
-                <td class="text-right">unPattern</td>
+                <td class="text-right w111">unPattern</td>
                 <td>
                     <input
                         type="text"
