@@ -27,7 +27,20 @@
         </tbody>
     </table>
 
-    <RequestBody :item="path.operation.requestBody"></RequestBody>
+    <RequestBody
+        :item="path.operation.requestBody"
+        :withRequestBody="path.operation.withRequestBody"
+    >
+        <span class="custom-control custom-switch inline">
+            <input
+                id="withRequestBody"
+                v-model="path.operation.withRequestBody"
+                type="checkbox"
+                class="custom-control-input"
+            />
+            <label for="withRequestBody" class="custom-control-label"></label>
+        </span>
+    </RequestBody>
 
     <Status :operation="path.operation" :path="path"></Status>
 

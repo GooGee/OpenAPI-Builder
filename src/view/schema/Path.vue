@@ -40,7 +40,7 @@
                 <td class="text-right">RequestBody</td>
                 <td>
                     <Response
-                        v-if="path.operation.requestBody.unPattern"
+                        v-if="path.operation.withRequestBody"
                         :getUN="getUN"
                         :item="path.operation.requestBody"
                     ></Response>

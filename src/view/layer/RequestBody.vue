@@ -1,22 +1,23 @@
 <template>
     <table class="table">
         <caption class="caption-top">
-            <h2>RequestBody</h2>
+            <h2 class="inline mr11">RequestBody</h2>
+            <slot></slot>
         </caption>
-        <tbody>
+        <tbody v-if="withRequestBody">
             <tr>
                 <td class="text-right w111">unPattern</td>
                 <td>
                     <input type="text" class="form-control" v-model="item.unPattern" />
                 </td>
             </tr>
-            <tr v-if="item.unPattern">
+            <tr>
                 <td class="text-right">schema</td>
                 <td>
                     <Schema :schema="item.schema"></Schema>
                 </td>
             </tr>
-            <tr v-if="item.unPattern">
+            <tr>
                 <td class="text-right">MediaType</td>
                 <td>
                     <MediaType :manager="item.mtManager"></MediaType>
@@ -50,6 +51,10 @@ export default defineComponent({
     props: {
         item: {
             type: Object as PropType<LayerRequestBody>,
+            required: true,
+        },
+        withRequestBody: {
+            type: Boolean,
             required: true,
         },
     },
