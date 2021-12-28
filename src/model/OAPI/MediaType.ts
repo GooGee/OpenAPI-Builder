@@ -30,7 +30,7 @@ export default class MediaType extends UniqueItem {
     makeEncoding(finder: ReferenceFinderInterface, schema: Schema) {
         const fieldxx = finder.getSchemaFieldList(schema) as SchemaField[]
         if (fieldxx.length === 0) {
-            return []
+            return undefined
         }
         const uiMap: Map<number, SchemaField> = new Map()
         fieldxx.forEach((field) => {
@@ -59,7 +59,10 @@ export default class MediaType extends UniqueItem {
         const result: OAPIMediaType = {
             schema: this.schema.toOAPIofTarget(schema),
         }
-        result.encoding = this.makeEncoding(finder, schema as Schema)
+        const encoding = this.makeEncoding(finder, schema as Schema)
+        if (encoding) {
+            result.encoding = encoding
+        }
         if (this.exampleManager.list.length > 0) {
             result.examples = this.exampleManager.toOAPI(finder)
         }
