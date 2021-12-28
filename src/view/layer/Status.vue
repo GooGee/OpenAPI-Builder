@@ -7,7 +7,6 @@
             <tr>
                 <td class="text-right w111">status</td>
                 <td>response</td>
-                <td>MediaType</td>
             </tr>
         </thead>
         <tbody>
@@ -55,13 +54,9 @@
                         />
                         <div class="text-secondary mtb11">schema</div>
                         <Schema :schema="item.schema"></Schema>
+                        <div class="text-secondary mtb11">MediaType</div>
+                        <MediaType :manager="item.mtManager"></MediaType>
                     </div>
-                </td>
-                <td>
-                    <MediaType
-                        v-if="item.useExisted === false"
-                        :manager="item.mtManager"
-                    ></MediaType>
                 </td>
             </tr>
         </tbody>
@@ -74,7 +69,6 @@
                         :manager="operation.statusManager"
                     ></SelectButton>
                 </td>
-                <td></td>
                 <td></td>
             </tr>
         </tfoot>
