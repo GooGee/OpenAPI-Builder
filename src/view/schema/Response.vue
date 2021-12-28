@@ -1,5 +1,6 @@
 <template>
-    <div class="btn-group">
+    <div v-if="isRequestBody">{{ getUN(item.unPattern) }}</div>
+    <div v-else class="btn-group">
         <span class="btn btn-outline-secondary">{{ item.un }}</span>
         <span v-if="item.useExisted" class="btn btn-outline-secondary">
             {{ findUN(item.reference) }}
@@ -37,6 +38,11 @@ export default defineComponent({
         item: {
             type: Object as PropType<LayerRequestBody>,
             required: true,
+        },
+        isRequestBody: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
     },
     setup(props, context) {

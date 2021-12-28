@@ -43,6 +43,7 @@
                         v-if="path.operation.withRequestBody"
                         :getUN="getUN"
                         :item="path.operation.requestBody"
+                        :isRequestBody="true"
                     ></Response>
                 </td>
             </tr>
