@@ -21,7 +21,6 @@
                     "requestBody": {
                         "ui": 0,
                         "un": "",
-                        "unPattern": "",
                         "useExisted": false,
                         "mtManager": {
                             "nextUI": 1,
@@ -34,7 +33,6 @@
                         "schema": {
                             "ui": 0,
                             "un": "",
-                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
                             "script": {
                                 "ui": 0,
                                 "type": "script"
@@ -83,8 +81,7 @@
                                 },
                                 "schema": {
                                     "ui": 0,
-                                    "un": "",
-                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                    "un": "${schema.un}_Response_${operation.un + path.suffix}",
                                     "script": {
                                         "ui": 21,
                                         "type": "script"
@@ -126,8 +123,7 @@
                     },
                     "requestBody": {
                         "ui": 0,
-                        "un": "",
-                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                        "un": "${schema.un}_${operation.un + path.suffix}",
                         "useExisted": false,
                         "mtManager": {
                             "nextUI": 2,
@@ -144,8 +140,7 @@
                         },
                         "schema": {
                             "ui": 0,
-                            "un": "",
-                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "un": "${schema.un}_Request_${operation.un + path.suffix}",
                             "script": {
                                 "ui": 12,
                                 "type": "script"
@@ -194,8 +189,7 @@
                                 },
                                 "schema": {
                                     "ui": 0,
-                                    "un": "",
-                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                    "un": "${schema.un}_Response_${operation.un + path.suffix}",
                                     "script": {
                                         "ui": 22,
                                         "type": "script"
@@ -218,7 +212,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -241,7 +234,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -264,7 +256,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -307,7 +298,6 @@
                     "requestBody": {
                         "ui": 0,
                         "un": "",
-                        "unPattern": "",
                         "useExisted": false,
                         "mtManager": {
                             "nextUI": 1,
@@ -320,7 +310,6 @@
                         "schema": {
                             "ui": 0,
                             "un": "",
-                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
                             "script": {
                                 "ui": 0,
                                 "type": "script"
@@ -365,7 +354,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -388,7 +376,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -411,7 +398,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -434,7 +420,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -457,7 +442,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -506,7 +490,6 @@
                     "requestBody": {
                         "ui": 0,
                         "un": "",
-                        "unPattern": "",
                         "useExisted": false,
                         "mtManager": {
                             "nextUI": 1,
@@ -519,7 +502,6 @@
                         "schema": {
                             "ui": 0,
                             "un": "",
-                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
                             "script": {
                                 "ui": 0,
                                 "type": "script"
@@ -568,8 +550,7 @@
                                 },
                                 "schema": {
                                     "ui": 0,
-                                    "un": "",
-                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                    "un": "${schema.un}_Response_${operation.un + path.suffix}",
                                     "script": {
                                         "ui": 26,
                                         "type": "script"
@@ -592,7 +573,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -640,8 +620,7 @@
                     },
                     "requestBody": {
                         "ui": 0,
-                        "un": "",
-                        "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                        "un": "${schema.un}_${operation.un + path.suffix}",
                         "useExisted": false,
                         "mtManager": {
                             "nextUI": 2,
@@ -658,8 +637,7 @@
                         },
                         "schema": {
                             "ui": 0,
-                            "un": "",
-                            "unPattern": "${schema.un}_${operation.un + path.suffix}",
+                            "un": "${schema.un}_Request_${operation.un + path.suffix}",
                             "script": {
                                 "ui": 17,
                                 "type": "script"
@@ -708,8 +686,7 @@
                                 },
                                 "schema": {
                                     "ui": 0,
-                                    "un": "",
-                                    "unPattern": "${schema.un}_Response_${operation.un + path.suffix}",
+                                    "un": "${schema.un}_Response_${operation.un + path.suffix}",
                                     "script": {
                                         "ui": 27,
                                         "type": "script"
@@ -732,7 +709,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -755,7 +731,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -778,7 +753,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
@@ -801,7 +775,6 @@
                                 "schema": {
                                     "ui": 0,
                                     "un": "",
-                                    "unPattern": "",
                                     "script": {
                                         "ui": 0,
                                         "type": "script"
