@@ -20,7 +20,13 @@ function getUN(
     if (pattern === '') {
         return ''
     }
-    return runText(pattern, { operation, path, schema })
+    return parse(pattern, { operation, path, schema })
+}
+
+function parse(text: string, data: object): string {
+    return new Function(...Object.keys(data), `return (\`${text}\`);`)(
+        ...Object.values(data),
+    )
 }
 
 function run(code: string, vendor: Vendor, schema?: UniqueItemInterface, un?: string) {
@@ -41,18 +47,12 @@ function runFunction(code: string, data: object) {
     return ff(data)
 }
 
-function runText(text: string, data: object): string {
-    return new Function(...Object.keys(data), `return (\`${text}\`);`)(
-        ...Object.values(data),
-    )
-}
-
 const Text = {
     filter,
     getUN,
+    parse,
     run,
     runFunction,
-    runText,
 }
 
 export default Text
