@@ -5,10 +5,19 @@ import LayerSchema from './LayerSchema'
 import UniqueItem from './UniqueItem'
 
 export default class LayerRequestBody extends UniqueItem {
-    unPattern = '${schema.un}_${operation.un + path.suffix}'
     useExisted = false
+
+    get unPattern() {
+        return this.un
+    }
+
+    set unPattern(text: string) {
+        this.un = text
+    }
 
     readonly mtManager = new LayerMediaTypeManager()
     readonly reference = new Reference(0, TargetType.requestBodies)
-    readonly schema = new LayerSchema('')
+    readonly schema = new LayerSchema(
+        '${schema.un}_Request_${operation.un + path.suffix}',
+    )
 }
