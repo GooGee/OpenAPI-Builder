@@ -95,11 +95,7 @@ export default defineComponent({
     },
     setup(props, context) {
         function getUN(unPattern: string) {
-            return Text.runText(unPattern, {
-                operation: props.path.operation,
-                path: props.path,
-                schema: props.schema,
-            })
+            return Text.getUN(unPattern, props.schema, props.path, props.path.operation)
         }
         return {
             getUN,

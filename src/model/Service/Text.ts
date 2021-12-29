@@ -1,11 +1,26 @@
 import lodash from 'lodash'
 import ColorEnum from '../Entity/ColorEnum'
+import LayerOperation from '../Entity/LayerOperation'
+import LayerPath from '../Entity/LayerPath'
 import UniqueItemInterface from '../Entity/UniqueItemInterface'
+import Schema from '../OAPI/Schema'
 import Vendor from '../Vendor'
 
 export function filter(keyword: string, list: Array<UniqueItemInterface>) {
     const re = new RegExp(keyword, 'i')
     return list.filter((item) => item.un.search(re) > -1)
+}
+
+function getUN(
+    pattern: string,
+    schema: Schema,
+    path: LayerPath,
+    operation: LayerOperation,
+) {
+    if (pattern === '') {
+        return ''
+    }
+    return runText(pattern, { operation, path, schema })
 }
 
 function run(code: string, vendor: Vendor, schema?: UniqueItemInterface, un?: string) {
@@ -34,6 +49,7 @@ function runText(text: string, data: object): string {
 
 const Text = {
     filter,
+    getUN,
     run,
     runFunction,
     runText,

@@ -20,18 +20,6 @@ export default function RunFlow(schema: Schema, vendor: Vendor) {
     pathxx.forEach((lp) => makePath(lp, schema, vendor))
 }
 
-function getUN(
-    pattern: string,
-    schema: Schema,
-    path: LayerPath,
-    operation: LayerOperation,
-) {
-    if (pattern === '') {
-        return ''
-    }
-    return Text.runText(pattern, { operation, path, schema })
-}
-
 function makeLayer<T extends UniqueItemInterface = UniqueItemInterface>(
     layer: Layer,
     schema: Schema,
@@ -39,7 +27,7 @@ function makeLayer<T extends UniqueItemInterface = UniqueItemInterface>(
     operation: LayerOperation,
     vendor: Vendor,
 ) {
-    const un = getUN(layer.un, schema, path, operation)
+    const un = Text.getUN(layer.un, schema, path, operation)
     const im = vendor.finder.findManager(layer.type)
     let found = im.findByUN(un)
     if (found === undefined) {
@@ -57,7 +45,7 @@ function makeReference(ui: number, manager: ReferenceManager) {
 }
 
 function makePath(lp: LayerPath, schema: Schema, vendor: Vendor) {
-    const un = getUN(lp.unPattern, schema, lp, lp.operation)
+    const un = Text.getUN(lp.unPattern, schema, lp, lp.operation)
     let found = vendor.pathManager.findByUN(un)
     if (found === undefined) {
         found = vendor.pathManager.make(un)
@@ -95,7 +83,7 @@ function makeOperation(
         makeReference(item.ui, operation.parameterManager)
     })
 
-    const un = getUN(lo.requestBody.unPattern, schema, lp, lo)
+    const un = Text.getUN(lo.requestBody.unPattern, schema, lp, lo)
     if (un) {
         makeRequestBody(un, lp, lo, operation, schema, vendor)
     }
@@ -182,7 +170,7 @@ function makeResponse(
         return
     }
 
-    const un = getUN(lr.unPattern, schema, lp, lo)
+    const un = Text.getUN(lr.unPattern, schema, lp, lo)
     let found = vendor.responseManager.findByUN(un)
     if (found === undefined) {
         found = vendor.responseManager.make(un)
@@ -221,7 +209,7 @@ function makeSchema(
     if (found === undefined) {
         return null
     }
-    const un = getUN(layer.unPattern, schema, lp, lo)
+    const un = Text.getUN(layer.unPattern, schema, lp, lo)
     return Text.run(found.code, vendor, schema, un) as Schema
 }
 
