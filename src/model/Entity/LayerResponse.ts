@@ -6,12 +6,15 @@ import UniqueItem from './UniqueItem'
 import UniqueItemManager from './UniqueItemManager'
 
 export default class LayerResponse extends UniqueItem {
+    // un is status code
     unPattern = '${schema.un}_${operation.un + path.suffix}'
     useExisted = false
 
     readonly mtManager = new LayerMediaTypeManager()
     readonly reference = new Reference(0, TargetType.responses)
-    readonly schema = new LayerSchema('')
+    readonly schema = new LayerSchema(
+        '${schema.un}_Response_${operation.un + path.suffix}',
+    )
 
     protected get allowSetUI() {
         return true
