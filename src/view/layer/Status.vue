@@ -79,7 +79,6 @@
             <tr>
                 <td class="text-right">
                     <SelectButton
-                        @select="select"
                         :list="codexx"
                         :manager="operation.statusManager"
                     ></SelectButton>
@@ -93,7 +92,6 @@
 <script lang="ts">
 import LayerOperation from '@/model/Entity/LayerOperation'
 import LayerPath from '@/model/Entity/LayerPath'
-import LayerResponse from '@/model/Entity/LayerResponse'
 import ss from '@/ss'
 import { defineComponent, PropType } from 'vue'
 import AddButton from '../button/AddButton.vue'
@@ -125,13 +123,8 @@ export default defineComponent({
         },
     },
     setup(props, context) {
-        function select(old: LayerResponse, item: LayerResponse) {
-            item.schema.unPattern =
-                '${schema.un}_Response_${operation.un + path.suffix}'
-        }
         return {
             codexx: ss.project.getPreset('HttpStatus')!.propertyManager.list,
-            select,
         }
     },
 })
