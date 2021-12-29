@@ -5,9 +5,9 @@
         </caption>
         <thead>
             <tr>
-                <td class="text-right w222">un</td>
+                <td class="text-right w222">unPattern</td>
                 <td>
-                    <input v-model="item.un" type="text" class="form-control" />
+                    <input v-model="item.unPattern" type="text" class="form-control" />
                 </td>
             </tr>
             <tr>
