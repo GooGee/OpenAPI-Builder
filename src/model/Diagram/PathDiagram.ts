@@ -32,6 +32,7 @@ export default function make(layer: LayerPath, schema: Schema) {
     edges.push(makeEdge(path, operation, 'operation'))
 
     makeRequestBody(layer, schema, edges, nodes, operation)
+    makeResponse(layer, schema, edges, nodes, operation)
 
     return {
         edges,
@@ -115,4 +116,62 @@ function makeRequestBody(
         nodes.push(node)
         edges.push(makeEdge(rb, node, 'schema'))
     }
+}
+
+function makeResponse(
+    layer: LayerPath,
+    schema: Schema,
+    edges: Edge[],
+    nodes: Node[],
+    operation: Node,
+) {
+    let statusWidth = 0
+    let schemaWidth = 0
+    const groupHeight = calculateGroupHeight(layer.operation.statusManager.list.length)
+    const group = makeNode(
+        '',
+        RowEnum.response * RowHeight,
+        ColumnWidth,
+        111,
+        groupHeight,
+    )
+    nodes.push(group)
+    edges.push(makeEdge(operation, group, 'response'))
+
+    layer.operation.statusManager.list.forEach((status, index) => {
+        let label = status.un + ' '
+        if (status.useExisted) {
+            label += ss.finder.find(status.reference)?.un ?? '?'
+        } else {
+            label += Text.getUN(status.unPattern, schema, layer, layer.operation)
+        }
+        statusWidth = calculateWidth(label, statusWidth)
+        const y = RowEnum.response * RowHeight + calculateGroupHeight(index)
+        const response = makeNode(label, y, ColumnWidth + ItemMargin)
+        nodes.push(response)
+        group.addChild(response)
+
+        if (status.useExisted) {
+            // no schema
+        } else {
+            const label = Text.getUN(
+                status.schema.unPattern,
+                schema,
+                layer,
+                layer.operation,
+            )
+            schemaWidth = calculateWidth(label, schemaWidth)
+            const node = makeNode(label, y, ColumnWidth + ColumnWidth)
+            nodes.push(node)
+            group.addChild(node)
+            edges.push(makeEdge(response, node))
+        }
+    })
+
+    if (schemaWidth === 0) {
+        group.setSize(statusWidth + ItemMargin + ItemMargin, groupHeight)
+        return
+    }
+
+    group.setSize(ColumnWidth + schemaWidth + ItemMargin, groupHeight)
 }
