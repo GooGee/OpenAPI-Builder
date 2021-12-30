@@ -6,6 +6,14 @@ export default class Layer extends UniqueItem {
     constructor(name: string, readonly type: TargetType) {
         super(name)
     }
+
+    get unPattern() {
+        return this.un
+    }
+
+    set unPattern(text: string) {
+        this.un = text
+    }
 }
 
 export class LayerManager extends UniqueItemManager<Layer> {
