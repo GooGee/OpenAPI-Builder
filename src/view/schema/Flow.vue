@@ -7,7 +7,7 @@
         :optionxx="optionxx"
         title="include"
     ></CheckList>
-    <Path v-if="selected" :path="selected" :schema="sidebar.item!"></Path>
+    <Diagram :path="selected" :schema="sidebar.item!"></Diagram>
 </template>
 
 <script lang="ts">
@@ -21,18 +21,18 @@ import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
 import { defineComponent, inject, ref } from 'vue'
 import CheckList from '../part/CheckList.vue'
-import Path from './Path.vue'
+import Diagram from './Diagram.vue'
 
 export default defineComponent({
     components: {
         CheckList,
-        Path,
+        Diagram,
     },
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<Schema>
 
         const optionxx = ss.project.flowManager.list
-        const selected = ref<LayerPath | null>(null)
+        const selected = ref(optionxx[0])
 
         function run() {
             try {
