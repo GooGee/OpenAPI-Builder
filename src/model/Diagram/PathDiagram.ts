@@ -1,5 +1,7 @@
 import ss from '@/ss'
 import { Edge, Node, Shape } from '@antv/x6'
+import Layer from '../Entity/Layer'
+import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
 import Schema from '../OAPI/Schema'
 import Text from '../Service/Text'
@@ -11,7 +13,7 @@ enum RowEnum {
     schema,
 }
 
-const RowHeight = 111
+const RowHeight = 222
 const ColumnWidth = 222
 const ItemHeight = 33
 const ItemMargin = 11
@@ -22,14 +24,47 @@ export default function make(layer: LayerPath, schema: Schema) {
 
     const path = makeNode(
         Text.getUN(layer.unPattern, schema, layer, layer.operation),
-        RowEnum.path,
+        0,
         0,
     )
     nodes.push(path)
 
+    makeGroup(
+        'parameter',
+        layer.parameterManager.list,
+        schema,
+        layer,
+        layer.operation,
+        0,
+        ColumnWidth,
+        nodes,
+    )
+
     const operation = makeNode(layer.operation.un, RowEnum.operation * RowHeight, 0)
     nodes.push(operation)
     edges.push(makeEdge(path, operation, 'operation'))
+
+    makeGroup(
+        'parameter',
+        layer.operation.parameterManager.list,
+        schema,
+        layer,
+        layer.operation,
+        RowEnum.operation * RowHeight,
+        ColumnWidth,
+        nodes,
+    )
+
+    makeGroup(
+        'tag',
+        layer.operation.tagManager.list,
+        schema,
+        layer,
+        layer.operation,
+        RowEnum.operation * RowHeight,
+        ColumnWidth * 2,
+        nodes,
+    )
 
     makeRequestBody(layer, schema, edges, nodes, operation)
     makeResponse(layer, schema, edges, nodes, operation)
@@ -79,6 +114,46 @@ function makeNode(
         label,
         height,
         width: calculateWidth(label, width),
+    })
+}
+
+function makeGroup(
+    label: string,
+    list: Layer[],
+    schema: Schema,
+    path: LayerPath,
+    operation: LayerOperation,
+    y: number,
+    x: number,
+    nodes: Node[],
+) {
+    if (list.length === 0) {
+        return
+    }
+
+    let width = 111
+    const nodexx = list.map((item, index) => {
+        const label = Text.getUN(item.unPattern, schema, path, operation)
+        width = calculateWidth(label, width)
+        return makeNode(
+            label,
+            y + ItemMargin + index * (ItemHeight + ItemMargin),
+            x + ItemMargin,
+        )
+    })
+
+    const group = makeNode(
+        label,
+        y,
+        x,
+        width + ItemMargin * 2,
+        calculateGroupHeight(list.length),
+    )
+    nodes.push(group)
+
+    nodexx.forEach((item) => {
+        group.addChild(item)
+        nodes.push(item)
     })
 }
 
@@ -169,7 +244,7 @@ function makeResponse(
     })
 
     if (schemaWidth === 0) {
-        group.setSize(statusWidth + ItemMargin + ItemMargin, groupHeight)
+        group.setSize(statusWidth + ItemMargin * 2, groupHeight)
         return
     }
 
