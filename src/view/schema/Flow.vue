@@ -1,12 +1,12 @@
 <template>
-    <div class="mtb11"></div>
-    <span @click="run" class="btn btn-outline-primary mb11"> run </span>
     <CheckList
         @select="select"
         :manager="sidebar.item!.flowManager"
         :optionxx="optionxx"
         title="include"
-    ></CheckList>
+    >
+        <span @click="run" class="btn btn-outline-primary ml11"> make all included </span>
+    </CheckList>
     <Diagram :path="selected" :schema="sidebar.item!"></Diagram>
 </template>
 

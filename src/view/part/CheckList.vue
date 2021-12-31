@@ -34,6 +34,7 @@
             <tr>
                 <td>
                     <span @click="clear" class="btn btn-outline-danger"> Clear </span>
+                    <slot></slot>
                 </td>
             </tr>
         </tfoot>
