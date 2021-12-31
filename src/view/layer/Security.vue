@@ -1,9 +1,10 @@
 <template>
     <table class="table">
         <caption class="caption-top">
-            <h2>Security Scheme</h2>
+            <h2 class="inline mr11">Security Scheme</h2>
+            <slot></slot>
         </caption>
-        <thead>
+        <thead v-if="withSecurity">
             <tr>
                 <td class="text-right w222">unPattern</td>
                 <td>
@@ -84,6 +85,10 @@ export default defineComponent({
     props: {
         item: {
             type: Object as PropType<LayerSecurityScheme>,
+            required: true,
+        },
+        withSecurity: {
+            type: Boolean,
             required: true,
         },
     },

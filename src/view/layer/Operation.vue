@@ -44,7 +44,19 @@
 
     <Status :operation="path.operation" :path="path"></Status>
 
-    <Security :item="path.operation.security"></Security>
+    <Security
+        :item="path.operation.security"
+        :withSecurity="path.operation.withSecurity"
+    >
+        <span class="custom-control custom-switch inline">
+            <input
+                id="withSecurity"
+                v-model="path.operation.withSecurity"
+                type="checkbox"
+                class="custom-control-input"
+            />
+            <label for="withSecurity" class="custom-control-label"></label> </span
+    ></Security>
 </template>
 
 <script lang="ts">
