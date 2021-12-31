@@ -96,7 +96,7 @@ function makeOperation(
         makeLayer(layer, schema, lp, lo, vendor),
     )
 
-    if (lo.security.un) {
+    if (lo.withSecurity) {
         makeSecurity(lp, lo, operation, scopexx, schema, vendor)
     }
 

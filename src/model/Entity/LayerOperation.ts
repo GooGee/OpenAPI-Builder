@@ -8,6 +8,7 @@ import UniqueItemManager from './UniqueItemManager'
 
 export default class LayerOperation extends UniqueItem {
     withRequestBody = false
+    withSecurity = false
     readonly parameterManager = new LayerManager(TargetType.parameters)
     readonly requestBody = new LayerRequestBody(
         '${schema.un}_${operation.un + path.suffix}',
