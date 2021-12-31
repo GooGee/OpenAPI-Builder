@@ -189,7 +189,7 @@ function makeRequestBody(
     nodes: Node[],
     operation: Node,
 ) {
-    let label = 'none'
+    let label = '-- none --'
     if (layer.operation.withRequestBody) {
         label = Text.getUN(
             layer.operation.requestBody.unPattern,
@@ -277,9 +277,17 @@ function makeResponse(
 }
 
 function makeSecurity(layer: LayerPath, schema: Schema, edges: Edge[], nodes: Node[]) {
-    const label =
-        'security\n' +
-        Text.getUN(layer.operation.security.unPattern, schema, layer, layer.operation)
+    let label = 'security\n'
+    if (layer.operation.withSecurity) {
+        label += Text.getUN(
+            layer.operation.security.unPattern,
+            schema,
+            layer,
+            layer.operation,
+        )
+    } else {
+        label += '-- none --'
+    }
     const security = makeNode(label, RowEnum.security * RowHeight, 0)
     nodes.push(security)
 
