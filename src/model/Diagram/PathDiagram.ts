@@ -1,9 +1,9 @@
-import ss from '@/ss'
 import { Edge, Node, Shape } from '@antv/x6'
 import Layer from '../Entity/Layer'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
 import Schema from '../OAPI/Schema'
+import ReferenceFinder from '../Service/ReferenceFinder'
 import Text from '../Service/Text'
 
 enum RowEnum {
@@ -20,7 +20,11 @@ const ColumnWidth = 222
 const ItemHeight = 33
 const ItemMargin = 11
 
-export default function make(layer: LayerPath, schema: Schema) {
+export default function make(
+    layer: LayerPath,
+    schema: Schema,
+    finder: ReferenceFinder,
+) {
     const edges: Edge[] = []
     const nodes: Node[] = []
 
@@ -79,7 +83,7 @@ export default function make(layer: LayerPath, schema: Schema) {
     }
 
     makeRequestBody(layer, schema, edges, nodes, operation)
-    makeResponse(layer, schema, edges, nodes, operation)
+    makeResponse(layer, schema, edges, nodes, operation, finder)
     const security = makeSecurity(layer, schema, edges, nodes)
     // edges.push(
     //     makeEdge(operation, security, 'security', {
@@ -224,6 +228,7 @@ function makeResponse(
     edges: Edge[],
     nodes: Node[],
     operation: Node,
+    finder: ReferenceFinder,
 ) {
     let statusWidth = 0
     let schemaWidth = 0
@@ -241,7 +246,7 @@ function makeResponse(
     layer.operation.statusManager.list.forEach((status, index) => {
         let label = status.un + ' '
         if (status.useExisted) {
-            label += ss.finder.find(status.reference)?.un ?? '?'
+            label += finder.find(status.reference)?.un ?? '?'
         } else {
             label += Text.getUN(status.unPattern, schema, layer, layer.operation)
         }

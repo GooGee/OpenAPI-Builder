@@ -3,17 +3,14 @@
 </template>
 
 <script lang="ts">
-import { Graph } from '@antv/x6'
-import Bar from '@/view/part/Bar.vue'
-import { defineComponent, onMounted, PropType, watch } from 'vue'
+import make from '@/model/Diagram/PathDiagram'
 import LayerPath from '@/model/Entity/LayerPath'
 import Schema from '@/model/OAPI/Schema'
-import make from '@/model/Diagram/PathDiagram'
+import ss from '@/ss'
+import { Graph } from '@antv/x6'
+import { defineComponent, onMounted, PropType, watch } from 'vue'
 
 export default defineComponent({
-    components: {
-        Bar,
-    },
     props: {
         path: {
             type: Object as PropType<LayerPath>,
@@ -35,7 +32,7 @@ export default defineComponent({
             })
 
             function draw() {
-                const data = make(props.path, props.schema)
+                const data = make(props.path, props.schema, ss.finder)
                 console.log(
                     props.path.un,
                     props.schema.un,
