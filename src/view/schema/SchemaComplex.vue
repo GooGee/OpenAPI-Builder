@@ -24,16 +24,13 @@
             :disabled="sidebar.item.isTemplate"
             class="form-control inline wa"
         >
-            <option v-for="type in typexx" :value="type" :key="type">
-                {{ type }}
+            <option v-for="item in typexx" :value="item" :key="item">
+                {{ item }}
             </option>
         </select>
 
-        <div>
-            <ReferenceList
-                v-if="sidebar.item.isComposition"
-                :manager="sidebar.item.referenceManager"
-            ></ReferenceList>
+        <div v-if="sidebar.item.isComposition">
+            <ReferenceList :manager="sidebar.item.referenceManager"></ReferenceList>
         </div>
     </div>
 
