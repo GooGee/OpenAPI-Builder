@@ -13,12 +13,11 @@
 </template>
 
 <script lang="ts">
-import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
 import { ReferenceManager } from '@/model/OAPI/Reference'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
 import store from '@/store'
-import { defineComponent, PropType, ref, watch } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import DeleteButton from '../button/DeleteButton.vue'
 
 const ReferenceList = defineComponent({
@@ -32,15 +31,11 @@ const ReferenceList = defineComponent({
         },
     },
     setup(props, context) {
-        const list = ref<UniqueItemInterface[]>([])
         const source = ss.finder.findManager(props.manager.targetType).list
-        watch(() => props.manager.list.length, getList, { immediate: true })
-
-        function getList() {
-            const uixx = props.manager.list.map((item) => item.ui)
-            const set = new Set(uixx)
-            list.value = source.filter((item) => set.has(item.ui))
-        }
+        const list = computed(function getList() {
+            const set = new Set(props.manager.uixx)
+            return source.filter((item) => set.has(item.ui))
+        })
 
         function select() {
             const listModal = store.listModal
