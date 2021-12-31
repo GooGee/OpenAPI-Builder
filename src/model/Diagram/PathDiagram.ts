@@ -11,9 +11,11 @@ enum RowEnum {
     operation,
     response,
     schema,
+    security,
+    scope,
 }
 
-const RowHeight = 222
+const RowHeight = 111
 const ColumnWidth = 222
 const ItemHeight = 33
 const ItemMargin = 11
@@ -78,6 +80,13 @@ export default function make(layer: LayerPath, schema: Schema) {
 
     makeRequestBody(layer, schema, edges, nodes, operation)
     makeResponse(layer, schema, edges, nodes, operation)
+    const security = makeSecurity(layer, schema, edges, nodes)
+    // edges.push(
+    //     makeEdge(operation, security, 'security', {
+    //         name: 'oneSide',
+    //         args: { side: 'left' },
+    //     }),
+    // )
 
     return {
         edges,
@@ -103,11 +112,17 @@ function calculateWidth(label: string, width: number) {
     return width
 }
 
-function makeEdge(source: Node, target: Node, label = '') {
+function makeEdge(
+    source: Node,
+    target: Node,
+    label = '',
+    router: object | undefined = undefined,
+) {
     return new Shape.Edge({
         label,
         source,
         target,
+        router,
     })
 }
 
@@ -259,4 +274,27 @@ function makeResponse(
     }
 
     group.setSize(ColumnWidth + schemaWidth + ItemMargin, groupHeight)
+}
+
+function makeSecurity(layer: LayerPath, schema: Schema, edges: Edge[], nodes: Node[]) {
+    const label =
+        'security\n' +
+        Text.getUN(layer.operation.security.unPattern, schema, layer, layer.operation)
+    const security = makeNode(label, RowEnum.security * RowHeight, 0)
+    nodes.push(security)
+
+    const scope = makeGroup(
+        layer.operation.security.scopeManager.list,
+        schema,
+        layer,
+        layer.operation,
+        RowEnum.scope * RowHeight,
+        0,
+        nodes,
+    )
+    if (scope) {
+        edges.push(makeEdge(security, scope, 'scope'))
+    }
+
+    return security
 }
