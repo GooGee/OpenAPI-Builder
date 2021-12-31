@@ -29,8 +29,7 @@ export default function make(layer: LayerPath, schema: Schema) {
     )
     nodes.push(path)
 
-    makeGroup(
-        'parameter',
+    const parameter = makeGroup(
         layer.parameterManager.list,
         schema,
         layer,
@@ -39,13 +38,15 @@ export default function make(layer: LayerPath, schema: Schema) {
         ColumnWidth,
         nodes,
     )
+    if (parameter) {
+        edges.push(makeEdge(path, parameter, 'parameter'))
+    }
 
     const operation = makeNode(layer.operation.un, RowEnum.operation * RowHeight, 0)
     nodes.push(operation)
     edges.push(makeEdge(path, operation, 'operation'))
 
-    makeGroup(
-        'parameter',
+    const oparameter = makeGroup(
         layer.operation.parameterManager.list,
         schema,
         layer,
@@ -54,9 +55,11 @@ export default function make(layer: LayerPath, schema: Schema) {
         ColumnWidth,
         nodes,
     )
+    if (oparameter) {
+        edges.push(makeEdge(operation, oparameter, 'parameter'))
+    }
 
-    makeGroup(
-        'tag',
+    const tag = makeGroup(
         layer.operation.tagManager.list,
         schema,
         layer,
@@ -65,6 +68,13 @@ export default function make(layer: LayerPath, schema: Schema) {
         ColumnWidth * 2,
         nodes,
     )
+    if (tag) {
+        if (oparameter) {
+            edges.push(makeEdge(oparameter, tag, 'tag'))
+        } else {
+            edges.push(makeEdge(operation, tag, 'tag'))
+        }
+    }
 
     makeRequestBody(layer, schema, edges, nodes, operation)
     makeResponse(layer, schema, edges, nodes, operation)
@@ -118,7 +128,6 @@ function makeNode(
 }
 
 function makeGroup(
-    label: string,
     list: Layer[],
     schema: Schema,
     path: LayerPath,
@@ -128,7 +137,7 @@ function makeGroup(
     nodes: Node[],
 ) {
     if (list.length === 0) {
-        return
+        return null
     }
 
     let width = 111
@@ -143,7 +152,7 @@ function makeGroup(
     })
 
     const group = makeNode(
-        label,
+        '',
         y,
         x,
         width + ItemMargin * 2,
@@ -155,6 +164,7 @@ function makeGroup(
         group.addChild(item)
         nodes.push(item)
     })
+    return group
 }
 
 function makeRequestBody(
