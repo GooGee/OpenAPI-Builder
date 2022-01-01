@@ -16,7 +16,7 @@ import { EventEnum } from '@/model/Entity/Event'
 import LayerPath from '@/model/Entity/LayerPath'
 import SideBar from '@/model/Entity/SideBar'
 import Schema from '@/model/OAPI/Schema'
-import RunFlow from '@/model/Service/RunFlow'
+import MakeFlow from '@/model/Service/MakeFlow'
 import Toast from '@/model/Service/Toast'
 import ss from '@/ss'
 import { defineComponent, inject, ref } from 'vue'
@@ -36,7 +36,7 @@ export default defineComponent({
 
         function run() {
             try {
-                RunFlow(sidebar.item!, ss)
+                MakeFlow(sidebar.item!, ss)
                 emitter.emit(EventEnum['sidebar-list-change'])
                 Toast.success('ok')
             } catch (error) {

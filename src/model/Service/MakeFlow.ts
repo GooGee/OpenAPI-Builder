@@ -15,7 +15,7 @@ import SecurityScheme, { SecurityType } from '../OAPI/SecurityScheme'
 import Vendor from '../Vendor'
 import Text from './Text'
 
-export default function RunFlow(schema: Schema, vendor: Vendor) {
+export default function MakeFlow(schema: Schema, vendor: Vendor) {
     const pathxx = schema.flowManager.getTargetxx(vendor.finder) as LayerPath[]
     pathxx.forEach((lp) => makePath(lp, schema, vendor))
 }
