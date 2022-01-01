@@ -5,10 +5,11 @@ import {
     getOAPIIncludedList,
 } from '../Decorator'
 import ItemInterface from './ItemInterface'
+import Loadable from './Loadable'
 import ObjectMap from './ObjectMap'
 
-export default class Item implements ItemInterface {
-    protected getDescriptor(name: string) {
+export default class Item extends Loadable implements ItemInterface {
+    protected getDescriptor(name: PropertyKey) {
         let descriptor = undefined
         let item: ObjectMap = this as ObjectMap<any>
         while (item) {
@@ -41,16 +42,14 @@ export default class Item implements ItemInterface {
         return Array.from(set.keys())
     }
 
-    load<T extends ItemInterface = ItemInterface>(source: T) {
-        this.getKeyList().forEach((name) => this.loadProperty(name, source))
+    load(source: this) {
+        const list = this.getKeyList() as [keyof this]
+        list.forEach((name) => this.loadProperty(name, source))
     }
 
-    protected loadProperty<T extends ItemInterface = ItemInterface>(
-        name: string,
-        source: T,
-    ) {
+    protected loadProperty(name: keyof this, source: this) {
         // console.log('-- load Property ' + name)
-        const data = source[name as keyof T] as any
+        const data = source[name]
         if (data === undefined) {
             return
         }
@@ -68,12 +67,11 @@ export default class Item implements ItemInterface {
             return
         }
 
-        const key = name as keyof this
-        const property = this[key] as any
-        if (property.load instanceof Function) {
-            property.load(data)
+        const property = this[name]
+        if (property instanceof Loadable) {
+            property.load(data as any)
         } else {
-            this[key] = data
+            this[name] = data
         }
     }
 
