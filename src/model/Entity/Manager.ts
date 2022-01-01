@@ -1,6 +1,7 @@
+import Loadable from './Loadable'
 import ManagerInterface from './ManagerInterface'
 
-export default class Manager<T> implements ManagerInterface<T> {
+export default class Manager<T> extends Loadable implements ManagerInterface<T> {
     readonly list: Array<T> = []
 
     add(item: T) {
