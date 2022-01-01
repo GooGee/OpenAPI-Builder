@@ -32,7 +32,7 @@ export default class UIItemManager<T extends UIItemInterface = UIItemInterface>
         return this.find(ui) !== undefined
     }
 
-    load(manager: UIItemManagerInterface<T>) {
+    load(manager: this) {
         manager.list.forEach((item) => {
             const ii = this.loadItem(item)
             ii.load(item)

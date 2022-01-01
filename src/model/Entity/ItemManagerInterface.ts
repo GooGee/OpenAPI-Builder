@@ -3,7 +3,7 @@ import ManagerInterface from './ManagerInterface'
 
 export default interface ItemManagerInterface<T extends ItemInterface>
     extends ManagerInterface<T> {
-    load(manager: ItemManagerInterface<T>): void
+    load(manager: this): void
     loadList(list: T[]): void
     make(...args: any[]): T
     toJSON(): {

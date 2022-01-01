@@ -14,7 +14,7 @@ export default class ItemManager<T extends ItemInterface>
         this.type = type
     }
 
-    load(manager: ItemManagerInterface<T>) {
+    load(manager: this) {
         this.loadList(manager.list)
     }
 
