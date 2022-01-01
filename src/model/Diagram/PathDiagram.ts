@@ -143,6 +143,12 @@ function makeNode(
         label,
         height,
         width: calculateWidth(label, width),
+        attrs: {
+            body: {
+                stroke: '#888',
+                strokeWidth: 1,
+            },
+        },
     })
 }
 
