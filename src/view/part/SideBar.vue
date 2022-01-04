@@ -20,10 +20,10 @@
             <SideBarItem
                 v-for="item in list"
                 :key="item.ui"
+                :active="item === sidebar.item"
                 :item="item"
                 :manager="sidebar.manager"
                 @click="select(item)"
-                :class="{ active: sidebar.item.un === item.un }"
             ></SideBarItem>
         </div>
     </div>

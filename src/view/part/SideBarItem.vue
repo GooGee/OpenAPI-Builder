@@ -1,6 +1,6 @@
 <template>
     <div class="list-group-item list-group-item-action">
-        <div class="hover-bg inline">
+        <div class="inline hover-bg">
             <span class="btn-group">
                 <DeleteButton
                     :manager="manager"
@@ -12,10 +12,12 @@
                     :manager="manager"
                     :item="item"
                     text="/"
-                    class="btn-sm hover-button mr11"
+                    class="btn-sm hover-button"
                 ></ChangeButton>
             </span>
-            <span class="pointer">{{ item.un }}</span>
+            <span :class="{ 'text-primary': active }" class="pointer ml11">
+                {{ item.un }}
+            </span>
         </div>
     </div>
 </template>
@@ -35,6 +37,10 @@ export default defineComponent({
         DeleteButton,
     },
     props: {
+        active: {
+            type: Boolean,
+            required: true,
+        },
         item: {
             type: Object as PropType<UniqueItemInterface>,
             required: true,
@@ -60,11 +66,5 @@ export default defineComponent({
 <style scoped>
 .hover-bg:not(:hover) .hover-button {
     display: none;
-}
-.active .hover-bg:hover .hover-button {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-.active .hover-bg:hover .hover-button:hover {
-    color: black;
 }
 </style>
