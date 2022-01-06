@@ -28,6 +28,15 @@ export default class UIItemManager<T extends UIItemInterface = UIItemInterface>
         return this.list.filter((item) => set.has(item.ui))
     }
 
+    findOrMakeAdd(ui: number) {
+        let found = this.find(ui)
+        if (found === undefined) {
+            found = this.make(ui)
+            this.add(found)
+        }
+        return found
+    }
+
     has(ui: number) {
         return this.find(ui) !== undefined
     }
