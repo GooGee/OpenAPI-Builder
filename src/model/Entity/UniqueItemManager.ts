@@ -53,7 +53,7 @@ export default class UniqueItemManager<
         return this.list.find((item) => item.un === name)
     }
 
-    findOrMake(name: string) {
+    findByUNOrMakeAdd(name: string) {
         let found = this.findByUN(name)
         if (found === undefined) {
             found = this.make(name)

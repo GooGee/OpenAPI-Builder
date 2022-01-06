@@ -12,7 +12,7 @@ export default interface UniqueItemManagerInterface<
     changeUN(item: T, un: string): void
     filter(keyword: string): UniqueItemInterface[]
     findByUN(name: string): T | undefined
-    findOrMake(name: string): T
+    findByUNOrMakeAdd(name: string): T
     hasSame(ui: number, un: string): boolean
     hasUN(name: string): boolean
     make(name: string): T
