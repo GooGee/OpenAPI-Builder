@@ -3,9 +3,9 @@
 </template>
 
 <script lang="ts">
-import make from '@/model/Diagram/PathDiagram'
 import LayerPath from '@/model/Entity/LayerPath'
 import Schema from '@/model/OAPI/Schema'
+import MakeDiagram from '@/model/Service/MakeDiagram'
 import ss from '@/ss'
 import { Graph } from '@antv/x6'
 import { defineComponent, onMounted, PropType, watch } from 'vue'
@@ -32,7 +32,7 @@ export default defineComponent({
             })
 
             function draw() {
-                const data = make(props.path, props.schema, ss.finder)
+                const data = MakeDiagram(props.path, props.schema, ss.finder)
                 console.log(
                     props.path.un,
                     props.schema.un,

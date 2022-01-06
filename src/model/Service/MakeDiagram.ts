@@ -3,8 +3,8 @@ import Layer from '../Entity/Layer'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
 import Schema from '../OAPI/Schema'
-import ReferenceFinder from '../Service/ReferenceFinder'
-import Text from '../Service/Text'
+import ReferenceFinder from './ReferenceFinder'
+import Text from './Text'
 
 enum RowEnum {
     path,
@@ -20,7 +20,7 @@ const ColumnWidth = 222
 const ItemHeight = 33
 const ItemMargin = 11
 
-export default function make(
+export default function MakeDiagram(
     layer: LayerPath,
     schema: Schema,
     finder: ReferenceFinder,
