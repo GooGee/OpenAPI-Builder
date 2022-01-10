@@ -109,7 +109,7 @@ export default class Vendor {
         return this.project.oapi.scopeManager
     }
 
-    get securityRequirement() {
+    get securityRequirementManager() {
         return this.project.oapi.securityManager
     }
 
