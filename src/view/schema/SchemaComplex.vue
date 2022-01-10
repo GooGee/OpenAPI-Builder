@@ -1,11 +1,11 @@
 <template>
-    <div :class="{ 'text-secondary': empty() === false }" class="mtb11">
+    <div :class="{ 'text-secondary': empty === false }" class="mtb11">
         <label class="mr11">
             <input
                 type="radio"
                 v-model="sidebar.item.isTemplate"
                 :value="true"
-                :disabled="empty() === false"
+                :disabled="empty === false"
             />
             template
         </label>
@@ -14,7 +14,7 @@
                 type="radio"
                 v-model="sidebar.item.isTemplate"
                 :value="false"
-                :disabled="empty() === false"
+                :disabled="empty === false"
             />
             composition
         </label>
@@ -47,7 +47,7 @@
 import SideBar from '@/model/Entity/SideBar'
 import Schema, { compositionTypeList } from '@/model/OAPI/Schema'
 import ss from '@/ss'
-import { defineComponent, inject } from 'vue'
+import { defineComponent, inject, ref, watch } from 'vue'
 import JSONText from '../oapi/JSONText.vue'
 import ReferenceList from '../oapi/ReferenceList.vue'
 import FieldList from './FieldList.vue'
@@ -61,7 +61,16 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<Schema>
         const manager = ss.project.oapi.fieldManager
-        function empty() {
+        const empty = ref(isEmpty())
+
+        watch(
+            [() => manager.list.length, () => sidebar.item!.ui],
+            () => (empty.value = isEmpty()),
+            { immediate: true },
+        )
+
+        function isEmpty() {
+            // console.log(sidebar.item!.ui)
             if (manager.list.find((aa) => aa.schemaUI === sidebar.item!.ui)) {
                 return false
             }
