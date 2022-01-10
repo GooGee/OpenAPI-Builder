@@ -22,7 +22,7 @@ export default class Vendor {
         this._project = this._preset
     }
 
-    create() {
+    createProject() {
         const project = new Project()
         project.load(this.data)
         this.project = project

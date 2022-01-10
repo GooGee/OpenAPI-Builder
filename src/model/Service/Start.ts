@@ -38,7 +38,7 @@ export default class Start {
                 }
             }
             if (invalid) {
-                vendor.create()
+                vendor.createProject()
             }
             file.saveDTS()
         })

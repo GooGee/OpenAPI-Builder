@@ -43,7 +43,7 @@ export default defineComponent({
     setup(props, context) {
         const inBrowser = inject('inBrowser', true)
         function create() {
-            ss.create()
+            ss.createProject()
         }
         function exportJSON() {
             const text = JSON.stringify(ss.project.oapi.toOAPI(ss.finder))
