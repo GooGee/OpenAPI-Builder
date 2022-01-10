@@ -1,4 +1,5 @@
 import lodash from 'lodash'
+import DataForScript from '../DataForScript'
 import ColorEnum from '../Entity/ColorEnum'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
@@ -29,9 +30,9 @@ function parse(text: string, data: object): string {
     )
 }
 
-function run(code: string, vendor: Vendor, schema?: UniqueItemInterface, un?: string) {
+function run(code: string, vendor: Vendor, schema?: Schema, un?: string) {
     const data = {
-        ColorEnum,
+        color: ColorEnum,
         factory: vendor.factory,
         lodash,
         project: vendor.project,
@@ -42,7 +43,7 @@ function run(code: string, vendor: Vendor, schema?: UniqueItemInterface, un?: st
     return runFunction(code, data)
 }
 
-function runFunction(code: string, data: object) {
+function runFunction(code: string, data: DataForScript) {
     const ff: Function = new Function(`"use strict";return (${code})`)()
     return ff(data)
 }

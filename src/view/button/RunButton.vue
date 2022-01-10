@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import Script from '@/model/Entity/Script'
-import UniqueItemInterface from '@/model/Entity/UniqueItemInterface'
+import Schema from '@/model/OAPI/Schema'
 import Text from '@/model/Service/Text'
 import Timer from '@/model/Service/Timer'
 import Toast from '@/model/Service/Toast'
@@ -21,7 +21,7 @@ import { defineComponent, PropType } from 'vue'
 export default defineComponent({
     props: {
         schema: {
-            type: Object as PropType<UniqueItemInterface>,
+            type: Object as PropType<Schema>,
             required: false,
             default: undefined,
         },

@@ -6,7 +6,7 @@ import Factory from './Service/Factory'
 import Vendor from './Vendor'
 
 export default interface DataForScript {
-    ColorEnum: ColorEnum
+    color: typeof ColorEnum
     factory: Factory
     lodash: LoDashStatic
     project: Project
