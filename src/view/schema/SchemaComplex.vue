@@ -1,21 +1,11 @@
 <template>
-    <div :class="{ 'text-secondary': empty === false }" class="mtb11">
+    <div class="mtb11">
         <label class="mr11">
-            <input
-                type="radio"
-                v-model="sidebar.item.isTemplate"
-                :value="true"
-                :disabled="empty === false"
-            />
+            <input type="radio" v-model="sidebar.item.isTemplate" :value="true" />
             template
         </label>
         <label class="mr11">
-            <input
-                type="radio"
-                v-model="sidebar.item.isTemplate"
-                :value="false"
-                :disabled="empty === false"
-            />
+            <input type="radio" v-model="sidebar.item.isTemplate" :value="false" />
             composition
         </label>
 
@@ -61,27 +51,8 @@ export default defineComponent({
     setup(props, context) {
         const sidebar = inject('sidebar') as SideBar<Schema>
         const manager = ss.project.oapi.fieldManager
-        const empty = ref(isEmpty())
-
-        watch(
-            [() => manager.list.length, () => sidebar.item!.ui],
-            () => (empty.value = isEmpty()),
-            { immediate: true },
-        )
-
-        function isEmpty() {
-            // console.log(sidebar.item!.ui)
-            if (manager.list.find((aa) => aa.schemaUI === sidebar.item!.ui)) {
-                return false
-            }
-            return (
-                sidebar.item!.referenceManager.list.length === 0 &&
-                sidebar.item!.text.text === '{}'
-            )
-        }
 
         return {
-            empty,
             sidebar,
             typexx: compositionTypeList,
         }
