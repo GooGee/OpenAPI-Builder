@@ -1,4 +1,4 @@
-import { Edge, Node, Shape } from '@antv/x6'
+import { Graph, Node, Shape } from '@antv/x6'
 import Layer from '../Entity/Layer'
 import LayerOperation from '../Entity/LayerOperation'
 import LayerPath from '../Entity/LayerPath'
@@ -21,19 +21,17 @@ const ItemHeight = 33
 const ItemMargin = 11
 
 export default function MakeDiagram(
+    graph: Graph,
     layer: LayerPath,
     schema: Schema,
     finder: ReferenceFinder,
 ) {
-    const edges: Edge[] = []
-    const nodes: Node[] = []
-
     const path = makeNode(
         Text.getUN(layer.unPattern, schema, layer, layer.operation),
         0,
         0,
     )
-    nodes.push(path)
+    graph.addNode(path)
 
     const parameter = makeGroup(
         layer.parameterManager.list,
@@ -42,15 +40,15 @@ export default function MakeDiagram(
         layer.operation,
         0,
         ColumnWidth,
-        nodes,
+        graph,
     )
     if (parameter) {
-        edges.push(makeEdge(path, parameter, 'parameter'))
+        graph.addEdge(makeEdge(path, parameter, 'parameter'))
     }
 
     const operation = makeNode(layer.operation.un, RowEnum.operation * RowHeight, 0)
-    nodes.push(operation)
-    edges.push(makeEdge(path, operation, 'operation'))
+    graph.addNode(operation)
+    graph.addEdge(makeEdge(path, operation, 'operation'))
 
     const oparameter = makeGroup(
         layer.operation.parameterManager.list,
@@ -59,10 +57,10 @@ export default function MakeDiagram(
         layer.operation,
         RowEnum.operation * RowHeight,
         ColumnWidth,
-        nodes,
+        graph,
     )
     if (oparameter) {
-        edges.push(makeEdge(operation, oparameter, 'parameter'))
+        graph.addEdge(makeEdge(operation, oparameter, 'parameter'))
     }
 
     const tag = makeGroup(
@@ -72,30 +70,25 @@ export default function MakeDiagram(
         layer.operation,
         RowEnum.operation * RowHeight,
         ColumnWidth * 2,
-        nodes,
+        graph,
     )
     if (tag) {
         if (oparameter) {
-            edges.push(makeEdge(oparameter, tag, 'tag'))
+            graph.addEdge(makeEdge(oparameter, tag, 'tag'))
         } else {
-            edges.push(makeEdge(operation, tag, 'tag'))
+            graph.addEdge(makeEdge(operation, tag, 'tag'))
         }
     }
 
-    makeRequestBody(layer, schema, edges, nodes, operation)
-    makeResponse(layer, schema, edges, nodes, operation, finder)
-    const security = makeSecurity(layer, schema, edges, nodes)
-    // edges.push(
+    makeRequestBody(layer, schema, graph, operation)
+    makeResponse(layer, schema, graph, operation, finder)
+    const security = makeSecurity(layer, schema, graph)
+    // graph.addEdge(
     //     makeEdge(operation, security, 'security', {
     //         name: 'oneSide',
     //         args: { side: 'left' },
     //     }),
     // )
-
-    return {
-        edges,
-        nodes,
-    }
 }
 
 function calculateGroupHeight(length: number) {
@@ -159,7 +152,7 @@ function makeGroup(
     operation: LayerOperation,
     y: number,
     x: number,
-    nodes: Node[],
+    graph: Graph,
 ) {
     if (list.length === 0) {
         return null
@@ -183,11 +176,11 @@ function makeGroup(
         width + ItemMargin * 2,
         calculateGroupHeight(list.length),
     )
-    nodes.push(group)
+    graph.addNode(group)
 
     nodexx.forEach((item) => {
         group.addChild(item)
-        nodes.push(item)
+        graph.addNode(item)
     })
     return group
 }
@@ -195,8 +188,7 @@ function makeGroup(
 function makeRequestBody(
     layer: LayerPath,
     schema: Schema,
-    edges: Edge[],
-    nodes: Node[],
+    graph: Graph,
     operation: Node,
 ) {
     let label = '-- none --'
@@ -209,8 +201,8 @@ function makeRequestBody(
         )
     }
     const rb = makeNode(label, RowEnum.response * RowHeight, 0)
-    nodes.push(rb)
-    edges.push(makeEdge(operation, rb, 'RequestBody'))
+    graph.addNode(rb)
+    graph.addEdge(makeEdge(operation, rb, 'RequestBody'))
 
     if (layer.operation.withRequestBody) {
         const node = makeNode(
@@ -223,16 +215,15 @@ function makeRequestBody(
             RowEnum.schema * RowHeight,
             0,
         )
-        nodes.push(node)
-        edges.push(makeEdge(rb, node, 'schema'))
+        graph.addNode(node)
+        graph.addEdge(makeEdge(rb, node, 'schema'))
     }
 }
 
 function makeResponse(
     layer: LayerPath,
     schema: Schema,
-    edges: Edge[],
-    nodes: Node[],
+    graph: Graph,
     operation: Node,
     finder: ReferenceFinder,
 ) {
@@ -246,8 +237,8 @@ function makeResponse(
         111,
         groupHeight,
     )
-    nodes.push(group)
-    edges.push(makeEdge(operation, group, 'response'))
+    graph.addNode(group)
+    graph.addEdge(makeEdge(operation, group, 'response'))
 
     layer.operation.statusManager.list.forEach((status, index) => {
         let label = status.un + ' '
@@ -259,7 +250,7 @@ function makeResponse(
         statusWidth = calculateWidth(label, statusWidth)
         const y = RowEnum.response * RowHeight + calculateGroupHeight(index)
         const response = makeNode(label, y, ColumnWidth + ItemMargin)
-        nodes.push(response)
+        graph.addNode(response)
         group.addChild(response)
 
         if (status.useExisted) {
@@ -273,9 +264,9 @@ function makeResponse(
             )
             schemaWidth = calculateWidth(label, schemaWidth)
             const node = makeNode(label, y, ColumnWidth + ColumnWidth)
-            nodes.push(node)
+            graph.addNode(node)
             group.addChild(node)
-            edges.push(makeEdge(response, node))
+            graph.addEdge(makeEdge(response, node))
         }
     })
 
@@ -287,7 +278,7 @@ function makeResponse(
     group.setSize(ColumnWidth + schemaWidth + ItemMargin, groupHeight)
 }
 
-function makeSecurity(layer: LayerPath, schema: Schema, edges: Edge[], nodes: Node[]) {
+function makeSecurity(layer: LayerPath, schema: Schema, graph: Graph) {
     let label = 'security\n'
     if (layer.operation.withSecurity) {
         label += Text.getUN(
@@ -300,7 +291,7 @@ function makeSecurity(layer: LayerPath, schema: Schema, edges: Edge[], nodes: No
         label += '-- none --'
     }
     const security = makeNode(label, RowEnum.security * RowHeight, 0)
-    nodes.push(security)
+    graph.addNode(security)
 
     const scope = makeGroup(
         layer.operation.security.scopeManager.list,
@@ -309,10 +300,10 @@ function makeSecurity(layer: LayerPath, schema: Schema, edges: Edge[], nodes: No
         layer.operation,
         RowEnum.scope * RowHeight,
         0,
-        nodes,
+        graph,
     )
     if (scope) {
-        edges.push(makeEdge(security, scope, 'scope'))
+        graph.addEdge(makeEdge(security, scope, 'scope'))
     }
 
     return security

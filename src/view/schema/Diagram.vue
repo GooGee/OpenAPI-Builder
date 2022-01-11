@@ -32,16 +32,8 @@ export default defineComponent({
             })
 
             function draw() {
-                const data = MakeDiagram(props.path, props.schema, ss.finder)
-                console.log(
-                    props.path.un,
-                    props.schema.un,
-                    data.edges.length,
-                    data.nodes.length,
-                )
                 graph.clearCells()
-                graph.addNodes(data.nodes)
-                graph.addEdges(data.edges)
+                MakeDiagram(graph, props.path, props.schema, ss.finder)
                 graph.centerContent()
             }
 
