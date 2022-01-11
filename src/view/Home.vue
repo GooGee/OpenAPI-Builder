@@ -47,8 +47,8 @@ export default defineComponent({
         }
         function exportJSON() {
             const text = JSON.stringify(ss.project.oapi.toOAPI(ss.finder))
-            ss.worker.edit('OpenAPI.json', text, (response) => {
-                Toast.show(response.message, response.status)
+            ss.worker.write('OpenAPI.json', text, (response) => {
+                Toast.show('see OpenAPI.json', response.status)
             })
         }
         function toJSON() {
