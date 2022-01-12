@@ -35,6 +35,14 @@ describe('UniqueItemManager', function () {
         expect(manager.findByUN(item.un)).toEqual(item)
     })
 
+    it('findByUNOrMakeAdd', function () {
+        const manager = new UniqueItemManager(UniqueItem)
+        const item = manager.make(data.un)
+        manager.add(item)
+        expect(manager.findByUNOrMakeAdd(item.un)).toEqual(item)
+        expect(manager.findByUNOrMakeAdd('b')).toHaveProperty('un', 'b')
+    })
+
     it('hasSame', function () {
         const manager = new UniqueItemManager(UniqueItem)
         const item = manager.make(data.un)
