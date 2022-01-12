@@ -6,7 +6,6 @@ import UniqueItemInterface from './UniqueItemInterface'
 export default interface UniqueItemManagerInterface<
     T extends UniqueItemInterface = UniqueItemInterface,
 > extends UIItemManagerInterface<T> {
-    readonly unique: boolean
     add(item: T): void
     arrayToOAPI(list: T[], finder: ReferenceFinderInterface): ObjectMap<any>
     changeUN(item: T, un: string): void

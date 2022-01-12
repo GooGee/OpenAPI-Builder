@@ -102,8 +102,8 @@ export default class SchemaField extends UniqueItem {
 }
 
 export class SchemaFieldManager extends UniqueItemManager<SchemaField> {
-    constructor(unique = true) {
-        super(SchemaField, unique)
+    constructor() {
+        super(SchemaField)
     }
 
     changeUN(item: SchemaField, un: string) {

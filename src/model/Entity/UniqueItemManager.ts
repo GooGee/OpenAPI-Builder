@@ -1,5 +1,4 @@
 import { filter } from '../Service/Text'
-import Newable from './Newable'
 import ObjectMap from './ObjectMap'
 import ReferenceFinderInterface from './ReferenceFinderInterface'
 import UIItemManager from './UIItemManager'
@@ -12,10 +11,6 @@ export default class UniqueItemManager<
     extends UIItemManager<T>
     implements UniqueItemManagerInterface
 {
-    constructor(type: Newable<T>, readonly unique = true) {
-        super(type)
-    }
-
     add(item: T) {
         this.throwIfNotUnique(item)
         super.add(item)
@@ -39,9 +34,6 @@ export default class UniqueItemManager<
             return
         }
 
-        if (this.unique) {
-            this.throwIfFindUN(un)
-        }
         item.un = un
     }
 
@@ -95,9 +87,6 @@ export default class UniqueItemManager<
     }
 
     throwIfNotUnique(item: T) {
-        if (this.unique === false) {
-            return
-        }
         this.throwIfFindUN(item.un)
     }
 

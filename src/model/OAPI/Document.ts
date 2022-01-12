@@ -21,7 +21,7 @@ export default class Document extends Item implements DocumentInterface {
     readonly encodingManager = new EncodingManager()
     readonly enumerManager = new EnumerManager()
     readonly externalDocs = new External()
-    readonly fieldManager = new SchemaFieldManager(false)
+    readonly fieldManager = new SchemaFieldManager()
     readonly info = new Info()
     readonly pathManager = new PathManager()
     readonly scopeManager = new ScopeManager()
