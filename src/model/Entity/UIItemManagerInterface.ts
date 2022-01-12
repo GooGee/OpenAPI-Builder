@@ -8,6 +8,7 @@ export default interface UIItemManagerInterface<
     add(item: T): void
     find(ui: number): T | undefined
     findAll(uixx: number[]): T[]
+    findOrMakeAdd(ui: number): T
     has(ui: number): boolean
     load(manager: this): void
     throwIfFind(ui: number): void

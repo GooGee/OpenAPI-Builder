@@ -27,6 +27,14 @@ describe('UIItemManager', function () {
         expect(manager.list[0]).toEqual(item)
     })
 
+    it('findOrMakeAdd', function () {
+        const manager = new UIItemManager(UIItem)
+        const item = manager.make()
+        manager.add(item)
+        expect(manager.findOrMakeAdd(item.ui)).toEqual(item)
+        expect(manager.findOrMakeAdd(2)).toHaveProperty('ui', 2)
+    })
+
     it('has', function () {
         const manager = new UIItemManager(UIItem)
         const item = manager.make()
