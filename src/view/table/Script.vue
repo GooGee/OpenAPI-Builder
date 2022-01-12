@@ -55,7 +55,7 @@
                     <textarea
                         v-model="sidebar.item.code"
                         class="form-control"
-                        rows="33"
+                        rows="11"
                         spellcheck="false"
                     ></textarea>
                 </td>
