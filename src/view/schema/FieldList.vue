@@ -62,18 +62,18 @@
         <tfoot>
             <tr>
                 <td>
-                    <SelectButton
-                        @select="select"
+                    <FieldSelect
+                        @select="update"
                         :list="namexx"
                         :manager="manager"
-                    ></SelectButton>
+                    ></FieldSelect>
                 </td>
                 <td>
-                    <SelectButton
-                        @select="select"
+                    <FieldSelect
+                        @select="update"
                         :list="typexx"
                         :manager="manager"
-                    ></SelectButton>
+                    ></FieldSelect>
                 </td>
             </tr>
         </tfoot>
@@ -81,20 +81,21 @@
 </template>
 
 <script lang="ts">
+import { dataTypeList } from '@/model/OAPI/DataType'
 import SchemaField from '@/model/OAPI/SchemaField'
 import ss from '@/ss'
 import { defineComponent, ref, watch } from 'vue'
 import ChangeButton from '../button/ChangeButton.vue'
 import DeleteButton from '../button/DeleteButton.vue'
-import SelectButton from '../button/SelectButton.vue'
 import Field from './Field.vue'
+import FieldSelect from './FieldSelect.vue'
 
 export default defineComponent({
     components: {
         ChangeButton,
         DeleteButton,
         Field,
-        SelectButton,
+        FieldSelect,
     },
     props: {
         ui: {
@@ -115,8 +116,8 @@ export default defineComponent({
                 .propertyManager.list.map((item) =>
                     make(item.ui, item.un, item.tag),
                 ) as SchemaField[]
-            typexx.value = ['boolean', 'integer', 'number', 'string'].map(
-                (item, index) => make(index + 1, item, item),
+            typexx.value = dataTypeList.map((item, index) =>
+                make(index + 1, item, item),
             ) as SchemaField[]
         }
         watch(() => props.ui, update, { immediate: true })
@@ -130,17 +131,10 @@ export default defineComponent({
             }
         }
 
-        function select(source: SchemaField, item: SchemaField) {
-            item.type = source.type
-            item.schemaUI = source.schemaUI
-            update()
-        }
-
         return {
             fieldxx,
             manager,
             namexx,
-            select,
             typexx,
             update,
         }
