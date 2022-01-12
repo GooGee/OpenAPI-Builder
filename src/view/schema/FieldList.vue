@@ -66,6 +66,13 @@
                         @select="update"
                         :list="namexx"
                         :manager="manager"
+                        class="inline mr11"
+                    ></FieldSelect>
+                    <FieldSelect
+                        @select="update"
+                        :list="uixx"
+                        :manager="manager"
+                        class="inline"
                     ></FieldSelect>
                 </td>
                 <td>
@@ -108,6 +115,7 @@ export default defineComponent({
         const fieldxx = ref<SchemaField[]>([])
         const namexx = ref<SchemaField[]>([])
         const typexx = ref<SchemaField[]>([])
+        const uixx = ref<SchemaField[]>([])
 
         function update() {
             fieldxx.value = manager.findAllField(props.ui)
@@ -118,6 +126,9 @@ export default defineComponent({
                 ) as SchemaField[]
             typexx.value = dataTypeList.map((item, index) =>
                 make(index + 1, item, item),
+            ) as SchemaField[]
+            uixx.value = ss.schemaManager.list.map((item) =>
+                make(item.ui, item.snakeCase + '_id', 'integer'),
             ) as SchemaField[]
         }
         watch(() => props.ui, update, { immediate: true })
@@ -136,6 +147,7 @@ export default defineComponent({
             manager,
             namexx,
             typexx,
+            uixx,
             update,
         }
     },
