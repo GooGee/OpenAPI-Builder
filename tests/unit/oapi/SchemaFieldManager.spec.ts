@@ -37,6 +37,16 @@ describe('SchemaFieldManager', function () {
         expect(list.length).toBe(1)
     })
 
+    it('findField', function () {
+        const manager = new SchemaFieldManager()
+        const aa = manager.make('name')
+        aa.schemaUI = schema.ui
+        manager.add(aa)
+
+        const item = manager.findField(aa.ui, aa.un)
+        expect(item).toEqual(aa)
+    })
+
     it('throwIfNotUnique', function () {
         const manager = new SchemaFieldManager()
         const item = manager.make('name')
