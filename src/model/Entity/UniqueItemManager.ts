@@ -34,6 +34,7 @@ export default class UniqueItemManager<
             return
         }
 
+        this.throwIfFindUN(un)
         item.un = un
     }
 
