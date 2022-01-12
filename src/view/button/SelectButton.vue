@@ -23,6 +23,11 @@ export default defineComponent({
             type: Object as PropType<UniqueItemManagerInterface>,
             required: true,
         },
+        load: {
+            type: Boolean,
+            required: false,
+            default: false,
+        },
     },
     setup(props, context) {
         const selected = ref(0)
@@ -33,6 +38,9 @@ export default defineComponent({
                     return
                 }
                 const item = props.manager.make(found.un)
+                if (props.load) {
+                    item.load(found)
+                }
                 props.manager.add(item)
                 selected.value = 0
                 context.emit('select', found, item)
