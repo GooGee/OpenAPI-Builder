@@ -2,6 +2,14 @@
 
 [demo](https://googee.github.io/OpenAPI-Page/build100/)
 
+schema
+
+![schema](image/schema.jpg)
+
+flow
+
+![flow](image/flow.jpg)
+
 ## Project setup
 ```
 npm install
